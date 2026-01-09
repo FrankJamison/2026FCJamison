@@ -11,10 +11,61 @@
             <!-- End of .modal-header -->
 
             <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0003-FrankJamison.png') }}" alt="FrankJamison.com" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">8 January 2026</span>
+                    <h2 class="title">A 2006 Time Capsule: <a href="https://fcjamison.com/2006FrankJamison/">FrankJamison.com</a></h2>
+                    <p>Every developer has an origin story. Some start with a bootcamp. Some with a framework tutorial at 2 a.m. Mine? A raw, caffeinated plunge into HTML and CSS in 2006—when rounded corners were a luxury, gradients were loud, and tables were still hanging around like uninvited guests at a LAN party.</p>
+                    <p>This project is a preserved snapshot of that era: the original 2006 FrankJamison.com. Not a remake. Not a refactor. This is the artifact itself—rough edges, earnest ambition, and all.</p>
+                    <p>Back then, the web felt smaller and more personal. You didn’t install a stack; you opened a text editor and started typing. This site grew line by line, fueled by curiosity and a stubborn need to understand how the pieces fit together. Layouts were hand-built. Styles were trial-and-error. JavaScript was used sparingly, because breaking things was easy and debugging tools were… aspirational.</p>
+                    <p>And yet—there’s something beautiful in that simplicity.</p>
+                    <p>This project matters because it shows the long arc of learning. Before frameworks. Before pipelines. Before “best practices” hardened into doctrine. It captures the mindset of a developer at the very beginning: experimenting, breaking things, fixing them, and learning by doing. The design choices reflect the mid-2000s web aesthetic—bold colors, structured layouts, and a clear desire to make something <em>real</em> and <em>public</em>.</p>
+                    <p>Looking at it now, with modern eyes, it’s tempting to critique. But that misses the point. This site isn’t here to compete with modern standards—it’s here to document growth. It’s proof that progress doesn’t start polished. It starts messy, curious, and slightly chaotic.</p>
+                    <p>In a portfolio full of recent projects, this one plays a different role. It’s the prologue. The “level one character with questionable stats.” The reminder that every clean, responsive, well-architected build stands on a pile of early experiments that dared to exist.</p>
+                    <p>So this project stays exactly as it is. No modernization. No cleanup. Just a preserved moment from 2006—when the web was weird, learning was manual, and the spark first caught.</p>
+                    <p>And honestly? I wouldn’t reroll it.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="A 2006 Time Capsule: FrankJamison.com, Version 1.0">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+
+            <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0002-AnalogClockProject.png') }}" alt="Analog Clock Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">Building Time: The 2006 Analog Clock Project</h2>
+                    <h2 class="title">Building Time: <a href="https://fcjamison.com/2006AnalogClockProject/">The 2006 Analog Clock Project</a></h2>
                     <p>Some projects are about scale. Others are about speed. This one? This one is about precision—the quiet, relentless ticking of logic doing exactly what it’s supposed to do.</p>
                     <p>The 2006 Analog Clock Project is a deceptively simple web application that recreates a classic analog clock using modern front-end techniques. No libraries doing the heavy lifting. No shortcuts. Just JavaScript, CSS, and the stubborn belief that understanding fundamentals is never a waste of time. (Unlike meetings that could’ve been emails.)</p>
 
