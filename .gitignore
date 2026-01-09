@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .env
+
+# Standalone portfolio projects live here and are versioned separately.
+projects/

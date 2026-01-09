@@ -5,8 +5,29 @@ import ssl
 from typing import Optional
 from email.message import EmailMessage
 
-from flask import jsonify, redirect, render_template, request, url_for
+from flask import abort, jsonify, redirect, render_template, request, send_from_directory, url_for
 from app import app
+
+
+PROJECTS_ROOT = os.path.abspath(
+    os.getenv(
+        "PROJECTS_ROOT",
+        os.path.join(os.path.dirname(__file__), "projects"),
+    )
+)
+
+
+def _project_dir(project_slug: str) -> str:
+    # Basic traversal hardening.
+    if not project_slug or project_slug.startswith("."):
+        abort(404)
+    if any(sep in project_slug for sep in ("/", "\\")):
+        abort(404)
+
+    project_dir = os.path.join(PROJECTS_ROOT, project_slug)
+    if not os.path.isdir(project_dir):
+        abort(404)
+    return project_dir
 
 
 def _truthy_env(value: Optional[str]) -> bool:
@@ -300,10 +321,19 @@ def index():
     return render_template("home/index.html", **data)
 
 
+@app.get('/projects/<project_slug>/')
+def project_index(project_slug: str):
+    project_dir = _project_dir(project_slug)
+    return send_from_directory(project_dir, 'index.html')
+
+
+@app.get('/projects/<project_slug>/<path:filename>')
+def project_file(project_slug: str, filename: str):
+    project_dir = _project_dir(project_slug)
+    return send_from_directory(project_dir, filename)
+
+
 @app.route('/portfolio/2006AnalogClockProject/index.html')
 @app.route('/portfolio/2006AnalogClockProject/')
 def portfolio2006AnalogClockProject():
-    data = {
-        'headTitle': '2006 Analog Clock Project',
-    }
-    return render_template("portfolio/2006AnalogClockProject/index.html", **data)
+    return redirect(url_for('project_index', project_slug='2006AnalogClockProject'))
