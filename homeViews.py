@@ -331,15 +331,3 @@ def project_index(project_slug: str):
 def project_file(project_slug: str, filename: str):
     project_dir = _project_dir(project_slug)
     return send_from_directory(project_dir, filename)
-
-
-@app.route('/portfolio/2006AnalogClockProject/index.html')
-@app.route('/portfolio/2006AnalogClockProject/')
-def portfolio2006AnalogClockProject():
-    return redirect(url_for('project_index', project_slug='2006AnalogClockProject'), code=301)
-
-
-@app.route('/portfolio/2006FrankJamison/index.html')
-@app.route('/portfolio/2006FrankJamison/')
-def portfolio2006FrankJamison():
-    return redirect(url_for('project_index', project_slug='2006FrankJamison'), code=301)

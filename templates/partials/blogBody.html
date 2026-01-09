@@ -1,3 +1,66 @@
+<div class="modal fade" id="blogModal2006MoonwalkManor" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0005-MoonwalkManor.png') }}" alt="2006 Moonwalk Manor Front Page" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">8 January 2026</span>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2006MoonwalkManor/" target="_blank">Moonwalk Manor:</a> A 2006 Vision of Hotels on the Moon</h2>
+                    <p>In the mid-2000s, the future still felt bold, shiny, and just around the corner. Space tourism was “inevitable,” moon bases were practically booked, and websites loved to imagine what life <em>up there</em> might look like. Moonwalk Manor was built squarely in that mindset—a speculative hotel website imagining luxury accommodations on the Moon, created with the tools and sensibilities of 2006-era web design.</p>
+                    <p>Moonwalk Manor wasn’t parody or horror. It was optimism. A sincere attempt to visualize a futuristic hospitality experience using static HTML, early layout techniques, and design conventions that predate responsive grids and modern UI frameworks. The project framed the Moon not as a distant scientific outpost, but as a destination—complete with amenities, comfort, and aspirational travel copy.</p>
+                    <p>Visually, the site leaned into space-age themes common at the time: dark backgrounds, starry imagery, high-contrast text, and layouts designed for fixed desktop resolutions. Navigation was straightforward, content was page-based, and imagination carried more weight than technical sophistication. This was the era of building first and refining later—if ever.</p>
+                    <p>From a development perspective, Moonwalk Manor represents an important stage of growth. It reflects learning through experimentation: structuring content, organizing pages, and thinking about user experience long before “UX” was a household acronym. The project shows an early understanding that websites could tell stories—not just present information.</p>
+                    <p>Today, Moonwalk Manor serves as a time capsule. It captures how the early web dreamed about the future, and how personal projects often reached beyond current technology to explore what <em>might</em> be possible. In a modern portfolio, it stands as evidence of long-term curiosity, creative thinking, and a willingness to explore ideas well ahead of practical implementation.</p>
+                    <p>The Moon didn’t get its hotels—yet—but the ambition behind Moonwalk Manor still holds up. Sometimes the most interesting projects aren’t about what was achievable, but about what was imagined.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Moonwalk Manor: A 2006 Vision of Hotels on the Moon">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2006TypingSpeedTest" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -14,7 +77,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0004-TypingSpeedTest.png') }}" alt="2006 Typing Speed Test Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">Keystrokes Under Pressure: <a href="https://fcjamison.com/2006TypingSpeedTest/">2006 Typing Speed Test Project</a></h2>
+                    <h2 class="title">Keystrokes Under Pressure: <a href="https://fcjamison.com/projects/2006TypingSpeedTest/" target="_blank">2006 Typing Speed Test Project</a></h2>
                     <p>Some projects shout. Others just sit there quietly, stopwatch in hand, waiting for you to blink. The 2006 Typing Speed Test is firmly in the second camp—simple, focused, and a little bit ruthless in the way only a timer can be.</p>
                     <p>This project was built as an exploration of clean JavaScript logic, real-time input handling, and UI feedback that doesn’t get in your way. No accounts. No leaderboards chasing dopamine. Just you, a block of text, and the uncomfortable truth about how many typos you actually make when no one’s watching.</p>
                     <p>And honestly? That’s the charm.</p>
@@ -108,7 +171,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0003-FrankJamison.png') }}" alt="FrankJamison.com" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">A 2006 Time Capsule: <a href="https://fcjamison.com/2006FrankJamison/">FrankJamison.com</a></h2>
+                    <h2 class="title">A 2006 Time Capsule: <a href="https://fcjamison.com/projects/2006FrankJamison/" target="_blank">FrankJamison.com</a></h2>
                     <p>Every developer has an origin story. Some start with a bootcamp. Some with a framework tutorial at 2 a.m. Mine? A raw, caffeinated plunge into HTML and CSS in 2006—when rounded corners were a luxury, gradients were loud, and tables were still hanging around like uninvited guests at a LAN party.</p>
                     <p>This project is a preserved snapshot of that era: the original 2006 FrankJamison.com. Not a remake. Not a refactor. This is the artifact itself—rough edges, earnest ambition, and all.</p>
                     <p>Back then, the web felt smaller and more personal. You didn’t install a stack; you opened a text editor and started typing. This site grew line by line, fueled by curiosity and a stubborn need to understand how the pieces fit together. Layouts were hand-built. Styles were trial-and-error. JavaScript was used sparingly, because breaking things was easy and debugging tools were… aspirational.</p>
@@ -173,7 +236,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0002-AnalogClockProject.png') }}" alt="Analog Clock Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">Building Time: <a href="https://fcjamison.com/2006AnalogClockProject/">The 2006 Analog Clock Project</a></h2>
+                    <h2 class="title">Building Time: <a href="https://fcjamison.com/projects/2006AnalogClockProject/" target="_blank">The 2006 Analog Clock Project</a></h2>
                     <p>Some projects are about scale. Others are about speed. This one? This one is about precision—the quiet, relentless ticking of logic doing exactly what it’s supposed to do.</p>
                     <p>The 2006 Analog Clock Project is a deceptively simple web application that recreates a classic analog clock using modern front-end techniques. No libraries doing the heavy lifting. No shortcuts. Just JavaScript, CSS, and the stubborn belief that understanding fundamentals is never a waste of time. (Unlike meetings that could’ve been emails.)</p>
 
