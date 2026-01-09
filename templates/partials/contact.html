@@ -1,0 +1,93 @@
+<div class="rn-contact-area rn-section-gap section-separator" id="contacts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title text-center">
+                    <span class="subtitle">Get in Touch</span>
+                    <h2 class="title">Contact Me</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
+            <div class="col-lg-5">
+                <div class="contact-about-area">
+                    <div class="thumbnail">
+                        <img src="{{ url_for('static', filename='images/contact/contact1.png') }}" alt="Contact">
+                    </div>
+                    <div class="title-area">
+                        <h4 class="title">Frank Jamison</h4>
+                        <span>Web Designer &amp; Developer</span>
+                    </div>
+                    <div class="description">
+                        <p>I’m available for freelance and contract work. Send me a message and I’ll get back to you.</p>
+                        <span class="phone">Phone: <a href="tel:+19512937815">(951) 293-7815</a></span>
+                        <span class="mail">Email: <a href="mailto:frank@fcjamison.com">frank@fcjamison.com</a></span>
+                    </div>
+                    <div class="social-area">
+                        <div class="name">FIND WITH ME</div>
+                        <div class="social-icone">
+                            <a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer"><i data-feather="linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos-delay="600" class="col-lg-7 contact-input">
+                <div class="contact-form-wrapper">
+                    <div class="introduce">
+                        <form class="js-contact-form rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="{{ url_for('contact_message') }}">
+                            <input type="hidden" name="page_url" value="{{ request.url }}">
+                            <div class="rnform-group" style="display:none;">
+                                <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="contact-name">Your Name</label>
+                                    <input class="form-control form-control-lg" name="name" id="contact-name" type="text" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <input class="form-control" name="phone" id="contact-phone" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="contact-email">Email</label>
+                                    <input class="form-control form-control-sm" id="contact-email" name="email" type="email" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input class="form-control form-control-sm" id="subject" name="subject" type="text" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="contact-message">Your Message</label>
+                                    <textarea name="message" id="contact-message" cols="30" rows="10" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="js-contact-status" style="display:none;"></div>
+                                <button name="submit" type="submit" id="submit" class="rn-btn">
+                                    <span>SEND MESSAGE</span>
+                                    <i data-feather="arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

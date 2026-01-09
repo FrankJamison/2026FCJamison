@@ -1,0 +1,477 @@
+/* Layout */
+:root {
+    --bg1: #0b1220;
+    --bg2: #111827;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-border: rgba(255, 255, 255, 0.12);
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.72);
+    --stroke: rgba(229, 231, 235, 0.9);
+    --stroke-muted: rgba(229, 231, 235, 0.6);
+    --accent: #60a5fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    background:
+        radial-gradient(1200px circle at 20% 10%, rgba(96, 165, 250, 0.20), transparent 45%),
+        radial-gradient(900px circle at 80% 20%, rgba(167, 139, 250, 0.16), transparent 45%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+.main {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    padding: clamp(1rem, 3vw, 2.5rem);
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.clockbox1,
+.clockbox2 {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 520px;
+    padding: 1.25rem 1.25rem 1.5rem;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.clockbox1 h1,
+.clockbox2 h1 {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+}
+
+.clockbox1 h1::after,
+.clockbox2 h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.6rem auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.85;
+}
+
+#clock1,
+#clock2 {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem 1.25rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* Responsive: stack on narrow screens to avoid squishing */
+@media (max-width: 980px) {
+    .main {
+        flex-wrap: wrap;
+    }
+
+    .clockbox1,
+    .clockbox2 {
+        flex: 1 1 520px;
+    }
+}
+
+/* Clock styles */
+.circle {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.mid-circle {
+    fill: var(--accent);
+}
+
+.hour-marks {
+    fill: none;
+    stroke: var(--stroke-muted);
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.hour-arm {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 17;
+    stroke-miterlimit: 10;
+}
+
+.minute-arm {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 11;
+    stroke-miterlimit: 10;
+}
+
+.second-arm {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+/* Transparent box ensuring arms center properly. */
+.sizing-box {
+    fill: none;
+}
+
+/* Make all arms rotate around the same center point. */
+#hour1,
+#minute1,
+#second1,
+#hour2,
+#minute2,
+#second2 {
+    transform-origin: 300px 300px;
+}
+
+/* Smooth hour/minute, avoid reverse-spin artifacts on second hand. */
+#hour1,
+#minute1,
+#hour2,
+#minute2 {
+    transition: transform .35s ease-in-out;
+}
+
+#second1,
+#second2 {
+    transition: none;
+}
+
+/* Layout */
+:root {
+    --bg1: #0b1220;
+    --bg2: #111827;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-border: rgba(255, 255, 255, 0.12);
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.72);
+    --stroke: rgba(229, 231, 235, 0.9);
+    --stroke-muted: rgba(229, 231, 235, 0.6);
+    --accent: #60a5fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    background:
+        radial-gradient(1200px circle at 20% 10%, rgba(96, 165, 250, 0.20), transparent 45%),
+        radial-gradient(900px circle at 80% 20%, rgba(167, 139, 250, 0.16), transparent 45%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+.main {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    padding: clamp(1rem, 3vw, 2.5rem);
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.clockbox1,
+.clockbox2 {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 520px;
+    padding: 1.25rem 1.25rem 1.5rem;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.clockbox1 h1,
+.clockbox2 h1 {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+}
+
+.clockbox1 h1::after,
+.clockbox2 h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.6rem auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.85;
+}
+
+#clock1,
+#clock2 {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Clock styles */
+.circle {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.mid-circle {
+    fill: var(--accent);
+}
+
+.hour-marks {
+    fill: none;
+    stroke: var(--stroke-muted);
+    stroke-width: 9;
+    stroke-miterlimit: 10;
+}
+
+.hour-arm {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 17;
+    stroke-miterlimit: 10;
+}
+
+.minute-arm {
+    fill: none;
+    stroke: var(--stroke);
+    stroke-width: 11;
+    stroke-miterlimit: 10;
+}
+
+.second-arm {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+
+/* Transparent box ensuring arms center properly. */
+.sizing-box {
+    fill: none;
+}
+
+/* Make all arms rotate around the same center point. */
+#hour1,
+#minute1,
+#second1,
+#hour2,
+#minute2,
+#second2 {
+    transform-origin: 300px 300px;
+}
+
+/* Smooth hour/minute, avoid reverse-spin artifacts on second hand. */
+#hour1,
+#minute1,
+#hour2,
+#minute2 {
+    transition: transform .35s ease-in-out;
+}
+
+#second1,
+#second2 {
+    transition: none;
+}
+
+/* Layout */
+:root {
+    --bg1: #0b1220;
+    --bg2: #111827;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-border: rgba(255, 255, 255, 0.12);
+    --text: #e5e7eb;
+    --muted: rgba(229, 231, 235, 0.72);
+    --stroke: rgba(229, 231, 235, 0.9);
+    --stroke-muted: rgba(229, 231, 235, 0.6);
+    --accent: #60a5fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+overflow-x: hidden;
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: radial-gradient(1200px circle at 20% 10%, rgba(96, 165, 250, 0.20), transparent 45%),
+        flex-wrap: nowrap;
+    gap: clamp(0.75rem, 2vw, 2rem);
+    padding: clamp(0.75rem, 2.5vw, 1.5rem);
+
+    .main {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 2rem;
+        padding: clamp(1rem, 3vw, 2.5rem);
+        justify-content: center;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    .clockbox1,
+    .clockbox2 {
+        flex: 0 0 min(520px, 92vw);
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+        max-width: 520px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+    }
+
+    .clockbox1 h1,
+    .clockbox2 h1 {
+        margin: 0 0 0.75rem;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+    }
+
+    .clockbox1 h1::after,
+    .clockbox2 h1::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        margin: 0.6rem auto 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0.85;
+    }
+
+    #clock1,
+    #clock2 {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    /* Clock styles */
+    .circle {
+        fill: none;
+        stroke: var(--stroke);
+        stroke-width: 9;
+        stroke-miterlimit: 10;
+    }
+
+    .mid-circle {
+        fill: var(--accent);
+    }
+
+    .hour-marks {
+        fill: none;
+        stroke: var(--stroke-muted);
+        stroke-width: 9;
+        stroke-miterlimit: 10;
+    }
+
+    .hour-arm {
+        fill: none;
+        stroke: var(--stroke);
+        stroke-width: 17;
+        stroke-miterlimit: 10;
+    }
+
+    .minute-arm {
+        fill: none;
+        stroke: var(--stroke);
+        stroke-width: 11;
+        stroke-miterlimit: 10;
+    }
+
+    .second-arm {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 4;
+        stroke-miterlimit: 10;
+    }
+
+    /* Transparent box ensuring arms center properly. */
+    .sizing-box {
+        fill: none;
+    }
+
+    /* Make all arms rotate around the same center point. */
+    #hour1,
+    #minute1,
+    #second1,
+    #hour2,
+    #minute2,
+    #second2 {
+        transform-origin: 300px 300px;
+    }
+
+    /* Smooth hour/minute, avoid reverse-spin artifacts on second hand. */
+    #hour1,
+    #minute1,
+    #hour2,
+    #minute2 {
+        transition: transform .35s ease-in-out;
+    }
+
+    #second1,
+    #second2 {
+        transition: none;
+    }

@@ -1,0 +1,197 @@
+<div class="modal fade" id="blogModalAnalogClockProject" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0002-AnalogClockProject.png') }}" alt="Analog Clock Project" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">8 January 2026</span>
+                    <h2 class="title">Building Time: The 2006 Analog Clock Project</h2>
+                    <p>Some projects are about scale. Others are about speed. This one? This one is about precision—the quiet, relentless ticking of logic doing exactly what it’s supposed to do.</p>
+                    <p>The 2006 Analog Clock Project is a deceptively simple web application that recreates a classic analog clock using modern front-end techniques. No libraries doing the heavy lifting. No shortcuts. Just JavaScript, CSS, and the stubborn belief that understanding fundamentals is never a waste of time. (Unlike meetings that could’ve been emails.)</p>
+
+                    <h4>Why an Analog Clock?</h4>
+                    <p>Because analog clocks are brutal in the best way.</p>
+                    <p class="mb--0">They demand:</p>
+                    <ul class="mt--0 mb--0">
+                        <li>Continuous motion</li>
+                        <li>Trigonometry hiding in plain sight</li>
+                        <li>Real-time synchronization</li>
+                        <li>Visual accuracy down to the degree</li>
+                    </ul>
+                    <p class="mt--0">Digital clocks forgive you. Analog clocks expose you.</p>
+                    <p>This project was an exercise in translating time as data into time as motion—turning hours, minutes, and seconds into rotating hands that never drift, stutter, or lie.</p>
+
+                    <h4>Under the Hood</h4>
+                    <p>At its core, the clock runs on JavaScript’s Date object, polling the current time and converting it into rotational values.</p>
+                    <p>Each hand:</p>
+                    <ul>
+                        <li>Seconds rotate at 6° per second</li>
+                        <li>Minutes rotate at 6° per minute (with second-based offsets for smooth motion)</li>
+                        <li>Hours rotate at 30° per hour (plus minute offsets, because accuracy matters)</li>
+                    </ul>
+                    <p>CSS handles the transforms, anchoring each hand at its base so rotations feel natural—no helicopter blades here. Subtle transitions keep motion smooth without introducing lag, because a clock that jitters is existentially unsettling.</p>
+
+                    <h4>Design Philosophy</h4>
+                    <p>The visual design stays intentionally restrained.</p>
+                    <p>This isn’t about flashy gradients or glassmorphism flexing for attention. It’s about clarity, contrast, and balance. The face is readable at a glance. The hands are distinct. The clock looks like a clock—an underrated achievement in web design.</p>
+                    <p>Dark backgrounds were chosen to reduce visual noise and keep focus on motion, reinforcing the idea that time should flow, not shout.</p>
+
+                    <h4>What This Project Proves</h4>
+                    <p>This project demonstrates:</p>
+                    <ul>
+                        <li>Comfort with JavaScript timing and real-time updates</li>
+                        <li>Practical use of CSS transforms and positioning</li>
+                        <li>Attention to mathematical detail</li>
+                        <li>Respect for classic UI metaphors</li>
+                        <li>An understanding that fundamentals scale better than frameworks</li>
+                    </ul>
+                    <p>It’s also a reminder that not every portfolio piece needs to be a sprawling app with fifteen dependencies and a build step that could summon ancient spirits.</p>
+                    <p>Sometimes, mastery looks like restraint.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>The 2006 Analog Clock Project is a quiet project—and that’s its strength. It ticks along faithfully, doing one thing well, every second, without complaint. Honestly? Goals.</p>
+                    <p>Time is relentless. Code doesn’t have to be.</p>
+                    <p>And if you can make something as unforgiving as an analog clock behave perfectly in the browser, you’re probably ready for much bigger monsters.</p>
+                    <p>Next project. Same discipline. Fewer mercy rolls.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Building Time: The 2006 Analog Clock Project">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="blogModalHelloWorld" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0001-HelloWorld.png') }}" alt="Hello, World (But Make It Intentional)" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">8 January, 2026</span>
+                    <h2 class="title">Hello, World (But Make It Intentional).</h2>
+                    <p>Every portfolio has a beginning. This is mine.</p>
+                    <p>I’ve spent years working at the intersection of structure and creativity—teaching mathematics, supporting learners with wildly different needs, troubleshooting systems when they fail at inconvenient times, and quietly building things after hours just to see if I could make them work. Somewhere along the way, code stopped being a curiosity and became a language I wanted to speak fluently.</p>
+                    <p>This site exists to document that journey.</p>
+                    <p>Not as a highlight reel—those are easy—but as a living record of growth. The experiments that worked. The ones that didn’t. The bugs that taught me more than the tutorials ever did. The small wins that stack into real momentum.</p>
+
+                    <h4>Why Software Development?</h4>
+                    <p>
+                        Because software rewards clarity.<br>
+                        Because systems thinking feels like home.<br>
+                        Because solving a problem once—and solving it well—is a kind of quiet magic.
+                    </p>
+                    <p>Coming from education and technical support, I’ve learned how people actually interact with systems, where they get stuck, and how fragile confidence can be when technology doesn’t behave. That perspective shapes how I approach development: practical, empathetic, and relentlessly user-focused.</p>
+
+                    <h4>What You’ll Find Here</h4>
+                    <p>This blog will evolve alongside my skills. Expect posts about:</p>
+                    <ul>
+                        <li>Projects I’m building (and rebuilding)</li>
+                        <li>Front-end and back-end experiments</li>
+                        <li>Lessons learned the hard way</li>
+                        <li>Design decisions and tradeoffs</li>
+                        <li>The occasional rant about why something <strong>should</strong> be simpler</li>
+                    </ul>
+                    <p>
+                        If you’re here to skim code, great.<br>
+                        If you’re here to understand how I think, even better.
+                    </p>
+
+                    <h4>Where This Is Going</h4>
+                    <p>The goal isn’t perfection. It’s progress.</p>
+                    <p>Each post is a marker on the road—proof that I’m moving forward, refining my craft, and taking ownership of the work I put into the world. I believe good developers aren’t just problem solvers; they’re communicators, learners, and builders with taste.</p>
+                    <p>This blog is part of that practice.</p>
+                    <p>
+                        Thanks for stopping by.<br>
+                        The next post will be more technical. Probably less poetic.<br>
+                        But no promises.
+                    </p>
+                    <p>— Frank</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Hello, World (But Make It Intentional).">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>

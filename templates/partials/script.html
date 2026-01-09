@@ -1,0 +1,226 @@
+    <!-- JS  -->
+    <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/modernizer.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/feather.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/slick.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/text-type.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/wow.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery-one-page-nav.js') }}"></script>
+    <!-- main JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Reinitialize feather icons on modal show -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - checking modals');
+
+            // Check if the modal element exists
+            var modal2006 = document.getElementById('2006FrankJamison');
+            console.log('Modal #2006FrankJamison found:', !!modal2006);
+
+            // Reinitialize feather icons when any modal is shown  
+            var modals = document.querySelectorAll('.modal');
+            console.log('Total modals found:', modals.length);
+
+            modals.forEach(function(modal) {
+                console.log('Modal ID:', modal.id);
+                modal.addEventListener('shown.bs.modal', function() {
+                    console.log('Modal shown:', modal.id);
+                    feather.replace();
+                });
+            });
+
+            // Test click handler
+            var portfolioCard = document.querySelector('[data-bs-target="#2006FrankJamison"]');
+            console.log('Portfolio card with data-bs-target="#2006FrankJamison" found:', !!portfolioCard);
+
+            // Ensure "VIEW PROJECT" links inside modals always navigate.
+            // Some slider/touch libraries can suppress click events after a drag.
+            document.addEventListener('click', function(event) {
+                if (event.defaultPrevented) {
+                    return;
+                }
+                if (event.button !== 0) {
+                    return;
+                }
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                    return;
+                }
+
+                var anchor = event.target && event.target.closest ?
+                    event.target.closest('.modal a.rn-btn.thumbs-icon') :
+                    null;
+                if (!anchor) {
+                    return;
+                }
+
+                var href = anchor.getAttribute('href');
+                if (!href || href === '#' || href.toLowerCase().startsWith('javascript:')) {
+                    return;
+                }
+                if (anchor.target && anchor.target.toLowerCase() === '_blank') {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+                window.location.href = href;
+            }, true);
+
+            // AJAX-submit "Leave a Reply" forms so the modal stays open.
+            var leaveReplyForms = document.querySelectorAll('form.js-leave-reply-form');
+            leaveReplyForms.forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    var statusEl = form.querySelector('.js-leave-reply-status');
+                    var submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                    var previousBtnText = submitBtn ? submitBtn.textContent : '';
+
+                    function setStatus(message, ok) {
+                        if (!statusEl) return;
+                        statusEl.style.display = '';
+                        statusEl.textContent = message;
+                        statusEl.setAttribute('data-status', ok ? 'ok' : 'error');
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.classList.add('disabled');
+                    }
+                    setStatus('Sending...', true);
+
+                    var formData = new FormData(form);
+
+                    // Ensure blog title is included in the email.
+                    // Prefer an explicit hidden input, but fall back to the modal's H2 title.
+                    var existingTitle = (formData.get('blog_title') || '').toString().trim();
+                    if (!existingTitle) {
+                        var modal = form.closest ? form.closest('.modal') : null;
+                        var titleEl = modal ? modal.querySelector('.news-details h2.title') : null;
+                        var derivedTitle = titleEl ? (titleEl.textContent || '').trim() : '';
+                        if (derivedTitle) {
+                            formData.set('blog_title', derivedTitle);
+                        }
+                    }
+
+                    fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        })
+                        .then(function(response) {
+                            return response.json().then(function(data) {
+                                return {
+                                    response: response,
+                                    data: data
+                                };
+                            }).catch(function() {
+                                return {
+                                    response: response,
+                                    data: null
+                                };
+                            });
+                        })
+                        .then(function(result) {
+                            var response = result.response;
+                            var data = result.data;
+                            if (response.ok && data && data.ok) {
+                                setStatus('Thanks! Your reply was sent.', true);
+                                form.reset();
+                            } else {
+                                var message = (data && data.error) ? data.error : 'Sorry — could not send your reply.';
+                                setStatus(message, false);
+                            }
+                        })
+                        .catch(function() {
+                            setStatus('Sorry — network error while sending.', false);
+                        })
+                        .finally(function() {
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.classList.remove('disabled');
+                                if (previousBtnText) {
+                                    submitBtn.textContent = previousBtnText;
+                                }
+                            }
+                        });
+                });
+            });
+
+            // AJAX-submit Contact form.
+            var contactForm = document.querySelector('form.js-contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    var statusEl = contactForm.querySelector('.js-contact-status');
+                    var submitBtn = contactForm.querySelector('button[type="submit"], input[type="submit"]');
+                    var previousBtnText = submitBtn ? submitBtn.textContent : '';
+
+                    function setStatus(message, ok) {
+                        if (!statusEl) return;
+                        statusEl.style.display = '';
+                        statusEl.textContent = message;
+                        statusEl.setAttribute('data-status', ok ? 'ok' : 'error');
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.classList.add('disabled');
+                    }
+                    setStatus('Sending...', true);
+
+                    var formData = new FormData(contactForm);
+
+                    fetch(contactForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json'
+                            },
+                            body: formData
+                        })
+                        .then(function(response) {
+                            return response.json().then(function(data) {
+                                return {
+                                    response: response,
+                                    data: data
+                                };
+                            }).catch(function() {
+                                return {
+                                    response: response,
+                                    data: null
+                                };
+                            });
+                        })
+                        .then(function(result) {
+                            var response = result.response;
+                            var data = result.data;
+                            if (response.ok && data && data.ok) {
+                                setStatus('Thanks! Your message was sent.', true);
+                                contactForm.reset();
+                            } else {
+                                var message = (data && data.error) ? data.error : 'Sorry — could not send your message.';
+                                setStatus(message, false);
+                            }
+                        })
+                        .catch(function() {
+                            setStatus('Sorry — network error while sending.', false);
+                        })
+                        .finally(function() {
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.classList.remove('disabled');
+                                if (previousBtnText) {
+                                    submitBtn.textContent = previousBtnText;
+                                }
+                            }
+                        });
+                });
+            }
+        });
+    </script>
