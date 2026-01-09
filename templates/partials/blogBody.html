@@ -1,4 +1,4 @@
-<div class="modal fade" id="blogModalAnalogClockProject" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="blogModal2006TypingSpeedTest" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
 
@@ -9,6 +9,100 @@
             </div>
 
             <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0004-TypingSpeedTest.png') }}" alt="2006 Typing Speed Test Project" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">8 January 2026</span>
+                    <h2 class="title">Keystrokes Under Pressure: <a href="https://fcjamison.com/2006TypingSpeedTest/">2006 Typing Speed Test Project</a></h2>
+                    <p>Some projects shout. Others just sit there quietly, stopwatch in hand, waiting for you to blink. The 2006 Typing Speed Test is firmly in the second camp—simple, focused, and a little bit ruthless in the way only a timer can be.</p>
+                    <p>This project was built as an exploration of clean JavaScript logic, real-time input handling, and UI feedback that doesn’t get in your way. No accounts. No leaderboards chasing dopamine. Just you, a block of text, and the uncomfortable truth about how many typos you actually make when no one’s watching.</p>
+                    <p>And honestly? That’s the charm.</p>
+
+                    <h4>Why a typing test?</h4>
+                    <p>Typing speed tests are deceptively elegant problems. On the surface, they look trivial: display text, track input, calculate words per minute. Under the hood, though, you’re juggling state, timing, accuracy calculations, and user experience all at once. Every keystroke matters. Every mistake compounds.</p>
+                    <p>This project leans into that tension. It’s not flashy—it’s precise. The goal wasn’t to reinvent typing tests, but to understand them from the inside out and build one that feels fair, responsive, and honest.</p>
+                    <p>No smoke. No mirrors. Just data.</p>
+
+                    <h4>What it does</h4>
+                    <p>At its core, the app presents a predefined passage and starts the clock the moment you begin typing. From there, it tracks:</p>
+                    <ul>
+                        <li>Total time elapsed</li>
+                        <li>Characters typed versus characters correct</li>
+                        <li>Accuracy as a first-class metric, not an afterthought</li>
+                        <li>Words per minute calculated from real input, not optimistic guesses</li>
+                    </ul>
+                    <p>The results update cleanly and clearly, giving you feedback that’s useful without being condescending. You don’t get a gold star. You get numbers. Cold, beautiful numbers.</p>
+
+                    <h4>Design philosophy</h4>
+                    <p>The interface stays intentionally minimal. Typing tests live or die by distraction—or the lack of it. Fonts are readable. Spacing is forgiving. The focus stays where it belongs: the text you’re typing and the rhythm of your hands.</p>
+                    <p>There’s a quiet, almost meditative quality to it. Until you miss a character. Then it becomes personal.</p>
+
+                    <h4>Technical notes</h4>
+                    <p>From a development perspective, this project emphasizes fundamentals:</p>
+                    <p>JavaScript handles real-time input evaluation, timing logic, and metric calculation without external libraries doing the heavy lifting. State management is explicit and readable, making it easy to reason about what’s happening at any moment during the test. The structure favors clarity over cleverness—future-proofing by being understandable six months from now.</p>
+                    <p>This was less about showing off tricks and more about building trust in the code.</p>
+
+                    <h4>Why it still matters</h4>
+                    <p>Typing is still one of the primary interfaces between humans and computers. Faster frameworks and flashier tools come and go, but the keyboard remains undefeated. A project like this reinforces how much user experience depends on tiny, cumulative details—milliseconds, characters, edge cases.</p>
+                    <p>It’s also a reminder that small projects aren’t small achievements. They’re controlled environments where fundamentals get sharpened, instincts get trained, and bad assumptions get quietly corrected.</p>
+
+                    <h4>Final thoughts</h4>
+                    <p>The 2006 Typing Speed Test isn’t trying to gamify your productivity or rank you against the internet. It’s just a mirror. Sometimes flattering. Sometimes brutal. Always accurate.</p>
+                    <p>If nothing else, it will teach you one important truth: you type faster when you stop panicking—and slower when you pretend accuracy doesn’t matter. Funny how that works.</p>
+                    <p>Go ahead. Start the test. The clock’s already waiting.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Keystrokes Under Pressure: 2006 Typing Speed Test Project">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="blogModal2006FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
 
             <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0003-FrankJamison.png') }}" alt="FrankJamison.com" class="img-fluid modal-feat-img">
@@ -60,7 +154,21 @@
                 <!-- Comment Section End -->
             </div>
             <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="blogModalAnalogClockProject" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
             <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0002-AnalogClockProject.png') }}" alt="Analog Clock Project" class="img-fluid modal-feat-img">
                 <div class="news-details">

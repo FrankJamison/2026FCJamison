@@ -15475,6 +15475,10 @@ div#featured-project-carousel {
     color: var(--color-lightn);
 }
 
+.modal-body .news-details *+h4 {
+    padding-top: 20px;
+}
+
 /*=====================
     Skill Area 
 ========================*/
