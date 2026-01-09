@@ -1,3 +1,78 @@
+<div class="modal fade" id="blogModal2006ZitaWorley" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0006-ZitaWorley.png') }}" alt="2006 Zita Worley's Website" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">9 January 2026</span>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2006ZitaWorley/" target="_blank">Zita Worley’s Website:</a> An Early Personal Site</h2>
+                    <p>Some websites age like fine wine. Others age like a forgotten energy drink left in a hot car. And then there are sites like Zita Worley's website—a perfect fossil from the mid-2000s web, preserved not because it was polished, but because it was real.</p>
+                    <p>This project is a faithful reconstruction of a personal website from 2006, back when the web was less corporate, less optimized, and wildly more sincere. No frameworks. No build steps. No analytics whispering judgment into your ear. Just HTML, CSS, and vibes.</p>
+                    <p>The original site lived in that liminal space between GeoCities glitter chaos and the coming wave of Web 2.0 polish. It’s a reminder that personal websites used to be personal—built to express identity, interests, and presence online rather than to convert, monetize, or scale.</p>
+
+                    <h4>What This Project Preserves</h4>
+                    <p>At its core, Zita Worley's website is about historical accuracy and restraint. The goal wasn’t to “improve” the site, but to respect it.</p>
+                    <p>The layout reflects fixed-width design assumptions common at the time, when screen resolutions were predictable and mobile devices were a distant rumor. Typography leans on system fonts and simple hierarchy. Styling is modest, sometimes earnest, sometimes awkward—exactly as it should be.</p>
+                    <p>There’s a quiet confidence in how little JavaScript is doing here. Pages load instantly not because they’re optimized, but because there’s barely anything to optimize. Each page exists because someone wanted it to exist, not because an SEO checklist demanded it.</p>
+
+                    <h4>Why This Still Matters</h4>
+                    <p>This project isn’t nostalgia for nostalgia’s sake. It’s a study in how the web evolved—and what it lost along the way.</p>
+                    <p>Rebuilding a site like this highlights how modern development workflows, while powerful, often distance creators from the immediacy of publishing. In 2006, you edited a file, refreshed the browser, and saw yourself reflected back instantly. That feedback loop shaped a generation of self-taught developers.</p>
+                    <p>For recruiters and web history nerds alike, this project demonstrates an understanding of web lineage: knowing where our tools came from, what problems they were solving, and what tradeoffs they introduced.</p>
+
+                    <h4>The Quiet Takeaway</h4>
+                    <p>Zita Worley's website isn’t flashy. It doesn’t want to be. It stands as a small, stubborn monument to a time when the web felt like a collection of bedrooms with ethernet cables—messy, expressive, and deeply human.</p>
+                    <p>Sometimes progress means moving forward. Sometimes it means pausing, looking back, and saying: yeah… this mattered.</p>
+                    <p>If nothing else, this project proves one thing with absolute certainty—<br>we survived Comic Sans, fixed-width layouts, and inline styles… and somehow, we’re better developers for it.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Moonwalk Manor: A 2006 Vision of Hotels on the Moon">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2006MoonwalkManor" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
