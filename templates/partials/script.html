@@ -38,10 +38,8 @@
 
             // Ensure "VIEW PROJECT" links inside modals always navigate.
             // Some slider/touch libraries can suppress click events after a drag.
+            // Use a capture-phase handler and navigate even if another handler already called preventDefault().
             document.addEventListener('click', function(event) {
-                if (event.defaultPrevented) {
-                    return;
-                }
                 if (event.button !== 0) {
                     return;
                 }
@@ -60,13 +58,15 @@
                 if (!href || href === '#' || href.toLowerCase().startsWith('javascript:')) {
                     return;
                 }
+                event.preventDefault();
+                event.stopPropagation();
+
                 if (anchor.target && anchor.target.toLowerCase() === '_blank') {
+                    window.open(href, '_blank', 'noopener,noreferrer');
                     return;
                 }
 
-                event.preventDefault();
-                event.stopPropagation();
-                window.location.href = href;
+                window.location.assign(href);
             }, true);
 
             // AJAX-submit "Leave a Reply" forms so the modal stays open.

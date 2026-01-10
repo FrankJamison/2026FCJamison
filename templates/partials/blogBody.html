@@ -1,3 +1,147 @@
+<div class="modal fade" id="blogModal2013FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0009-FrankJamison.png') }}" alt="FrankJamison.com: A Personal Web Presence" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">9 January 2026</span>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2013FrankJamison/" target="_blank">FrankJamison.com:</a><br>A Personal Web Presence, Structured by Craft</h2>
+                    <p>What you’re looking at with the 2013 version of FrankJamison.com isn’t a template, a boilerplate, or a modern static-site generator project. It’s a <em>real, preserved legacy personal site</em> from 2013, intentionally kept static, no build tools, no frameworks — just classic web fundamentals tuned for real browsers and real humans.</p>
+                    <p>In a world where projects spin up with React/Vite in minutes, there’s something grounding about code that was written to <em>work everywhere</em>, from old desktop browsers to modern phones. Let’s unpack both <em>how it works</em> and <em>why it matters technically.</em></p>
+
+                    <h4>What This Project Actually Is</h4>
+                    <p>At its heart, the 2013 version of FrankJamison.com is:</p>
+                    <ul>
+                        <li>A static, multi-section personal site — home, portfolio, writing archives, galleries, music, poetry, resume, and contact form.</li>
+                        <li>Written in classic HTML / CSS / JavaScript with <em>no dependency on modern build systems.</em></li>
+                        <li>Includes a working PHP contact form that talks to SMTP instead of relying on mail() — important for real-world reliable email handling.</li>
+                        <li>Preserves legacy tech like a Flash banner by embedding it via Ruffle (a WebAssembly Flash emulator) so it still runs in modern browsers without plugins.</li>
+                    </ul>
+                    <p>This isn’t a museum piece glued together; it’s maintainable and runnable today. It even includes instructions for local virtual host configuration.</p>
+
+                    <h4>Architectural Overview</h4>
+                    <h5>Directory Layout &amp; Static Pages</h5>
+                    <p>The repository follows a traditional folder structure:</p>
+                    <ul>
+                        <li>index.htm — main landing page</li>
+                        <li>resume/, portfolio/, gallery/, music/, poetry/ — sectioned content folders</li>
+                        <li>contact/ — contact form and server integration</li>
+                        <li>resources/ — shared CSS, JS, images, and Ruffle assets</li>
+                    </ul>
+                    <p>There’s no index.html by design — it’s index.htm, a choice that harks back to early web servers and compatibility considerations.</p>
+
+                    <h5>Shared UI, the Old-School Way</h5>
+                    <p>Instead of components or includes at build time, this site uses runtime JavaScript includes to import repeated UI elements (header, menu, footer). The core pattern:</p>
+                    <ul>
+                        <li>menu.js — primary nav</li>
+                        <li>resumeMenu.js — side nav for resume section</li>
+                        <li>header.js — sets up the Ruffle instance to play the Flash animation</li>
+                        <li>footer.js — shared footer markup</li>
+                    </ul>
+                    <p>These scripts use DOM methods like document.write() to inject HTML. Yes, that’s frowned upon today, but in 2013 it was a <em>standard way to centralize shared layout before templating engines were mainstream.</em></p>
+
+                    <h5>Preserving Legacy Flash with Ruffle</h5>
+                    <p>One of the coolest parts living in this repo is the Flash banner:</p>
+                    <ul>
+                        <li>Original .swf file lives at: resources/sfw/header.swf</li>
+                        <li>Loaded in the browser using the bundled Ruffle WebAssembly build found in: resources/ruffle/</li>
+                    </ul>
+                    <p>This is a real-world example of running historically obsolete content using modern browser tech — a great case study in graceful degradation and forward-facing compatibility layers.</p>
+
+                    <h5>Contact Form: PHP + SMTP</h5>
+                    <p>Instead of mail(), the site uses SMTP with authentication — much more reliable on shared hosts.</p>
+                    <p>Configurable via:</p>
+                    <ul>
+                        <li>Environment variables (preferred)</li>
+                        <li>A local smtp_settings.php (gitignored)</li>
+                    </ul>
+                    <p>The code even logs failures to contact/sendmail_failures.log, a simple but pragmatic debugging pattern.</p>
+
+                    <h4>Technical Considerations for Modern Maintenance</h4>
+                    <h5>Absolute Root Paths</h5>
+                    <p>The site uses absolute-root URLs like /resources/... and /resume/.... That’s fine for a root deployment, but it breaks under subpath hosting unless you rewrite paths — a classic gotcha when migrating legacy static sites.</p>
+
+                    <h5>Character Encoding</h5>
+                    <p>Most pages declare charset=iso-8859-1. This is unusual today, where UTF-8 is the de facto standard. Keeping this consistent avoids mangled text (mojibake) in older content.</p>
+
+                    <h5>GitHub Metadata</h5>
+                    <ul>
+                        <li>No description or topics are set for the repository, which lowers discoverability.</li>
+                        <li>No releases, stars, or forks — but this is intentional; it’s a <em>portfolio preservation project</em>, not a deployable piece of infrastructure.</li>
+                    </ul>
+
+                    <h4>Why Developers Should Care</h4>
+                    <p>Even if you’ll never write HTML like this again, this project is a miniature case study in:</p>
+
+                    <h5>Web Fundamentals</h5>
+                    <ul>
+                        <li>Static pages tuned for browser compatibility</li>
+                        <li>Manual DOM manipulation for shared UI</li>
+                        <li>Handling server interactions with minimal backend code</li>
+                    </ul>
+                    <p>These are skills that <em>still matter</em> when you’re debugging legacy systems, optimizing performance, or doing a quick proof-of-concept without a toolchain.</p>
+
+                    <h5>Legacy Tech Integration</h5>
+                    <p>Ruffle + WebAssembly is an elegant, real example of emulating obsolete tech in a modern runtime — something increasingly relevant with archived games, animations, or legacy UIs.</p>
+                    <p>This repo isn’t just a snapshot; it’s an exemplar of <em>incremental preservation</em> — keeping old tech alive without reinventing the wheel.</p>
+
+                    <h4>TL;DR for Devs</h4>
+                    <ul>
+                        <li>Classic static web project from 2013 with modern maintenance touches.</li>
+                        <li>JS includes instead of templating engines.</li>
+                        <li>Flash preserved via Ruffle (WASM).</li>
+                        <li>PHP SMTP instead of mail().</li>
+                        <li>Absolute root paths and iso-8859-1 encoding warrant careful handling.</li>
+                    </ul>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Web Discipline and Authority: MSJC Administration of Justice Dept. Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2007GlobeBank" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -142,7 +286,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0007-MSJCAdminOfJustice.png') }}" alt="Web Discipline and Authority: MSJC Administration of Justice Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">9 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/20062006MSJCAdminOfJustice/" target="_blank">Web Discipline and Authority:<br>MSJC Administration of Justice Dept. Website</a></h2>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2006MSJCAdminOfJustice/" target="_blank">Web Discipline and Authority:<br>MSJC Administration of Justice Dept. Website</a></h2>
                     <p>Somewhere between dial-up patience and broadband optimism, this site quietly did its job. The 2006 MSJC Administration of Justice project is a time capsule from an era when academic websites were less about flair and more about function. No parallax hero images. No performative gradients. Just structure, clarity, and a firm belief that information should stand at attention and be counted.</p>
                     <p>Built for the Administration of Justice Department at Mt. San Jacinto College, the site reflects the mindset of both the discipline and the moment. Criminal justice programs in the mid-2000s emphasized hierarchy, procedure, and systems—and the web design mirrors that worldview. Navigation is straightforward. Content is clearly segmented. Every page feels like it’s been pressed into a uniform and told not to fidget.</p>
                     <p>Visually, the site leans into early-web academic norms: restrained color palettes, table-driven layouts, and typography chosen for legibility over personality. This wasn’t a site trying to impress strangers. It was built to serve students—to house coursework, outline expectations, and provide a dependable reference point in a pre-LMS world where Blackboard was still finding its footing.</p>

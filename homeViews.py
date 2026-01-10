@@ -10,6 +10,7 @@ import shutil
 import re
 from typing import Optional
 from email.message import EmailMessage
+from urllib.parse import urlparse
 
 import requests
 from flask import Response, abort, jsonify, redirect, render_template, request, send_from_directory, url_for
@@ -177,6 +178,29 @@ _HOP_BY_HOP_HEADERS = {
 }
 
 
+def _rewrite_root_relative_urls(text: str, mount_path: str) -> str:
+    """Rewrite root-relative URLs so site-root projects work under a mount path.
+
+    Example: href="/resources/foo" -> href="/projects/2013FrankJamison/resources/foo"
+    """
+    prefix = mount_path.lstrip('/') + '/'
+
+    def _rewrite_attr(attr: str, s: str) -> str:
+        pattern = rf'{attr}=(?P<q>["\"])\/(?!{re.escape(prefix)})'
+        return re.sub(pattern, rf'{attr}=\g<q>{mount_path}/', s)
+
+    for a in ('href', 'src', 'action'):
+        text = _rewrite_attr(a, text)
+
+    text = re.sub(
+        rf'url\((?P<q>["\"]?)\/(?!{re.escape(prefix)})',
+        rf'url(\g<q>{mount_path}/',
+        text,
+    )
+
+    return text
+
+
 def _proxy_to_php_app(*, php_host: str, php_port: int, mount_path: str, subpath: str) -> Response:
     """Reverse proxy a request to a local PHP server.
 
@@ -218,22 +242,7 @@ def _proxy_to_php_app(*, php_host: str, php_port: int, mount_path: str, subpath:
     if any(ct in content_type for ct in ('text/html', 'text/css', 'application/javascript', 'text/javascript')):
         try:
             text = resp.text
-            prefix = mount_path.lstrip('/') + '/'
-
-            def _rewrite_attr(attr: str, s: str) -> str:
-                # Rewrite href="/foo" -> href="/projects/2007GlobeBank/foo" (unless already prefixed)
-                pattern = rf'{attr}=(?P<q>[\"\"])\/(?!{re.escape(prefix)})'
-                return re.sub(pattern, rf'{attr}=\g<q>{mount_path}/', s)
-
-            for a in ('href', 'src', 'action'):
-                text = _rewrite_attr(a, text)
-
-            # Rewrite CSS url(/images/...) and url("/images/...")
-            text = re.sub(
-                rf'url\((?P<q>[\"\"]?)\/(?!{re.escape(prefix)})',
-                rf'url(\g<q>{mount_path}/',
-                text,
-            )
+            text = _rewrite_root_relative_urls(text, mount_path)
 
             body = text.encode(resp.encoding or 'utf-8', errors='replace')
         except Exception:
@@ -275,6 +284,22 @@ def _project_dir(project_slug: str) -> str:
     if not os.path.isdir(project_dir):
         abort(404)
     return project_dir
+
+
+def _infer_project_slug_from_referer() -> Optional[str]:
+    referer = (request.headers.get('Referer') or '').strip()
+    if not referer:
+        return None
+    try:
+        parsed = urlparse(referer)
+        path = parsed.path or ''
+    except Exception:
+        return None
+
+    m = re.match(r'^/projects/(?P<slug>[^/]+)/', path)
+    if not m:
+        return None
+    return m.group('slug')
 
 
 def _truthy_env(value: Optional[str]) -> bool:
@@ -613,9 +638,13 @@ def globebank_proxy(subpath: str):
 def project_index(project_slug: str):
     project_dir = _project_dir(project_slug)
 
-    index_html = os.path.join(project_dir, 'index.html')
-    if os.path.isfile(index_html):
-        return send_from_directory(project_dir, 'index.html')
+    # Prefer modern entrypoints, but support older archived sites.
+    for index_name in ('index.html', 'index.htm'):
+        index_path = os.path.join(project_dir, index_name)
+        if os.path.isfile(index_path):
+            # Serve through the same logic as other project files so legacy sites
+            # that use site-root URLs load correctly under /projects/<slug>/.
+            return project_file(project_slug=project_slug, filename=index_name)
 
     # Some archived projects are PHP apps; serve the entrypoint file.
     for candidate in ('public/index.php', 'index.php'):
@@ -636,4 +665,53 @@ def project_index(project_slug: str):
 @app.get('/projects/<project_slug>/<path:filename>')
 def project_file(project_slug: str, filename: str):
     project_dir = _project_dir(project_slug)
-    return send_from_directory(project_dir, filename)
+    mount_path = f'/projects/{project_slug}'
+
+    resp = send_from_directory(project_dir, filename)
+
+    # Legacy static sites often use site-root paths like /resources/... which break
+    # when served under /projects/<slug>/. Rewrite a few common text types.
+    ext = os.path.splitext((filename or ''))[1].lower()
+    if ext in {'.html', '.htm', '.css'}:
+        try:
+            resp.direct_passthrough = False
+            raw = resp.get_data()
+
+            try:
+                text = raw.decode('utf-8')
+                encoding = 'utf-8'
+            except UnicodeDecodeError:
+                text = raw.decode('latin-1')
+                encoding = 'latin-1'
+
+            text = _rewrite_root_relative_urls(text, mount_path)
+            resp.set_data(text.encode(encoding, errors='replace'))
+            resp.headers.pop('Content-Length', None)
+        except Exception:
+            return resp
+
+    return resp
+
+
+@app.get('/resources/<path:subpath>')
+def legacy_project_resources(subpath: str):
+    """Support legacy sites that assume they're mounted at site-root.
+
+    Example: /resources/stylesheets/stylesheet.css
+
+    When browsing a project under /projects/<slug>/, infer <slug> from the
+    Referer header and redirect to the canonical mounted path so assets load.
+    """
+    project_slug = _infer_project_slug_from_referer()
+    if not project_slug:
+        abort(404)
+
+    # Validate slug and project exists.
+    _project_dir(project_slug)
+    return redirect(
+        url_for(
+            'project_file',
+            project_slug=project_slug,
+            filename=f'resources/{(subpath or "").lstrip("/")}',
+        )
+    )

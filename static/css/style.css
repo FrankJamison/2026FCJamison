@@ -15475,6 +15475,12 @@ div#featured-project-carousel {
     color: var(--color-lightn);
 }
 
+.modal-body .news-details h5 {
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--color-lightn);
+}
+
 .modal-body .news-details *+h4 {
     padding-top: 20px;
 }
@@ -20970,6 +20976,10 @@ body.white-version .rn-btn-ulderline {
 }
 
 .white-version .modal .modal-body .news-details h4 {
+    color: var(--color-heading-wv);
+}
+
+.white-version .modal .modal-body .news-details h5 {
     color: var(--color-heading-wv);
 }
 
