@@ -1,5 +1,15 @@
 # Production setup for fcjamison.com
 
+## Running GlobeBank in production
+
+GlobeBank is a PHP app. In production, serve it with Nginx + PHP-FPM (not the Flask dev proxy).
+
+See: [deploy/VPS_NGINX_PHP_SETUP.md](deploy/VPS_NGINX_PHP_SETUP.md)
+
+AlmaLinux 9.x VPS:
+
+See: [deploy/VPS_ALMALINUX9_NGINX_PHP_SETUP.md](deploy/VPS_ALMALINUX9_NGINX_PHP_SETUP.md)
+
 This project is a Flask site intended to run behind a reverse proxy (recommended: Nginx) with a production WSGI server (recommended here: **Waitress**, because it works on both Linux and Windows).
 
 > If you are on a Linux VPS, the most common setup is: **Nginx (public)** → **Waitress (localhost:8000)**.

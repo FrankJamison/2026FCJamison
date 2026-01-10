@@ -33,6 +33,20 @@ Personal portfolio site built with **Flask + Jinja2** and a modern front-end the
 
 This repo includes VS Code tasks for setting up a venv and starting the app.
 
+### GlobeBank (PHP project)
+
+GlobeBank is a PHP app, but this repo will run it from the Flask site by automatically starting a local PHP server and reverse-proxying it.
+
+- Open `http://2026fcjamison.localhost:5000/projects/2007GlobeBank/`
+- Requires PHP installed (recommended: `winget install -e --id PHP.PHP.8.4`)
+
+Optional (manual PHP server):
+
+- Run the VS Code task `PHP: Run GlobeBank (dev server :8007)`
+- Open `http://2026fcjamison.localhost:8007/`
+
+Or run the combined task `Dev: Flask + GlobeBank PHP + Open`.
+
 ### Manual
 
 ```powershell

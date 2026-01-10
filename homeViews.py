@@ -2,10 +2,17 @@ import os
 import smtplib
 import socket
 import ssl
+import atexit
+import subprocess
+import threading
+import time
+import shutil
+import re
 from typing import Optional
 from email.message import EmailMessage
 
-from flask import abort, jsonify, redirect, render_template, request, send_from_directory, url_for
+import requests
+from flask import Response, abort, jsonify, redirect, render_template, request, send_from_directory, url_for
 from app import app
 
 
@@ -15,6 +22,246 @@ PROJECTS_ROOT = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "projects"),
     )
 )
+
+
+_globebank_php_proc: Optional[subprocess.Popen] = None
+_globebank_lock = threading.Lock()
+_globebank_php_port: Optional[int] = None
+
+
+def _find_php_executable() -> Optional[str]:
+    php = shutil.which('php')
+    if php:
+        return php
+
+    # WinGet installs often land here even if PATH isn't refreshed.
+    local_appdata = os.getenv('LOCALAPPDATA')
+    if not local_appdata:
+        return None
+    winget_packages = os.path.join(
+        local_appdata, 'Microsoft', 'WinGet', 'Packages')
+    if not os.path.isdir(winget_packages):
+        return None
+
+    for root, _, files in os.walk(winget_packages):
+        if 'php.exe' in files and 'PHP.PHP.' in root.replace('\\', '/'):
+            return os.path.join(root, 'php.exe')
+    return None
+
+
+def _is_port_open(host: str, port: int) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=0.25):
+            return True
+    except OSError:
+        return False
+
+
+def _php_server_has_mysqli(host: str, port: int) -> bool:
+    """Best-effort check to see if the running PHP server has mysqli enabled."""
+    try:
+        resp = requests.get(
+            f'http://{host}:{port}/diagnostic.php', timeout=1.5)
+        if resp.status_code != 200:
+            return False
+        body = resp.text
+        return ('mysqli: Installed' in body) or ('mysqli: installed' in body)
+    except Exception:
+        return False
+
+
+def _pick_free_port(host: str, preferred_port: int, *, max_tries: int = 25) -> int:
+    port = preferred_port
+    for _ in range(max_tries):
+        if not _is_port_open(host, port):
+            return port
+        port += 1
+    raise RuntimeError('No free port found for PHP server.')
+
+
+def _ensure_globebank_php_server() -> tuple[str, int]:
+    """Ensure a PHP built-in server is running for GlobeBank.
+
+    Returns (host, port) for the PHP server.
+    """
+    host = (os.getenv('PHP_GLOBEBANK_HOST')
+            or '127.0.0.1').strip() or '127.0.0.1'
+    preferred_port = int((os.getenv('PHP_GLOBEBANK_PORT')
+                         or '8007').strip() or '8007')
+
+    global _globebank_php_port
+    if _globebank_php_port is not None and _is_port_open(host, _globebank_php_port):
+        return host, _globebank_php_port
+
+    # If something is already listening on the preferred port (e.g. VS Code task),
+    # only reuse it if it has mysqli enabled.
+    if _is_port_open(host, preferred_port) and _php_server_has_mysqli(host, preferred_port):
+        _globebank_php_port = preferred_port
+        return host, preferred_port
+
+    php_exe = _find_php_executable()
+    if not php_exe:
+        raise RuntimeError(
+            "PHP is not installed or not on PATH. "
+            "Install PHP (recommended: winget install -e --id PHP.PHP.8.4) and restart VS Code terminals."
+        )
+
+    project_dir = _project_dir('2007GlobeBank')
+    public_dir = os.path.join(project_dir, 'public')
+    if not os.path.isdir(public_dir):
+        raise RuntimeError('GlobeBank public/ directory is missing.')
+
+    php_dir = os.path.dirname(php_exe)
+    php_ext_dir = os.path.join(php_dir, 'ext')
+
+    with _globebank_lock:
+        global _globebank_php_proc
+
+        port = _pick_free_port(host, preferred_port)
+        _globebank_php_port = port
+
+        if _is_port_open(host, port):
+            return host, port
+
+        if _globebank_php_proc is not None and _globebank_php_proc.poll() is None:
+            # Process exists but port isn't reachable yet; give it a moment.
+            pass
+        else:
+            php_args = [php_exe]
+            if os.path.isdir(php_ext_dir):
+                php_args += ['-d',
+                             f'extension_dir={php_ext_dir}', '-d', 'extension=mysqli']
+            php_args += ['-S', f'{host}:{port}', '-t', public_dir]
+            _globebank_php_proc = subprocess.Popen(
+                php_args,
+                cwd=public_dir,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                creationflags=(
+                    subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
+            )
+
+        # Wait briefly for the server to come up.
+        deadline = time.time() + 3.0
+        while time.time() < deadline:
+            if _is_port_open(host, port) and _php_server_has_mysqli(host, port):
+                return host, port
+            time.sleep(0.05)
+
+        raise RuntimeError('PHP server failed to start for GlobeBank.')
+
+
+@atexit.register
+def _stop_globebank_php_server() -> None:
+    global _globebank_php_proc
+    proc = _globebank_php_proc
+    _globebank_php_proc = None
+    if proc is None:
+        return
+    try:
+        if proc.poll() is None:
+            proc.terminate()
+    except Exception:
+        pass
+
+
+_HOP_BY_HOP_HEADERS = {
+    'connection',
+    'keep-alive',
+    'proxy-authenticate',
+    'proxy-authorization',
+    'te',
+    'trailers',
+    'transfer-encoding',
+    'upgrade',
+}
+
+
+def _proxy_to_php_app(*, php_host: str, php_port: int, mount_path: str, subpath: str) -> Response:
+    """Reverse proxy a request to a local PHP server.
+
+    mount_path: e.g. '/projects/2007GlobeBank'
+    subpath: path after mount, without leading slash
+    """
+    subpath = (subpath or '').lstrip('/')
+    upstream_base = f'http://{php_host}:{php_port}'
+    upstream_url = f'{upstream_base}/{subpath}'
+
+    upstream_headers: dict[str, str] = {}
+    for k, v in request.headers.items():
+        lk = k.lower()
+        if lk in _HOP_BY_HOP_HEADERS or lk in {'host', 'content-length'}:
+            continue
+        upstream_headers[k] = v
+
+    upstream_headers['X-Forwarded-Proto'] = request.scheme
+    upstream_headers['X-Forwarded-Host'] = request.host
+    upstream_headers['X-Forwarded-Prefix'] = mount_path
+
+    resp = requests.request(
+        method=request.method,
+        url=upstream_url,
+        params=request.args,
+        data=request.get_data(),
+        headers=upstream_headers,
+        cookies=request.cookies,
+        allow_redirects=False,
+        timeout=10,
+    )
+
+    content_type = (resp.headers.get('Content-Type') or '').lower()
+    body: bytes = resp.content
+
+    # GlobeBank was originally built as a site-root PHP app, so it uses URLs like
+    # href="/stylesheets/..." and src="/images/...". When mounted under
+    # /projects/2007GlobeBank/, those URLs must be rewritten to keep assets loading.
+    if any(ct in content_type for ct in ('text/html', 'text/css', 'application/javascript', 'text/javascript')):
+        try:
+            text = resp.text
+            prefix = mount_path.lstrip('/') + '/'
+
+            def _rewrite_attr(attr: str, s: str) -> str:
+                # Rewrite href="/foo" -> href="/projects/2007GlobeBank/foo" (unless already prefixed)
+                pattern = rf'{attr}=(?P<q>[\"\"])\/(?!{re.escape(prefix)})'
+                return re.sub(pattern, rf'{attr}=\g<q>{mount_path}/', s)
+
+            for a in ('href', 'src', 'action'):
+                text = _rewrite_attr(a, text)
+
+            # Rewrite CSS url(/images/...) and url("/images/...")
+            text = re.sub(
+                rf'url\((?P<q>[\"\"]?)\/(?!{re.escape(prefix)})',
+                rf'url(\g<q>{mount_path}/',
+                text,
+            )
+
+            body = text.encode(resp.encoding or 'utf-8', errors='replace')
+        except Exception:
+            # If decoding/rewriting fails, fall back to the original bytes.
+            body = resp.content
+
+    out_headers: list[tuple[str, str]] = []
+    for k, v in resp.headers.items():
+        lk = k.lower()
+        if lk in _HOP_BY_HOP_HEADERS:
+            continue
+
+        if lk == 'location':
+            # Rewrite redirects back through Flask mount path.
+            location = v
+            if location.startswith(upstream_base + '/'):
+                location = mount_path + location[len(upstream_base):]
+            elif location.startswith('/'):
+                location = mount_path + location
+            out_headers.append((k, location))
+            continue
+
+        # Content-Length may have changed after rewriting.
+        if lk == 'content-length':
+            continue
+        out_headers.append((k, v))
+
+    return Response(body, status=resp.status_code, headers=out_headers)
 
 
 def _project_dir(project_slug: str) -> str:
@@ -34,6 +281,12 @@ def _truthy_env(value: Optional[str]) -> bool:
     if value is None:
         return False
     return value.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _is_production_env() -> bool:
+    env_name = (os.getenv('FLASK_ENV') or os.getenv(
+        'ENV') or '').strip().lower()
+    return env_name == 'production'
 
 
 def _peek_tls_leaf_issuer(host: str, port: int) -> Optional[str]:
@@ -321,10 +574,63 @@ def index():
     return render_template("home/index.html", **data)
 
 
+@app.route('/projects/2007GlobeBank/', defaults={'subpath': ''}, methods=[
+    'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS',
+])
+@app.route('/projects/2007GlobeBank/<path:subpath>', methods=[
+    'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS',
+])
+def globebank_proxy(subpath: str):
+    if _is_production_env() and not _truthy_env(os.getenv('GLOBEBANK_PROXY_ENABLED')):
+        # In production, GlobeBank should be served by PHP-FPM behind Nginx on a dedicated subdomain.
+        return redirect((os.getenv('GLOBEBANK_URL') or 'https://globebank.fcjamison.com/').strip())
+
+    # Avoid accidentally exposing internal diagnostics during normal browsing.
+    # Enable explicitly with GLOBEBANK_DIAGNOSTIC_ENABLED=1.
+    if (subpath or '').strip('/').lower() == 'diagnostic.php' and not _truthy_env(
+        os.getenv('GLOBEBANK_DIAGNOSTIC_ENABLED')
+    ):
+        return redirect('/projects/2007GlobeBank/')
+
+    try:
+        php_host, php_port = _ensure_globebank_php_server()
+    except Exception as e:
+        return Response(
+            f"GlobeBank PHP server not available: {type(e).__name__}: {e}\n",
+            status=500,
+            mimetype='text/plain',
+        )
+
+    return _proxy_to_php_app(
+        php_host=php_host,
+        php_port=php_port,
+        mount_path='/projects/2007GlobeBank',
+        subpath=subpath,
+    )
+
+
 @app.get('/projects/<project_slug>/')
 def project_index(project_slug: str):
     project_dir = _project_dir(project_slug)
-    return send_from_directory(project_dir, 'index.html')
+
+    index_html = os.path.join(project_dir, 'index.html')
+    if os.path.isfile(index_html):
+        return send_from_directory(project_dir, 'index.html')
+
+    # Some archived projects are PHP apps; serve the entrypoint file.
+    for candidate in ('public/index.php', 'index.php'):
+        candidate_path = os.path.join(project_dir, *candidate.split('/'))
+        if os.path.isfile(candidate_path):
+            # Optional: redirect to a real PHP server (so PHP executes).
+            if project_slug == '2007GlobeBank' and _truthy_env(os.getenv('PHP_GLOBEBANK_ENABLED')):
+                php_url = (os.getenv('PHP_GLOBEBANK_URL') or '').strip()
+                if php_url:
+                    if not php_url.endswith('/'):
+                        php_url += '/'
+                    return redirect(php_url)
+            return redirect(url_for('project_file', project_slug=project_slug, filename=candidate))
+
+    abort(404)
 
 
 @app.get('/projects/<project_slug>/<path:filename>')

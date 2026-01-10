@@ -21,6 +21,25 @@ except Exception:
 app = Flask(__name__)
 
 
+def _globebank_url() -> str:
+    url_override = (os.getenv("GLOBEBANK_URL") or "").strip()
+    if url_override:
+        return url_override
+
+    # In production, prefer the dedicated subdomain.
+    env_name = (os.getenv("FLASK_ENV") or os.getenv(
+        "ENV") or "").strip().lower()
+    if env_name == "production":
+        return "https://globebank.fcjamison.com/"
+
+    # In dev, default to the public HTTPS site (override with GLOBEBANK_URL
+    # if you want to use the Flask-mounted dev proxy instead).
+    return "https://globebank.fcjamison.com/"
+
+
 @app.context_processor
 def inject_current_year():
-    return {"current_year": datetime.now().year}
+    return {
+        "current_year": datetime.now().year,
+        "globebank_url": _globebank_url(),
+    }

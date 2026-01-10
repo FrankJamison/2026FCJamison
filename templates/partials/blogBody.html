@@ -1,3 +1,131 @@
+<div class="modal fade" id="blogModal2007GlobeBank" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0008-GlobeBank.png') }}" alt="Globe Bank: Global Finance, Structured by Design" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">9 January 2026</span>
+                    <h2 class="title"><a href="https://globebank.fcjamison.com" target="_blank">Globe Bank:</a><br>Global Finance, Structured by Design</h2>
+                    <p>The Globe Bank project is a throwback to the era when financial institutions presented themselves on the web with calm authority and no unnecessary flourishes — and it backs that design with a real database-driven system rather than a static mockup. This project lives in the sweet spot between historical aesthetic and functional engineering, showing how early CMS-style sites were built with practical PHP, MySQL, and thoughtful routing.</p>
+                    <p>At its core, the Globe Bank project isn’t just pixels on a screen — it’s a working content management system where site content, navigation subjects, and pages are stored in a database and rendered dynamically for both visitors and authenticated staff.</p>
+
+                    <h4>Design Philosophy: Quiet, Balanced, Predictable</h4>
+                    <p>The visual design respects the expectations of a global finance interface from the late 2000s:</p>
+                    <ul>
+                        <li>A grid-based structure that reinforces clarity and hierarchy</li>
+                        <li>Typographic choices that prioritize legibility over flair</li>
+                        <li>A subdued palette (think blues and neutrals) that evokes trust and stability</li>
+                        <li>Navigation that’s intuitive rather than clever, because in financial contexts, familiarity isn’t boring — it’s reassuring</li>
+                    </ul>
+                    <p>This kind of design communicates one thing clearly: <em>you can rely on this interface to show you what you need, without noise or distraction.</em></p>
+                    <p>The interface doesn’t surprise the user with animations or unexpected layouts: it’s about function over flash, a reflection of how users expected bank sites to behave in that era.</p>
+
+                    <h4>Tech Stack: PHP, MySQL, and Intentional Simplicity</h4>
+                    <p>GlobeBank is implemented using a classic LAMP-style stack:</p>
+                    <ul></ul>
+                    <li>PHP for server-side logic, using mysqli to communicate with the database</li>
+                    <li>MySQL / MariaDB as the content store</li>
+                    <li>Server-side sessions for staff authentication and secure access control</li>
+                    </ul>
+                    <p>This isn’t a modern framework — it’s the real deal: raw PHP with structured code organization that separates public site rendering from admin interfaces.</p>
+                    <p>Instead of bundling CSS and JS frameworks, the project keeps dependencies minimal, focusing on:</p>
+                    <ul>
+                        <li>Semantic HTML</li>
+                        <li>Clean, purposeful CSS</li>
+                        <li>Minimal JavaScript only where interactions benefit the user</li>
+                    </ul>
+                    <p>These choices keep the system fast, clear, and easy to maintain, which was critical in an era of varied connection speeds and browser capabilities.</p>
+
+                    <h4>Real Database Integration: Making It Functional</h4>
+                    <p>One of Globe Bank’s strengths is that it isn’t a static brochure — it’s backed by a MySQL database with real schema files included (setup_database.sql). The database contains structured tables such as:</p>
+                    <ul>
+                        <li>subjects: which represent navigational sections</li>
+                        <li>pages: which hold the actual content displayed publicly</li>
+                        <li>admins: for staff access control</li>
+                    </ul>
+                    <p>Through this database, the site can:</p>
+                    <ul>
+                        <li>Dynamically generate navigation</li>
+                        <li>Render pages based on database content</li>
+                        <li>Allow authenticated staff to add or edit content</li>
+                    </ul>
+                    <p>This is a true content management experience, albeit simple and focused, demonstrating how early CMS systems delivered flexibility without the overhead of modern frameworks.</p>
+
+                    <h4>Routing and Site Structure</h4>
+                    <p>The project uses a thoughtful approach to routing that reflects the flexibility needed in different deployment environments:</p>
+                    <ul>
+                        <li>A root index.php file redirects into public/, where the public-facing site lives</li>
+                        <li>The application computes a root directory dynamically, allowing the site to work whether the public/ directory is the web root or not</li>
+                        <li>A structured private/ directory contains database connections and shared templates that are not directly web-accessible</li>
+                    </ul>
+                    <p>This separation between public code and internal logic enhances security and mirrors good practice even by modern standards.</p>
+
+                    <h4>Staff Area: Authentication and Administration</h4>
+                    <p>The staff area is password-protected, providing:</p>
+                    <ul>
+                        <li>A login screen</li>
+                        <li>An admin menu</li>
+                        <li>Pages to manage content such as subjects and pages</li>
+                    </ul>
+                    <p>The authentication logic leverages PHP sessions and bcrypt-hashed passwords, with clear guidance on originating a first admin account by inserting a hashed user directly into the database — a practical approach for early dev workflows.</p>
+
+                    <h4>Why This Project Matters</h4>
+                    <p>The Globe Bank project is more than a historical reconstruction — it’s an honest, functional example of how database-backed PHP sites powered real content in the late 2000s. It shows that:</p>
+                    <ul>
+                        <li>Structured, predictable design supports user trust</li>
+                        <li>Database integration enables durability and reuse</li>
+                        <li>Clean, minimal stacks can still be expressive and purposeful</li>
+                    </ul>
+                    <p>As a portfolio piece, it speaks to both design sensibility and practical backend engineering, highlighting a thoughtful grasp of how sites were built — and how foundational skills still matter today.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Globe Bank: Global Finance, Structured by Design">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2006MSJCAdminOfJustice" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
