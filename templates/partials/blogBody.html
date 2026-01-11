@@ -1,3 +1,115 @@
+<div class="modal fade" id="blogModal2015RPGBookProject" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0011-RPGBookProject.png') }}" alt="Chronicles of the 2015 RPG Book Project" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title">Chronicles of the<br><a href="https://fcjamison.com/projects/2015RPGBookProject/" target="_blank">2015 RPG Book Project:</a></h2>
+                    <p>The <strong>2015 RPG Books Project</strong> is a static web catalog designed to organize and present tabletop role-playing game books with clarity, consistency, and intent. Built during a period when simplicity and portability mattered more than frameworks, the project demonstrates a thoughtful balance between structure, usability, and technical restraint.</p>
+                    <p>Rather than chasing trends, this project focuses on fundamentals: clean information architecture, predictable UI patterns, and an implementation that can be deployed anywhere with zero configuration.</p>
+
+                    <h4>Purpose and Scope</h4>
+                    <p>The project’s primary goal is to present a structured, browsable library of RPG books organized by game system and category. Each section reflects how users naturally think about collections—by edition, system, and type—making navigation intuitive even as the catalog scales.</p>
+                    <p>Key characteristics include:</p>
+                    <ul>
+                        <li>A system-based organizational model (e.g., multiple editions and RPG lines)</li>
+                        <li>A static, dependency-free build designed for longevity</li>
+                        <li>Human-readable markup that prioritizes clarity over abstraction</li>
+                    </ul>
+                    <p>For employers and developers, this signals a strong grasp of real-world constraints: speed, reliability, and ease of maintenance.</p>
+
+                    <h4>Information Architecture</h4>
+                    <p>The site’s structure mirrors its content model. Each RPG system lives in its own directory, with subpages dedicated to specific categories such as core rulebooks or adventure content. This predictable hierarchy allows both users and maintainers to understand the site at a glance.</p>
+                    <p>There is no hidden magic here—just deliberate, well-planned organization. Pages are connected through relative paths, enabling seamless navigation whether the project is viewed locally or deployed to a server.</p>
+                    <p>This is content-first architecture: the structure exists to serve the data, not the other way around.</p>
+
+                    <h4>Visual Design and Layout Strategy</h4>
+                    <p>Visually, the project favors consistency and familiarity over experimentation. Book covers are presented in uniform thumbnail tiles, arranged in structured grids that repeat across pages. This repetition reduces cognitive load and creates a stable browsing experience.</p>
+                    <p>Tables are used intentionally to enforce alignment and predictable spacing, reflecting the era’s standards while also guaranteeing visual stability across environments. The result is a layout that may be understated, but never confusing.</p>
+                    <p>The design philosophy is simple: if every page behaves the same way, users don’t have to relearn the interface.</p>
+
+                    <h4>Code Organization and Maintainability</h4>
+                    <p>Assets are cleanly separated from content. Stylesheets, scripts, and images live in dedicated resource directories, while content pages remain focused on markup and structure.</p>
+                    <p>Naming conventions are consistent and descriptive, making it easy to locate assets and understand their purpose. Adding new content follows a clear, repeatable workflow: place the image, add the markup, and link it into the appropriate index.</p>
+                    <p>This approach lowers the barrier for future contributors and minimizes the risk of accidental breakage.</p>
+
+                    <h4>Deployment Philosophy</h4>
+                    <p>The project is intentionally static. There is no build step, no runtime dependency, and no environment-specific configuration. If a browser can open a file, the project works.</p>
+                    <p>This makes the site:</p>
+                    <ul>
+                        <li>Extremely fast</li>
+                        <li>Portable across hosting environments</li>
+                        <li>Resistant to long-term breakage</li>
+                    </ul>
+                    <p>It’s a reminder that reliability often comes from simplicity, not complexity.</p>
+
+                    <h4>Intentional Constraints</h4>
+                    <p>Technical decisions such as strict markup standards and traditional layout techniques are deliberate, not accidental. They reflect a disciplined mindset: choosing tools based on stability and predictability rather than novelty.</p>
+                    <p>The project also acknowledges future evolution. Its structure naturally lends itself to modernization—responsive layouts, semantic HTML updates, or enhanced accessibility—without requiring a rewrite. That forward-thinking restraint is a quiet but valuable skill.</p>
+
+                    <h4>What This Project Demonstrates</h4>
+                    <p>For recruiters, hiring managers, and fellow developers, the <strong>2015 RPG Book Project</strong> highlights:</p>
+                    <ul>
+                        <li>Strong information architecture and content modeling</li>
+                        <li>Consistent, repeatable UI patterns</li>
+                        <li>Clean separation of concerns</li>
+                        <li>A pragmatic understanding of deployment and longevity</li>
+                        <li>The ability to build systems that scale without overengineering</li>
+                    </ul>
+                    <p>This is not a flashy demo. It’s something better: a calm, well-reasoned example of how to design and build a maintainable web project with intention.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>The 2015 RPG Books Project feels like a well-used rulebook—dog-eared in the right places, easy to reference, and built to survive years of use. It reflects a developer who values structure, clarity, and sustainability. In a world obsessed with novelty, that kind of discipline quietly stands out.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Chronicles of the 2015 RPG Book Project">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2015FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">

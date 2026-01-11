@@ -15471,12 +15471,13 @@ div#featured-project-carousel {
 }
 
 .modal-body .news-details h4 {
-    font-size: 30px;
+    font-size: 22px;
+    line-height: 1.35;
     color: var(--color-lightn);
 }
 
 .modal-body .news-details h5 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.35;
     color: var(--color-lightn);
 }

@@ -281,9 +281,34 @@ def _project_dir(project_slug: str) -> str:
         abort(404)
 
     project_dir = os.path.join(PROJECTS_ROOT, project_slug)
-    if not os.path.isdir(project_dir):
-        abort(404)
-    return project_dir
+    if os.path.isdir(project_dir):
+        return project_dir
+
+    # Production is typically Linux (case-sensitive) while dev is often Windows
+    # (case-insensitive). If a project folder was uploaded with different
+    # capitalization, tolerate it.
+    try:
+        wanted = project_slug.casefold()
+        for entry in os.listdir(PROJECTS_ROOT):
+            if entry.casefold() != wanted:
+                continue
+            candidate = os.path.join(PROJECTS_ROOT, entry)
+            if os.path.isdir(candidate):
+                print(
+                    f"Project slug case mismatch: requested={project_slug!r} actual={entry!r} PROJECTS_ROOT={PROJECTS_ROOT!r}"
+                )
+                return candidate
+    except Exception as e:
+        print(
+            f"PROJECTS_ROOT not accessible: PROJECTS_ROOT={PROJECTS_ROOT!r} error={type(e).__name__}: {e}"
+        )
+
+    # Helpful diagnostic for production deployments where projects are copied
+    # separately (the repo gitignores `projects/`).
+    print(
+        f"Project not found: slug={project_slug!r} dir={project_dir!r} PROJECTS_ROOT={PROJECTS_ROOT!r}"
+    )
+    abort(404)
 
 
 def _infer_project_slug_from_referer() -> Optional[str]:

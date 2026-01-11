@@ -64,6 +64,18 @@ ENV=production
 FLASK_ENV=production
 FLASK_DEBUG=0
 
+# Standalone projects (portfolio archives)
+#
+# NOTE: This repository intentionally gitignores `projects/` because those
+# projects are versioned separately. In production you must either:
+# - copy the projects folder onto the server, OR
+# - set PROJECTS_ROOT to wherever you store those projects on disk.
+#
+# If you copy them into /var/www/fcjamison/projects, you can omit this.
+# If you store them elsewhere, set it explicitly, e.g.:
+# PROJECTS_ROOT=/var/www/fcjamison-projects
+PROJECTS_ROOT=/var/www/fcjamison/projects
+
 # SMTP (required for contact + blog replies)
 SMTP_HOST=mail.fcjamison.com
 SMTP_PORT=465
