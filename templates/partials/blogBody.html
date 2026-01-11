@@ -1,3 +1,121 @@
+<div class="modal fade" id="blogModal2017FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0016-FrankJamison.png') }}" alt="FrankJamison.com: A Purpose-Built Resume Website" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title"> <a href="https://fcjamison.com/projects/2017FrankJamison" target="_blank">FrankJamison.com:</a><br>A Purpose-Built Resume Website</h2>
+                    <p>This project is a static resume website built with intention, restraint, and a clear understanding of how people actually read professional information online. Created in 2017, it stands as a thoughtful alternative to overengineered portfolio sites, prioritizing clarity, structure, and longevity over trends.</p>
+                    <p>At its core, this site is not about visual spectacle. It is about communication—presenting qualifications, experience, and skills in a way that is direct, readable, and trustworthy.</p>
+
+                    <h4>Architectural Overview</h4>
+                    <p>The site is built entirely with hand-authored HTML and CSS, deliberately avoiding JavaScript frameworks, build tools, or server-side dependencies. Each major resume section—Education, Employment, Skills, Awards, and Organizations—exists as its own dedicated HTML page.</p>
+                    <p>This architectural choice accomplishes several things simultaneously:</p>
+                    <ul>
+                        <li>The content is modular and easy to maintain.</li>
+                        <li>Each section can be read independently or linked directly.</li>
+                        <li>The markup remains focused and semantically meaningful.</li>
+                        <li>The site loads instantly and behaves predictably across environments.</li>
+                    </ul>
+                    <p>For employers and recruiters, this structure makes information easy to scan and digest. For developers, it reflects comfort with foundational web architecture and intentional separation of concerns.</p>
+
+                    <h4>Semantic HTML & Content Hierarchy</h4>
+                    <p>The HTML emphasizes semantic correctness and content hierarchy. Headings are used consistently to establish structure, lists are employed where enumeration is appropriate, and paragraphs are kept concise for readability.</p>
+                    <p>This approach benefits both accessibility and search indexing while reinforcing a professional tone. The content reads like documentation rather than marketing copy—clear, factual, and respectful of the reader’s time.</p>
+
+                    <h4>CSS Design Philosophy</h4>
+                    <p>All styling is centralized in a single custom stylesheet, reinforcing maintainability and clarity. Rather than relying on heavy visual effects, the design uses typography, spacing, and contrast to guide the eye.</p>
+                    <p>Notable design decisions include:</p>
+                    <ul>
+                        <li>A serif typeface (Cardo via Google Fonts) chosen for legibility and professionalism.</li>
+                        <li>A restrained color palette that avoids distraction.</li>
+                        <li>Consistent spacing rules that improve scanning and reading comfort.</li>
+                        <li>Reusable class-based styling instead of page-specific overrides.</li>
+                    </ul>
+                    <p>The result is a visual system that supports the content rather than competing with it.</p>
+
+                    <h4>Navigation & Interaction Design</h4>
+                    <p>Navigation is icon-based and includes distinct visual states for default, hover, and active pages. This provides clear feedback to users without relying on JavaScript or complex interactions.</p>
+                    <p>These small but deliberate choices demonstrate an understanding of usability fundamentals and user experience design at a practical level.</p>
+
+                    <h4>Asset Management &amp; Organization</h4>
+                    <p>Images and visual assets are organized in a dedicated directory, named descriptively, and applied consistently throughout the site. Background imagery is used sparingly and never overwhelms the primary content.</p>
+                    <p>This level of organization reflects attention to detail and an understanding of maintainable front-end workflows.</p>
+
+                    <h4>Performance &amp; Durability</h4>
+                    <p>Because the site is fully static:</p>
+                    <ul>
+                        <li>Pages load almost instantly.</li>
+                        <li>There are no external dependencies to break or expire.</li>
+                        <li>Hosting requirements are minimal.</li>
+                        <li>The site remains usable and relevant years after its creation.</li>
+                    </ul>
+                    <p>In a landscape where many projects degrade quickly due to toolchain churn, this site demonstrates durability and foresight.</p>
+
+                    <h4>README &amp; Professional Framing</h4>
+                    <p>The included README clearly explains the project’s purpose and structure. It frames the site as a deliberate professional artifact rather than a casual personal page, helping reviewers understand what to look for and why certain decisions were made.</p>
+                    <p>This kind of framing is often overlooked, but it signals maturity and awareness of how projects are evaluated in professional contexts.</p>
+
+                    <h4>Why This Project Matters</h4>
+                    <p>This resume website quietly communicates several important qualities:</p>
+                    <ul>
+                        <li>A strong grasp of web fundamentals.</li>
+                        <li>Respect for clarity and usability.</li>
+                        <li>Discipline in design and implementation</li>
+                        <li>The ability to deliver complete, maintainable work independently.</li>
+                    </ul>
+                    <p>For employers and recruiters, it reflects sound judgment and professionalism.<br>For developers, it reflects craftsmanship and intentional design.</p>
+                    <p>No frameworks. No unnecessary complexity. Just a purpose-built site that does exactly what it sets out to do—and continues to do so reliably years later.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Purpose-Built Resume Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2016FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
