@@ -1,3 +1,88 @@
+<div class="modal fade" id="blogModal2017JavaScriptGuessingGame" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0017-JavaScriptGuessingGame.png') }}" alt="JavaScript Guessing Game: Front-End Fundamentals" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">11 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2017JavaScriptGuessingGame') }}" target="_blank">JavaScript Guessing Game:</a><br>Front-End Fundamentals</h2>
+                    <p>This project is a deliberately scoped front-end application designed to demonstrate core JavaScript fundamentals in a clear, intentional way. Built using only vanilla JavaScript, HTML, and CSS, the JavaScript Guessing Game emphasizes logic flow, state management, and responsive user feedback without relying on frameworks or external libraries.</p>
+                    <p>Rather than pursuing complexity for its own sake, the project focuses on correctness, readability, and interaction discipline—reflecting a foundational approach to front-end development where understanding the mechanics matters more than abstraction.</p>
+
+                    <h4>Project Purpose and Scope</h4>
+                    <p>The application challenges users to guess a randomly generated number between 1 and 100 within a limited number of attempts. With each guess, the interface responds immediately, guiding the user higher or lower while dynamically tightening the valid input range. This constraint-based interaction reinforces logical thinking and mirrors real-world front-end requirements such as validation, conditional rendering, and state-aware UI updates.</p>
+                    <p>The scope is intentionally narrow, allowing the implementation to remain focused, understandable, and maintainable.</p>
+
+                    <h4>Structure and Separation of Concerns</h4>
+                    <p>The project is organized with a clear separation between structure, presentation, and behavior.</p>
+                    <p>The HTML provides a semantic, accessible foundation for the interface, defining input controls, feedback areas, and the overall game container without inline styling or scripting.</p>
+                    <p>All visual styling is contained in a dedicated CSS file. The stylesheet uses CSS custom properties to establish a consistent color system and spacing rules, enabling easy refinement and reuse. Layout decisions favor clarity and contrast, ensuring feedback remains readable and visually prioritized. A reduced-motion media query is included to respect accessibility preferences.</p>
+                    <p>JavaScript handles all game logic and interaction. Behavior is fully decoupled from markup and styling, reinforcing maintainability and clarity.</p>
+
+                    <h4>Game Logic and State Management</h4>
+                    <p>The JavaScript implementation relies on explicit, readable state variables to track the target number, remaining guesses, and current allowable range. User input is validated before being processed, preventing invalid or out-of-bounds guesses from affecting the game state.</p>
+                    <p>Feedback messaging is centralized through a helper function, ensuring consistent UI updates and avoiding repetitive DOM manipulation. As the game progresses, the script narrows the valid guessing range, reinforcing player feedback while keeping the interface aligned with the underlying logic.</p>
+                    <p>Win and loss conditions are handled cleanly, transitioning the interface into a reset-ready state without requiring a page reload.</p>
+
+                    <h4>User Experience and Interaction Design</h4>
+                    <p>The interface is intentionally restrained, prioritizing clarity over ornamentation. Visual hierarchy ensures that feedback is immediately visible after each guess, while spacing and contrast support quick comprehension.</p>
+                    <p>Subtle transitions enhance responsiveness without becoming distracting, and the game remains fully usable for players who prefer reduced motion. At every step, the user is informed of what happened, what it means, and what to do next—an essential but often overlooked aspect of interactive design.</p>
+
+                    <h4>Development Takeaways</h4>
+                    <p>This project reflects a fundamentals-first development philosophy. By avoiding frameworks, the code maintains a direct relationship between user input, application state, and UI updates.</p>
+                    <p>For employers and recruiters, the project demonstrates comfort with core front-end technologies and disciplined problem solving. For developers, it shows readable logic, intentional structure, and respect for maintainability even at a small scale.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>The JavaScript Guessing Game serves as a concise example of foundational front-end engineering. It succeeds not by being complex, but by being clear, correct, and deliberate—showcasing an understanding of how interactive web applications function at their most essential level.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="JavaScript Guessing Game: Front-End Fundamentals">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2017FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -13,8 +98,8 @@
             <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0016-FrankJamison.png') }}" alt="FrankJamison.com: A Purpose-Built Resume Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
-                    <span class="date">10 January 2026</span>
-                    <h2 class="title"> <a href="https://fcjamison.com/projects/2017FrankJamison" target="_blank">FrankJamison.com:</a><br>A Purpose-Built Resume Website</h2>
+                    <span class="date">11 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2017FrankJamison') }}" target="_blank">FrankJamison.com:</a><br>A Purpose-Built Resume Website</h2>
                     <p>This project is a static resume website built with intention, restraint, and a clear understanding of how people actually read professional information online. Created in 2017, it stands as a thoughtful alternative to overengineered portfolio sites, prioritizing clarity, structure, and longevity over trends.</p>
                     <p>At its core, this site is not about visual spectacle. It is about communication—presenting qualifications, experience, and skills in a way that is direct, readable, and trustworthy.</p>
 
@@ -131,8 +216,8 @@
             <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0015-FrankJamison.png') }}" alt="FrankJamison.com: A Modern Resume Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
-                    <span class="date">10 January 2026</span>
-                    <h2 class="title"> <a href="https://fcjamison.com/projects/2016FrankJamison" target="_blank">FrankJamison.com:</a><br>A Modern Resume Website</h2>
+                    <span class="date">11 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2016FrankJamison') }}" target="_blank">FrankJamison.com:</a><br>A Modern Resume Website</h2>
                     <p>If you’re hiring for someone who can communicate clearly and build a polished interface without hiding behind a framework, this project is a great signal.</p>
                     <p><strong>FrankJamison.com</strong> is a multi-page, static resume website built with HTML + CSS + JavaScript, enhanced with two flavors of accordion navigation and smooth page transitions. It’s intentionally “classic web”: straightforward to host, easy to audit, and structured to help busy readers find the important stuff fast.</p>
 
@@ -306,8 +391,8 @@
             <div class="modal-body">
                 <img src="{{ url_for('static', filename='images/blog/blog-0014-VirtualWorld.png') }}" alt="From Console to Browser: The Journey of Virtual World" class="img-fluid modal-feat-img">
                 <div class="news-details">
-                    <span class="date">10 January 2026</span>
-                    <h2 class="title">From Console to Browser:<br>The Journey of <a href="https://fcjamison.com/projects/2016VirtualWorld/" target="_blank">Virtual World:</a></h2>
+                    <span class="date">11 January 2026</span>
+                    <h2 class="title">From Console to Browser:<br>The Journey of <a href="{{ url_for('project_index', project_slug='2016VirtualWorld') }}" target="_blank">Virtual World:</a></h2>
                     <p><strong>Virtual World</strong> is a Java-based project originally developed as a console application and later extended into a browser-accessible user interface. The project demonstrates object-oriented design fundamentals, backend logic reuse, and the practical transition from a terminal-driven program to a lightweight web application.</p>
                     <p>Designed as an interactive “virtual world,” the application allows users to create a personal profile (“Clone”), optionally define a companion dog, and interact with a message-driven system known as the ShoutBox. While intentionally playful in concept, the project’s real strength lies in its architecture and extensibility.</p>
 
@@ -433,7 +518,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0013-JamisonWebDesign.png') }}" alt="Jamison Web Design: A Static Business Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">10 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2015JamisonWebDesign/" target="_blank">Jamison Web Design:</a><br>A Static Business Website</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2015JamisonWebDesign') }}" target="_blank">Jamison Web Design:</a><br>A Static Business Website</h2>
                     <p>The Jamison Web Design project is a fully static business website created to present services clearly, establish credibility, and guide visitors toward contact. The project focuses on clarity, reliability, and straightforward front-end execution—demonstrating how a professional web presence can be built without unnecessary complexity.</p>
                     <p>This site reflects a practical, real-world approach to web design, prioritizing usability and maintainability over trends.</p>
 
@@ -528,7 +613,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0012-MiFamiliaTacoCatering.png') }}" alt="Mi Familia Taco Catering: Front-End Design with Intention" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">10 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2015MiFamiliaTacoCatering/" target="_blank">Mi Familia Taco Catering:</a><br>Front-End Design with Intention</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2015MiFamiliaTacoCatering') }}" target="_blank">Mi Familia Taco Catering:</a><br>Front-End Design with Intention</h2>
                     <p>Some projects shout. This one speaks calmly, confidently, and knows exactly what it’s doing.</p>
                     <p>The <strong>Mi Familia Taco Catering</strong> project is a small static website built for a real business with real goals: present services clearly, guide users toward contact, and work reliably everywhere. Under the surface, it also serves as a grounded example of thoughtful front-end engineering—where structure, usability, and restraint matter more than flash.</p>
                     <p>This isn’t a demo site. It’s a working one. And that’s where its strength lives.</p>
@@ -619,7 +704,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0011-RPGBookProject.png') }}" alt="Chronicles of the 2015 RPG Book Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">10 January 2026</span>
-                    <h2 class="title">Chronicles of the<br><a href="https://fcjamison.com/projects/2015RPGBookProject/" target="_blank">2015 RPG Book Project:</a></h2>
+                    <h2 class="title">Chronicles of the<br><a href="{{ url_for('project_index', project_slug='2015RPGBookProject') }}" target="_blank">2015 RPG Book Project:</a></h2>
                     <p>The <strong>2015 RPG Books Project</strong> is a static web catalog designed to organize and present tabletop role-playing game books with clarity, consistency, and intent. Built during a period when simplicity and portability mattered more than frameworks, the project demonstrates a thoughtful balance between structure, usability, and technical restraint.</p>
                     <p>Rather than chasing trends, this project focuses on fundamentals: clean information architecture, predictable UI patterns, and an implementation that can be deployed anywhere with zero configuration.</p>
 
@@ -731,7 +816,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0010-FrankJamison.png') }}" alt="FrankJamison.com: Foundations in Front-End Development" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">10 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2015FrankJamison/" target="_blank">FrankJamison.com:</a><br>Front-End Foundations</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2015FrankJamison') }}" target="_blank">FrankJamison.com:</a><br>Front-End Foundations</h2>
                     <p>The 2015 version of FrankJamison.com represents a clear, inspectable moment in the evolution of a developer learning the web by building it directly. This repository captures a static portfolio site from an era when frameworks were optional, experimentation was manual, and understanding the fundamentals actually mattered.</p>
                     <p>For recruiters and developers reviewing this work today, its value lies not in trend-chasing, but in evidence of foundational skill development.</p>
 
@@ -838,7 +923,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0009-FrankJamison.png') }}" alt="FrankJamison.com: A Personal Web Presence" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">9 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2013FrankJamison/" target="_blank">FrankJamison.com:</a><br>A Personal Web Presence, Structured by Craft</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2013FrankJamison') }}" target="_blank">FrankJamison.com:</a><br>A Personal Web Presence, Structured by Craft</h2>
                     <p>What you’re looking at with the 2013 version of FrankJamison.com isn’t a template, a boilerplate, or a modern static-site generator project. It’s a <em>real, preserved legacy personal site</em> from 2013, intentionally kept static, no build tools, no frameworks — just classic web fundamentals tuned for real browsers and real humans.</p>
                     <p>In a world where projects spin up with React/Vite in minutes, there’s something grounding about code that was written to <em>work everywhere</em>, from old desktop browsers to modern phones. Let’s unpack both <em>how it works</em> and <em>why it matters technically.</em></p>
 
@@ -1110,7 +1195,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0007-MSJCAdminOfJustice.png') }}" alt="Web Discipline and Authority: MSJC Administration of Justice Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">9 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2006MSJCAdminOfJustice/" target="_blank">Web Discipline and Authority:<br>MSJC Administration of Justice Dept. Website</a></h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2006MSJCAdminOfJustice') }}" target="_blank">Web Discipline and Authority:<br>MSJC Administration of Justice Dept. Website</a></h2>
                     <p>Somewhere between dial-up patience and broadband optimism, this site quietly did its job. The 2006 MSJC Administration of Justice project is a time capsule from an era when academic websites were less about flair and more about function. No parallax hero images. No performative gradients. Just structure, clarity, and a firm belief that information should stand at attention and be counted.</p>
                     <p>Built for the Administration of Justice Department at Mt. San Jacinto College, the site reflects the mindset of both the discipline and the moment. Criminal justice programs in the mid-2000s emphasized hierarchy, procedure, and systems—and the web design mirrors that worldview. Navigation is straightforward. Content is clearly segmented. Every page feels like it’s been pressed into a uniform and told not to fidget.</p>
                     <p>Visually, the site leans into early-web academic norms: restrained color palettes, table-driven layouts, and typography chosen for legibility over personality. This wasn’t a site trying to impress strangers. It was built to serve students—to house coursework, outline expectations, and provide a dependable reference point in a pre-LMS world where Blackboard was still finding its footing.</p>
@@ -1173,7 +1258,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0006-ZitaWorley.png') }}" alt="2006 Zita Worley's Website" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">9 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2006ZitaWorley/" target="_blank">The Zita Worley Project:</a><br>An Early Instructor Website</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2006ZitaWorley') }}" target="_blank">The Zita Worley Project:</a><br>An Early Instructor Website</h2>
                     <p>Some websites age like fine wine. Others age like a forgotten energy drink left in a hot car. And then there are sites like Zita Worley's website—a perfect fossil from the mid-2000s web, preserved not because it was polished, but because it was real.</p>
                     <p>This project is a faithful reconstruction of a personal website from 2006, back when the web was less corporate, less optimized, and wildly more sincere. No frameworks. No build steps. No analytics whispering judgment into your ear. Just HTML, CSS, and vibes.</p>
                     <p>The original site lived in that liminal space between GeoCities glitter chaos and the coming wave of Web 2.0 polish. It’s a reminder that personal websites used to be personal—built to express identity, interests, and presence online rather than to convert, monetize, or scale.</p>
@@ -1248,7 +1333,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0005-MoonwalkManor.png') }}" alt="Moonwalk Manor: A Hotel on the Moon?" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title"><a href="https://fcjamison.com/projects/2006MoonwalkManor/" target="_blank">Moonwalk Manor:</a><br>A Hotel on the Moon?</h2>
+                    <h2 class="title"><a href="{{ url_for('project_index', project_slug='2006MoonwalkManor') }}" target="_blank">Moonwalk Manor:</a><br>A Hotel on the Moon?</h2>
                     <p>In the mid-2000s, the future still felt bold, shiny, and just around the corner. Space tourism was “inevitable,” moon bases were practically booked, and websites loved to imagine what life <em>up there</em> might look like. Moonwalk Manor was built squarely in that mindset—a speculative hotel website imagining luxury accommodations on the Moon, created with the tools and sensibilities of 2006-era web design.</p>
                     <p>Moonwalk Manor wasn’t parody or horror. It was optimism. A sincere attempt to visualize a futuristic hospitality experience using static HTML, early layout techniques, and design conventions that predate responsive grids and modern UI frameworks. The project framed the Moon not as a distant scientific outpost, but as a destination—complete with amenities, comfort, and aspirational travel copy.</p>
                     <p>Visually, the site leaned into space-age themes common at the time: dark backgrounds, starry imagery, high-contrast text, and layouts designed for fixed desktop resolutions. Navigation was straightforward, content was page-based, and imagination carried more weight than technical sophistication. This was the era of building first and refining later—if ever.</p>
@@ -1311,7 +1396,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0004-TypingSpeedTest.png') }}" alt="2006 Typing Speed Test Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">Keystrokes Under Pressure:<br><a href="https://fcjamison.com/projects/2006TypingSpeedTest/" target="_blank">A 2006 Typing Speed Test</a></h2>
+                    <h2 class="title">Keystrokes Under Pressure:<br><a href="{{ url_for('project_index', project_slug='2006TypingSpeedTest') }}" target="_blank">A 2006 Typing Speed Test</a></h2>
                     <p>Some projects shout. Others just sit there quietly, stopwatch in hand, waiting for you to blink. The 2006 Typing Speed Test is firmly in the second camp—simple, focused, and a little bit ruthless in the way only a timer can be.</p>
                     <p>This project was built as an exploration of clean JavaScript logic, real-time input handling, and UI feedback that doesn’t get in your way. No accounts. No leaderboards chasing dopamine. Just you, a block of text, and the uncomfortable truth about how many typos you actually make when no one’s watching.</p>
                     <p>And honestly? That’s the charm.</p>
@@ -1405,7 +1490,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0003-FrankJamison.png') }}" alt="FrankJamison.com" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">A 2006 Time Capsule:<br><a href="https://fcjamison.com/projects/2006FrankJamison/" target="_blank">FrankJamison.com v1.0</a></h2>
+                    <h2 class="title">A 2006 Time Capsule:<br><a href="{{ url_for('project_index', project_slug='2006FrankJamison') }}" target="_blank">FrankJamison.com v1.0</a></h2>
                     <p>Every developer has an origin story. Some start with a bootcamp. Some with a framework tutorial at 2 a.m. Mine? A raw, caffeinated plunge into HTML and CSS in 2006—when rounded corners were a luxury, gradients were loud, and tables were still hanging around like uninvited guests at a LAN party.</p>
                     <p>This project is a preserved snapshot of that era: the original 2006 FrankJamison.com. Not a remake. Not a refactor. This is the artifact itself—rough edges, earnest ambition, and all.</p>
                     <p>Back then, the web felt smaller and more personal. You didn’t install a stack; you opened a text editor and started typing. This site grew line by line, fueled by curiosity and a stubborn need to understand how the pieces fit together. Layouts were hand-built. Styles were trial-and-error. JavaScript was used sparingly, because breaking things was easy and debugging tools were… aspirational.</p>
@@ -1470,7 +1555,7 @@
                 <img src="{{ url_for('static', filename='images/blog/blog-0002-AnalogClockProject.png') }}" alt="Building Time: The 2006 Analog Clock Project" class="img-fluid modal-feat-img">
                 <div class="news-details">
                     <span class="date">8 January 2026</span>
-                    <h2 class="title">Building Time:<br><a href="https://fcjamison.com/projects/2006AnalogClockProject/" target="_blank">The 2006 Analog Clock Project</a></h2>
+                    <h2 class="title">Building Time:<br><a href="{{ url_for('project_index', project_slug='2006AnalogClockProject') }}" target="_blank">The 2006 Analog Clock Project</a></h2>
                     <p>Some projects are about scale. Others are about speed. This one? This one is about precision—the quiet, relentless ticking of logic doing exactly what it’s supposed to do.</p>
                     <p>The 2006 Analog Clock Project is a deceptively simple web application that recreates a classic analog clock using modern front-end techniques. No libraries doing the heavy lifting. No shortcuts. Just JavaScript, CSS, and the stubborn belief that understanding fundamentals is never a waste of time. (Unlike meetings that could’ve been emails.)</p>
 
