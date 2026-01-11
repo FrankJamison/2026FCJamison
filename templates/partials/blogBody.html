@@ -1,3 +1,98 @@
+<div class="modal fade" id="blogModal2015JamisonWebDesign" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0013-JamisonWebDesign.png') }}" alt="Jamison Web Design: A Static Business Website" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2015JamisonWebDesign/" target="_blank">Jamison Web Design:</a><br>A Static Business Website</h2>
+                    <p>The Jamison Web Design project is a fully static business website created to present services clearly, establish credibility, and guide visitors toward contact. The project focuses on clarity, reliability, and straightforward front-end execution—demonstrating how a professional web presence can be built without unnecessary complexity.</p>
+                    <p>This site reflects a practical, real-world approach to web design, prioritizing usability and maintainability over trends.</p>
+
+                    <h4>Design Approach</h4>
+                    <p>The design follows a familiar and intentional business-site structure. A consistent page layout—header, navigation, main content, and footer—keeps users oriented and reduces friction as they move through the site.</p>
+                    <p>The homepage features a rotating image slideshow, used to introduce the brand visually and draw attention without overwhelming the content. Typography is customized through embedded fonts, giving the site a distinct identity while maintaining strong readability.</p>
+                    <p>Visual elements such as gradients, shadows, and rounded corners are applied with restraint. These details add depth and polish while keeping the overall aesthetic professional and approachable, aligning with the expectations of service-based clients.</p>
+
+                    <h4>Site Structure &amp; Content</h4>
+                    <p>The website is organized around clearly defined pages, each serving a specific business function:</p>
+                    <ul>
+                        <li>The Home page establishes tone and purpose.</li>
+                        <li>The Services page outlines offerings in a clear, client-focused manner.</li>
+                        <li>The Projects page functions as a portfolio showcase.</li>
+                        <li>The Testimonials page provides social proof and trust signals.</li>
+                        <li>The Contact page includes a functional form with success and error feedback.</li>
+                    </ul>
+                    <p>This structure demonstrates an understanding of information hierarchy and user flow, guiding visitors naturally from introduction to engagement.</p>
+
+                    <h4>Development &amp; Technical Execution</h4>
+                    <p>From a development standpoint, the project is intentionally lightweight and portable.</p>
+                    <p>The site is built entirely with static HTML, CSS, and JavaScript. Presentation, structure, and behavior are cleanly separated, making the codebase easy to understand and maintain. Interactive elements, such as the slideshow, are handled with simple JavaScript rather than heavy dependencies.</p>
+                    <p>Feature detection is used to support broader browser compatibility, ensuring the site degrades gracefully where needed. Because there is no backend or build process, the site can be deployed on virtually any standard web host or static hosting platform with minimal setup.</p>
+
+                    <h4>What This Project Demonstrates</h4>
+                    <p>For recruiters and employers, this project highlights several core strengths:</p>
+                    <ul>
+                        <li>The ability to design and deliver a complete, client-ready website</li>
+                        <li>Strong front-end fundamentals without reliance on frameworks</li>
+                        <li>Clean organization and maintainable code</li>
+                        <li>Practical understanding of deployment and hosting realities</li>
+                        <li>A user-first mindset focused on clarity and accessibility</li>
+                    </ul>
+                    <p>Rather than a concept or experiment, this is a finished product designed for real use.</p>
+
+                    <h4>Final Take</h4>
+                    <p>The <strong>Jamison Web Design</strong>website stands as a solid example of classic static web development done right. It emphasizes usability, clarity, and dependable execution—qualities that remain valuable regardless of tools or trends.</p>
+                    <p>For teams maintaining legacy systems, building marketing sites, or valuing strong fundamentals, this project demonstrates a grounded and professional approach to front-end work.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Mi Familia Taco Catering: Front-End Design with Intention">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2015MiFamiliaTacoCatering" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
