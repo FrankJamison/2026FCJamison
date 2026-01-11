@@ -1,3 +1,94 @@
+<div class="modal fade" id="blogModal2015MiFamiliaTacoCatering" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0012-MiFamiliaTacoCatering.png') }}" alt="Mi Familia Taco Catering: Front-End Design with Intention" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title"><a href="https://fcjamison.com/projects/2015MiFamiliaTacoCatering/" target="_blank">Mi Familia Taco Catering:</a><br>Front-End Design with Intention</h2>
+                    <p>Some projects shout. This one speaks calmly, confidently, and knows exactly what it’s doing.</p>
+                    <p>The <strong>Mi Familia Taco Catering</strong> project is a small static website built for a real business with real goals: present services clearly, guide users toward contact, and work reliably everywhere. Under the surface, it also serves as a grounded example of thoughtful front-end engineering—where structure, usability, and restraint matter more than flash.</p>
+                    <p>This isn’t a demo site. It’s a working one. And that’s where its strength lives.</p>
+
+                    <h4>Intentional Structure, Not Just Pages</h4>
+                    <p>The site is organized around a clear, repeatable layout system. Navigation, headers, content blocks, and side elements are consistent across pages, creating a predictable experience for users and a maintainable codebase for developers.</p>
+                    <p>Rather than duplicating chaos, the structure mirrors what modern component systems aim for: reusable patterns expressed through static HTML. The result is a site that feels cohesive, readable, and easy to extend—without relying on frameworks or build tools.</p>
+
+                    <h4>Design That Serves the Business</h4>
+                    <p>The visual design is restrained and practical. Typography, spacing, and color choices keep the focus on the content—menus, services, photos, and contact information—rather than decorative noise.</p>
+                    <p>The layout supports scannability and decision-making. Users can quickly understand what’s offered, how it works, and where to go next. This is front-end design aligned with purpose, not aesthetics for their own sake.</p>
+
+                    <h4>A Clear Conversion Path</h4>
+                    <p>At its core, the site supports a simple but effective user journey:<br>learn about the service → view offerings → make contact.</p>
+                    <p>The catering request form is integrated into this flow, supported by success and error handling pages that keep users oriented. While the form submission itself is handled externally, the front-end experience remains cohesive and predictable.</p>
+
+                    <h4>Lightweight, Purposeful JavaScript</h4>
+                    <p>JavaScript is used sparingly and deliberately. There are no heavy libraries, no unnecessary abstractions, and no visual gimmicks.</p>
+                    <p>Scripts handle focused enhancements such as navigation behavior and a photo gallery slider. These additions improve usability and presentation without becoming dependencies. The site remains functional even if JavaScript is unavailable, reinforcing a progressive enhancement mindset.</p>
+
+                    <h4>Progressive Enhancement as a Baseline</h4>
+                    <p>The site works as a complete experience with HTML and CSS alone. JavaScript layers on polish rather than serving as a structural requirement.</p>
+                    <p>This approach improves accessibility, performance, and long-term stability, while demonstrating respect for the web as a resilient platform.</p>
+
+                    <h4>2026 Refresh: Modernized With Restraint</h4>
+                    <p>In 2026, the project received a careful update focused on longevity rather than reinvention.</p>
+                    <p>Legacy elements were removed, markup was modernized, and outdated dependencies were eliminated. Older patterns such as unnecessary shims and library reliance were replaced with clean HTML5 and lightweight vanilla JavaScript. The photo gallery was refreshed with a simpler, more maintainable slider, and responsive behavior was refined for modern devices.</p>
+                    <p>Importantly, the site was not rewritten. The update preserved the original structure and intent while bringing the implementation forward—demonstrating an ability to maintain, improve, and modernize existing codebases without disruption.</p>
+                    <p>This refresh reflects real-world front-end work: incremental improvement, respect for working systems, and decisions guided by usefulness rather than trends.</p>
+
+                    <h4>Why This Project Matters</h4>
+                    <p>The Mi Familia Taco Catering website demonstrates something increasingly valuable: restraint paired with intention.</p>
+                    <p>It shows how a small static site can reflect professional front-end thinking—clear structure, purposeful design, clean code, progressive enhancement, and thoughtful long-term maintenance. For recruiters and employers, it offers a grounded example of how real websites are built, cared for, and improved over time.</p>
+                    <p>Sometimes the most honest measure of front-end skill isn’t how much technology is used—but how well the fundamentals are respected.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Mi Familia Taco Catering: Front-End Design with Intention">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2015RPGBookProject" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
