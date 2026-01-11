@@ -1,3 +1,178 @@
+<div class="modal fade" id="blogModal2016FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0015-FrankJamison.png') }}" alt="FrankJamison.com: A Modern Resume Website" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title"> <a href="https://fcjamison.com/projects/2016FrankJamison" target="_blank">FrankJamison.com:</a><br>A Modern Resume Website</h2>
+                    <p>If you’re hiring for someone who can communicate clearly and build a polished interface without hiding behind a framework, this project is a great signal.</p>
+                    <p><strong>FrankJamison.com</strong> is a multi-page, static resume website built with HTML + CSS + JavaScript, enhanced with two flavors of accordion navigation and smooth page transitions. It’s intentionally “classic web”: straightforward to host, easy to audit, and structured to help busy readers find the important stuff fast.</p>
+
+                    <h4>What This Project Is</h4>
+                    <p>At the repo root, the site is organized into six primary pages:</p>
+                    <ul>
+                        <li>index.html (landing / summary)</li>
+                        <li>employment.html</li>
+                        <li>education.html</li>
+                        <li>skills.html</li>
+                        <li>awards.html</li>
+                        <li>affiliations.html</li>
+                    </ul>
+                    <p>Supporting assets are cleanly separated:</p>
+                    <ul>
+                        <li>_css/style2.css (single, site-wide stylesheet)</li>
+                        <li>_javascript/script.js (jQuery UI accordion + Animsition setup)</li>
+                        <li>_javascript/main.js (custom checkbox-driven accordion behavior for Education)</li>
+                        <li>_images/ (banners, nav icons, logo motif, profile image)</li>
+                        <li>_fonts/ (embedded webfont families + license files)</li>
+                    </ul>
+                    <p>This is the kind of structure you want when you value maintainability and predictability—and when you expect someone else may touch the code later without summoning a séance.</p>
+
+                    <h4>Design and UX: Consistency as a Feature</h4>
+
+                    <h5>A repeatable page layout system</h5>
+                    <p>Each page follows the same overall rhythm:</p>
+                    <ul>
+                        <li>Header with name/title branding</li>
+                        <li>Primary navigation bar</li>
+                        <li>A page banner (hero image)</li>
+                        <li>Main content (often collapsible/accordion-based)</li>
+                        <li>An aside/contact area</li>
+                        <li>Footer</li>
+                    </ul>
+                    <p>That consistency matters for employers and recruiters because it reduces friction: once a reader understands one page, they understand the whole site.</p>
+
+                    <h5>Visual identity: the “cube” motif + restrained palette</h5>
+                    <p>The CSS makes branding explicit and repeatable. A “cube” mark appears in the header and is reused as a small motif in headings across the site. It’s subtle, but it unifies the pages into a cohesive “product” rather than a set of disconnected documents.</p>
+
+                    <h5>Section-specific hero banners for orientation</h5>
+                    <p>The site uses unique banners per section:</p>
+                    <ul>
+                        <li>mainBanner.jpg</li>
+                        <li>employmentBanner.jpg</li>
+                        <li>educationBanner.jpg</li>
+                        <li>skillsBanner.jpg</li>
+                        <li>awardsBanner.jpg</li>
+                        <li>organizationsBanner.jpg</li>
+                    </ul>
+                    <p>This is one of those deceptively simple UX wins: it helps readers orient instantly (“I’m in Employment now”) without having to re-parse the page.</p>
+
+                    <h4>Navigation Design: Fast Scanning for Humans Who Are Busy</h4>
+                    <p>The primary navigation is a consistent list of five sections (Employment, Education, Skills, Awards, Affiliations). Each item is styled with a matching icon (e.g., employment25.png, education25.png, etc.), which makes scanning easier and supports quick recognition.</p>
+                    <p>Under the hood, each nav item has a semantic class (employment, education, skills, etc.), making styling predictable and scalable.</p>
+
+                    <h4>Typography and Brand Tone: Embedded Webfonts (Properly Packaged)</h4>
+                    <p>Fonts are included locally via @font-face rather than relying on an external font service. The _fonts/ directory includes multiple families and weights (Cantarell variants plus additional typefaces), along with license text files—a practical “this was built responsibly” touch that devs and teams appreciate.</p>
+
+                    <h4>Front-End Development: Progressive Enhancement + Purposeful Interactivity</h4>
+                    <p>This project does not try to “app-ify” a resume. It stays content-forward and uses JavaScript where it helps:</p>
+
+                    <h5>jQuery UI accordion for multi-level resume content</h5>
+                    <p>_javascript/script.js initializes a jQuery UI accordion on ul.trackAccordion:</p>
+                    <ul>
+                        <li>collapsible: true</li>
+                        <li>heightStyle: "content"</li>
+                    </ul>
+                    <p>That accordion pattern is used for nested, dense content—especially where categories and subcategories make sense (employment entries, grouped skills, grouped awards, etc.). The HTML uses a multi-level structure (level 1 → level 2 → level 3) that keeps long content navigable.</p>
+
+                    <h5>A custom checkbox-driven accordion for Education</h5>
+                    <p>education.html uses a separate accordion approach built around:</p>
+                    <ul>
+                        <li>ul.cd-accordion-menu</li>
+                        <li>nested <code>&lt;input type="checkbox"&gt;</code> + <code>&lt;label for="..."&gt;</code> pairs</li>
+                    </ul>
+                    <p>_javascript/main.js listens for checkbox changes and slides nested lists open/closed.</p>
+                    <p>Why this matters: it shows the builder didn’t force a single widget onto every page. The Education section is complex (institutions → programs → courses/grades), and the checkbox+label pattern maps neatly to that hierarchy.</p>
+
+                    <h4>Animated Page Transitions: Polished, Not Noisy</h4>
+                    <p>The site uses Animsition to fade pages in/out:</p>
+                    <ul>
+                        <li>inClass: 'fade-in'</li>
+                        <li>outClass: 'fade-out'</li>
+                        <li>inDuration: 800</li>
+                        <li>outDuration: 500</li>
+                        <li>transitions trigger via .animsition-link</li>
+                    </ul>
+                    <p>This is a professional flourish: it makes navigation feel intentional without turning the resume into a theme park ride.</p>
+                    <p>(Theme parks are for weekends. Resume sites are for getting hired.)</p>
+
+                    <h4>Performance and Asset Choices: Small Optimizations That Add Up</h4>
+                    <p>One particularly smart detail lives in the CSS: several social icons are embedded as base64 data URIs. That reduces external image requests and makes the site easier to deploy as a portable, self-contained bundle.</p>
+                    <p>Also worth noting: the project relies on CDNs for some libraries (jQuery/jQuery UI/Animsition), which keeps the repo light and setup simple—but also provides a clear improvement path if an offline/airgapped deployment ever mattered.</p>
+
+                    <h4>Maintainability Notes: Honest Tradeoffs, Clear Upgrade Path</h4>
+                    <p>The CSS sets a fixed desktop width:</p>
+                    <ul>
+                        <li>body { width: 1280px; margin: 0 auto; }</li>
+                    </ul>
+                    <p>That’s a very “2016” decision (and it matches the era this project represents). Modernizing would be straightforward:</p>
+                    <ul>
+                        <li>add a responsive viewport meta tag</li>
+                        <li>migrate layout to flex/grid</li>
+                        <li>replace fixed widths with responsive constraints</li>
+                    </ul>
+                    <p>Also, navigation is duplicated in each HTML page. That’s normal for static sites of this style, and it’s easy to maintain at this scale—but it’s an obvious next step if this were ever moved into templating (server-side includes, a static site generator, or lightweight build tooling).</p>
+
+                    <h4>Why Employers, Recruiters, and Developers Should Care</h4>
+                    <p>This project demonstrates:</p>
+                    <ul>
+                        <li>Clear communication design: content is structured for real readers</li>
+                        <li>Consistency: repeatable layouts, icons, banners, and typographic hierarchy</li>
+                        <li>Practical front-end engineering: interactive where helpful, static where appropriate</li>
+                        <li>Maintainable organization: clean directories, centralized CSS, scoped JavaScript</li>
+                        <li>Tasteful polish: animated transitions that enhance professionalism without distraction</li>
+                    </ul>
+                    <p>In short: <strong>a resume site that behaves like a product</strong>, not a homework assignment.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Modern Resume Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2016VirtualWorld" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
