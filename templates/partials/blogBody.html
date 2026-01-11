@@ -1,3 +1,129 @@
+<div class="modal fade" id="blogModal2016VirtualWorld" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0014-VirtualWorld.png') }}" alt="From Console to Browser: The Journey of Virtual World" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">10 January 2026</span>
+                    <h2 class="title">From Console to Browser:<br>The Journey of <a href="https://fcjamison.com/projects/2016VirtualWorld/" target="_blank">Virtual World:</a></h2>
+                    <p><strong>Virtual World</strong> is a Java-based project originally developed as a console application and later extended into a browser-accessible user interface. The project demonstrates object-oriented design fundamentals, backend logic reuse, and the practical transition from a terminal-driven program to a lightweight web application.</p>
+                    <p>Designed as an interactive “virtual world,” the application allows users to create a personal profile (“Clone”), optionally define a companion dog, and interact with a message-driven system known as the ShoutBox. While intentionally playful in concept, the project’s real strength lies in its architecture and extensibility.</p>
+
+                    <h4>Project Origins and Purpose</h4>
+                    <p>The project began as part of an academic Java curriculum focused on object-oriented programming. Rather than remaining a one-off console assignment, the application was later expanded to demonstrate how existing backend logic can be repurposed for a web interface without rewriting core functionality.</p>
+                    <p>This evolution mirrors real-world development scenarios where legacy or internal tools are gradually modernized for browser access.</p>
+
+                    <h4>Core Application Design (Java)</h4>
+                    <p>The foundation of Virtual World is a cleanly structured Java application emphasizing clarity and separation of concerns:</p>
+                    <ul>
+                        <li>Model Classes represent user data, including the Clone and optional Dog profile.</li>
+                        <li>Behavioral Logic is centralized in the ShoutBox component, which generates both predefined and randomized messages.</li>
+                        <li>Input Flow guides users through profile creation and interaction without relying on external libraries.</li>
+                    </ul>
+                    <p>The design avoids unnecessary dependencies, making the project easy to compile, run, and extend using standard Java tooling.</p>
+
+                    <h4>Transition to a Web Interface</h4>
+                    <p>To modernize the user experience, the project introduces a minimal browser-based UI layered on top of the existing Java logic.</p>
+                    <p>This extension includes:</p>
+                    <ul>
+                        <li>A lightweight Java HTTP server responsible for serving static files and handling requests.</li>
+                        <li>A simple REST-style API that exposes application functionality to the frontend.</li>
+                        <li>A vanilla HTML, CSS, and JavaScript interface that mirrors the original console workflow.</li>
+                    </ul>
+                    <p>The web UI replaces terminal prompts with form-based interactions, allowing users to create profiles and trigger ShoutBox messages directly from the browser.</p>
+
+                    <h4>Frontend Design and User Flow</h4>
+                    <p>The interface is intentionally straightforward and readable, focusing on usability rather than visual excess.</p>
+                    <p>Key UI characteristics include:</p>
+                    <ul>
+                        <li>Clear navigation between sections such as About, Your Clone, and Your Dog</li>
+                        <li>Form-driven input replacing console prompts</li>
+                        <li>Instructional content that guides users through the application flow</li>
+                        <li>Consistent styling with a restrained color palette suited for a technical demo</li>
+                    </ul>
+                    <p>The frontend is framework-free, emphasizing fundamentals and making the logic easy for other developers to review.</p>
+
+                    <h4>Backend Endpoints and Integration</h4>
+                    <p>The embedded server exposes endpoints that support:</p>
+                    <ul>
+                        <li>Health checks</li>
+                        <li>Profile submission</li>
+                        <li>ShoutBox message generation (random and predefined)</li>
+                        <li>Custom message input</li>
+                    </ul>
+                    <p>This structure reflects common microservice patterns at a small scale and demonstrates how backend logic can be surfaced cleanly to a UI without introducing unnecessary complexity.</p>
+
+                    <h4>Technical Stack</h4>
+                    <ul>
+                        <li>Java (console application and HTTP server)</li>
+                        <li>HTML5</li>
+                        <li>CSS</li>
+                        <li>Vanilla JavaScript</li>
+                        <li>Localhost-based execution for development and testing</li>
+                    </ul>
+
+                    <h4>Why This Project Matters</h4>
+                    <p>Virtual World highlights several skills relevant to professional software development:</p>
+                    <ul>
+                        <li>Applying object-oriented principles in Java</li>
+                        <li>Designing reusable backend logic</li>
+                        <li>Extending existing applications without rewriting core systems</li>
+                        <li>Bridging backend code to a browser interface</li>
+                        <li>Implementing basic API patterns and client-server interaction</li>
+                    </ul>
+                    <p>While modest in scope, the project demonstrates thoughtful engineering decisions and an understanding of how applications evolve over time.</p>
+
+                    <h4>Conclusion</h4>
+                    <p>Virtual World is a practical example of transforming a console-only Java application into a browser-accessible tool while preserving clean architecture and code reuse. It reflects a mindset focused on maintainability, adaptability, and real-world development patterns—qualities valued by recruiters, employers, and fellow developers alike.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="From Console to Browser: The Journey of Virtual World">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2015JamisonWebDesign" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">

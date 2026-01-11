@@ -8,6 +8,7 @@ import threading
 import time
 import shutil
 import re
+import glob
 from typing import Optional
 from email.message import EmailMessage
 from urllib.parse import urlparse
@@ -28,6 +29,10 @@ PROJECTS_ROOT = os.path.abspath(
 _globebank_php_proc: Optional[subprocess.Popen] = None
 _globebank_lock = threading.Lock()
 _globebank_php_port: Optional[int] = None
+
+_virtualworld_java_proc: Optional[subprocess.Popen] = None
+_virtualworld_lock = threading.Lock()
+_virtualworld_java_port: Optional[int] = None
 
 
 def _find_php_executable() -> Optional[str]:
@@ -50,6 +55,13 @@ def _find_php_executable() -> Optional[str]:
     return None
 
 
+def _find_java_executable(name: str) -> Optional[str]:
+    exe = shutil.which(name)
+    if exe:
+        return exe
+    return None
+
+
 def _is_port_open(host: str, port: int) -> bool:
     try:
         with socket.create_connection((host, port), timeout=0.25):
@@ -67,6 +79,14 @@ def _php_server_has_mysqli(host: str, port: int) -> bool:
             return False
         body = resp.text
         return ('mysqli: Installed' in body) or ('mysqli: installed' in body)
+    except Exception:
+        return False
+
+
+def _virtualworld_server_healthy(host: str, port: int) -> bool:
+    try:
+        resp = requests.get(f'http://{host}:{port}/api/health', timeout=1.5)
+        return resp.status_code == 200
     except Exception:
         return False
 
@@ -157,6 +177,114 @@ def _stop_globebank_php_server() -> None:
     global _globebank_php_proc
     proc = _globebank_php_proc
     _globebank_php_proc = None
+    if proc is None:
+        return
+    try:
+        if proc.poll() is None:
+            proc.terminate()
+    except Exception:
+        pass
+
+
+def _ensure_virtualworld_java_server() -> tuple[str, int]:
+    """Ensure the 2016VirtualWorld Java server is running locally.
+
+    Returns (host, port) for the Java server.
+    """
+    host = (os.getenv('VIRTUALWORLD_JAVA_HOST')
+            or '127.0.0.1').strip() or '127.0.0.1'
+    preferred_port = int((os.getenv('VIRTUALWORLD_JAVA_PORT')
+                         or '8093').strip() or '8093')
+
+    global _virtualworld_java_port
+    if (
+        _virtualworld_java_port is not None
+        and _is_port_open(host, _virtualworld_java_port)
+        and _virtualworld_server_healthy(host, _virtualworld_java_port)
+    ):
+        return host, _virtualworld_java_port
+
+    # If something is already listening on the preferred port, reuse it if it
+    # looks like the VirtualWorld Java server.
+    if _is_port_open(host, preferred_port) and _virtualworld_server_healthy(host, preferred_port):
+        _virtualworld_java_port = preferred_port
+        return host, preferred_port
+
+    javac_exe = _find_java_executable('javac')
+    java_exe = _find_java_executable('java')
+    if not javac_exe or not java_exe:
+        raise RuntimeError(
+            "Java (JDK) not found on PATH. Install a JDK (javac+java) and restart VS Code terminals. "
+            "Then run the 2016VirtualWorld Java server (see projects/2016VirtualWorld/README.md)."
+        )
+
+    project_dir = _project_dir('2016VirtualWorld')
+    src_dir = os.path.join(project_dir, 'VirtualWorld')
+    if not os.path.isdir(src_dir):
+        raise RuntimeError(
+            '2016VirtualWorld/VirtualWorld source directory is missing.')
+
+    bin_dir = os.path.join(project_dir, 'bin')
+    os.makedirs(bin_dir, exist_ok=True)
+
+    src_files = sorted(glob.glob(os.path.join(src_dir, '*.java')))
+    if not src_files:
+        raise RuntimeError('No Java source files found for 2016VirtualWorld.')
+
+    with _virtualworld_lock:
+        global _virtualworld_java_proc
+
+        port = _pick_free_port(host, preferred_port)
+        _virtualworld_java_port = port
+
+        if _is_port_open(host, port) and _virtualworld_server_healthy(host, port):
+            return host, port
+
+        try:
+            subprocess.run(
+                [javac_exe, '-d', bin_dir, *src_files],
+                cwd=project_dir,
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+        except subprocess.CalledProcessError:
+            raise RuntimeError(
+                'Failed to compile 2016VirtualWorld Java sources. Run the compile command in projects/2016VirtualWorld/README.md to see errors.'
+            )
+
+        _virtualworld_java_proc = subprocess.Popen(
+            [
+                java_exe,
+                '-cp',
+                bin_dir,
+                'VirtualWorld.VirtualWorldWebServer',
+                '--host',
+                host,
+                '--port',
+                str(port),
+            ],
+            cwd=project_dir,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            creationflags=(
+                subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
+        )
+
+        deadline = time.time() + 4.0
+        while time.time() < deadline:
+            if _is_port_open(host, port) and _virtualworld_server_healthy(host, port):
+                return host, port
+            time.sleep(0.05)
+
+        raise RuntimeError('2016VirtualWorld Java server failed to start.')
+
+
+@atexit.register
+def _stop_virtualworld_java_server() -> None:
+    global _virtualworld_java_proc
+    proc = _virtualworld_java_proc
+    _virtualworld_java_proc = None
     if proc is None:
         return
     try:
@@ -657,6 +785,96 @@ def globebank_proxy(subpath: str):
         mount_path='/projects/2007GlobeBank',
         subpath=subpath,
     )
+
+
+def _virtualworld_java_base_url() -> str:
+    """Return the upstream base URL for the 2016VirtualWorld Java server.
+
+    Expected: 'http://127.0.0.1:8093' (no trailing slash)
+    """
+    url = (os.getenv('VIRTUALWORLD_JAVA_URL') or '').strip()
+    if url:
+        return url.rstrip('/')
+
+    if _truthy_env(os.getenv('VIRTUALWORLD_AUTO_START', '1')):
+        host, port = _ensure_virtualworld_java_server()
+        return f'http://{host}:{port}'
+
+    host = (os.getenv('VIRTUALWORLD_JAVA_HOST')
+            or '127.0.0.1').strip() or '127.0.0.1'
+    port = int((os.getenv('VIRTUALWORLD_JAVA_PORT')
+               or '8093').strip() or '8093')
+    return f'http://{host}:{port}'
+
+
+def _proxy_to_virtualworld_java_api(*, mount_path: str, subpath: str) -> Response:
+    """Reverse proxy a request to the 2016VirtualWorld Java API."""
+    subpath = (subpath or '').lstrip('/')
+    upstream_base = _virtualworld_java_base_url()
+    upstream_url = f'{upstream_base}/api/{subpath}'
+
+    upstream_headers: dict[str, str] = {}
+    for k, v in request.headers.items():
+        lk = k.lower()
+        if lk in _HOP_BY_HOP_HEADERS or lk in {'host', 'content-length'}:
+            continue
+        upstream_headers[k] = v
+
+    upstream_headers['X-Forwarded-Proto'] = request.scheme
+    upstream_headers['X-Forwarded-Host'] = request.host
+    upstream_headers['X-Forwarded-Prefix'] = mount_path
+
+    try:
+        resp = requests.request(
+            method=request.method,
+            url=upstream_url,
+            params=request.args,
+            data=request.get_data(),
+            headers=upstream_headers,
+            cookies=request.cookies,
+            allow_redirects=False,
+            timeout=10,
+        )
+    except requests.RequestException as e:
+        return Response(
+            (
+                "2016VirtualWorld Java API is not available. "
+                f"Upstream: {upstream_base}\\n"
+                f"Error: {type(e).__name__}: {e}\\n"
+            ),
+            status=502,
+            mimetype='text/plain',
+        )
+
+    out_headers: list[tuple[str, str]] = []
+    for k, v in resp.headers.items():
+        lk = k.lower()
+        if lk in _HOP_BY_HOP_HEADERS:
+            continue
+        if lk == 'content-length':
+            continue
+        out_headers.append((k, v))
+
+    return Response(resp.content, status=resp.status_code, headers=out_headers)
+
+
+@app.route(
+    '/projects/2016VirtualWorld/api/<path:subpath>',
+    methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+)
+def virtualworld_api_proxy(subpath: str):
+    """Dev helper: proxy /projects/2016VirtualWorld/api/* to the Java server.
+
+    In production, this path is typically reverse-proxied by Apache/Nginx.
+    """
+    if _is_production_env() and not _truthy_env(os.getenv('VIRTUALWORLD_PROXY_ENABLED')):
+        abort(404)
+
+    if request.method == 'OPTIONS':
+        # Keep preflight simple for local development.
+        return Response('', status=204)
+
+    return _proxy_to_virtualworld_java_api(mount_path='/projects/2016VirtualWorld', subpath=subpath)
 
 
 @app.get('/projects/<project_slug>/')
