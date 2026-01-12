@@ -1,3 +1,129 @@
+<div class="modal fade" id="blogModal2017RiversideMassageAndSpa" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0019-RiversideMassageAndSpa.png') }}" alt="Riverside Massage And Spa: A static Business Website" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">12 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2017RiversideMassageAndSpa') }}" target="_blank">Riverside Massage And Spa:</a><br>A Static Business Website</h2>
+                    <p>The Riverside Massage & Spa website is a thoughtfully constructed multi-page static site that demonstrates disciplined front-end fundamentals and a strong understanding of how real small-business websites should function. Built in 2017, the project emphasizes clarity, structure, and maintainability over trend-chasing—resulting in a calm, professional interface designed to serve both users and business needs effectively.</p>
+                    <p>This project is representative of a period in web development where craftsmanship mattered more than tooling. It highlights an approach grounded in semantic HTML, carefully authored CSS, and deliberate layout decisions, without reliance on JavaScript frameworks or build systems.</p>
+
+                    <h4>Project Purpose and Scope</h4>
+                    <p>The site functions as a full brochure-style web presence for a local spa business. It includes:</p>
+                    <ul>
+                        <li>A welcoming home page introducing the business</li>
+                        <li>Dedicated pages for services such as massage and facial treatments</li>
+                        <li>Staff profile pages to build trust and personalization</li>
+                        <li>A scheduling page for client engagement</li>
+                        <li>A contact page with a structured inquiry form</li>
+                    </ul>
+                    <p>Each page is intentional and focused, avoiding unnecessary complexity while providing all the information a prospective client would expect.</p>
+
+                    <h4>Information Architecture and Navigation</h4>
+                    <p>The website follows a consistent page structure across the entire project. A shared header and navigation system orients users immediately and reinforces brand identity. Navigation links are manually maintained across pages, reflecting an understanding of consistency and user expectation in a static environment.</p>
+                    <p>Content is divided into clear sections, making pages easy to scan and understand. The hierarchy guides users naturally from high-level information down to specific details without visual or cognitive overload.</p>
+
+                    <h4>HTML Structure and Semantics</h4>
+                    <p>The HTML is clean, readable, and well structured. Proper document setup, logical heading levels, and semantic elements are used throughout the site. Images include descriptive alternative text, and forms are built with labels and accessible input fields.</p>
+                    <p>The markup is written for longevity and comprehension. There is no generated code or abstraction layer obscuring intent, which makes the site easy to maintain or extend over time.</p>
+
+                    <h4>CSS Design and Layout Approach</h4>
+                    <p>All styling is handled through a centralized, hand-written stylesheet. The CSS demonstrates a clear grasp of layout fundamentals and the cascade:</p>
+                    <ul>
+                        <li>Reusable layout and navigation styles</li>
+                        <li>Consistent spacing and alignment rules</li>
+                        <li>Flexbox used for horizontal layout and content flow</li>
+                        <li>Typography choices that prioritize readability</li>
+                        <li>Visual hierarchy established through spacing and contrast</li>
+                    </ul>
+                    <p>The design avoids over-engineering. Rules are explicit, easy to follow, and designed to scale across the site without duplication or confusion.</p>
+
+                    <h4>Responsive and Adaptive Behavior</h4>
+                    <p>While not driven by an extensive media-query system, the layout is designed to adapt naturally to different screen sizes. Flexible containers and scalable images allow content to reflow without breaking, ensuring usability across desktop and smaller displays.</p>
+                    <p>This approach favors robustness and longevity over brittle, breakpoint-heavy layouts.</p>
+
+                    <h4>Forms and User Interaction</h4>
+                    <p>The contact and scheduling interfaces are straightforward and approachable. Inputs are clearly labeled and grouped logically, reducing friction for users. Call-to-action elements are visually distinct without being intrusive.</p>
+                    <p>By focusing on clarity and accessibility rather than scripted behavior, the site reinforces trust—an essential factor for service-based businesses.</p>
+
+                    <h4>Visual Design and Branding</h4>
+                    <p>The visual tone balances professionalism and warmth. Imagery is used deliberately to convey the spa’s atmosphere without overwhelming the layout. The color palette is restrained, and typography choices support a calm, welcoming aesthetic.</p>
+                    <p>Nothing in the design feels accidental or decorative for its own sake. Visual elements exist to support content and guide user attention.</p>
+
+                    <h4>Development Philosophy</h4>
+                    <p>This project reflects a clear development mindset:</p>
+                    <ul>
+                        <li>Use simple tools appropriately</li>
+                        <li>Prioritize readability and maintainability</li>
+                        <li>Respect browser defaults and standards</li>
+                        <li>Design for real users and real businesses</li>
+                    </ul>
+                    <p>It demonstrates that strong front-end work does not require heavy tooling—only a solid grasp of fundamentals and intentional design decisions.</p>
+
+                    <h4>Why This Project Matters to Employers</h4>
+                    <p>For employers, recruiters, and developers, this site demonstrates:</p>
+                    <ul>
+                        <li>Strong HTML and CSS fundamentals</li>
+                        <li>Experience building complete, multi-page static websites</li>
+                        <li>Attention to structure, accessibility, and usability</li>
+                        <li>Design discipline and restraint</li>
+                        <li>Code written for humans, not just machines</li>
+                    </ul>
+                    <p>It shows an understanding of how the web works at its core—and how to build something reliable without unnecessary complexity.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>Riverside Massage & Spa is a quiet, confident project. It doesn’t rely on trends or frameworks to make its case. Instead, it demonstrates thoughtful front-end execution, clear design intent, and a respect for both users and maintainers.</p>
+                    <p>In a portfolio filled with loud demos, this project stands out by doing exactly what it needs to do—and doing it well.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Riverside Massage and Spa: A static Business Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2017StopwatchApplication" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
