@@ -1,3 +1,214 @@
+<div class="modal fade" id="blogModal2017StopwatchApplication" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0018-StopwatchApplication.png') }}" alt="2017 Stopwatch Application: Front-End Timekeeping Tool" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">11 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2017StopwatchApplication') }}" target="_blank">2017 Stopwatch Application:</a><br>Front-End Timekeeping Tool</h2>
+                    <p>Some projects are loud. This one is precise.</p>
+                    <p>The <strong>2017 Stopwatch Application</strong> is a polished single-page Stopwatch + Countdown Timer built with plain <strong>HTML, CSS, and JavaScript</strong>—no frameworks, no build tooling, no dependencies doing the heavy lifting off-screen. It’s the kind of project that looks simple until you try to implement it cleanly… and then you discover timekeeping logic is where good intentions go to die.</p>
+                    <p>This code doesn’t die. It behaves.</p>
+
+                    <h4>What This Demonstrates to Employers, Recruiters, and Developers</h4>
+                    <p>If you’re scanning this as a hiring signal, this project shows:</p>
+                    <ul>
+                        <li>A product-minded UI approach (consistent layout, controls, and presentation)</li>
+                        <li>Comfort with browser fundamentals (DOM, events, timing loops)</li>
+                        <li>Clean separation between state, UI rendering, and time formatting</li>
+                        <li>Input validation that prevents broken states rather than “hoping the user behaves”</li>
+                        <li>Thoughtful visual design choices (dark theme, component styling, responsive layout)</li>
+                    </ul>
+
+                    <h4>UI and Layout Design</h4>
+                    <p>The application presents as <strong>“Time Tools”</strong> with two primary panels:</p>
+                    <ul>
+                        <li>Stopwatch (count up)</li>
+                        <li>Countdown (count down)</li>
+                    </ul>
+                    <p>The layout is built as a responsive grid: each tool lives in a card-style panel that spans half the width on larger screens and collapses to full-width on smaller screens (a breakpoint at 820px). This keeps the UI readable and “app-like” rather than looking like a loose demo page.</p>
+                    <p>The CSS leans into a modern, restrained dark theme using CSS custom properties (variables) for:</p>
+                    <ul>
+                        <li>background layers</li>
+                        <li>text/muted text tones</li>
+                        <li>borders and shadows</li>
+                        <li>accent gradients</li>
+                    </ul>
+                    <p>Each card is subtly themed with its own accent colors:</p>
+                    <ul>
+                        <li>Stopwatch uses a purple gradient accent</li>
+                        <li>Countdown uses a cyan/teal gradient accent</li>
+                    </ul>
+                    <p>This is a nice “product polish” touch: the tools feel related, but not identical.</p>
+
+                    <h4>Component Styling and Product Feel</h4>
+                    <p>The card components are designed like real UI surfaces:</p>
+                    <ul>
+                        <li>A top gradient strip (via ::before) acts as a visual identity line.</li>
+                        <li>A soft highlight overlay (via ::after) adds depth without clutter.</li>
+                        <li>Hover states slightly lift the card and adjust border colors, creating a tactile feel.</li>
+                    </ul>
+                    <p>Buttons are styled as reusable components (.btn variants), keeping interaction consistent across both tools. Controls are grouped logically and spaced so the UI doesn’t feel cramped, even when the viewport shrinks.</p>
+
+                    <h4>Stopwatch: Digital + Analog Time Representation</h4>
+                    <p>The stopwatch includes:</p>
+                    <ul>
+                        <li>A digital readout in mm:ss:hh (minutes, seconds, hundredths)</li>
+                        <li>An analog stopwatch face, using an image background (stopwatch.png) and SVG hands layered above it</li>
+                    </ul>
+                    <p>This analog piece isn’t just decoration—it reinforces the concept visually and demonstrates DOM-driven animation through CSS transforms.</p>
+
+                    <h5>Analog Hand Logic (SVG + Transform)</h5>
+                    <p>The analog hands are positioned and rotated via JavaScript using style.transform with rotation math:</p>
+                    <ul>
+                        <li>Seconds sweep: one full rotation per minute</li>
+                        <li>Centisecond hand: fast rotation derived from hundredths (mapped into millisecond phase)</li>
+                    </ul>
+                    <p>There’s also an optional “minute indication” path that rotates a third hand based on minutes, showing the code was built to support richer analog behavior without tangling it into the core stopwatch loop.</p>
+
+                    <h4>Timing Engine: Hundredths of a Second as the Base Unit</h4>
+                    <p>Both tools use a shared conceptual model:</p>
+                    <ul>
+                        <li>Time is tracked as an integer count of hundredths of a second.</li>
+                    </ul>
+                    <p>That makes formatting predictable and math straightforward:</p>
+                    <ul>
+                        <li>100 ticks per second</li>
+                        <li>6000 ticks per minute</li>
+                    </ul>
+                    <p>The stopwatch increments with a recursive setTimeout(..., 10) loop:</p>
+                    <ul>
+                        <li>watchTime++</li>
+                        <li>update digital output</li>
+                        <li>update analog hands</li>
+                        <li>schedule the next tick</li>
+                    </ul>
+                    <p>This structure is easy to reason about, keeps the logic readable, and avoids complex timing abstractions.</p>
+
+                    <h4>Countdown Timer: Strict Validation and Safe State</h4>
+                    <p>The countdown timer is built with a defensive approach: it validates user input up-front instead of trying to recover later.</p>
+
+                    <h5>Input Format</h5>
+                    <p>It requires the user to enter <strong>exactly</strong>:</p>
+                    <ul>
+                        <li>mm:ss:hh (leading zeros required)</li>
+                    </ul>
+
+                    <h5>Upper Bound</h5>
+                    <p>It enforces a maximum of:
+                    <ul>
+                        <li>10:00:00</li>
+                    </ul>
+                    <p>That limit is implemented directly in the validation regex, preventing “giant countdown” states that are likely to be user mistakes (or performance footguns).</p>
+                    <p>Once valid, the timer converts the formatted string into total hundredths:</p>
+                    <ul>
+                        <li>minutes * 6000 + seconds * 100 + hundredths</li>
+                    </ul>
+                    <p>Then it decrements in a setTimeout(..., 10) loop until it hits zero.</p>
+                    <p>When the countdown reaches 0, it:</p>
+                    <ul>
+                        <li>stops running</li>
+                        <li>surfaces a clear message (“Time is up!”)</li>
+                        <li>syncs the UI into a consistent stopped state</li>
+                    </ul>
+                    <p>No weird half-running limbo. No “negative time” bug parade.</p>
+
+                    <h4>UI State Synchronization: Predictable Controls</h4>
+                    <p>A standout detail: the UI labels aren’t hardcoded per click—they’re <strong>derived from state.</strong></p>
+                    <p>The syncUI() function updates button text based on whether the tool is running and whether there’s time already accumulated:</p>
+                    <p>Stopwatch:</p>
+                    <ul>
+                        <li>Start → Pause → Resume (depending on state and elapsed time)</li>
+                    </ul>
+                    <p>Countdown:</p>
+                    <ul>
+                        <li>Start → Pause → Resume (depending on state and remaining time)</li>
+                    </ul>
+                    <p>That’s the kind of behavior users expect from real apps, and it’s the kind of detail that’s easy to skip when you’re rushing a project out the door.</p>
+
+                    <h4>DOM Performance and Maintainability</h4>
+                    <p>The JavaScript uses a simple, effective pattern:</p>
+                    <ul>
+                        <li>A ui cache object stores DOM references on window.onload.</li>
+                    </ul>
+                    <p>This prevents repeated getElementById calls and makes the code easier to follow because DOM access is centralized. It also signals something recruiters love even if they don’t know why: “this person writes maintainable code.”</p>
+
+                    <h4>Practical Engineering Notes</h4>
+                    <p>The project intentionally stays framework-free, which makes it excellent as a fundamentals signal:</p>
+                    <ul>
+                        <li>No React/Vue/Angular doing state management for you</li>
+                        <li>No build step hiding asset behavior</li>
+                        <li>Direct control over browser timing and rendering</li>
+                    </ul>
+                    <p>You also see “real dev workflow” awareness in the repo’s approach to iteration (the project mentions cache-busting during development), which is exactly the sort of detail that shows someone has built and debugged front-end work outside of tutorial land.</p>
+
+                    <h4>Where This Project Can Grow (Without a Rewrite)</h4>
+                    <p>Because the code is structured around clear state + rendering functions, it’s easy to extend:</p>
+                    <ul>
+                        <li>Keyboard shortcuts (space to start/pause, R to reset)</li>
+                        <li>Countdown presets (00:30:00, 05:00:00, etc.)</li>
+                        <li>Accessibility pass (ARIA live regions for status changes, focus order improvements)</li>
+                        <li>Timing drift correction using performance.now() for more accurate long runs</li>
+                    </ul>
+                    <p>The foundation is solid enough that improvements are additive—not surgical.</p>
+
+                    <h4>Why It Belongs in a Portfolio</h4>
+                    <p>The 2017 Stopwatch Application is a strong portfolio piece because it proves the kind of competence that scales:</p>
+                    <ul>
+                        <li>UI that feels intentional</li>
+                        <li>Logic that behaves under edge cases</li>
+                        <li>Code that another developer can read without cursing your name</li>
+                    </ul>
+                    <p>Timekeeping apps are famously easy to get <strong>mostly</strong> right—and surprisingly hard to get clean. This one gets clean.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="2017 Stopwatch Application: Front-End Timekeeping Tool">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2017JavaScriptGuessingGame" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
