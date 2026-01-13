@@ -1,3 +1,100 @@
+<div class="modal fade" id="blogModal2018FranksClassicCars" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0021-FrankClassicCars.png') }}" alt="Frank’s Classic Cars: Built the Old-School Way" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">13 January 2026</span>
+                    <h2 class="title"> <a href="https://classiccars.fcjamison.com" target="_blank">Frank’s Classic Cars:</a><br>Built the Old-School Way</h2>
+                    <p><strong>Frank’s Classic Cars</strong> is built the old-school way—server-rendered PHP, a MySQL backend, shared includes, and session-based authentication working in quiet concert. The application favors clear control flow and explicit logic, showcasing the kind of foundational web development patterns that powered countless production systems and still matter when reliability, maintainability, and understanding the full request lifecycle are the goal.</p>
+                    <p>Originally developed in 2018, this project reflects a traditional LAMP-style architecture that emphasizes hands-on problem solving over abstraction. Rather than relying on modern frameworks to handle routing, authentication, or data access, the application implements these concerns directly, making its behavior transparent and easy to reason about for developers reviewing the code.</p>
+
+                    <h4>Application Overview</h4>
+                    <p>Frank’s Classic Cars is a PHP/MySQL web application with both public-facing and authenticated employee-only functionality. The public side provides entry points for account creation, login, product viewing, and RSS feed consumption, while the protected employee area offers administrative tools such as customer management, inventory reporting, credit-limit analytics, and session-based access control.</p>
+                    <p>The project is organized around reusable includes for layout, configuration, and shared logic, reinforcing consistency across the application and reducing duplication. Styling is handled with a centralized CSS file, and the interface reflects the straightforward, utilitarian design typical of internal business tools.</p>
+
+                    <h4>Core Technologies and Architecture</h4>
+                    <p>The backend is implemented entirely in PHP using the mysqli extension to interact with a MySQL database. Each page follows a clear request-response pattern: accept input, validate it, perform database operations, and render output. This explicit flow makes the application easy to trace and debug, a valuable trait in production maintenance environments.</p>
+                    <p>Session management is used to gate employee-only pages, ensuring that administrative tools are not accessible without authentication. Shared header and footer includes maintain a consistent structure across both public and private sections of the site.</p>
+                    <p>In addition to standard HTML output, the application demonstrates alternative server-side outputs, including RSS XML feeds and dynamically generated PNG charts, highlighting an understanding of content negotiation beyond the browser viewport.</p>
+
+                    <h4>Authentication and Account Management</h4>
+                    <p>Employee account creation and login are handled through dedicated forms that validate required fields and check database constraints such as unique usernames and employee numbers. Upon successful login, session variables are set and used to control access to restricted areas of the application.</p>
+                    <p>While the authentication flow is intentionally straightforward, it mirrors patterns commonly found in legacy and internal systems where clarity and predictability outweigh abstraction. The project also provides a clear foundation for discussing modern improvements such as stronger password hashing and prepared statements—an important skill when maintaining or upgrading existing systems.</p>
+
+                    <h4>Customer Management and Validation Logic</h4>
+                    <p>The employee-facing customer creation tool demonstrates more advanced input handling. Field-level validation is implemented using reusable helper functions and regular expressions, ensuring that required fields meet expected formats before database insertion.</p>
+                    <p>Dropdown lists are dynamically populated from database queries, reinforcing data integrity and reducing the risk of invalid selections. Optional fields are handled carefully to avoid blocking valid submissions, reflecting real-world form complexity rather than simplified demo logic.</p>
+                    <p>This section of the application highlights practical experience with form-heavy workflows, a common reality in administrative and enterprise software.</p>
+
+                    <h4>Inventory Reporting and Pagination</h4>
+                    <p>Inventory data is presented through a paginated reporting interface that allows employees to browse products by product line. Pagination logic is implemented manually, reinforcing an understanding of result limits, offsets, and page state management.</p>
+                    <p>Rather than relying on third-party libraries, the project constructs pagination links and product listings through custom helper functions. This approach demonstrates familiarity with backend-driven data presentation and reinforces foundational SQL querying patterns.</p>
+
+                    <h4>Server-Side Chart Generation</h4>
+                    <p>One of the more distinctive features of the application is its use of PHP’s GD library to generate bar charts dynamically. Credit limit data is retrieved from the database, grouped into ranges, and rendered as a PNG image that visually summarizes customer distribution.</p>
+                    <p>This feature moves beyond basic CRUD functionality and illustrates how server-side logic can be used to produce visual assets on demand. It also reflects real-world reporting needs commonly found in internal dashboards and management tools.</p>
+
+                    <h4>RSS Feed Generation</h4>
+                    <p>The application includes an RSS feed generator that outputs product data in RSS 2.0 format, optionally styled with an XSL stylesheet for browser readability. Product feeds are filtered by product line and ordered by recency, providing an alternate consumption channel for the same underlying data.</p>
+                    <p>This feature demonstrates an understanding of structured data formats and the importance of making content available beyond standard web pages, a skill that remains relevant in integrations, syndication, and API-adjacent workflows.</p>
+
+                    <h4>Design Philosophy and Maintainability</h4>
+                    <p>Visually, the application embraces a fixed-width, desktop-oriented layout consistent with its era and purpose. While not responsive by modern standards, the interface prioritizes clarity, consistency, and ease of navigation—traits that remain valuable in internal-facing tools.</p>
+                    <p>From a code perspective, the project emphasizes readability and explicit logic. Configuration values are centralized, shared functionality is abstracted into includes, and the overall structure makes it easy for another developer to step in and understand how the application works.</p>
+
+                    <h4>Professional Takeaway</h4>
+                    <p>Frank’s Classic Cars is a grounded example of traditional PHP/MySQL web development done with intention. It demonstrates hands-on experience with authentication, session management, form validation, reporting, pagination, RSS generation, and server-side image rendering—all without leaning on heavy frameworks.</p>
+                    <p>More importantly, it shows an understanding of how real systems are built, maintained, and incrementally improved. For employers and developers alike, this project illustrates not just the ability to write code, but the ability to reason about systems—<strong>built the old-school way, with fundamentals that still matter.</strong></p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Riverside Massage and Spa: A static Business Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2017RPGStatRoller" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">

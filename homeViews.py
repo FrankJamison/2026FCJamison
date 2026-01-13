@@ -30,6 +30,10 @@ _globebank_php_proc: Optional[subprocess.Popen] = None
 _globebank_lock = threading.Lock()
 _globebank_php_port: Optional[int] = None
 
+_franksclassiccars_php_proc: Optional[subprocess.Popen] = None
+_franksclassiccars_lock = threading.Lock()
+_franksclassiccars_php_port: Optional[int] = None
+
 _virtualworld_java_proc: Optional[subprocess.Popen] = None
 _virtualworld_lock = threading.Lock()
 _virtualworld_java_port: Optional[int] = None
@@ -172,11 +176,97 @@ def _ensure_globebank_php_server() -> tuple[str, int]:
         raise RuntimeError('PHP server failed to start for GlobeBank.')
 
 
+def _ensure_franksclassiccars_php_server() -> tuple[str, int]:
+    """Ensure a PHP built-in server is running for 2018FranksClassicCars.
+
+    Returns (host, port) for the PHP server.
+    """
+    host = (os.getenv('PHP_FRANKSCLASSICCARS_HOST')
+            or '127.0.0.1').strip() or '127.0.0.1'
+    preferred_port = int((os.getenv('PHP_FRANKSCLASSICCARS_PORT')
+                         or '8018').strip() or '8018')
+
+    global _franksclassiccars_php_port
+    if _franksclassiccars_php_port is not None and _is_port_open(host, _franksclassiccars_php_port):
+        return host, _franksclassiccars_php_port
+
+    # If something is already listening on the preferred port, reuse it if it
+    # looks like a PHP server with mysqli enabled.
+    if _is_port_open(host, preferred_port) and _php_server_has_mysqli(host, preferred_port):
+        _franksclassiccars_php_port = preferred_port
+        return host, preferred_port
+
+    php_exe = _find_php_executable()
+    if not php_exe:
+        raise RuntimeError(
+            "PHP is not installed or not on PATH. "
+            "Install PHP (recommended: winget install -e --id PHP.PHP.8.4) and restart VS Code terminals."
+        )
+
+    project_dir = _project_dir('2018FranksClassicCars')
+    index_path = os.path.join(project_dir, 'index.php')
+    if not os.path.isfile(index_path):
+        raise RuntimeError("2018FranksClassicCars index.php is missing.")
+
+    php_dir = os.path.dirname(php_exe)
+    php_ext_dir = os.path.join(php_dir, 'ext')
+
+    with _franksclassiccars_lock:
+        global _franksclassiccars_php_proc
+
+        port = _pick_free_port(host, preferred_port)
+        _franksclassiccars_php_port = port
+
+        if _is_port_open(host, port):
+            return host, port
+
+        if _franksclassiccars_php_proc is not None and _franksclassiccars_php_proc.poll() is None:
+            # Process exists but port isn't reachable yet; give it a moment.
+            pass
+        else:
+            php_args = [php_exe]
+            if os.path.isdir(php_ext_dir):
+                php_args += ['-d',
+                             f'extension_dir={php_ext_dir}', '-d', 'extension=mysqli']
+            php_args += ['-S', f'{host}:{port}', '-t', project_dir]
+            _franksclassiccars_php_proc = subprocess.Popen(
+                php_args,
+                cwd=project_dir,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                creationflags=(
+                    subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
+            )
+
+        deadline = time.time() + 3.0
+        while time.time() < deadline:
+            if _is_port_open(host, port):
+                return host, port
+            time.sleep(0.05)
+
+        raise RuntimeError(
+            'PHP server failed to start for 2018FranksClassicCars.')
+
+
 @atexit.register
 def _stop_globebank_php_server() -> None:
     global _globebank_php_proc
     proc = _globebank_php_proc
     _globebank_php_proc = None
+    if proc is None:
+        return
+    try:
+        if proc.poll() is None:
+            proc.terminate()
+    except Exception:
+        pass
+
+
+@atexit.register
+def _stop_franksclassiccars_php_server() -> None:
+    global _franksclassiccars_php_proc
+    proc = _franksclassiccars_php_proc
+    _franksclassiccars_php_proc = None
     if proc is None:
         return
     try:
@@ -465,6 +555,13 @@ def _is_production_env() -> bool:
     env_name = (os.getenv('FLASK_ENV') or os.getenv(
         'ENV') or '').strip().lower()
     return env_name == 'production'
+
+
+def _should_proxy_franksclassiccars() -> bool:
+    """Whether /projects/2018FranksClassicCars/* should execute via PHP."""
+    if _is_production_env():
+        return _truthy_env(os.getenv('FRANKSCLASSICCARS_PROXY_ENABLED'))
+    return _truthy_env(os.getenv('FRANKSCLASSICCARS_PROXY_ENABLED', '1'))
 
 
 def _peek_tls_leaf_issuer(host: str, port: int) -> Optional[str]:
@@ -893,6 +990,35 @@ def project_index(project_slug: str):
     for candidate in ('public/index.php', 'index.php'):
         candidate_path = os.path.join(project_dir, *candidate.split('/'))
         if os.path.isfile(candidate_path):
+            # Never serve raw PHP source in production.
+            if _is_production_env():
+                if project_slug == '2007GlobeBank':
+                    return redirect((os.getenv('GLOBEBANK_URL') or 'https://globebank.fcjamison.com/').strip())
+
+                if project_slug == '2018FranksClassicCars':
+                    url = (os.getenv('FRANKSCLASSICCARS_URL') or '').strip()
+                    if url:
+                        return redirect(url)
+                abort(404)
+
+            # 2018FranksClassicCars is a PHP app; in dev, proxy to a local PHP server
+            # so pages execute instead of showing raw PHP source.
+            if project_slug == '2018FranksClassicCars' and _should_proxy_franksclassiccars():
+                try:
+                    php_host, php_port = _ensure_franksclassiccars_php_server()
+                except Exception as e:
+                    return Response(
+                        f"2018FranksClassicCars PHP server not available: {type(e).__name__}: {e}\n",
+                        status=500,
+                        mimetype='text/plain',
+                    )
+                return _proxy_to_php_app(
+                    php_host=php_host,
+                    php_port=php_port,
+                    mount_path='/projects/2018FranksClassicCars',
+                    subpath='',
+                )
+
             # Optional: redirect to a real PHP server (so PHP executes).
             if project_slug == '2007GlobeBank' and _truthy_env(os.getenv('PHP_GLOBEBANK_ENABLED')):
                 php_url = (os.getenv('PHP_GLOBEBANK_URL') or '').strip()
@@ -909,6 +1035,26 @@ def project_index(project_slug: str):
 def project_file(project_slug: str, filename: str):
     project_dir = _project_dir(project_slug)
     mount_path = f'/projects/{project_slug}'
+
+    # Never serve raw PHP source in production.
+    if _is_production_env() and (filename or '').lower().endswith('.php'):
+        abort(404)
+
+    if project_slug == '2018FranksClassicCars' and _should_proxy_franksclassiccars():
+        try:
+            php_host, php_port = _ensure_franksclassiccars_php_server()
+        except Exception as e:
+            return Response(
+                f"2018FranksClassicCars PHP server not available: {type(e).__name__}: {e}\n",
+                status=500,
+                mimetype='text/plain',
+            )
+        return _proxy_to_php_app(
+            php_host=php_host,
+            php_port=php_port,
+            mount_path='/projects/2018FranksClassicCars',
+            subpath=filename,
+        )
 
     resp = send_from_directory(project_dir, filename)
 

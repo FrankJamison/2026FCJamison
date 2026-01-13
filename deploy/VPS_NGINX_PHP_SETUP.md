@@ -3,6 +3,7 @@
 Goal:
 - `https://fcjamison.com` → Flask app (Waitress on localhost)
 - `https://globebank.fcjamison.com` → GlobeBank PHP app (PHP-FPM)
+- `https://classiccars.fcjamison.com` → Frank's Classic Cars PHP app (PHP-FPM)
 - MySQL/MariaDB runs on the same VPS
 
 This avoids the dev-only Flask→PHP proxy and runs GlobeBank as a real PHP app in production.
@@ -13,6 +14,7 @@ Create an `A` record:
 - `fcjamison.com` → your VPS IP
 - `www.fcjamison.com` → your VPS IP
 - `globebank.fcjamison.com` → your VPS IP
+- `classiccars.fcjamison.com` → your VPS IP
 
 ## 1) Install packages (Ubuntu/Debian)
 
@@ -33,12 +35,14 @@ Suggested layout:
   - `/var/www/fcjamison` (this repo root)
 - GlobeBank:
   - `/var/www/globebank` (copy `projects/2007GlobeBank/*` here)
+- Frank's Classic Cars:
+  - `/var/www/classiccars` (copy `projects/2018FranksClassicCars/*` here)
 
 Example:
 
 ```bash
-sudo mkdir -p /var/www/fcjamison /var/www/globebank
-sudo chown -R $USER:$USER /var/www/fcjamison /var/www/globebank
+sudo mkdir -p /var/www/fcjamison /var/www/globebank /var/www/classiccars
+sudo chown -R $USER:$USER /var/www/fcjamison /var/www/globebank /var/www/classiccars
 ```
 
 ## 3) Flask: venv + deps
@@ -67,6 +71,7 @@ FLASK_DEBUG=0
 
 # Where the portfolio button should point in production
 GLOBEBANK_URL=https://globebank.fcjamison.com/
+FRANKSCLASSICCARS_URL=https://classiccars.fcjamison.com/
 
 # SMTP settings...
 SMTP_HOST=mail.fcjamison.com
@@ -129,12 +134,14 @@ mysql -u frankjamison_globe_bank_user -p frankjamison_globe_bank < /var/www/glob
 Copy:
 - `deploy/nginx/fcjamison.com.conf` → `/etc/nginx/sites-available/fcjamison.com`
 - `deploy/nginx/globebank.fcjamison.com.conf` → `/etc/nginx/sites-available/globebank.fcjamison.com`
+- `deploy/nginx/classiccars.fcjamison.com.conf` → `/etc/nginx/sites-available/classiccars.fcjamison.com`
 
 Enable:
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/fcjamison.com /etc/nginx/sites-enabled/fcjamison.com
 sudo ln -s /etc/nginx/sites-available/globebank.fcjamison.com /etc/nginx/sites-enabled/globebank.fcjamison.com
+sudo ln -s /etc/nginx/sites-available/classiccars.fcjamison.com /etc/nginx/sites-enabled/classiccars.fcjamison.com
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -143,13 +150,14 @@ sudo systemctl reload nginx
 
 ```bash
 sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d fcjamison.com -d www.fcjamison.com -d globebank.fcjamison.com
+sudo certbot --nginx -d fcjamison.com -d www.fcjamison.com -d globebank.fcjamison.com -d classiccars.fcjamison.com
 ```
 
 ## 10) Smoke tests
 
 - `https://fcjamison.com/`
 - `https://globebank.fcjamison.com/`
+- `https://classiccars.fcjamison.com/`
 - If GlobeBank errors, check PHP-FPM logs and Nginx error logs.
 
 ## Notes
