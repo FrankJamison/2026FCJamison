@@ -1,3 +1,152 @@
+<div class="modal fade" id="blogModal2017RPGStatRoller" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0020-RPGStatRoller.png') }}" alt="2017 RPG Stat Roller: Thoughtful Front-End Craft" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">12 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2017RPGStatRoller') }}" target="_blank">2017 RPG Stat Roller:</a><br>Thoughtful Front-End Craft</h2>
+                    <p>Some projects shout. This one hums—steady, deliberate, and built to last. The 2017 RPG Stat Roller is a static, dependency-free web application designed to generate tabletop RPG ability scores with precision, clarity, and respect for the user. It’s small by footprint, big by intent, and shaped like something you could actually ship.</p>
+                    <p>This post walks through the design and development decisions with employers, recruiters, and fellow developers in mind—because even a modest tool can reveal how someone thinks.</p>
+
+                    <h4>Product Intent &amp; Scope</h4>
+                    <p>At its core, this project solves a familiar problem: rolling ability scores quickly, consistently, and transparently for different RPG rule sets. But the real goal is broader—demonstrating production-ready front-end thinking without leaning on frameworks, build tools, or third-party libraries.</p>
+                    <p>No dependencies. No build step. No tracking. No noise.</p>
+                    <p>Just HTML, CSS, and JavaScript doing their jobs.</p>
+
+                    <h4>Information Architecture &amp; Page Design</h4>
+                    <p>The application is split into multiple HTML pages, each representing a distinct stat-rolling rule set. This keeps logic isolated, avoids configuration sprawl, and makes each page independently understandable.</p>
+                    <p>Shared UI patterns—controls, results display, history, and layout—are visually and behaviorally consistent across pages. The result feels cohesive without being monolithic.</p>
+                    <p>Design priorities include:</p>
+                    <ul>
+                        <li>Immediate clarity: users see where to roll, what was rolled, and what it means.</li>
+                        <li>Low cognitive load: no modals, no hidden state, no surprise interactions.</li>
+                        <li>Visual restraint: neutral colors, readable typography, and dice imagery used sparingly for flavor rather than distraction.</li>
+                    </ul>
+
+                    <h4>JavaScript Architecture &amp; Logic</h4>
+                    <p>The JavaScript is intentionally plain, readable, and modular in spirit—even without a formal module system.</p>
+                    <p>Key characteristics:</p>
+                    <ul>
+                        <li>Rule logic is explicit and deterministic per page, making behavior easy to audit.</li>
+                        <li>Shared interaction patterns (roll, copy, clear, history handling) are centralized and reused.</li>
+                        <li>State is managed locally and transparently, avoiding unnecessary abstraction.</li>
+                    </ul>
+                    <p>This approach favors:</p>
+                    <ul>
+                        <li>Debuggability over cleverness.</li>
+                        <li>Maintainability over novelty.</li>
+                        <li>Predictable execution over magic.</li>
+                    </ul>
+                    <p>If you’ve ever inherited a “simple” project that wasn’t, you’ll appreciate this restraint.</p>
+
+                    <h4>State Management &amp; Persistence</h4>
+                    <p>Roll history is stored using localStorage, scoped entirely to the user’s browser.</p>
+                    <p>Why this matters:</p>
+                    <ul>
+                        <li>No backend required.</li>
+                        <li>No data leaves the device.</li>
+                        <li>Sessions persist naturally without accounts or cookies.</li>
+                    </ul>
+                    <p>History is easy to clear, impossible to accidentally leak, and fast by default. It’s privacy-first UX without making a speech about it.</p>
+
+                    <h4>Accessibility-Minded UX</h4>
+                    <p>Accessibility is treated as a baseline, not a feature request.</p>
+                    <p>The UI leans on:</p>
+                    <ul>
+                        <li>Semantic HTML structure.</li>
+                        <li>Keyboard-operable controls.</li>
+                        <li>Visible focus states.</li>
+                        <li>Sufficient contrast and readable sizing.</li>
+                    </ul>
+                    <p>While formal audits (Lighthouse, axe, screen readers) are listed as future improvements, the foundational choices are already there. This is the difference between “we’ll add accessibility later” and “we didn’t break it in the first place.”</p>
+
+                    <h4>CSS &amp; Visual Consistency</h4>
+                    <p>Styling is handled through a single, shared stylesheet that prioritizes:</p>
+                    <ul>
+                        <li>Predictable spacing and alignment.</li>
+                        <li>Clear hierarchy between controls, results, and history.</li>
+                        <li>Minimal overrides and low selector complexity.</li>
+                    </ul>
+                    <p>There’s no framework here—just deliberate CSS that won’t fight you six months later.</p>
+
+                    <h4>Performance &amp; Reliability</h4>
+                    <p>With zero dependencies and no network requests, performance is effectively instant. Pages load fast, interactions respond immediately, and failure modes are limited and understandable.</p>
+                    <p>This is front-end reliability through subtraction.</p>
+
+                    <h4>What This Project Signals to Employers</h4>
+                    <p>This project quietly demonstrates:</p>
+                    <ul>
+                        <li>Comfort with vanilla web fundamentals.</li>
+                        <li>An understanding of user experience beyond visuals.</li>
+                        <li>Respect for accessibility and privacy.</li>
+                        <li>Architectural thinking applied at a small scale.</li>
+                        <li>The ability to ship something clean without overengineering it.</li>
+                    </ul>
+                    <p>It’s not trying to be impressive. It’s trying to be correct. That’s rarer than it should be.</p>
+
+                    <h4>Future-Facing Improvements</h4>
+                    <p>If this were headed toward a broader release, the next steps are already clear:</p>
+                    <ul>
+                        <li>Formal accessibility audits and documentation.</li>
+                        <li>Deterministic testing via a seeded RNG.</li>
+                        <li>Lightweight linting and CI validation.</li>
+                        <li>Exportable roll history for power users.</li>
+                    </ul>
+                    <p>The foundation supports growth without demanding it.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>The 2017 RPG Stat Roller is a quiet project with sharp edges sanded down and strong decisions baked in. It’s a reminder that good front-end work isn’t about how many tools you used—it’s about how intentionally you didn’t.</p>
+                    <p>Built like a well-balanced character sheet: nothing wasted, nothing missing, and ready for the long campaign.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Riverside Massage and Spa: A static Business Website">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2017RiversideMassageAndSpa" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
