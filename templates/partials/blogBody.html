@@ -1,3 +1,99 @@
+<div class="modal fade" id="blogModal2018FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0022-FrankJamison.png') }}" alt="FrankJamison.com: Built, Not Assembled" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">13 January 2026</span>
+                    <h2 class="title"> <a href="https://frankjamison2018.fcjamison.com" target="_blank">FrankJamison.com:</a><br>Built, Not Assembled</h2>
+                    <p><strong>FrankJamison.com</strong> is a personal portfolio site built, not assembled. Rather than relying on a site builder, CMS, or pre-packaged template, this 2018 project was constructed directly from HTML, CSS, Bootstrap, and light PHP integration, reflecting a hands-on approach to layout, responsiveness, and long-term maintainability. The site serves as both a professional showcase and a practical demonstration of foundational front-end development skills applied with intention.</p>
+                    <p>Designed to present a growing body of academic, professional, and personal projects, the site emphasizes clarity, structure, and consistency—qualities that matter to recruiters scanning quickly and developers digging deeper.</p>
+
+                    <h4>Purpose and Scope</h4>
+                    <p>The primary goal of FrankJamison.com is to function as a centralized portfolio hub. It brings together multiple projects under a single, cohesive presentation, allowing visitors to understand both the breadth of work and the progression of skills over time.</p>
+                    <p>Rather than highlighting a single application or experiment, the site itself is the project. Navigation, layout, asset organization, and responsiveness all contribute to the overall experience, mirroring the responsibilities involved in maintaining a real-world web presence.</p>
+
+                    <h4>Technology Stack and Approach</h4>
+                    <p>The site is built using a familiar but effective stack:</p>
+                    <ul>
+                        <li>HTML5 provides semantic structure and readable markup.</li>
+                        <li>Bootstrap supplies a responsive grid system and baseline UI components.</li>
+                        <li>Custom CSS layers visual identity and overrides framework defaults to avoid a generic appearance.</li>
+                        <li>PHP is used sparingly to support shared components and reduce repetition across pages.</li>
+                        <li>Font Awesome icons enhance navigation clarity and visual hierarchy.</li>
+                        <li>Ekko Lightbox enables clean, focused presentation of portfolio images without disrupting page flow.</li>
+                    </ul>
+                    <p>This combination allows the site to remain lightweight while still offering flexibility and scalability as new content is added.</p>
+
+                    <h4>Design Philosophy and Layout</h4>
+                    <p>Visually, the site favors a clean, professional aesthetic aligned with contemporary portfolio expectations of its era. Bootstrap’s grid system ensures consistent spacing and alignment, while custom styles refine typography, color usage, and section separation.</p>
+                    <p>The layout is intentionally straightforward. Content is easy to scan, project thumbnails are clearly grouped, and navigation remains predictable. This design restraint reflects an understanding that portfolios are often reviewed quickly and should prioritize clarity over visual novelty.</p>
+
+                    <h4>Responsive Design and Usability</h4>
+                    <p>Responsiveness is handled through Bootstrap’s grid and utility classes, allowing the layout to adapt smoothly across screen sizes. Content reflows naturally for smaller viewports without requiring separate mobile templates or complex conditional logic.</p>
+                    <p>This approach ensures that the site remains usable across laptops, tablets, and mobile devices—an essential consideration for recruiters and hiring managers reviewing portfolios in varied contexts.</p>
+
+                    <h4>PHP Integration and Maintainability</h4>
+                    <p>PHP is used with restraint and purpose. Shared elements such as headers, navigation, or footers can be centralized, reducing duplication and simplifying updates. This keeps the codebase manageable while avoiding unnecessary complexity.</p>
+                    <p>The result is a site that feels cohesive and maintainable, reflecting patterns commonly used in small-to-medium business websites and internal tools.</p>
+
+                    <h4>Asset Organization and Code Structure</h4>
+                    <p>The repository demonstrates disciplined organization. Vendor assets and custom styles are clearly separated, making it easy to identify original work versus third-party dependencies. Images are consistently named and grouped, reinforcing good asset hygiene.</p>
+                    <p>This level of structure matters in collaborative environments, where clear organization reduces onboarding time and helps prevent errors during updates or refactors.</p>
+
+                    <h4>Professional Takeaway</h4>
+                    <p>FrankJamison.com is a portfolio built with intention and restraint. It demonstrates comfort with responsive layouts, framework-based styling, custom CSS refinement, and light server-side integration, all assembled into a cohesive and professional whole.</p>
+                    <p>For recruiters and employers, the site signals readiness to work within established front-end ecosystems while still exercising independent design judgment. For developers, it reflects a solid grasp of foundational web practices and an appreciation for maintainability, clarity, and structure.</p>
+                    <p>More than a collection of links, this project represents a deliberate step toward professional web development—built, not assembled, and designed to grow alongside the work it showcases.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: Built, Not Assembled">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2018FranksClassicCars" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
