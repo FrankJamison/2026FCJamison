@@ -5,3 +5,6 @@ __pycache__/
 
 # Standalone portfolio projects live here and are versioned separately.
 projects/
+ 
+# Ignore nested repo: 2018Questkeeper 
+projects/2018Questkeeper/
