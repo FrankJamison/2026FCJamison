@@ -1,3 +1,134 @@
+<div class="modal fade" id="blogModal2019VeteranJobInfo" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0025-VeteranJobInfo.png') }}" alt="VeteranJobInfo.us: Built to Help, Not to Flex" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">14 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2019VeteranJobInfo') }}" target="_blank">VeteranJobInfo.us: </a><br>Built to Help, Not to Flex</h2>
+                    <p>Some web projects are built to impress other developers.<br>This one is built to <em>work</em>.</p>
+                    <p><strong>VeteranJobInfo.us</strong> is a purpose-driven front-end project created to serve U.S. military veterans and their families with clear, actionable employment resources. Its strength isn’t novelty—it’s restraint. Every design and development choice prioritizes usability, clarity, and long-term maintainability over trends or theatrics.</p>
+                    <p>That discipline shows everywhere.</p>
+
+                    <h4>Design with Empathy, Not Ego</h4>
+                    <p>The core design philosophy is simple: <strong>reduce friction.</strong></p>
+                    <p>The site’s layout favors readability and scanning over visual noise. Typography is straightforward, contrast is strong, and spacing is generous enough to prevent fatigue without wasting screen real estate. Headings do real work, guiding users through dense informational content without forcing them to hunt.</p>
+                    <p>This matters because the audience matters. Job seekers—especially veterans navigating government systems—don’t need clever layouts. They need trust, speed, and certainty. The design respects that reality.</p>
+
+                    <h4>Intentional Information Architecture</h4>
+                    <p>Content organization is where this project quietly shines.</p>
+                    <p>Instead of dumping links into long lists, the site structures information around how users actually approach the job search process:</p>
+                    <ul>
+                        <li>Job search guidance and FAQs</li>
+                        <li>Veteran-friendly employer resources</li>
+                        <li>VA office and benefits information</li>
+                        <li>Specialized support for disabled veterans</li>
+                        <li>Clear next steps, not vague encouragement</li>
+                    </ul>
+                    <p>Each page has a defined responsibility. There’s no content overlap, no buried priorities, and no ambiguity about where to go next. That clarity reflects real-world UX thinking—not guesswork.</p>
+
+                    <h4>Static Architecture as a Strategic Choice</h4>
+                    <p>VeteranJobInfo.us is a static site by design, not by limitation.</p>
+                    <p>Built with plain HTML, CSS, and JavaScript, the project avoids unnecessary backend complexity. This approach delivers:</p>
+                    <ul>
+                        <li>Fast load times</li>
+                        <li>Minimal hosting requirements</li>
+                        <li>No database maintenance</li>
+                        <li>Reduced security surface area</li>
+                        <li>Long-term durability</li>
+                    </ul>
+                    <p>For an informational resource intended to remain accessible over time, this is the right architecture. It’s a reminder that good engineering is about choosing <em>appropriate</em> solutions—not maximal ones.</p>
+
+                    <h4>Maintainable Front-End Structure</h4>
+                    <p>From a developer’s perspective, the codebase is refreshingly legible.</p>
+                    <p>The file structure is logical, predictable, and easy to navigate. Shared layout elements—headers, navigation, footers—are handled consistently across pages, reducing duplication and simplifying updates. This reflects an early but solid application of DRY principles in a static environment.</p>
+                    <p>There’s no hidden abstraction layer, no clever tricks that only the author understands. A new developer could step into this project years later and be productive quickly—and that’s not accidental.</p>
+
+                    <h4>JavaScript Used with Purpose</h4>
+                    <p>JavaScript enhancements are intentionally limited to where they add value:</p>
+                    <ul>
+                        <li>Navigation behavior</li>
+                        <li>UI affordances</li>
+                        <li>Responsive interactions</li>
+                        <li>Minor usability improvements</li>
+                    </ul>
+                    <p>jQuery is used sparingly and appropriately—supporting the interface without dominating it. The result is a site that feels responsive and modern without becoming fragile or overengineered.</p>
+                    <p>This restraint is a feature, not a compromise.</p>
+
+                    <h4>Accessibility and Real-World Usability</h4>
+                    <p>Accessibility isn’t treated as an afterthought.</p>
+                    <p>The site’s structure supports logical reading order, clear headings, and predictable navigation. Interactions are simple, forgiving, and device-agnostic. Nothing requires precision clicking or deep technical knowledge to use.</p>
+                    <p>That focus signals a developer who understands that “usable” means more than “looks fine on my machine.”</p>
+
+                    <h4>Built for Longevity</h4>
+                    <p>One of the most valuable qualities of this project is how well it ages.</p>
+                    <p>There’s nothing here that will suddenly break because a dependency updated or a service shut down. The site is resilient by design. At the same time, the architecture leaves room for future evolution—componentization, modernization, or static-site generation—without requiring a rewrite.</p>
+                    <p>It’s stable now, adaptable later.</p>
+
+                    <h4>What This Project Communicates to Employers</h4>
+                    <p>VeteranJobInfo.us quietly demonstrates:</p>
+                    <ul>
+                        <li>Strong front-end fundamentals</li>
+                        <li>User-first design thinking</li>
+                        <li>Disciplined technical decision-making</li>
+                        <li>Maintainable, readable code</li>
+                        <li>Comfort working without heavy frameworks</li>
+                        <li>Respect for real users and real constraints</li>
+                    </ul>
+                    <p>This is the kind of project that tells hiring teams, <em>“I can build things people rely on.”</em></p>
+
+                    <h4>Final Takeaway</h4>
+                    <p><strong>VeteranJobInfo.us</strong> is a reminder that the best web projects don’t demand attention—they earn trust. It’s practical, thoughtful, and deliberately unflashy, proving that solid front-end engineering isn’t about showing off.</p>
+                    <p>It’s about showing up.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="VeteranJobInfo.us: Built to Help, Not to Flex">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2019AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
