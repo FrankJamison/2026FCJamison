@@ -1,3 +1,147 @@
+<div class="modal fade" id="blogModal2018Questkeeper" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0023-Questkeeper.png') }}" alt="QuestKeeper: A Classic D&D Character Tracker" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">14 January 2026</span>
+                    <h2 class="title"> <a href="https://questkeeper.fcjamison.com" target="_blank">QuestKeeper: </a><br>A Classic D&D Character Tracker</h2>
+                    <p>Some projects chase trends. QuestKeeper sharpened its sword, packed its rations, and walked the road the long way—by design.</p>
+                    <p>Built in 2018 as a full-stack PHP and MySQL web application, QuestKeeper is a Dungeons & Dragons 5e character tracker that embraces traditional web fundamentals. No modern frameworks. No scaffolding magic. Just sessions, SQL, structured includes, and deliberate logic layered one piece at a time. It’s a utility app first, a portfolio statement second—and that order matters.</p>
+                    <p>For employers, developers, and recruiters, QuestKeeper demonstrates something increasingly rare: someone who understands <em>how the web actually works.</em></p>
+
+                    <h4>What QuestKeeper Does</h4>
+                    <p>QuestKeeper allows users to register, authenticate, and manage D&D 5e characters inside a protected member area. Each character sheet stores ability scores, skills, saving throws, proficiencies, and level-based statistics, all persisted in a relational database and dynamically rendered in the browser.</p>
+                    <p>This is not a static demo or mockup. It is a functional, stateful application with real users, real data, and real rules.</p>
+
+                    <h4>Application Structure &amp; Architecture</h4>
+                    <p>The project follows a clean, conventional PHP structure that prioritizes clarity and maintainability:</p>
+                    <ul>
+                        <li>Shared logic and configuration live in a dedicated includes/ directory</li>
+                        <li>Environment-specific database credentials are abstracted and excluded from version control</li>
+                        <li>Constants and helper functions are centralized</li>
+                        <li>Public pages and protected routes are clearly separated</li>
+                    </ul>
+                    <p>The layout reflects a disciplined approach to server-side development—one that scales mentally before it scales technically.</p>
+
+                    <h4>Authentication &amp; Session Control</h4>
+                    <p>QuestKeeper implements a complete authentication flow:</p>
+                    <ul>
+                        <li>User registration and login</li>
+                        <li>Session initialization and teardown</li>
+                        <li>Access control for protected pages</li>
+                        <li>Server-side validation and error handling</li>
+                    </ul>
+                    <p>Passwords are hashed using MD5, which is openly documented in the README as a legacy choice reflective of the project’s era. Importantly, the documentation also explains how modern hashing (password_hash) would replace it today. That transparency signals awareness, not oversight.</p>
+
+                    <h4>Database Design &amp; Data Flow</h4>
+                    <p>At its core, QuestKeeper is a thoughtfully constructed CRUD application:</p>
+                    <ul>
+                        <li>Character data is stored relationally</li>
+                        <li>SQL queries are structured, readable, and purpose-built</li>
+                        <li>Reusable database functions handle persistence</li>
+                        <li>Character creation, retrieval, updates, and deletion are fully implemented</li>
+                    </ul>
+                    <p>The schema supports the layered complexity of a D&D character sheet without becoming brittle or overengineered—a balance that takes experience to strike.</p>
+
+                    <h4>Rules-Driven Character Logic</h4>
+                    <p>D&D character sheets are rule engines in disguise, and QuestKeeper treats them accordingly.</p>
+                    <ul>
+                        <li>Ability modifiers are calculated dynamically from base stats</li>
+                        <li>Skill bonuses combine modifiers and proficiency bonuses</li>
+                        <li>Saving throws reflect class proficiencies</li>
+                        <li>Proficiency bonuses scale automatically with character level</li>
+                    </ul>
+                    <p>These calculations are handled in dedicated PHP includes, keeping business logic isolated, readable, and testable. The code reflects a real understanding of the D&D 5e ruleset—not just the math, but the intent behind it.</p>
+
+                    <h4>Dynamic Updates with AJAX</h4>
+                    <p>QuestKeeper enhances usability without abandoning server-rendered principles:</p>
+                    <ul>
+                        <li>Character data loads dynamically</li>
+                        <li>Updates occur without full page reloads</li>
+                        <li>JSON responses keep client-side logic lightweight</li>
+                    </ul>
+                    <p>This hybrid approach delivers responsiveness while preserving clarity—proof that interactivity doesn’t require a JavaScript framework to be effective.</p>
+
+                    <h4>Interface &amp; Front-End Choices</h4>
+                    <p>The UI favors function over flash:</p>
+                    <ul>
+                        <li>Form-driven layouts modeled after traditional character sheets</li>
+                        <li>Straightforward CSS focused on readability</li>
+                        <li>Bootstrap used pragmatically to accelerate layout consistency</li>
+                    </ul>
+                    <p>The result is an interface that feels like a tool, not a toy—exactly what a character manager should be.</p>
+
+                    <h4>Operational &amp; Portfolio Maturity</h4>
+                    <p>Several quiet details elevate the project:</p>
+                    <ul>
+                        <li>Example configuration files instead of hard-coded secrets</li>
+                        <li>Dedicated PHP error logging for debugging</li>
+                        <li>Clear README documentation explaining scope and limitations</li>
+                        <li>Conscious framing as a portfolio artifact rather than a production claim</li>
+                    </ul>
+                    <p>These choices demonstrate professional restraint and an understanding of real-world development constraints.</p>
+
+                    <h4>Why QuestKeeper Still Matters</h4>
+                    <p>QuestKeeper doesn’t rely on buzzwords to impress. It demonstrates foundational competence where it counts:</p>
+                    <ul>
+                        <li>HTTP request lifecycles</li>
+                        <li>Session management</li>
+                        <li>Relational data modeling</li>
+                        <li>Business logic separation</li>
+                        <li>Incremental enhancement</li>
+                    </ul>
+                    <p>For recruiters and employers, this project shows someone who can build systems—not just assemble interfaces.<br>For developers, it’s a reminder that strong fundamentals age better than trends.</p>
+                    <p>QuestKeeper is classic for a reason.<br>Every stat is earned. Every rule is respected.<br>And nothing here rolled with advantage it didn’t deserve.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="QuestKeeper: A Classic D&D Character Tracker">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2018FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
