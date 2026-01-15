@@ -1,3 +1,99 @@
+<div class="modal fade" id="blogModal2019AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0024-AncientWhiteArmyVet.png') }}" alt="AncientWhiteArmyVet’s RPG Tools: Less Grind, More Game" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">14 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2019AncientWhiteArmyVet') }}" target="_blank">AncientWhiteArmyVet’s RPG Tools: </a><br>Less Grind, More Game</h2>
+                    <p>Some tools try to reinvent D&D. This one just clears the table and lets you roll.</p>
+                    <p><strong>AncientWhiteArmyVet’s RPG Tools</strong> is a focused, single-page web application from 2019 designed to streamline Dungeons & Dragons 5E character creation without stripping away the joy of randomness or flavor. It targets the grind—rolling stats, applying race modifiers, generating physical traits—and automates only what slows players down.</p>
+                    <p>The result feels like a well-prepared DM screen: helpful, unobtrusive, and never in the spotlight.</p>
+
+                    <h4>A problem scoped with discipline</h4>
+                    <p>Character creation is fun until repetition takes over. This project identifies those pressure points and solves them with restraint. It doesn’t attempt full character management or campaign tracking. It does one thing well: get players from “blank sheet” to “ready to play” faster.</p>
+                    <p>From a product standpoint, that clarity matters. From a development standpoint, it keeps the codebase lean and understandable.</p>
+
+                    <h4>Architecture built for clarity, not spectacle</h4>
+                    <p>This is a static single-page application, intentionally free of backend complexity.</p>
+                    <p>index.html<br>Provides the structural layout, with dynamic sections updated via JavaScript rather than page navigation. The experience stays fast and predictable.</p>
+
+                    <h4>JavaScript is organized by responsibility:</h4>
+                    <ul>
+                        <li>abilityGenerator.js manages dice logic and ability score generation</li>
+                        <li>races.js contains race data as structured objects</li>
+                        <li>physicalCharacteristics.js handles descriptive traits and flavor</li>
+                        <li>app2.js coordinates UI updates and user interaction</li>
+                    </ul>
+                    <p>Each file has a clear purpose. Logic is readable. Data is separated from behavior. Nothing is hidden behind unnecessary abstraction.</p>
+
+                    <h4>Dice logic that plays fair</h4>
+                    <p>The stat generation system mirrors familiar tabletop rules using straightforward math and controlled randomness. The logic is transparent, deterministic in structure, and easy to follow—important qualities for game-adjacent tools where trust matters.</p>
+                    <p>Race modifiers and traits are data-driven rather than hard-coded into logic paths. That choice keeps the system flexible and easier to extend without rewriting core functionality.</p>
+                    <p>It’s small-scale modeling done thoughtfully.</p>
+
+                    <h4>UI &amp; styling: fantasy without friction</h4>
+                    <p>Bootstrap provides the responsive grid, but the interface’s personality comes from custom CSS layered on top. Parchment tones, textured backgrounds, and subtle ornamental elements create a fantasy atmosphere without sacrificing readability.</p>
+                    <p>Multiple stylesheet iterations—including an SCSS source—show the design evolving over time rather than appearing fully formed. The UI favors clarity first, mood second, and gimmicks never.</p>
+
+                    <h4>Dependencies, tradeoffs, and technical honesty</h4>
+                    <p>jQuery and Bootstrap’s JavaScript components handle interactivity. The project documentation openly notes a known issue: multiple jQuery versions being loaded.</p>
+                    <p>Rather than hiding this, the README frames it as future cleanup—along with plans for dependency consolidation, improved accessibility, and refactoring some conditional-heavy logic into more data-driven patterns.</p>
+                    <p>That self-awareness is part of the project’s strength.</p>
+
+                    <h4>Why this project belongs in a portfolio</h4>
+                    <p>AncientWhiteArmyVet’s RPG Tools succeeds because it knows what it is—and what it isn’t.</p>
+                    <p>It demonstrates solid front-end fundamentals, clear separation of concerns, and the ability to ship a complete, usable tool without unnecessary complexity. It shows a developer who can scope realistically, build cleanly, and reflect critically on their own work.</p>
+                    <p>Less grind. More game. Rolled with advantage.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="AncientWhiteArmyVet’s RPG Tools: Less Grind, More Game">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2018Questkeeper" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
