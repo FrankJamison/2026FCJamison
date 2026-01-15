@@ -1,3 +1,107 @@
+<div class="modal fade" id="blogModal2019FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0026-FrankJamison.png') }}" alt="FrankJamison.com: A Practical Web Portfolio" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">14 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2019FrankJamison') }}" target="_blank">FrankJamison.com: </a><br>A Practical Web Portfolio</h2>
+                    <p>Some portfolios try to dazzle. This one tries to work—and that’s exactly why it holds up.</p>
+                    <p><strong>FrankJamison.com</strong> is a deliberately practical, single-page portfolio site built with employers, recruiters, and developers in mind. It’s designed for the way people actually review candidates: quickly at first, then more deeply if something feels solid. This site earns that second look.</p>
+                    <p>At a glance, it’s a clean résumé-style presentation. Under the surface, it’s a carefully structured front-end project that values clarity, maintainability, and real-world usability over trends or theatrics.</p>
+
+                    <h4>A One-Page Layout Built for Humans</h4>
+                    <p>The site uses a one-page layout with collapsible accordion sections, allowing visitors to scan key information—skills, experience, education, and projects—without cognitive friction. Recruiters can skim in seconds. Hiring managers can expand sections selectively. Developers can explore structure without fighting the interface.</p>
+                    <p>Responsive design is handled thoughtfully with CSS rather than brute force. The layout scales smoothly across desktop, tablet, and mobile, and a dedicated print stylesheet ensures the page converts cleanly to PDF or paper—an underrated but highly practical detail in hiring workflows.</p>
+                    <p>The visual design stays restrained: readable typography, balanced spacing, and a professional color palette that supports the content instead of competing with it.</p>
+
+                    <h4>Front-End Stack: Simple, Intentional, Maintainable</h4>
+                    <p>This project is built with plain HTML, CSS, and JavaScript, and that choice is very much the point.</p>
+                    <p>The CSS is modular and readable, separating concerns like layout, typography, responsiveness, and print styling. Assets such as icons and fonts are locally managed, reducing external dependencies and improving reliability.</p>
+                    <p>JavaScript is used surgically:</p>
+                    <ul>
+                        <li>Smooth scrolling improves navigation.</li>
+                        <li>Animated progress indicators communicate skill levels without clutter.</li>
+                        <li>Portfolio filtering and modal previews enhance usability.</li>
+                        <li>Small UI touches add polish without becoming distractions.</li>
+                    </ul>
+                    <p>There’s no framework overhead here—just fundamentals applied well. For developers reviewing the code, it’s easy to follow, easy to modify, and easy to extend.</p>
+
+                    <h4>Portfolio Projects as Standalone Proofs</h4>
+                    <p>Rather than embedding projects as screenshots or vague descriptions, each portfolio item lives in its own subdirectory, functioning as a self-contained mini-project. This structure allows reviewers to explore real code and real interfaces, not just marketing blurbs.</p>
+                    <p>The projects span front-end tools, interactive JavaScript utilities, and PHP-backed applications. Some are practical, some are playful, but all demonstrate problem-solving, UI awareness, and a comfort level with building things that actually run.</p>
+                    <p>It’s a portfolio designed as a system—not a gallery.</p>
+
+                    <h4>Light Backend Integration, Real-World Awareness</h4>
+                    <p>While primarily front-end focused, the site includes PHP for functional elements like the contact form, demonstrating awareness of server-side basics without overengineering the solution.</p>
+                    <p>Embedded services such as Google Maps reinforce that this portfolio isn’t theoretical. It interacts with external APIs, handles real deployment considerations, and reflects how small professional sites are actually built and hosted.</p>
+
+                    <h4>The Details That Signal Experience</h4>
+                    <ul>
+                        <li>There’s a custom 404 page.</li>
+                        <li>Assets are cleanly organized.</li>
+                        <li>Interactive elements degrade gracefully.</li>
+                        <li>The README explains both usage and intent.</li>
+                    </ul>
+                    <p>None of these scream for attention—but together, they signal maturity. This is work produced by someone who understands how sites are maintained, reviewed, and used beyond the first impression.</p>
+
+                    <h4>Why This Portfolio Still Resonates</h4>
+                    <p>FrankJamison.com doesn’t chase trends. It demonstrates judgment.</p>
+                    <ul>
+                        <li>For employers, it shows practical thinking and restraint.</li>
+                        <li>For recruiters, it’s fast, legible, and immediately understandable.</li>
+                        <li>For developers, it’s clean, navigable, and refreshingly sane.</li>
+                    </ul>
+                    <p>This is a web portfolio that knows its job—and does it quietly, confidently, and well.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Practical Web Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2019VeteranJobInfo" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
