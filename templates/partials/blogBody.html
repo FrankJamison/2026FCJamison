@@ -1,3 +1,111 @@
+<div class="modal fade" id="blogModal2020AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0027-AncientWhiteArmyVet.png') }}" alt="AncientWhiteArmyVet’s RPG Tools: Static, Sharp, Useful" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">15 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2020AncientWhiteArmyVet') }}" target="_blank">AncientWhiteArmyVet’s RPG Tools: </a><br>Static, Sharp, Useful</h2>
+                    <p><strong>AncientWhiteArmyVet’s RPG Tools</strong> is a static, browser-based collection of D&D 5e utilities built with plain HTML, CSS, JavaScript, and a light touch of jQuery. No frameworks, no build process, no dependencies that will rot in six months. You open it, it loads instantly, and it does exactly what it promises—every time.</p>
+                    <p>That restraint isn’t accidental. It’s the quiet confidence of someone who knows the difference between <em>shipping a tool</em> and <em>showing off a toolchain.</em></p>
+
+                    <h4>A Small Product with Clear Intent</h4>
+                    <p>The site is organized around three focused utilities, each solving a real tabletop problem and each living on its own page with scoped scripts and styles.</p>
+                    <p>The <strong>Physical Stats Generator</strong> handles age, height, and weight based on race-specific D&D-style dice ranges and modifiers. This isn’t flavor text—it’s mechanical plausibility. The kind of detail that matters when one player at the table actually reads the sourcebooks and remembers them.</p>
+                    <p>The <strong>Ability Score Generator</strong> implements the classic 4d6 drop-lowest method, producing six scores and presenting them both as assigned attributes and as a sorted list from highest to lowest. It’s fast, legible, and refreshingly honest. No animations. No ceremony. Just dice math and results.</p>
+                    <p>The <strong>Pre-Generated Character Browser</strong> is the most ambitious piece. It allows filtering by class and level, displays character cards with portraits, and dynamically generates PDF download links using a predictable naming convention. It feels like a tiny offline app—one that could run on a store laptop, a tablet, or a borrowed machine five minutes before a session starts.</p>
+                    <p>Together, these pages form a cohesive toolset rather than a pile of demos. Each page does one job well, and the site never forgets why it exists.</p>
+
+                    <h4>Visual Design: Theme Without Theater</h4>
+                    <p>Visually, the project commits to a fantasy aesthetic without drifting into novelty. The typography leans on <em>Cinzel</em> and <em>Cinzel Decorative</em>, evoking rulebooks and parchment without sacrificing readability. Background textures, dividers, and subtle shadows reinforce the theme while keeping the content front and center.</p>
+                    <p>The layout is consistent across pages: header, divider, main content, footer. That repetition matters. Users never have to reorient themselves, and the site reads as a single product instead of a collection of unrelated pages.</p>
+                    <p>Navigation is handled with a CSS-driven hamburger menu using a checkbox toggler pattern. The expanding circular overlay, smooth transitions, and animated icon are all achieved without JavaScript. It’s a small detail, but it signals a solid understanding of modern CSS capabilities and UI mechanics.</p>
+                    <p>Nothing here screams for attention. Everything works quietly.</p>
+
+                    <h4>CSS Structure: Organized, Maintainable, Human</h4>
+                    <p>The stylesheet organization is one of the strongest signals in the repository.</p>
+                    <p>Global resets and shared rules live in common files, while headers, menus, footers, and page-specific layouts are split into focused stylesheets. Character card styling is isolated entirely from the rest of the site. This makes the project easy to read, easy to extend, and easy for another developer to step into without fear.</p>
+                    <p>It’s still a static site. But it’s a well-structured static site—one that respects future maintenance.</p>
+
+                    <h4>JavaScript: Purposeful and Feature-Scoped</h4>
+                    <p>Each tool has its own JavaScript file, and each script does exactly what it needs to do—no more, no less.</p>
+                    <p>The ability score generator implements clean, readable dice logic and renders results directly into the DOM. The physical stats generator uses race data objects and dice modifiers to produce believable outputs. While some mappings are handled explicitly rather than through abstracted lookups, the code favors clarity over cleverness—and that’s a reasonable tradeoff in a small, correctness-focused tool.</p>
+                    <p>The pre-generated character browser shows the most architectural thought. Data access is separated from rendering logic, characters are instantiated through structured objects, and DOM nodes are created programmatically rather than injected as raw HTML strings. Asset paths and PDF links are generated dynamically based on naming conventions, making content updates straightforward and low-risk.</p>
+                    <p>It’s not pretending to be a full application—but it’s built like one could grow naturally from it.</p>
+
+                    <h4>UX Details That Reveal Real Use</h4>
+                    <p>This project feels used.</p>
+                    <p>Results appear where users expect them. Actions are clearly labeled. The ability generator scrolls users directly to their rolls after execution. Layout consistency reduces friction. The pregen page reflects actual store and table use cases rather than hypothetical ones.</p>
+                    <p>These aren’t flashy features. They’re signs of empathy for the user.</p>
+
+                    <h4>What This Project Communicates to Recruiters and Developers</h4>
+                    <p>This repository demonstrates that the author can:</p>
+                    <ul>
+                        <li>Build interactive tools without relying on frameworks</li>
+                        <li>Structure front-end code with clear separation of concerns</li>
+                        <li>Design a cohesive UI with consistent branding and layout</li>
+                        <li>Think in terms of products, not just pages</li>
+                        <li>Ship usable software with minimal operational overhead</li>
+                    </ul>
+                    <p>It’s a reminder that competence doesn’t have to be loud.</p>
+
+                    <h4>Where It Could Go Next</h4>
+                    <p>If this project were ever extended, the strongest improvements would be incremental rather than transformational: data-driven mappings instead of conditional chains, minor cleanup of debug logging, tighter filtering logic, and accessibility refinements around keyboard navigation and ARIA labeling.</p>
+                    <p>None of these are fixes for broken code. They’re polish on something already solid.</p>
+
+                    <h4>Final Take</h4>
+                    <p><strong>AncientWhiteArmyVet’s RPG Tool</strong> is exactly what it claims to be. A set of practical tabletop utilities built with discipline, clarity, and respect for both the user and the code.</p>
+                    <p>No build step.<br>No bloat.<br>No excuses.</p>
+                    <p>Just tools that work—when you need them most.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Practical Web Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2019FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
