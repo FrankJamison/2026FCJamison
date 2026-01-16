@@ -1,3 +1,151 @@
+<div class="modal fade" id="blogModal2020PigGame" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0028-PigGame.png') }}" alt="The Pig Game: Core JavaScript in Action" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">15 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2020PigGame') }}" target="_blank">The Pig Game: </a><br>Core JavaScript in Action</h2>
+                    <p><strong>The Pig Game</strong> is a 2020 browser-based implementation of the classic dice game, built entirely with vanilla HTML, CSS, and JavaScript. No frameworks, no libraries, no abstractions standing between the code and the browser. That restraint is the point. This project is designed to demonstrate a clear understanding of JavaScript fundamentals, DOM interaction, and state-driven logic—skills that quietly power every modern web application, whether a framework is involved or not.</p>
+                    <p>For employers, recruiters, and fellow developers, this project answers a deceptively important question: <em>Can this developer build something complete, interactive, and reliable using just the core tools of the web?</em></p>
+
+                    <h4>Project Intent and Scope</h4>
+                    <p>The scope of The Pig Game is intentionally focused. It implements a complete game loop—player turns, random dice rolls, score accumulation, win conditions, and reset logic—inside a clean, readable codebase.</p>
+                    <p>Rather than chasing visual effects or advanced tooling, the project prioritizes:</p>
+                    <ul>
+                        <li>Predictable game state</li>
+                        <li>Explicit logic flow</li>
+                        <li>Clear user feedback</li>
+                        <li>Maintainable, readable code</li>
+                    </ul>
+                    <p>This is a fundamentals-first exercise that values correctness and clarity over spectacle.</p>
+
+                    <h4>JavaScript Architecture and Game Logic</h4>
+                    <p>The core logic lives in app.js, where the entire game state is managed explicitly rather than implicitly.</p>
+                    <p>Key elements include:</p>
+                    <ul>
+                        <li>Separate tracking of current turn score and global score</li>
+                        <li>An activePlayer index used to control turn flow</li>
+                        <li>A playing flag that prevents user interaction after a win</li>
+                        <li>Centralized initialization logic to ensure consistent resets</li>
+                        <li>Deterministic player switching that resets state cleanly</li>
+                    </ul>
+                    <p>Dice rolls are generated using Math.random() and immediately translated into UI updates and state transitions. When a roll results in a one, the current score resets and control passes cleanly to the next player. When a player holds, their accumulated score is persisted and evaluated against the win condition.</p>
+                    <p>There’s no hidden magic here—every rule is encoded directly, making the game logic easy to read, debug, and extend.</p>
+
+                    <h4>State Management Without a Framework</h4>
+                    <p>One of the most valuable aspects of this project is what it <em>doesn’t</em> use.</p>
+                    <p>There is no framework-level state management. Instead, the project relies on:</p>
+                    <ul>
+                        <li>Plain JavaScript variables</li>
+                        <li>Clear initialization patterns</li>
+                        <li>Controlled mutation of state</li>
+                        <li>Explicit UI updates tied directly to state changes</li>
+                    </ul>
+                    <p>This approach demonstrates a solid mental model of how interactive applications work at the browser level. For teams that care about long-term maintainability, this is a strong indicator that the developer understands what frameworks abstract—and why those abstractions exist.</p>
+
+                    <h4>DOM Manipulation and Event Handling</h4>
+                    <p>All user interaction is driven through direct DOM event listeners:</p>
+                    <ul>
+                        <li>Rolling the dice</li>
+                        <li>Holding the current score</li>
+                        <li>Resetting the game</li>
+                    </ul>
+                    <p>UI updates are handled through targeted DOM queries and class toggling. Active players are visually highlighted, winners are clearly indicated, and invalid actions are prevented once the game concludes.</p>
+                    <p>The result is a responsive interface that stays in sync with the underlying game state without unnecessary indirection.</p>
+
+                    <h4>HTML Structure and Semantic Design</h4>
+                    <p>The HTML markup is clean, readable, and intentionally structured to support the game logic.</p>
+                    <ul>
+                        <li>Player panels are clearly separated</li>
+                        <li>IDs and class names map directly to JavaScript logic</li>
+                        <li>Markup remains minimal and purposeful</li>
+                    </ul>
+                    <p>This semantic clarity makes the project easy to reason about and reduces friction when modifying or extending the application.</p>
+
+                    <h4>CSS Styling and Visual Feedback</h4>
+                    <p>Styling is handled with a focus on usability and clarity rather than ornamentation.</p>
+                    <ul>
+                        <li>Active players are visually distinct</li>
+                        <li>Current and total scores are clearly separated</li>
+                        <li>Dice imagery provides immediate feedback on each roll</li>
+                        <li>Layout keeps the user’s attention on decision points</li>
+                    </ul>
+                    <p>The CSS supports the experience without overwhelming it—a practical choice that aligns well with real-world product development.</p>
+
+                    <h4>Assets and Presentation Choices</h4>
+                    <p>The project uses a small, focused set of assets:</p>
+                    <ul>
+                        <li>Dice images corresponding to roll values</li>
+                        <li>A background image that establishes tone without distraction</li>
+                    </ul>
+                    <p>Everything included serves a functional purpose. Nothing feels decorative for decoration’s sake.</p>
+
+                    <h4>Why This Project Matters in a Portfolio</h4>
+                    <p>The Pig Game succeeds because it’s honest.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>Strong command of JavaScript fundamentals</li>
+                        <li>Clear reasoning about state and control flow</li>
+                        <li>Comfort with direct DOM manipulation</li>
+                        <li>Discipline in scope and implementation</li>
+                        <li>The ability to complete a fully functional interactive project</li>
+                    </ul>
+                    <p>In an ecosystem saturated with framework-only demos, this project stands out by showing the foundation those frameworks depend on.</p>
+
+                    <h4>Final Takeaway</h4>
+                    <p><strong>The Pig Game</strong> is a compact, well-executed demonstration of front-end fundamentals. It doesn’t rely on trends, shortcuts, or scaffolding. Instead, it shows a developer who understands the browser, respects clarity, and can translate rules into reliable, readable code.</p>
+                    <p>It’s not trying to impress loudly</p>
+                    <p>It’s trying to be correct—and that’s what makes it impressive.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Practical Web Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
