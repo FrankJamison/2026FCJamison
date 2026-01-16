@@ -1,3 +1,121 @@
+<div class="modal fade" id="blogModal2020BudgetApplication" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0029-BudgetApplication.png') }}" alt="Budget Application: Core Front-End Logic" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">16 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2020BudgetApplication') }}" target="_blank">Budget Application: </a><br>Core Front-End Logic</h2>
+                    <p><strong>The Budget Application</strong> is a deliberately small, intentionally unglamorous web app built with plain HTML, CSS, and vanilla JavaScript. No libraries. No state managers. No build step. Just a browser, a text editor, and the quiet confidence that fundamentals still matter.</p>
+                    <p>At a glance, it’s a budgeting interface: add income, add expenses, delete line items, and watch the totals update instantly. Under the hood, it’s a compact case study in separation of concerns, predictable state, and DOM orchestration—the kind of architectural clarity that doesn’t shout, but definitely speaks up in code review.</p>
+                    <p>This project exists for one reason: to demonstrate how front-end logic works when there’s nothing else to hide behind.</p>
+
+                    <h4>The Problem Space: Small App, Real Constraints</h4>
+                    <p>Budgeting apps are deceptively simple. Add numbers. Subtract numbers. Show totals. But even at this scale, poor structure shows up fast. Logic leaks into the UI. The DOM becomes the data store. State turns fuzzy. Bugs multiply quietly.</p>
+                    <p>The goal here was to build something modest but <em>correct</em>:</p>
+                    <ul>
+                        <li>Income and expense items can be added and removed</li>
+                        <li>Totals update deterministically</li>
+                        <li>Percentages behave sensibly, even when income is zero</li>
+                        <li>The UI never guesses—it only displays what the model tells it</li>
+                    </ul>
+                    <p>No persistence. No accounts. No syncing. Just the clean mechanics of user input flowing through logic and landing back in the interface.</p>
+
+                    <h4>Architectural Spine: Three Modules, One Job Each</h4>
+                    <p>All application logic lives in a single JavaScript file, but it’s intentionally divided into three self-contained modules using the module pattern (IIFEs). This isn’t accidental—it’s the entire point of the exercise.</p>
+
+                    <h5>Budget Controller (The Model)</h5>
+                    <p>This module owns the truth.</p>
+                    <p>It maintains a single in-memory data structure containing all income items, expense items, totals, the current budget, and the overall expense percentage. Items are created via simple constructor functions and assigned deterministic IDs. Calculations happen in exactly one place.</p>
+                    <p>Nothing in the UI performs math. Nothing outside this module mutates totals. If the numbers are wrong, there’s only one place to look.</p>
+                    <p>That constraint alone eliminates a surprising number of bugs.</p>
+
+                    <h5>UI Controller (The View)</h5>
+                    <p>This module speaks DOM—fluently, and only.</p>
+                    <p>All selectors are centralized. Input is read, parsed, and validated here. HTML is generated as strings and inserted explicitly. Budget totals, percentages, and labels are rendered via focused update methods.</p>
+                    <p>The UI never asks <em>how</em> numbers are calculated. It simply requests the current budget snapshot and paints it. Think of it as a translator: it converts application state into something humans can see.</p>
+
+                    <h5>Global Controller (The Orchestrator)</h5>
+                    <p>This is the traffic cop.</p>
+                    <p>It wires events, coordinates the flow between model and view, and defines the two core user journeys: adding items and deleting items. Each flow follows the same rhythm—read input, update data, update UI—making behavior predictable and easy to reason about.</p>
+                    <p>Initialization happens cleanly on DOM load, including setting the current month from the system clock. No race conditions. No timing guesswork.</p>
+
+                    <h4>Event Delegation: One Listener to Rule Them All</h4>
+                    <p>Instead of attaching delete handlers to every item (a scalability and maintenance trap), this app uses event delegation. A single listener is attached to a container element, and clicks bubble up. The target item is identified via its DOM ID, which maps cleanly back to the data model.</p>
+                    <p>This pattern keeps the DOM lean and the logic centralized. It also mirrors how real-world applications handle dynamic content—even when frameworks aren’t involved.</p>
+                    <p>Yes, the delete handler uses parent traversal, and yes, that’s a little brittle. That tradeoff is intentional. It highlights exactly where improvements would go if this were being extended, rather than pretending the problem doesn’t exist.</p>
+
+                    <h4>UX Choices: Quiet, Functional, Honest</h4>
+                    <p>Visually, the interface stays out of its own way.</p>
+                    <p>Income and expenses live side-by-side, color-coded for immediate clarity. The summary panel at the top establishes hierarchy without theatrics. A background image adds depth without stealing focus, and typography is clean and readable.</p>
+                    <p>The experience is fast because there’s nothing slowing it down. No animations waiting on promises. No spinners lying about work being done. When you add or delete an item, the numbers change. Immediately. As they should.</p>
+                    <p>Edge cases are handled gracefully. If income is zero, percentages don’t lie or explode—they simply opt out. That decision alone prevents misleading data and reinforces trust in the interface.</p>
+
+                    <h4>What This Project Is (and Isn’t)</h4>
+                    <p>This is not a production-ready finance app. It doesn’t persist data. It doesn’t format currency. It doesn’t store user preferences. Those omissions are features, not bugs.</p>
+                    <p>This project is about <strong>logic discipline.</strong></p>
+                    <p>It shows how to structure front-end code so that behavior is predictable, responsibilities are clear, and future changes don’t require spelunking through tangled event handlers and half-remembered DOM hacks.</p>
+                    <p>It’s the kind of codebase you can read after a long day and still understand. The kind you can refactor without fear. The kind that teaches newer developers <em>why</em> frameworks exist—by first showing what they replace.</p>
+
+                    <h4>Why This Still Matters in 2026</h4>
+                    <p>Frameworks come and go. Fundamentals don’t.</p>
+                    <p>Understanding how state flows, how the DOM actually works, how events propagate, and how to separate concerns without external tooling is still a professional advantage. It makes you faster to onboard, harder to confuse, and easier to trust with legacy systems.</p>
+                    <p>This project isn’t nostalgic. It’s foundational.</p>
+                    <p>If you can reason about this code, you can reason about larger systems. If you can debug this, you can debug React at 2 a.m. when the abstraction leaks. And if you can write this cleanly, you can write anything cleanly.</p>
+
+                    <h4>Final Thought</h4>
+                    <p>The Budget Application doesn’t try to impress. It tries to be correct.</p>
+                    <p>It’s a small app with a clear purpose: demonstrate thoughtful front-end logic, clean architecture, and respect for the browser as a platform—not a limitation.</p>
+                    <p>Sometimes the most professional thing you can build is something simple, done right.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Practical Web Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020PigGame" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">

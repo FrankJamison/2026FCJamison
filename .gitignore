@@ -8,3 +8,6 @@ projects/
  
 # Ignore nested repo: 2018Questkeeper 
 projects/2018Questkeeper/
+ 
+# Keep 2020BudgetApplication as standalone repo 
+projects/2020BudgetApplication/ 
