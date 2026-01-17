@@ -1,3 +1,143 @@
+<div class="modal fade" id="blogModal2020CharacterVault" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0031-CharacterVault.png') }}" alt="The Character Vault: Clean CRUD, Clear Thinking" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">17 January 2026</span>
+                    <h2 class="title"> <a href="https://charactervault.fcjamison.com" target="_blank">The Character Vault: </a><br>Clean CRUD, Clear Thinking</h2>
+                    <p>The Character Vault is a deliberately scoped Node.js application designed to demonstrate authentication, user-scoped data, and clean CRUD workflows without hiding behind heavy frameworks or unnecessary abstraction. Originally developed for MSSE 661: Web Software Development at Regis University, the project has since been refined into a portfolio-ready example of how I approach structure, clarity, and responsibility in a full-stack web application.</p>
+                    <p>This is not a “look how complex I can make it” app.<br>It’s a “look how clearly I can solve a real problem” app.</p>
+                    <p>And for employers and teams evaluating fundamentals, that distinction matters.</p>
+
+                    <h4>Defining the Problem: Personal Data, Properly Scoped</h4>
+                    <p>At its core, The Character Vault answers a straightforward but critical question:</p>
+                    <p>How do you allow users to manage personal data securely, predictably, and without overengineering the solution?</p>
+                    <p>Once authenticated, users can:</p>
+                    <ul>
+                        <li>Create and delete RPG-style characters</li>
+                        <li>Create and delete personal to-do tasks</li>
+                        <li>Update account information such as username, email, and password</li>
+                    </ul>
+                    <p>Every operation is scoped to the logged-in user. There’s no shared state, no accidental overlap, and no ambiguity about ownership. Each action behaves exactly as expected, which is not flashy—but it is professional.</p>
+
+                    <h4>Full-Stack Architecture: Node.js with Intentional Restraint</h4>
+                    <p>The Character Vault is a <strong>Node.js backend paired with a deliberately lightweight front end</strong>.</p>
+                    <p>The server layer handles:</p>
+                    <ul>
+                        <li>Authentication and session logic</li>
+                        <li>Routing and request handling</li>
+                        <li>User-scoped data access</li>
+                        <li>JSON-based persistence</li>
+                    </ul>
+                    <p>Rather than outsourcing core logic to a framework abstraction, the application keeps server behavior explicit and readable. This makes the data flow easy to trace, debug, and reason about—especially for reviewers evaluating backend fundamentals.</p>
+                    <p>The front end uses plain HTML, CSS, and vanilla JavaScript, not because frameworks are avoided, but because the goal is visibility. This approach makes it immediately clear what the server provides and what the client consumes.</p>
+
+                    <h4>JavaScript Organization: Code That Explains Itself</h4>
+                    <p>JavaScript in The Character Vault is organized by responsibility rather than convenience.</p>
+                    <ul>
+                        <li>Server-side logic focuses on routing, validation, and persistence</li>
+                        <li>Client-side scripts handle user interaction and DOM updates</li>
+                        <li>Shared utilities abstract repetitive tasks without obscuring intent</li>
+                    </ul>
+                    <p>There’s no global state soup and no hidden coupling. Each file is small enough to understand in isolation and clear enough to follow without prior context. This is code written for maintainability, not cleverness.</p>
+
+                    <h4>Authentication: Explicit, Traceable, Honest</h4>
+                    <p>Authentication uses a lightweight, session-style model managed by the Node backend and backed by JSON data storage. This is not presented as a production-grade security solution, and it doesn’t pretend to be one.</p>
+                    <p>Instead, it prioritizes:</p>
+                    <ul>
+                        <li>Transparency of authentication flow</li>
+                        <li>Clear separation between authenticated and unauthenticated states</li>
+                        <li>Predictable behavior across sessions</li>
+                        <li>Easy debugging during development</li>
+                    </ul>
+                    <p>For employers reviewing this project, the value lies in seeing the entire shape of the authentication system—server logic, client behavior, and data boundaries—without any hidden machinery.</p>
+
+                    <h4>CRUD Without the Drama</h4>
+                    <p>Characters and tasks form the functional core of the application, and both follow the same clean lifecycle: create, read, delete.</p>
+                    <p>Each operation is:</p>
+                    <ul>
+                        <li>Validated server-side</li>
+                        <li>Scoped to the authenticated user</li>
+                        <li>Reflected immediately in the interface</li>
+                    </ul>
+                    <p>There’s no ambiguity about where data comes from or where it goes. The backend enforces ownership, and the frontend reflects state clearly. The application behaves consistently and predictably—which is exactly what real users (and real teams) expect.</p>
+
+                    <h4>Styling: Supporting the Application, Not Competing With It</h4>
+                    <p>The CSS is intentionally restrained and modular.</p>
+                    <ul>
+                        <li>A reset stylesheet ensures consistent rendering</li>
+                        <li>Layout rules establish hierarchy and spacing</li>
+                        <li>Feature-specific stylesheets isolate concerns</li>
+                    </ul>
+                    <p>The interface is clean, readable, and professional. It exists to support the functionality, not distract from it. This is UI work focused on usability and maintainability rather than visual spectacle.</p>
+
+                    <h4>Continued Refinement: The 2026 Updates</h4>
+                    <p>The Character Vault continues to evolve.</p>
+                    <p>Recent updates focus on improving front-end messaging and resilience, particularly around authentication state and session edge cases. User feedback is clearer, transitions are more predictable, and documentation has been expanded to explain design decisions and limitations.</p>
+                    <p>These updates reinforce an important point: this project wasn’t abandoned. It was revisited, reassessed, and improved with experience.</p>
+
+                    <h4>Why This Project Belongs in a Portfolio</h4>
+                    <p>The Character Vault is not flashy—and that’s exactly its strength.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>Solid Node.js backend fundamentals</li>
+                        <li>Clear separation of server and client responsibilities</li>
+                        <li>A practical understanding of authentication flows</li>
+                        <li>Clean, user-scoped CRUD operations</li>
+                        <li>Code written to be read, evaluated, and trusted</li>
+                    </ul>
+                    <p>For employers and recruiters, this project signals reliability and judgment. For developers, it shows discipline and respect for fundamentals.</p>
+                    <p>In a landscape crowded with overengineered demos, <strong>The Character Vault</strong> stands quietly confident—clean CRUD, clear thinking, and nothing hidden behind the curtain.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="The Character Vault: Clean CRUD, Clear Thinking">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020AngularCLIApp" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
