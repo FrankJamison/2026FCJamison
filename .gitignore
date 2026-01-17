@@ -11,3 +11,6 @@ projects/2018Questkeeper/
  
 # Keep 2020BudgetApplication as standalone repo 
 projects/2020BudgetApplication/ 
+ 
+# Ignore standalone nested repo 
+/projects/2020AngularCLIApp/ 

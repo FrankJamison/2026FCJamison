@@ -1,3 +1,134 @@
+<div class="modal fade" id="blogModal2020AngularCLIApp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0030-AngularCLIApp.png') }}" alt="Angular CLI Application: Fundamentals with Intent" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">16 January 2026</span>
+                    <h2 class="title"> <a href="{{ url_for('project_index', project_slug='2020AngularCLIApp') }}" target="_blank">Angular CLI Application: </a><br>Fundamentals with Intent</h2>
+                    <p>This project began in 2020 as part of a graduate-level web frameworks course, but it didn’t stay frozen in amber. It’s been revisited, updated, and deliberately preserved as a clean, focused Angular single-page application—one that prioritizes fundamentals, readability, and real-world deployment considerations over spectacle.</p>
+                    <p>There are no architectural fireworks here, no buzzword-driven complexity, and no frameworks stacked on top of frameworks for sport. What this project demonstrates instead is something far more valuable in a professional setting: restraint, comprehension, and an understanding of how Angular applications are actually built, tested, and shipped.</p>
+
+                    <h4>Why This Project Exists</h4>
+                    <p>This application exists to prove competence without noise.</p>
+                    <p>Angular is a powerful framework, but it’s also easy to misuse—buried under abstractions, over-modularized before the problem space demands it, or tangled in unnecessary routing and state layers. This project intentionally avoids those traps.</p>
+                    <p>The goal was to create a small but complete Angular application that:</p>
+                    <ul>
+                        <li>Uses the Angular CLI the way it’s intended</li>
+                        <li>Follows framework conventions instead of fighting them</li>
+                        <li>Remains legible to another developer six months later</li>
+                        <li>Can be built, tested, and deployed without heroics</li>
+                    </ul>
+                    <p>In short, this is the kind of Angular app you’d actually want to inherit on a real team.</p>
+
+                    <h4>Technology Stack (Updated, Not Rewritten)</h4>
+                    <p>Although the project originated in 2020, it has been modernized in 2026 to keep it current and relevant rather than discarding it for something trendier.</p>
+                    <p>The stack reflects today’s Angular ecosystem:</p>
+                    <ul>
+                        <li>Angular 21 with TypeScript 5.9</li>
+                        <li>RxJS 7 for reactive foundations</li>
+                        <li>SCSS for both global and component-level styling</li>
+                        <li>Jasmine and Karma for unit testing</li>
+                        <li>Playwright for end-to-end testing</li>
+                    </ul>
+                    <p>Protractor has been formally retired. Playwright now handles E2E testing with a modern, browser-driven approach that better reflects current tooling expectations and CI workflows.</p>
+                    <p>The result is an application that still demonstrates its original learning goals while operating comfortably in a modern front-end environment.</p>
+
+                    <h4>Application Structure: Simple on Purpose</h4>
+                    <p>This project follows a classic Angular CLI layout with minimal deviation.</p>
+                    <p>There is a single root module (AppModule) and a single root component (AppComponent). The component exposes a title property, which is rendered into the template using Angular’s interpolation syntax.</p>
+                    <p>Meanwhile, the browser tab title is managed separately in index.html. That distinction is intentional. It shows awareness of the difference between Angular-managed runtime state and static document metadata—one of those subtle details that often gets overlooked, but matters when building professional applications.</p>
+                    <p>There is no routing layer because the application does not need one. There is no state management library because the data flow does not justify it. This is Angular used at the correct level of complexity for the problem being solved.</p>
+
+                    <h4>Styling Strategy</h4>
+                    <p>Styling is handled using SCSS, split cleanly between global and component-specific concerns.</p>
+                    <p>Global styles live in styles.scss, where they belong. Component styles are scoped locally and sit alongside their respective components. This approach keeps the CSS predictable, maintainable, and free of unintended side effects.</p>
+                    <p>Nothing fancy. Nothing brittle. Just clean separation of concerns.</p>
+
+                    <h4>Build and Deployment Considerations</h4>
+                    <p>One of the most important aspects of this project is that it treats deployment as a first-class concern, not an afterthought.</p>
+                    <p>The application is designed to deploy as a <strong>static Angular SPA</strong>, with no Node server required in production. A production build generates optimized, hashed assets suitable for aggressive caching.</p>
+                    <p>The build output includes:</p>
+                    <ul>
+                        <li>Apache .htaccess rewrite rules</li>
+                        <li>IIS-compatible web.config</li>
+                    </ul>
+                    <p>These files are copied into the build directory automatically so that deep links resolve correctly regardless of hosting environment.</p>
+                    <p>For local realism, the project supports testing the production build using Apache or IIS instead of relying exclusively on the Angular development server. This mirrors real deployment conditions and avoids the common trap of assuming that “it works on localhost” means “it will work in production.”</p>
+
+                    <h4>Testing Philosophy</h4>
+                    <p>Testing in this project is intentional and pragmatic.</p>
+                    <p>Unit tests use Jasmine and Karma with ChromeHeadless, providing fast feedback and CI-friendly execution. These tests validate component behavior and confirm that the application wiring behaves as expected.</p>
+                    <p>End-to-end testing is handled by Playwright, which launches the Angular dev server automatically, runs browser-based tests, and captures traces on retries. This setup reflects modern testing practices and avoids deprecated tooling.</p>
+                    <p>The goal here is not exhaustive coverage for its own sake, but confidence. The tests prove that the application builds, renders, and behaves correctly without turning the project into a testing showcase detached from reality.</p>
+
+                    <h4>What This Project Demonstrates</h4>
+                    <p>This application is quiet by design, but it says a lot.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>A strong grasp of Angular fundamentals</li>
+                        <li>Respect for framework conventions</li>
+                        <li>Comfort with modern tooling and testing practices</li>
+                        <li>Thoughtful decisions about when <em>not</em> to add complexity</li>
+                        <li>A habit of revisiting and modernizing older work</li>
+                    </ul>
+                    <p>Most importantly, it shows an approach to development that values clarity and maintainability over novelty.</p>
+                    <p>In a professional environment, those traits matter far more than clever tricks.</p>
+
+                    <h4>Final Thoughts</h4>
+                    <p>Not every project needs to be groundbreaking. Some projects exist to show that you understand the basics deeply enough to trust them.</p>
+                    <p>This Angular CLI application does exactly that.</p>
+                    <p>It’s focused. It’s current. It deploys cleanly. It behaves predictably. And it reflects how I approach front-end development: build what’s needed, keep it understandable, and let the work speak without shouting.</p>
+                    <p>Sometimes the most convincing demonstration of skill is simply doing the fundamentals well—and knowing when to stop.</p>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="FrankJamison.com: A Practical Web Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020BudgetApplication" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
