@@ -1,3 +1,295 @@
+<div class="modal fade" id="blogModal2025PasswordCheck" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0036-PasswordCheck.png') }}" alt="Password Exposure Check: Privacy-First Security" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">18 January 2026</span>
+                    <h2 class="title"> <a href="https://passwordcheck.fcjamison.com" target="_blank">FrankJamison.com: </a><br>Practical Web Craft</h2>
+                    <p>Some security tools shout. This one doesn’t. Password Exposure Check is deliberately quiet, focused, and disciplined—a small web utility built to answer a single, important question: <em>Has this password already appeared in a known data breach?</em></p>
+                    <p>What makes the project worth a closer look isn’t the question itself, but the restraint in how it’s answered. No passwords are stored. No full hashes are transmitted. No user data lingers. The application does its job, returns an honest result, and disappears without a trace. That’s not an accident—it’s the design.</p>
+                    <p>This project serves as a compact, professional demonstration of privacy-first thinking, cross-language integration, and security-aware engineering, built with PHP, Python, JavaScript, and the Have I Been Pwned Pwned Passwords Range API.</p>
+
+                    <hr>
+
+                    <h4>Purpose Before Features</h4>
+                    <p>Password Exposure Check was never meant to be a platform or a product. It was designed as a utility—small, intentional, and trustworthy. The goal was to build something that could realistically exist in a production environment without raising uncomfortable questions about data handling or liability.</p>
+                    <p>The core priorities were clear from the start:</p>
+                    <ul>
+                        <li>Never collect or persist passwords</li>
+                        <li>Avoid transmitting sensitive material</li>
+                        <li>Use proven external security data responsibly</li>
+                        <li>Keep the code readable and auditable</li>
+                        <li>Remain easy to deploy and maintain</li>
+                    </ul>
+                    <p>Those priorities shape every technical decision in the project.</p>
+
+                    <hr>
+
+                    <h4>Clean, Intentional Architecture</h4>
+                    <p>The application is structured around clear separation of concerns, without unnecessary abstraction.</p>
+
+                    <h5>PHP: Request Handling and Orchestration</h5>
+                    <p>The PHP layer acts as a controlled gateway. It accepts form submissions, invokes the Python script, captures output, and returns a structured response to the client. PHP does not inspect, log, or retain passwords—it simply passes data through and reports results.</p>
+
+                    <h5>Python: Security Logic and API Interaction</h5>
+                    <p>Python is responsible for hashing the password, interacting with the Have I Been Pwned Range API, and evaluating the results. Isolating this logic keeps the most sensitive operations contained, testable, and easier to audit.</p>
+
+                    <h5>JavaScript: User Experience Layer</h5>
+                    <p>Client-side JavaScript handles asynchronous submission and feedback. Users receive immediate responses without page reloads, while error states are surfaced clearly and calmly. No client-side storage is used, and nothing persists beyond the request lifecycle.</p>
+
+                    <p>The result is a system that feels simple because it is simple—by design.</p>
+
+                    <hr>
+
+                    <h4>Privacy Through k-Anonymity</h4>
+                    <p>At the heart of the project is a correct implementation of k-anonymity, using the Have I Been Pwned Pwned Passwords Range API.</p>
+                    <p>The flow works like this:</p>
+                    <ul>
+                        <li>TThe password is hashed locally using SHA-1</li>
+                        <li>Only the first five characters of the hash are sent to the API</li>
+                        <li>The API returns matching hash suffixes with breach counts</li>
+                        <li>The application compares results locally to determine exposure.</li>
+                    </ul>
+                    <p>At no point is the full password or full hash transmitted.</p>
+                    <p>This approach demonstrates an understanding of security principles beyond surface-level API usage. It shows why privacy-preserving patterns exist—and how to implement them properly rather than conveniently.</p>
+
+                    <hr>
+
+                    <h4>Interface Design: Calm and Honest</h4>
+                    <p>The user interface is intentionally restrained. There are no scare tactics, no exaggerated warnings, and no unnecessary visual noise.</p>
+                    <p>The layout is clean and readable. Feedback is immediate and clearly worded. Results differentiate between exposed and non-exposed passwords without shaming or drama. The design communicates trust by behaving predictably and transparently</p>
+                    <p>JavaScript enhances the experience without dominating it:</p>
+                    <ul>
+                        <li>Asynchronous submission using modern fetch patterns</li>
+                        <li>Submission locking to prevent duplicate requests</li>
+                        <li>Graceful handling of network or execution errors</li>
+                        <li>No password echoing or client-side persistence</li>
+                    </ul>
+                    <p>Everything about the interface reinforces the idea that the application respects the user.</p>
+
+                    <hr>
+
+                    <h4>Production-Aware Engineering Choices</h4>
+                    <p>Several details in the codebase reflect real-world awareness rather than academic experimentation:</p>
+                    <ul>
+                        <li>Configurable Python interpreter paths for different hosting environments</li>
+                        <li>Clear handling of subprocess execution and failure states</li>
+                        <li>No reliance on databases, cookies, or sessions</li>
+                        <li>Explicit boundaries around debugging output</li>
+                    </ul>
+                    <p>These are the kinds of choices that make a small utility deployable, maintainable, and safe to run—especially when security is involved.</p>
+
+                    <hr>
+
+                    <h4>Why This Project Matters to Recruiters and Teams</h4>
+                    <p>Password Exposure Check isn’t impressive because it’s large. It’s impressive because it’s careful.</p>
+                    <p>This project demonstrates:</p>
+                    <ul>
+                        <li>Thoughtful use of third-party security services</li>
+                        <li>Correct application of privacy-preserving techniques</li>
+                        <li>Clean separation of responsibilities across languages</li>
+                        <li>Comfort working across PHP, Python, and JavaScript</li>
+                        <li>An instinct to minimize data rather than hoard it</li>
+                    </ul>
+                    <p>For teams working with authentication, security tooling, or user trust, those instincts matter.</p>
+
+                    <hr>
+
+                    <h4>Frank's Final Thoughts</h4>
+                    <p>The <strong>Password Exposure Check</strong> is a reminder that good security design often looks quiet on the surface. It doesn’t oversell itself. It doesn’t try to be clever for the sake of cleverness. It simply does the right thing, the right way.</p>
+                    <p>In a landscape crowded with overengineered demos, this project stands out by showing restraint, judgment, and respect for user data—qualities that translate well far beyond a single utility.</p>
+                    <p>Sometimes the most professional move is knowing when to stop—and this project stops exactly where it should.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Password Exposure Check: Privacy-First Security">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="blogModal2025FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0035-FrankJamison.png') }}" alt="FrankJamison.com: Practical Web Craft" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">18 January 2026</span>
+                    <h2 class="title"> <a href="https://frankjamison.com" target="_blank">FrankJamison.com: </a><br>Practical Web Craft</h2>
+                    <p>There’s a certain kind of confidence that doesn’t need animation timelines or a JavaScript orchestra warming up in the background. It shows up quietly. It loads fast. It explains itself. And it keeps working six months later without a rewrite.</p>
+                    <p>That’s the philosophy behind FrankJamison.com</p>
+                    <p>This project is a deliberately restrained personal portfolio built with PHP, HTML, CSS, and a measured amount of JavaScript. It’s not designed to impress by excess—it’s designed to communicate clearly, behave predictably, and hold up under real-world use. Every decision favors readability, maintainability, and intent over novelty.</p>
+                    <p>This isn’t a demo reel. It’s working web craft.</p>
+
+                    <hr>
+
+                    <h4>Design Philosophy: Clarity Before Cleverness</h4>
+                    <p>The design goal of this site is simple: remove friction between the reader and the information.</p>
+                    <p>Recruiters should be able to scan it quickly. Developers should be able to understand its structure immediately. Employers should be able to trust that the same judgment applied here would carry over into production work.</p>
+                    <p>The layout is calm and familiar, built on a Bootstrap grid but refined with custom CSS to avoid default aesthetics. Typography is readable and consistent. Spacing is intentional. Visual hierarchy does the heavy lifting so the user doesn’t have to.</p>
+                    <p>There’s no novelty navigation, no hidden content, and no interaction that requires explanation. The site respects the reader’s time—and that respect is reflected in every design choice.</p>
+
+                    <hr>
+
+                    <h4>Front-End Structure: Straightforward on Purpose</h4>
+                    <p>The front end is built using semantic HTML, standard CSS, and light JavaScript enhancement. There’s no build pipeline, no bundler, and no framework abstractions masking what’s actually happening.</p>
+                    <p>That’s intentional.</p>
+                    <p>This approach keeps the project immediately approachable. Anyone reviewing the code can open it and understand how the site works within minutes. There’s no setup ritual and no tooling overhead obscuring the fundamentals.</p>
+                    <p>Bootstrap provides layout reliability, while custom styles refine presentation. JavaScript enhances behavior where it adds value, but it never becomes a dependency for understanding or using the site.</p>
+                    <p>This is front-end development as communication—not performance art.</p>
+
+                    <hr>
+
+                    <h4>JavaScript: Used Sparingly, Audited Carefully</h4>
+                    <p>JavaScript in this project exists to support the experience, not define it.</p>
+                    <p>External libraries are loaded via CDNs with local fallbacks in place. This ensures the site remains functional even when third-party resources fail—an often-overlooked detail that matters in real environments.</p>
+                    <p>As part of the 2026 refinement pass, unused vendored scripts were removed entirely. Every remaining script has a clear purpose. There’s no speculative code and no “we might need this later” clutter.</p>
+                    <p>The result is a smaller footprint, clearer intent, and code that reflects actual requirements rather than theoretical ones.</p>
+
+                    <hr>
+
+                    <h4>Backend Logic: PHP That Knows Its Job</h4>
+                    <p>The backend is intentionally minimal, handling what it needs to handle—and nothing more.</p>
+                    <p>PHP is used primarily for contact form processing, with logic that is readable, explicit, and easy to audit. There’s no framework overhead and no hidden behavior. What the code does is visible on the page.</p>
+                    <p>During the 2026 update, lightweight anti-abuse protections were added to the form submission flow. These include simple timing checks, token validation, and basic rate-limiting logic to discourage automated spam without introducing unnecessary friction for real users.</p>
+                    <p>This reflects a practical mindset: address the problem that exists today, and leave room to scale solutions only if and when they’re needed.</p>
+
+                    <hr>
+
+                    <h4>Accessibility: Built In, Not Bolted On</h4>
+                    <p>Accessibility is treated as a baseline expectation, not an optional feature.</p>
+                    <p>The site supports keyboard navigation, maintains visible focus states, and respects reduced-motion preferences. Typography and color contrast prioritize readability across devices and conditions.</p>
+                    <p>These choices don’t draw attention to themselves—and that’s the point. When accessibility is handled well, it disappears into the experience and simply makes the site work better for everyone.</p>
+
+                    <hr>
+
+                    <h4>SEO and Structured Data: Clear for Humans and Machines</h4>
+                    <p>Search optimization in this project focuses on fundamentals rather than tricks.</p>
+                    <p>Content structure is semantic and consistent. Metadata is intentional. JSON-LD structured data provides clear context about the site and its owner, including identity and external references.</p>
+                    <p>This isn’t about chasing algorithms. It’s about making the site legible—to search engines, assistive technologies, and future maintainers alike.</p>
+
+                    <hr>
+
+                    <h4>Repository Discipline: Respecting the Reviewer</h4>
+                    <p>One of the quiet strengths of this project is its cleanliness.</p>
+                    <p>Unused files were removed. Legacy scripts were evaluated and either justified or deleted. The directory structure reflects what’s actually in use, not a history of abandoned experiments.</p>
+                    <p>This matters because repositories communicate how a developer thinks. A clean codebase signals care, restraint, and respect for the next person who has to read it—whether that’s a teammate, a hiring manager, or your future self.</p>
+
+                    <hr>
+
+                    <h4>What This Project Demonstrates</h4>
+                    <p>At its core, FrankJamison.com is less about visual impact and more about professional judgment.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>Comfort with fundamentals over dependency-driven development</li>
+                        <li>Clear separation of concerns between structure, style, and behavior</li>
+                        <li>Thoughtful trade-offs instead of default complexity</li>
+                        <li>An understanding that maintainability is a feature</li>
+                        <li>Respect for users, reviewers, and future developers</li>
+                    </ul>
+                    <p>This is the kind of project that doesn’t shout. It doesn’t need to. Its confidence is in how little it wastes and how clearly it communicates.</p>
+
+                    <hr>
+
+                    <h4>Frank's Final Thoughts</h4>
+                    <p>For employers and recruiters, this site shows how I approach real-world constraints: clarity over cleverness, intention over excess, and solutions that age well.</p>
+                    <p>For developers, it’s an example of disciplined, readable web development that values understanding over abstraction.</p>
+                    <p>And for everyone else, it simply works—quickly, quietly, and without demanding attention.</p>
+                    <p>Sometimes the most professional thing you can build is something that gets out of the way and keeps doing its job.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Passionate Teaching Journey: Learning to Teach">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2025FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
