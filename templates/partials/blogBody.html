@@ -1,3 +1,133 @@
+<div class="modal fade" id="blogModal2021DnD5eTools" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0033-DnD5eTools.png') }}" alt="D&D5eTools.com: Practical Utilities, Built with Intent" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">17 January 2026</span>
+                    <h2 class="title"> <a href="https://dnd5etools.com" target="_blank">D&D5eTools.com: </a><br>Practical Utilities, Built with Intent</h2>
+                    <p>Some projects exist to show off.<br>Others exist to <em>work</em>.</p>
+                    <p><strong>D&D5eTools.com</strong> firmly belongs to the second camp—and that’s exactly the point. This is a deliberately framework-free, static web application built to solve real tabletop problems for Dungeons & Dragons 5e players and Dungeon Masters. No React. No build pipeline. No dependency graph threatening to achieve sentience. Just HTML, CSS, and JavaScript doing what they’ve always done best when treated with respect.</p>
+                    <p>For employers, recruiters, and developers, this project is a quiet but confident demonstration of fundamentals: architectural clarity, readable logic, scalable structure, and the discipline to stop adding features when the problem is already solved.</p>
+
+                    <hr>
+
+                    <h4>What the Project Actually Is</h4>
+                    <p>At its core, D&D5eTools.com is a collection of focused utilities designed to be used at the table—not admired in a portfolio slideshow and forgotten. Each tool addresses a specific friction point in 5e character creation and prep, and each is intentionally narrow in scope.</p>
+                    <p>There are three primary components:</p>
+
+                    <h5>Ability Score Generator</h5>
+                    <p>Implements the classic 4d6, drop-the-lowest method in a way that is transparent, predictable, and rule-faithful. Dice rolls are explicit. Calculations are readable. Nothing is hidden behind abstractions that would make a rules-lawyer suspicious.</p>
+
+                    <h5>Physical Stat Generator</h5>
+                    <p>Age, height, and weight generation based on race-specific rules, implemented using parsed dice expressions on the client side. This isn’t random fluff—it’s encoded rule logic, translating book tables into deterministic JavaScript behavior that mirrors tabletop expectations.</p>
+
+                    <h5>Pre-Generated Character Gallery</h5>
+                    <p>A static, filterable character gallery that links portraits and PDFs through deterministic naming conventions. No database. No API. Characters scale by adding files, not rewriting code. This is content-driven architecture in its simplest and most durable form.</p>
+
+                    <p>Each tool stands alone, yet the site feels cohesive—because the structure underneath it is.</p>
+
+                    <hr>
+
+                    <h4>Design Philosophy: Calm, Structured, and Boring on Purpose</h4>
+                    <p>The visual design of D&D5eTools.com makes a conscious decision: clarity over flash.</p>
+                    <p>Typography favors readability. Layouts are predictable and consistent. Components repeat with purpose, not laziness. The UI isn’t trying to compete with character art or dice trays—it exists to stay out of the way while players make decisions.</p>
+                    <p>Shared elements like headers and footers are abstracted into reusable HTML fragments, reducing duplication and enforcing consistency across pages. This keeps the site maintainable without introducing templating engines or build tools that would complicate deployment for a project that doesn’t need them.</p>
+                    <p>CSS is organized by responsibility rather than novelty. Global styles handle structure and typography, while tool-specific rules live where they belong. There’s no cascade chaos, no mystery overrides, and no “temporary” rules that somehow survived three refactors.</p>
+                    <p>It’s a design that respects the user’s time—and the next developer’s sanity.</p>
+
+                    <hr>
+
+                    <h4>JavaScript Without the Safety Net (And Why That Matters)</h4>
+                    <p>This project intentionally avoids frameworks, which means the JavaScript has nowhere to hide.</p>
+                    <p>Logic is broken into small, single-purpose modules. Dice rolling, data parsing, and generation logic live separately from DOM rendering. UI updates are explicit. State is managed directly, not smuggled through lifecycle hooks or magic bindings.</p>
+                    <p>Functions are named clearly. Inputs and outputs are obvious. Side effects are controlled. You can open a file and understand what it does without reverse-engineering an ecosystem.</p>
+                    <p>This approach demonstrates something increasingly rare: confidence in core JavaScript. Not nostalgia—<em>competence</em>. It’s proof that I understand what frameworks abstract away, because I’ve built the layers myself.</p>
+
+                    <hr>
+
+                    <h4>Static Doesn’t Mean Simple</h4>
+                    <p>One of the most telling aspects of D&D5eTools.com is how it scales without pretending to be a full-stack application.</p>
+                    <p>Characters, images, and PDFs follow predictable naming and directory conventions. Add new assets, and they’re automatically picked up by the existing logic. There’s no configuration file to update, no schema to migrate, and no brittle glue code waiting to break.</p>
+                    <p>This is scalability through discipline rather than infrastructure. It’s the kind of thinking that comes from understanding that not every problem benefits from a backend—and that overengineering is still engineering debt.</p>
+
+                    <hr>
+
+                    <h4>Compatibility, Longevity, and Real-World Use</h4>
+                    <p>The project includes shims and defensive coding where appropriate to maintain compatibility across environments. That choice is intentional. Real users don’t all run the latest browser, and real utility sites should degrade gracefully instead of failing loudly.</p>
+                    <p>This isn’t bleeding-edge JavaScript chasing novelty. It’s stable, portable code meant to last. The kind of code you can revisit years later without needing a migration guide and a support group.</p>
+
+                    <hr>
+
+                    <h4>What This Project Signals to Employers</h4>
+                    <p>D&D5eTools.com demonstrates:</p>
+                    <ul>
+                        <li>Strong command of HTML, CSS, and JavaScript fundamentals</li>
+                        <li>Thoughtful separation of concerns without frameworks</li>
+                        <li>Clean, maintainable UI composition</li>
+                        <li>Data-driven logic implemented client-side</li>
+                        <li>Scalable content architecture without unnecessary infrastructure</li>
+                        <li>Good judgment about when <em>not</em> to add complexity</li>
+                    </ul>
+                    <p>Most importantly, it shows intent. Every choice here is deliberate. Nothing is accidental. Nothing is cargo-culted.</p>
+
+                    <hr>
+
+                    <h4>Final Word</h4>
+                    <p>D&D5eTools.com isn’t flashy, and it isn’t trying to be. It’s confident, restrained, and built to last—like a well-balanced character sheet that doesn’t need homebrew patches to function.</p>
+                    <p>If you’re looking for proof that I can design and build practical, maintainable web tools without leaning on a framework as a crutch, this project makes the case quietly—and lets the work speak for itself.</p>
+                    <p>No glitter.<br>No overengineering.<br>Just solid tools, rolling straight down the middle.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="D&D5eTools.com: Practical Utilities, Built with Intent">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020AncientWhiteArmyVetNode" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
