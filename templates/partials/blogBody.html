@@ -1,3 +1,134 @@
+<div class="modal fade" id="blogModal2020AncientWhiteArmyVetNode" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0032-AncientWhiteArmyVetNode.png') }}" alt="AncientWhiteArmyVet.com: Practical Node, No Glitter" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">17 January 2026</span>
+                    <h2 class="title"> <a href="https://ancientwhitearmyvet.com" target="_blank">AncientWhiteArmyVet.com: </a><br>Practical Node, No Glitter</h2>
+                    <p>AncientWhiteArmyVet’s RPG Tools started with a very unromantic goal: reduce friction at the table. Not “reinvent character sheets,” not “gamify stat tracking,” not “introduce a reactive front end that needs three config files and a therapy session.” Just: store characters, manage stats, authenticate users properly, and don’t fall apart halfway through a campaign.</p>
+                    <p>That constraint shaped everything that follows. This is a Node.js application built with intent, restraint, and a quiet respect for fundamentals. It’s a full-stack project, but it doesn’t cosplay as one. No unnecessary abstractions. No trendy dependencies stapled on for résumé flavor. Just a clean Express server, a relational database, real authentication, and a front end that tells the truth about how it works.</p>
+                    <p>If you’re a recruiter, employer, or developer, this is not a “look what I learned last weekend” repo. It’s a “this is how I think about building software” repo.</p>
+
+                    <hr>
+
+                    <h4>The Architectural Spine: One App, One Mental Model</h4>
+                    <p>At a high level, this is a single Express application responsible for everything: serving static pages, exposing API endpoints, managing authentication, and coordinating database access. There’s no artificial split between “front end” and “back end” services. No build pipeline duct tape. One server, one runtime, one place to look when something breaks.</p>
+                    <p>This matters more than it sounds. Many junior projects fragment responsibility before it’s warranted. This one does the opposite: it keeps complexity proportional to the problem being solved. That makes it easier to deploy, easier to debug, and easier for another developer to onboard without needing a guided tour and a flowchart.</p>
+                    <p>The entry point exists for real deployment scenarios, not just local execution. Configuration supports environment-based behavior, proper port binding, and hosting platforms that expect a single, explicit server file. This isn’t a sandbox app. It’s meant to live somewhere.</p>
+
+                    <hr>
+
+                    <h4>Express, Used Like an Adult</h4>
+                    <p>The server-side code follows a clear and deliberate structure. Middleware is layered in a predictable order. Requests flow through logging, parsing, and CORS handling before they ever touch application logic. Routes are registered cleanly, grouped by responsibility instead of crammed into a single file that dares you to scroll.</p>
+                    <p>Error handling is centralized. That’s not a flashy feature, but it’s a professional one. Instead of leaking stack traces or returning whatever exception happened to occur, errors are normalized into consistent responses. This is the difference between an app that merely runs and one that’s safe to expose to users.</p>
+                    <p>Routes do what routes should do: validate input, call domain logic, return results. They don’t try to be clever. They don’t hide side effects. You can follow a request from endpoint to database without losing the thread.</p>
+
+                    <hr>
+
+                    <h4>Authentication: No Hand-Waving Allowed</h4>
+                    <p>Authentication is often where demo projects quietly look away. Not here.</p>
+                    <p>Passwords are hashed properly. Login is token-based. JWTs are issued with intent, not just because a tutorial said so. Refresh tokens are handled explicitly, acknowledging that access tokens expire and users exist longer than a single session.</p>
+                    <p>This isn’t “auth that works if you don’t think about it too hard.” It’s authentication that assumes real users, real sessions, and real consequences if you get it wrong.</p>
+                    <p>From a hiring perspective, this is significant. It demonstrates an understanding that security is not an add-on—it’s part of the system’s core contract. From a developer perspective, it shows comfort with state, identity, and trust boundaries.</p>
+
+                    <hr>
+
+                    <h4>Data Persistence: Relational by Design, Not Accident</h4>
+                    <p>The application uses MySQL as its backing store, and it leans into that choice instead of abstracting it away into invisibility. Users and characters live in relational tables with clear structure and predictable relationships.</p>
+                    <p>Tables are created programmatically if they don’t exist, which may sound small but reveals a lot about the project’s mindset. This code anticipates first-run scenarios. It expects to be deployed into fresh environments. It reduces setup friction without sacrificing control.</p>
+                    <p>There’s no ORM trying to guess intent. Queries are explicit. Data shapes are visible. When something goes wrong, you don’t debug a chain of abstractions—you debug SQL and JavaScript. That transparency is intentional.</p>
+
+                    <hr>
+
+                    <h4>The Front End: Vanilla, Purposeful, Unpretentious</h4>
+                    <p>The client side is built with static HTML and vanilla JavaScript, served directly by Express. Each page has a job, and it does that job without pretending to be a framework.</p>
+                    <p>Shared client-side logic lives in a small JavaScript layer that handles API calls and token management. It’s effectively a tiny, hand-built client SDK—simple, readable, and easy to extend. There’s no build step, no transpilation, no dependency gravity well pulling in things that don’t earn their keep.</p>
+                    <p>This approach mirrors a huge amount of real-world internal tooling. Not everything needs React. Sometimes you need something that loads fast, works everywhere, and can be understood at a glance by the next person who opens the file.</p>
+
+                    <hr>
+
+                    <h4>RPG-Specific Logic: Domain Awareness Without Overreach</h4>
+                    <p>The RPG tooling itself is scoped carefully. Characters are composed of logical stat groupings—physical attributes, abilities, and related values—rather than a flat, chaotic blob of fields. The system respects the domain without trying to simulate an entire rulebook.</p>
+                    <p>This balance matters. It shows the ability to model a problem space without over-engineering it. The code reflects the needs of players and DMs without locking itself into a single game system or becoming brittle under future changes.</p>
+
+                    <hr>
+
+                    <h4>Design Philosophy: Fewer Tricks, More Trust</h4>
+                    <p>Across the project, there’s a consistent theme: code should be readable, behavior should be predictable, and cleverness should justify itself or leave.</p>
+                    <p>Directory structure is clean. Naming is intentional. Comments explain reasoning rather than narrating the obvious. The application doesn’t assume it’s the last word on anything—it assumes someone else will read it later.</p>
+                    <p>That mindset is often invisible in screenshots, but it’s unmistakable when you open the repository.</p>
+
+                    <h4>Why This Project Matters to Employers and Teams</h4>
+                    <p>AncientWhiteArmyVet’s RPG Tools demonstrates more than technical capability. It demonstrates judgment.</p>
+                    <p>It shows an understanding of:</p>
+                    <ul>
+                        <li>how to structure a real Express application</li>
+                        <li>how to implement authentication responsibly</li>
+                        <li>how to design and use a relational database</li>
+                        <li>how to coordinate front end and back end without ceremony</li>
+                        <li>how to write code that survives past the demo phase</li>
+                    </ul>
+                    <p>This is the kind of project that scales people, not just features. A new developer could join this codebase and start contributing without reverse-engineering intent from chaos.</p>
+
+                    <hr>
+
+                    <h4>Final Thoughts</h4>
+                    <p>This project doesn’t shout. It doesn’t sparkle. It doesn’t chase trends.</p>
+                    <p>Instead, it does something rarer: it earns trust.</p>
+                    <p>AncientWhiteArmyVet’s RPG Tools is a practical, grounded demonstration of full-stack development rooted in fundamentals. It reflects an understanding that good software is less about spectacle and more about reliability, clarity, and respect for the next person who has to touch the code.</p>
+                    <p>In a world full of glitter, this one brought a wrench—and used it well.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="AncientWhiteArmyVet.com: Practical Node, No Glitter">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2020CharacterVault" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
