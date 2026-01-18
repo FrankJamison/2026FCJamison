@@ -1,3 +1,113 @@
+<div class="modal fade" id="blogModal2024PassionateTeachingJourney" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0034-PassionateTeachingJourney.png') }}" alt="Passionate Teaching Journey: Learning to Teach" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">17 January 2026</span>
+                    <h2 class="title"> <a href="https://passionateteachingjourney.com" target="_blank">Passionate Teaching Journey: </a><br>Learning to Teach</h2>
+                    <p>Teaching isn’t a switch you flip when you get hired. It’s something you become, slowly, unevenly, and often while wondering if everyone else got a rulebook you somehow missed. Passionate Teaching Journey: Learning to Teach was created for that stretch of the road—the long middle where aspiration meets reality, and reflection becomes as important as instruction.</p>
+                    <p>This project is a content-centered WordPress site written for aspiring teachers, with a particular eye toward those navigating the California teaching pipeline. It’s not a guidebook and it’s not a highlight reel. It’s a living body of reflective writing that captures what it actually feels like to learn how to teach: the growth, the uncertainty, the emotional weight, and the quiet moments when things finally start to click.</p>
+
+                    <hr>
+
+                    <h4>A Site Where the Writing Comes First</h4>
+                    <p>At the heart of Passionate Teaching Journey is writing—real, sustained, reflective writing. The site is built to support long-form thought rather than quick takes. Posts aren’t designed to be skimmed and forgotten; they’re meant to be sat with, returned to, and re-read as experience deepens.</p>
+                    <p>The content focuses on the internal work of becoming a teacher:<br>how perspectives shift, how confidence develops unevenly, how classroom moments linger long after the bell rings. Instead of offering polished conclusions, the writing often stays with the question, reflecting the reality that teaching rarely provides clean answers.</p>
+                    <p>This approach mirrors the expectations placed on aspiring educators themselves. Reflection is not optional in teaching—it’s foundational. The site treats it that way.</p>
+
+                    <hr>
+
+                    <h4>Learning to Teach in the California Context</h4>
+                    <p>While the themes are universal, the lens is distinctly Californian. Teaching in California means navigating complex credential requirements, diverse classrooms, high expectations, and constant self-evaluation. The content acknowledges that context without turning into a procedural manual.</p>
+                    <p>Posts reflect experiences common to California teachers-in-training:<br>balancing theory with practice, managing classroom authority with empathy, and learning how to support students with widely varying needs. There’s an understanding that teaching here requires flexibility, cultural awareness, and emotional resilience—not just lesson plans and standards alignment.</p>
+                    <p>Rather than simplifying the process, the writing respects its complexity.</p>
+
+                    <hr>
+
+                    <h4>Growth Without Pretending to Have It All Figured Out</h4>
+                    <p>One of the defining features of this project is its honesty. Passionate Teaching Journey does not present teaching as something you master quickly or cleanly. Early reflections remain visible as later insights develop, allowing growth to be seen rather than staged.</p>
+                    <p>This matters, especially for aspiring teachers who often feel pressure to project confidence before they truly feel it. The site pushes back against that pressure by normalizing uncertainty as part of professional development. Doubt is not framed as failure—it’s framed as evidence of care and engagement.</p>
+                    <p>The content makes room for change, revision, and evolving identity, much like teaching itself.</p>
+
+                    <hr>
+
+                    <h4>Writing as a Tool for Becoming a Better Teacher</h4>
+                    <p>Another quiet throughline of the project is the role of writing in teaching practice. Clear writing reflects clear thinking, and reflective writing helps transform experience into understanding.</p>
+                    <p>For aspiring teachers—particularly those in credential programs where reflection is constant—the site models how professional writing can be thoughtful without being performative. It shows how reflection can be meaningful rather than merely compliant.</p>
+                    <p>The act of writing becomes part of learning to teach, not just documentation of it.</p>
+
+                    <hr>
+
+                    <h4>A Space for the Unspoken Parts of Teaching</h4>
+                    <p>Teaching culture often celebrates perseverance while leaving little room to talk about exhaustion, self-doubt, or emotional overload. Passionate Teaching Journey makes space for those realities without slipping into negativity.</p>
+                    <p>The content acknowledges that:<br>some days are heavy, growth can be uncomfortable, and caring deeply takes energy. It resists the idea that good teachers must be endlessly cheerful or self-sacrificing. Instead, it presents teaching as deeply human work—challenging, meaningful, and sometimes messy.</p>
+                    <p>For aspiring teachers wondering if struggle means they’re on the wrong path, the site offers reassurance grounded in experience rather than slogans.</p>
+
+                    <hr>
+
+                    <h4>Built to Grow Alongside the Teacher</h4>
+                    <p>The structure of the site supports ongoing reflection rather than a finished narrative. New posts don’t replace old ones; they build on them. Readers can follow the arc of learning over time, much like they would in their own journey.</p>
+                    <p>This makes the project feel less like a static portfolio and more like a companion. It’s something to return to at different stages—before student teaching, during credential programs, or early in a career—and see with new eyes.</p>
+
+                    <hr>
+
+                    <h4>Why This Project Exists</h4>
+                    <p>PassionateTeachingJourney.com exists because becoming a teacher is too complex to be reduced to advice lists and inspirational quotes.</p>
+                    <p>It exists to say:<br>you’re allowed to learn out loud,<br>you’re allowed to change your mind,<br>and you’re allowed to take your time becoming who you are in the classroom.</p>
+                    <p>For aspiring California teachers especially, this project offers something steady and rare: reflective writing that doesn’t rush you toward certainty, but walks with you while you build it.</p>
+                    <p>Learning to teach is a journey.<br>This site is a record of taking it seriously.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Passionate Teaching Journey: Learning to Teach">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2021DnD5eTools" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
