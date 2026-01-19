@@ -124,6 +124,20 @@
                         modal.setAttribute('aria-labelledby', titleEl.id);
                     }
                 }
+
+                // Heading nesting hardening (non-visual):
+                // If content jumps from an H2 title straight to H4 section headings, insert a hidden H3.
+                var mainTitle = modal.querySelector('.news-details h2.title, .modal-title, h1, h2');
+                if (mainTitle) {
+                    var hasH3 = !!modal.querySelector('h3');
+                    var firstH4 = modal.querySelector('h4');
+                    if (firstH4 && !hasH3) {
+                        var h3 = document.createElement('h3');
+                        h3.className = 'visually-hidden';
+                        h3.textContent = 'Sections';
+                        firstH4.parentNode.insertBefore(h3, firstH4);
+                    }
+                }
             });
 
             // Reinitialize feather icons when any modal is shown.
