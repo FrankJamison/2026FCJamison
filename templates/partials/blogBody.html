@@ -1,3 +1,201 @@
+<div class="modal fade" id="blogModal2026HackerNews" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0038-HackerNews.png') }}" alt="Hacker News Aggregator: Built to Read, Not Impress" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">18 January 2026</span>
+                    <h2 class="title"> <a href="https://hackernews.fcjamison.com" target="_blank">Hacker News Aggregator: </a><br>Built to Read, Not Impress</h2>
+                    <p>There’s a certain irony in building a Hacker News reader. The audience it attracts—engineers, founders, and recruiters included—is famously allergic to fluff. If something feels over-engineered, they’ll spot it instantly. If it feels under-thought, they’ll spot that too. That tension is exactly why I built this project.</p>
+                    <p>This Hacker News Aggregator is a compact, production-minded web app that does one thing well: fetch, filter, and present high-signal Hacker News stories in a clean, readable interface. No framework gymnastics. No buzzword bingo. Just deliberate design, pragmatic engineering, and a focus on the problems that actually show up once code leaves your laptop and meets a real server.</p>
+
+                    <hr>
+
+                    <h4>Why this project exists</h4>
+                    <p>A lot of portfolio pieces optimize for flash. This one optimizes for trust.</p>
+                    <p>I wanted a project that demonstrates how I think about real systems, not just isolated components. Specifically:</p>
+                    <ul>
+                        <li>How different runtimes cooperate in the same application.</li>
+                        <li>How server environments differ from local shells.</li>
+                        <li>How small decisions around encoding, escaping, and execution paths prevent big headaches later.</li>
+                        <li>How a UI can feel calm and intentional instead of noisy.</li>
+                    </ul>
+                    <p>The result is a PHP-rendered application backed by a Python data-collection script. Each language does what it’s good at. Neither pretends to be the other.</p>
+
+                    <hr>
+
+                    <h4>What the application does</h4>
+                    <p>At its core, the app fetches stories from Hacker News, filters them based on age and popularity, and renders them in a dark, reader-friendly interface.</p>
+                    <p>Users can control two inputs via query parameters:</p>
+                    <ul>
+                        <li>How many days back to look.</li>
+                        <li>The minimum vote count a story must have to appear.</li>
+                    </ul>
+                    <p>Those values are validated, clamped to safe ranges, and passed to the backend fetch process. Results are sorted by vote count and displayed as a focused list of links with just enough metadata to make fast decisions.</p>
+                    <p>The goal isn’t to replicate Hacker News. It’s to create a high-signal reader that respects your time.</p>
+
+                    <hr>
+
+                    <h4>Architecture at a glance</h4>
+                    <p>This project is intentionally small, but not simplistic.</p>
+                    <p>There are two runtime components:</p>
+                    <ul>
+                        <li>A PHP front end responsible for request handling, validation, process execution, and HTML rendering.</li>
+                        <li>A Python script responsible for fetching and parsing Hacker News content and emitting structured JSON.</li>
+                    </ul>
+                    <p>The request flow looks like this:</p>
+                    <ol>
+                        <li>A browser requests the page, optionally with filter parameters.</li>
+                        <li>PHP validates the input and launches a Python subprocess.</li>
+                        <li>Python fetches and parses Hacker News pages, applies filters, and outputs JSON.</li>
+                        <li>PHP decodes that JSON and renders the result set into HTML.</li>
+                    </ol>
+                    <p>This separation keeps responsibilities clean. PHP remains focused on presentation and orchestration. Python handles network I/O and parsing. Either piece can be debugged or extended independently.</p>
+
+                    <hr>
+
+                    <h4>Cross-language integration done deliberately</h4>
+                    <p>Calling Python from PHP is easy to demo and surprisingly easy to get wrong in production. Most failures don’t come from code—they come from assumptions about the runtime environment.</p>
+                    <p>This project treats those edge cases as first-class concerns.</p>
+                    <p>Instead of assuming the server knows where Python lives, the application:</p>
+                    <ul>
+                        <li>Allows an explicit interpreter path via an environment variable.</li>
+                        <li>Falls back through a list of reasonable candidates when no override is present.</li>
+                        <li>Uses argument-array execution so paths with spaces behave correctly on Windows.</li>
+                        <li>Captures both stdout and stderr so failures are visible and actionable.</li>
+                    </ul>
+                    <p>This isn’t theoretical. These are the exact issues that surface when code moves under Apache, IIS, or shared hosting. Handling them up front turns deployment from a guessing game into a predictable process.</p>
+
+                    <hr>
+
+                    <h4>Predictable, safe data exchange</h4>
+                    <p>When two runtimes communicate, clarity matters more than cleverness.</p>
+                    <p>The Python script emits a single, stable JSON object that includes:</p>
+                    <ul>
+                        <li>The generation timestamp.</li>
+                        <li>The filter values used.</li>
+                        <li>A normalized list of stories with titles, links, votes, and age text.</li>
+                    </ul>
+                    <p>Output is written explicitly as UTF-8 bytes to avoid encoding mismatches that can quietly break JSON decoding—especially on Windows-based servers. On the PHP side, decoding is strict, and failures are surfaced immediately rather than masked.</p>
+                    <p>The result is a clean contract between components. If something breaks, it breaks loudly and in the right place.</p>
+
+                    <hr>
+
+                    <h4>Server-side rendering with safety in mind</h4>
+                    <p>The front end is rendered entirely on the server, by design.</p>
+                    <p>All dynamic output passes through a dedicated escaping helper before it ever reaches the page. Titles, URLs, and metadata are treated as untrusted input, even though they come from a known source. Links open safely in new tabs with appropriate relationship attributes. There’s no inline script injection, no accidental trust leaks, and no reliance on client-side sanitization.</p>
+                    <p>This approach keeps the surface area small and predictable, which matters more than novelty when you’re building something meant to live on a public server.</p>
+
+                    <hr>
+
+                    <h4>UI and design philosophy</h4>
+                    <p>Visually, the application is quiet on purpose.</p>
+                    <p>The interface uses a dark theme with restrained contrast, designed for scanning rather than spectacle. Typography and spacing favor readability over density. Stories are presented as cards that feel tactile without being heavy.</p>
+                    <p>From a design-system perspective:</p>
+                    <ul>
+                        <li>CSS variables define the core palette and spacing rules, making global adjustments trivial.</li>
+                        <li>Focus states are explicit and keyboard-friendly.</li>
+                        <li>Motion is reduced automatically for users who prefer it.</li>
+                        <li>The layout adapts smoothly from mobile widths to wide desktops without rethinking the structure.</li>
+                    </ul>
+                    <p>All styling lives in a single stylesheet. There’s no framework abstraction layer to fight and no hidden magic—just modern CSS, used intentionally.</p>
+
+                    <hr>
+
+                    <h4>Performance and guardrails</h4>
+                    <p>Scraping is inherently impolite if you’re careless, so the backend includes clear limits.</p>
+                    <p>The fetch process caps the number of pages it will request and stops early once it detects content outside the desired time window. That keeps execution time bounded and avoids unnecessary requests.</p>
+                    <p>On the PHP side, caching headers are intentionally disabled so refreshes always reflect current data, while static assets use file-based cache busting to avoid stale styles during development or deployment.</p>
+                    <p>It’s a small app, but it behaves like a well-mannered one.</p>
+
+                    <hr>
+
+                    <h4>Local and production readiness</h4>
+                    <p>This project was built with real hosting environments in mind.</p>
+                    <p>It runs cleanly under common local stacks and translates well to VPS deployments. Python dependencies are explicitly listed. Interpreter paths are configurable. Error output is visible without digging through server logs.</p>
+                    <p>There’s no assumption of containerization, virtual environments, or managed platforms—though those could be layered on later if desired. The goal here is portability and clarity, not platform lock-in.</p>
+
+                    <hr>
+
+                    <h4>What this demonstrates to employers and teams</h4>
+                    <p>This project isn’t about showing off how many tools I know. It’s about showing how I think.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>Comfort working across language boundaries.</li>
+                        <li>Attention to deployment-level details, not just happy-path code.</li>
+                        <li>A bias toward clarity, safety, and maintainability.</li>
+                        <li>UI decisions grounded in usability rather than trend-chasing.</li>
+                        <li>The ability to scope a project tightly and execute it cleanly.</li>
+                    </ul>
+                    <p>In other words, it reflects how I approach professional work: build what’s needed, make it readable, and leave it better than I found it.</p>
+
+                    <hr>
+
+                    <h4>Where it could go next</h4>
+                    <p>If this were to grow beyond a portfolio piece, the path forward is clear:</p>
+                    <ul>
+                        <li>Introduce short-lived server-side caching to reduce repeated fetches.</li>
+                        <li>Add automated tests around parsing to catch upstream markup changes.</li>
+                        <li>Expose the backend output as an optional JSON endpoint.</li>
+                        <li>Expand filtering options while keeping validation strict and predictable.</li>
+                    </ul>
+                    <p>None of those changes require rewriting the core. They layer naturally on top of what’s already here.</p>
+
+                    <hr>
+
+                    <p>This Hacker News Aggregator is intentionally modest. It doesn’t shout. It doesn’t posture. It does its job, handles edge cases, and stays out of the way.</p>
+                    <p>That restraint is the point.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Hacker News Aggregator: Built to Read, Not Impress">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2025JamisonStamps" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
