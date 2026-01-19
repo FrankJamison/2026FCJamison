@@ -527,13 +527,13 @@
                     <h3>Clean, Intentional Architecture</h3>
                     <p>The application is structured around clear separation of concerns, without unnecessary abstraction.</p>
 
-                    <h5>PHP: Request Handling and Orchestration</h5>
+                    <h4>PHP: Request Handling and Orchestration</h4>
                     <p>The PHP layer acts as a controlled gateway. It accepts form submissions, invokes the Python script, captures output, and returns a structured response to the client. PHP does not inspect, log, or retain passwords—it simply passes data through and reports results.</p>
 
-                    <h5>Python: Security Logic and API Interaction</h5>
+                    <h4>Python: Security Logic and API Interaction</h4>
                     <p>Python is responsible for hashing the password, interacting with the Have I Been Pwned Range API, and evaluating the results. Isolating this logic keeps the most sensitive operations contained, testable, and easier to audit.</p>
 
-                    <h5>JavaScript: User Experience Layer</h5>
+                    <h4>JavaScript: User Experience Layer</h4>
                     <p>Client-side JavaScript handles asynchronous submission and feedback. Users receive immediate responses without page reloads, while error states are surfaced clearly and calmly. No client-side storage is used, and nothing persists beyond the request lifecycle.</p>
 
                     <p>The result is a system that feels simple because it is simple—by design.</p>
@@ -1055,13 +1055,13 @@
                     <p>At its core, D&D5eTools.com is a collection of focused utilities designed to be used at the table—not admired in a portfolio slideshow and forgotten. Each tool addresses a specific friction point in 5e character creation and prep, and each is intentionally narrow in scope.</p>
                     <p>There are three primary components:</p>
 
-                    <h5>Ability Score Generator</h5>
+                    <h4>Ability Score Generator</h4>
                     <p>Implements the classic 4d6, drop-the-lowest method in a way that is transparent, predictable, and rule-faithful. Dice rolls are explicit. Calculations are readable. Nothing is hidden behind abstractions that would make a rules-lawyer suspicious.</p>
 
-                    <h5>Physical Stat Generator</h5>
+                    <h4>Physical Stat Generator</h4>
                     <p>Age, height, and weight generation based on race-specific rules, implemented using parsed dice expressions on the client side. This isn’t random fluff—it’s encoded rule logic, translating book tables into deterministic JavaScript behavior that mirrors tabletop expectations.</p>
 
-                    <h5>Pre-Generated Character Gallery</h5>
+                    <h4>Pre-Generated Character Gallery</h4>
                     <p>A static, filterable character gallery that links portraits and PDFs through deterministic naming conventions. No database. No API. Characters scale by adding files, not rewriting code. This is content-driven architecture in its simplest and most durable form.</p>
 
                     <p>Each tool stands alone, yet the site feels cohesive—because the structure underneath it is.</p>
@@ -1595,18 +1595,18 @@
                     <h3>Architectural Spine: Three Modules, One Job Each</h3>
                     <p>All application logic lives in a single JavaScript file, but it’s intentionally divided into three self-contained modules using the module pattern (IIFEs). This isn’t accidental—it’s the entire point of the exercise.</p>
 
-                    <h5>Budget Controller (The Model)</h5>
+                    <h4>Budget Controller (The Model)</h4>
                     <p>This module owns the truth.</p>
                     <p>It maintains a single in-memory data structure containing all income items, expense items, totals, the current budget, and the overall expense percentage. Items are created via simple constructor functions and assigned deterministic IDs. Calculations happen in exactly one place.</p>
                     <p>Nothing in the UI performs math. Nothing outside this module mutates totals. If the numbers are wrong, there’s only one place to look.</p>
                     <p>That constraint alone eliminates a surprising number of bugs.</p>
 
-                    <h5>UI Controller (The View)</h5>
+                    <h4>UI Controller (The View)</h4>
                     <p>This module speaks DOM—fluently, and only.</p>
                     <p>All selectors are centralized. Input is read, parsed, and validated here. HTML is generated as strings and inserted explicitly. Budget totals, percentages, and labels are rendered via focused update methods.</p>
                     <p>The UI never asks <em>how</em> numbers are calculated. It simply requests the current budget snapshot and paints it. Think of it as a translator: it converts application state into something humans can see.</p>
 
-                    <h5>Global Controller (The Orchestrator)</h5>
+                    <h4>Global Controller (The Orchestrator)</h4>
                     <p>This is the traffic cop.</p>
                     <p>It wires events, coordinates the flow between model and view, and defines the two core user journeys: adding items and deleting items. Each flow follows the same rhythm—read input, update data, update UI—making behavior predictable and easy to reason about.</p>
                     <p>Initialization happens cleanly on DOM load, including setting the current month from the system clock. No race conditions. No timing guesswork.</p>
@@ -2946,7 +2946,7 @@
                     </ul>
                     <p>This analog piece isn’t just decoration—it reinforces the concept visually and demonstrates DOM-driven animation through CSS transforms.</p>
 
-                    <h5>Analog Hand Logic (SVG + Transform)</h5>
+                    <h4>Analog Hand Logic (SVG + Transform)</h4>
                     <p>The analog hands are positioned and rotated via JavaScript using style.transform with rotation math:</p>
                     <ul>
                         <li>Seconds sweep: one full rotation per minute</li>
@@ -2976,13 +2976,13 @@
                     <h3>Countdown Timer: Strict Validation and Safe State</h3>
                     <p>The countdown timer is built with a defensive approach: it validates user input up-front instead of trying to recover later.</p>
 
-                    <h5>Input Format</h5>
+                    <h4>Input Format</h4>
                     <p>It requires the user to enter <strong>exactly</strong>:</p>
                     <ul>
                         <li>mm:ss:hh (leading zeros required)</li>
                     </ul>
 
-                    <h5>Upper Bound</h5>
+                    <h4>Upper Bound</h4>
                     <p>It enforces a maximum of:
                     <ul>
                         <li>10:00:00</li>
@@ -3333,7 +3333,7 @@
 
                     <h3>Design and UX: Consistency as a Feature</h3>
 
-                    <h5>A repeatable page layout system</h5>
+                    <h4>A repeatable page layout system</h4>
                     <p>Each page follows the same overall rhythm:</p>
                     <ul>
                         <li>Header with name/title branding</li>
@@ -3345,10 +3345,10 @@
                     </ul>
                     <p>That consistency matters for employers and recruiters because it reduces friction: once a reader understands one page, they understand the whole site.</p>
 
-                    <h5>Visual identity: the “cube” motif + restrained palette</h5>
+                    <h4>Visual identity: the “cube” motif + restrained palette</h4>
                     <p>The CSS makes branding explicit and repeatable. A “cube” mark appears in the header and is reused as a small motif in headings across the site. It’s subtle, but it unifies the pages into a cohesive “product” rather than a set of disconnected documents.</p>
 
-                    <h5>Section-specific hero banners for orientation</h5>
+                    <h4>Section-specific hero banners for orientation</h4>
                     <p>The site uses unique banners per section:</p>
                     <ul>
                         <li>mainBanner.jpg</li>
@@ -3370,7 +3370,7 @@
                     <h3>Front-End Development: Progressive Enhancement + Purposeful Interactivity</h3>
                     <p>This project does not try to “app-ify” a resume. It stays content-forward and uses JavaScript where it helps:</p>
 
-                    <h5>jQuery UI accordion for multi-level resume content</h5>
+                    <h4>jQuery UI accordion for multi-level resume content</h4>
                     <p>_javascript/script.js initializes a jQuery UI accordion on ul.trackAccordion:</p>
                     <ul>
                         <li>collapsible: true</li>
@@ -3378,7 +3378,7 @@
                     </ul>
                     <p>That accordion pattern is used for nested, dense content—especially where categories and subcategories make sense (employment entries, grouped skills, grouped awards, etc.). The HTML uses a multi-level structure (level 1 → level 2 → level 3) that keeps long content navigable.</p>
 
-                    <h5>A custom checkbox-driven accordion for Education</h5>
+                    <h4>A custom checkbox-driven accordion for Education</h4>
                     <p>education.html uses a separate accordion approach built around:</p>
                     <ul>
                         <li>ul.cd-accordion-menu</li>
@@ -3927,16 +3927,16 @@
                     <h3>Design &amp; Development Features</h3>
                     <p>Recruiters and engineers reviewing this codebase can immediately see:</p>
 
-                    <h5>Responsive layout powered by Bootstrap</h5>
+                    <h4>Responsive layout powered by Bootstrap</h4>
                     <p>The site structure is built around well-organized section blocks and grid patterns, making it usable across screen sizes without complex responsive media queries.</p>
 
-                    <h5>Optional theming via CSS “skins”</h5>
+                    <h4>Optional theming via CSS “skins”</h4>
                     <p>Instead of hard-coding colors throughout the base styles, the project includes interchangeable color stylesheets in css/colors/ — a simple but effective theming method that separates palette from structure.</p>
 
-                    <h5>Clear separation of concerns</h5>
+                    <h4>Clear separation of concerns</h4>
                     <p>Markup (index.html), styles (css/), behavior (js/), and assets (images/, fonts/) are each placed in their own folders. This makes the project instantly navigable and extensible without tooling overhead.</p>
 
-                    <h5>No build step, no dependencies beyond the essentials</h5>
+                    <h4>No build step, no dependencies beyond the essentials</h4>
                     <p>This site can be served directly from any static host, GitHub Pages, or a simple local HTTP server. There’s no Node, no bundlers — just the web as it was meant to be consumed.</p>
 
                     <h3>Why This Matters to Recruiters</h3>
@@ -4028,7 +4028,7 @@
                     <p>This isn’t a museum piece glued together; it’s maintainable and runnable today. It even includes instructions for local virtual host configuration.</p>
 
                     <h3>Architectural Overview</h3>
-                    <h5>Directory Layout &amp; Static Pages</h5>
+                    <h4>Directory Layout &amp; Static Pages</h4>
                     <p>The repository follows a traditional folder structure:</p>
                     <ul>
                         <li>index.htm — main landing page</li>
@@ -4038,7 +4038,7 @@
                     </ul>
                     <p>There’s no index.html by design — it’s index.htm, a choice that harks back to early web servers and compatibility considerations.</p>
 
-                    <h5>Shared UI, the Old-School Way</h5>
+                    <h4>Shared UI, the Old-School Way</h4>
                     <p>Instead of components or includes at build time, this site uses runtime JavaScript includes to import repeated UI elements (header, menu, footer). The core pattern:</p>
                     <ul>
                         <li>menu.js — primary nav</li>
@@ -4048,7 +4048,7 @@
                     </ul>
                     <p>These scripts use DOM methods like document.write() to inject HTML. Yes, that’s frowned upon today, but in 2013 it was a <em>standard way to centralize shared layout before templating engines were mainstream.</em></p>
 
-                    <h5>Preserving Legacy Flash with Ruffle</h5>
+                    <h4>Preserving Legacy Flash with Ruffle</h4>
                     <p>One of the coolest parts living in this repo is the Flash banner:</p>
                     <ul>
                         <li>Original .swf file lives at: resources/sfw/header.swf</li>
@@ -4056,7 +4056,7 @@
                     </ul>
                     <p>This is a real-world example of running historically obsolete content using modern browser tech — a great case study in graceful degradation and forward-facing compatibility layers.</p>
 
-                    <h5>Contact Form: PHP + SMTP</h5>
+                    <h4>Contact Form: PHP + SMTP</h4>
                     <p>Instead of mail(), the site uses SMTP with authentication — much more reliable on shared hosts.</p>
                     <p>Configurable via:</p>
                     <ul>
@@ -4066,13 +4066,13 @@
                     <p>The code even logs failures to contact/sendmail_failures.log, a simple but pragmatic debugging pattern.</p>
 
                     <h3>Technical Considerations for Modern Maintenance</h3>
-                    <h5>Absolute Root Paths</h5>
+                    <h4>Absolute Root Paths</h4>
                     <p>The site uses absolute-root URLs like /resources/... and /resume/.... That’s fine for a root deployment, but it breaks under subpath hosting unless you rewrite paths — a classic gotcha when migrating legacy static sites.</p>
 
-                    <h5>Character Encoding</h5>
+                    <h4>Character Encoding</h4>
                     <p>Most pages declare charset=iso-8859-1. This is unusual today, where UTF-8 is the de facto standard. Keeping this consistent avoids mangled text (mojibake) in older content.</p>
 
-                    <h5>GitHub Metadata</h5>
+                    <h4>GitHub Metadata</h4>
                     <ul>
                         <li>No description or topics are set for the repository, which lowers discoverability.</li>
                         <li>No releases, stars, or forks — but this is intentional; it’s a <em>portfolio preservation project</em>, not a deployable piece of infrastructure.</li>
@@ -4081,7 +4081,7 @@
                     <h3>Why Developers Should Care</h3>
                     <p>Even if you’ll never write HTML like this again, this project is a miniature case study in:</p>
 
-                    <h5>Web Fundamentals</h5>
+                    <h4>Web Fundamentals</h4>
                     <ul>
                         <li>Static pages tuned for browser compatibility</li>
                         <li>Manual DOM manipulation for shared UI</li>
@@ -4089,7 +4089,7 @@
                     </ul>
                     <p>These are skills that <em>still matter</em> when you’re debugging legacy systems, optimizing performance, or doing a quick proof-of-concept without a toolchain.</p>
 
-                    <h5>Legacy Tech Integration</h5>
+                    <h4>Legacy Tech Integration</h4>
                     <p>Ruffle + WebAssembly is an elegant, real example of emulating obsolete tech in a modern runtime — something increasingly relevant with archived games, animations, or legacy UIs.</p>
                     <p>This repo isn’t just a snapshot; it’s an exemplar of <em>incremental preservation</em> — keeping old tech alive without reinventing the wheel.</p>
 
