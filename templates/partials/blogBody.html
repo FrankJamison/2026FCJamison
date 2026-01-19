@@ -1,3 +1,174 @@
+<div class="modal fade" id="blogModal2026SpacePortfolio" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0039-SpacePortfolio.png') }}" alt="Space Portfolio: A Full-Stack Flask Portfolio" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">19 January 2026</span>
+                    <h2 class="title"> <a href="https://spaceportfolio.fcjamison.com" target="_blank">Space Portfolio: </a><br>A Full-Stack Flask Portfolio</h2>
+                    <p>This project is a deliberately engineered full-stack portfolio built with Python and Flask, designed to communicate real-world development skill with clarity, restraint, and technical intent. It is not a visual experiment, a framework showcase, or a single-page résumé in disguise. It is a working web application that reflects how production-minded developers plan, structure, and maintain software over time.</p>
+                    <p>Every decision in this project exists to answer a practical question: <em>How would this hold up if it were real?</em> Real users. Real deployment. Real maintenance. The result is a portfolio that feels calm, navigable, and dependable—because those qualities matter more in professional software than novelty ever will.</p>
+                    <p>This repository is written for recruiters, employers, and developers who want to see how someone thinks when the goal is sustainability, not spectacle.</p>
+
+                    <hr>
+
+                    <h4>Project Purpose and Design Philosophy</h4>
+                    <p>This <strong>Space Portfolio</strong> is built around the idea that good engineering reveals itself through structure, not ornamentation. Instead of relying on heavy front-end frameworks, animated transitions, or complex client-side state, the project leans on a proven server-rendered model that keeps logic explicit and behavior predictable.</p>
+                    <p>Flask was chosen because it provides just enough structure without imposing unnecessary constraints. It allows the application to remain flexible while still enforcing clear boundaries between routing, logic, and presentation. This keeps the codebase approachable, testable, and easy to extend.</p>
+                    <p>The space theme is used to establish a cohesive visual identity, but it never overrides usability or clarity. It supports the experience rather than becoming the experience.</p>
+
+                    <hr>
+
+                    <h4>Application Architecture</h4>
+                    <p>At its core, this is a traditional Flask application designed with maintainability in mind.</p>
+                    <p>The architecture separates concerns cleanly:</p>
+                    <ul>
+                        <li>Routing is centralized and readable</li>
+                        <li>Templates focus on presentation, not logic</li>
+                        <li>Static assets are organized and predictable</li>
+                        <li>Configuration is environment-driven</li>
+                        <li>Deployment paths are clearly defined</li>
+                    </ul>
+                    <p>This structure mirrors how small-to-mid-sized Flask applications are built in production environments. There is no over-engineering here—only patterns that scale gracefully if the project grows.</p>
+                    <p>The code favors explicitness over abstraction. Logic is written where it is used, not hidden behind unnecessary layers. This makes the application easier to audit, debug, and hand off to another developer.</p>
+
+                    <hr>
+
+                    <h4>Routing Strategy and URL Design</h4>
+                    <p>Routing is handled through a dynamic, validated approach rather than hardcoded page definitions. A single route maps clean URLs directly to template files after validating the requested page name against a strict regular expression.</p>
+                    <p>This decision reduces duplication while preserving safety. Only filenames that match the allowed pattern are eligible for rendering, and missing templates return proper 404 responses. There is no opportunity for directory traversal or unintended file access.</p>
+                    <p>From a practical standpoint, this makes the site easy to extend. Adding a new page requires creating a template—no backend changes necessary. This keeps content growth decoupled from application logic, which is especially valuable in portfolio or content-driven sites.</p>
+
+                    <hr>
+
+                    <h4>Template Organization and Content Strategy</h4>
+                    <p>Templates are structured for clarity and longevity.</p>
+                    <p>Each major section of the site exists as its own template, allowing content to be reasoned about in isolation. Shared layout elements are reused to ensure consistency without duplicating markup or styles.</p>
+                    <p>Portfolio entries are intentionally separated into individual pages rather than collapsed into a single scrolling layout. This reflects how projects are reviewed in professional contexts—one at a time, with focus—rather than buried in a wall of content competing for attention.</p>
+                    <p>The templating layer remains presentation-focused. Business logic and data handling are kept entirely within the backend, reinforcing a clean separation of responsibilities.</p>
+
+                    <hr>
+
+                    <h4>Front-End Implementation Choices</h4>
+                    <p>The front end is designed to be stable rather than flashy.</p>
+                    <p>CSS is custom-written to support layout, spacing, and visual hierarchy without relying on external frameworks. Typography and color choices prioritize readability and contrast, ensuring the site remains usable across devices and lighting conditions.</p>
+                    <p>JavaScript is used sparingly and intentionally. There are no client-side frameworks duplicating server-side responsibilities or introducing unnecessary state complexity. This keeps load times fast, behavior predictable, and maintenance straightforward.</p>
+                    <p>The goal is a front end that does not age poorly. Trends change quickly; fundamentals do not.</p>
+
+                    <hr>
+
+                    <h4>Contact Form: A Real Backend Feature</h4>
+                    <p>The contact form is a complete backend feature, not a cosmetic placeholder.</p>
+                    <p>Submissions follow a deliberate workflow:</p>
+                    <ul>
+                        <li>Data is received via POST</li>
+                        <li>Inputs are handled conservatively</li>
+                        <li>Submissions are persisted to storage</li>
+                        <li>Optional email notifications are triggered</li>
+                    </ul>
+                    <p>SMTP behavior is controlled through environment variables, allowing email functionality to be enabled, disabled, or reconfigured without code changes. If credentials are unavailable, the application continues operating normally, preserving user experience and system stability.</p>
+                    <p>This design reflects how non-critical features should behave in production: useful when available, invisible when not.</p>
+
+                    <hr>
+
+                    <h4>Data Persistence and Storage Decisions</h4>
+                    <p>Contact submissions are stored using CSV-based persistence. This is a conscious and appropriate choice for the scope of the application.</p>
+                    <p>CSV storage provides durability without infrastructure overhead. Records are human-readable, easy to audit, and simple to export or migrate if the project evolves. For a portfolio site, introducing a full database would add complexity without meaningful benefit.</p>
+                    <p>The implementation ensures directories exist, handles encoding explicitly, and appends safely. The emphasis is on reliability and transparency rather than scale.</p>
+
+                    <hr>
+
+                    <h4>Security and Defensive Engineering</h4>
+                    <p>Security considerations are integrated quietly throughout the application.</p>
+                    <ul>
+                        <li>Page access is restricted through strict validation</li>
+                        <li>User input is handled defensively</li>
+                        <li>Sensitive configuration lives in environment variables</li>
+                        <li>No dynamic file access is exposed</li>
+                    </ul>
+                    <p>While this is not a high-risk application, it is built with the same baseline caution expected in professional environments. The goal is not to demonstrate advanced security techniques, but to avoid common mistakes that undermine otherwise solid projects.</p>
+
+                    <hr>
+
+                    <h4>Development Workflow and Deployment Readiness</h4>
+                    <p>The project supports both local development and production deployment without special cases or fragile branching logic.</p>
+                    <ul>
+                        <li>A development server enables rapid iteration.</li>
+                        <li>WSGI configuration supports production servers.</li>
+                        <li>Dependencies are minimal and explicit.</li>
+                    </ul>
+                    <p>The application can be deployed to traditional hosting, a VPS, or containerized environments without restructuring. This reflects an understanding that portfolios often evolve over time and should not lock themselves into narrow assumptions.</p>
+
+                    <hr>
+
+                    <h4>Why This Portfolio Works</h4>
+                    <p>The <strong>Space Portfolio</strong> is not about showing how many tools I can use—it’s about showing how I choose them.</p>
+                    <p>It demonstrates:</p>
+                    <ul>
+                        <li>Backend-driven architecture competence</li>
+                        <li>Comfort with server-rendered applications</li>
+                        <li>Judgment in scope and dependency selection</li>
+                        <li>An emphasis on clarity, safety, and maintainability</li>
+                    </ul>
+                    <p>For recruiters, it communicates signal quickly.<br>For employers, it reflects production-aware thinking.<br>For developers, it offers code that is readable and intentional.</p>
+
+                    <hr>
+
+                    <h4>Closing Perspective</h4>
+                    <p>This project represents how I approach real-world development: build only what is needed, build it clearly, and build it to last. There is no excess here—only decisions made with purpose.</p>
+                    <p>The <strong>Space Portfolio</strong> is meant to be read, reviewed, and understood. If you’re doing that now, then it’s already doing its job.</p>
+                    <p>Stable orbit maintained.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Space Portfolio: A Full-Stack Flask Portfolio">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2026HackerNews" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
