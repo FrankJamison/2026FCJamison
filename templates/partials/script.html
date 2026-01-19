@@ -57,6 +57,40 @@
                 }
             });
 
+            // Replace href="javascript:void(0)" with safe placeholders.
+            // Keeps existing CSS that targets anchors, but avoids JS URLs in href attributes.
+            document.querySelectorAll('a[href]').forEach(function(anchor) {
+                var href = (anchor.getAttribute('href') || '').trim();
+                if (href === 'javascript:void(0)' || href === 'javascript:void(0);') {
+                    anchor.setAttribute('href', '#');
+
+                    // If this anchor sits inside a modal trigger card, add dialog semantics.
+                    var trigger = anchor.closest ? anchor.closest('[data-bs-toggle="modal"][data-bs-target]') : null;
+                    if (trigger) {
+                        var target = (trigger.getAttribute('data-bs-target') || '').trim();
+                        if (target && target.charAt(0) === '#') {
+                            anchor.setAttribute('aria-haspopup', 'dialog');
+                            if (!anchor.getAttribute('aria-controls')) {
+                                anchor.setAttribute('aria-controls', target.slice(1));
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Prevent "#" placeholder links inside modal trigger cards from jumping the page.
+            document.addEventListener('click', function(event) {
+                var anchor = event.target && event.target.closest ? event.target.closest('a[href="#"]') : null;
+                if (!anchor) {
+                    return;
+                }
+                var inModalCard = anchor.closest && anchor.closest('[data-bs-toggle="modal"][data-bs-target]');
+                if (!inModalCard) {
+                    return;
+                }
+                event.preventDefault();
+            });
+
             // Ensure external links opened in new tabs are safe.
             document.querySelectorAll('a[target="_blank"]').forEach(function(anchor) {
                 var rel = (anchor.getAttribute('rel') || '').trim();
