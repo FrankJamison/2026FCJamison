@@ -14,27 +14,123 @@
     <!-- Reinitialize feather icons on modal show -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - checking modals');
+            // Enable keyboard activation for non-button elements that behave like buttons.
+            document.addEventListener('keydown', function(event) {
+                if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                }
+                var target = event.target;
+                if (!target) {
+                    return;
+                }
+                var isButtonLike = target.getAttribute && target.getAttribute('role') === 'button' && target.getAttribute('tabindex') === '0';
+                if (!isButtonLike) {
+                    return;
+                }
+                event.preventDefault();
+                if (typeof target.click === 'function') {
+                    target.click();
+                }
+            });
 
-            // Check if the modal element exists
-            var modal2006 = document.getElementById('2006FrankJamison');
-            console.log('Modal #2006FrankJamison found:', !!modal2006);
+            // Make modal trigger cards accessible (focusable + keyboard activatable).
+            // Many cards use <div data-bs-toggle="modal"> which isn't focusable by default.
+            document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target]').forEach(function(trigger) {
+                var tag = (trigger.tagName || '').toLowerCase();
+                var isNative = tag === 'a' || tag === 'button' || tag === 'input' || tag === 'select' || tag === 'textarea';
 
-            // Reinitialize feather icons when any modal is shown  
-            var modals = document.querySelectorAll('.modal');
-            console.log('Total modals found:', modals.length);
+                if (!isNative) {
+                    if (!trigger.getAttribute('role')) {
+                        trigger.setAttribute('role', 'button');
+                    }
+                    if (!trigger.getAttribute('tabindex')) {
+                        trigger.setAttribute('tabindex', '0');
+                    }
+                }
 
-            modals.forEach(function(modal) {
-                console.log('Modal ID:', modal.id);
+                if (!trigger.getAttribute('aria-label')) {
+                    var titleEl = trigger.querySelector('h4.title, h3.title, .title');
+                    var titleText = titleEl ? (titleEl.textContent || '').replace(/\s+/g, ' ').trim() : '';
+                    if (titleText) {
+                        trigger.setAttribute('aria-label', 'Open details: ' + titleText);
+                    }
+                }
+            });
+
+            // Ensure external links opened in new tabs are safe.
+            document.querySelectorAll('a[target="_blank"]').forEach(function(anchor) {
+                var rel = (anchor.getAttribute('rel') || '').trim();
+                var tokens = rel ? rel.split(/\s+/) : [];
+                var lowerTokens = tokens.map(function(t) {
+                    return String(t).toLowerCase();
+                });
+                if (!lowerTokens.includes('noopener')) {
+                    tokens.push('noopener');
+                }
+                if (!lowerTokens.includes('noreferrer')) {
+                    tokens.push('noreferrer');
+                }
+                anchor.setAttribute('rel', tokens.join(' ').trim());
+            });
+
+            // Improve modal accessibility: aria-modal + aria-labelledby.
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                if (!modal.hasAttribute('role')) {
+                    modal.setAttribute('role', 'dialog');
+                }
+                if (!modal.hasAttribute('aria-modal')) {
+                    modal.setAttribute('aria-modal', 'true');
+                }
+                if (!modal.getAttribute('aria-labelledby')) {
+                    var titleEl = modal.querySelector('.news-details h2.title, .text-content h3, .modal-title, h1, h2, h3');
+                    if (titleEl) {
+                        if (!titleEl.id) {
+                            titleEl.id = (modal.id ? (modal.id + '-title') : 'modal-title');
+                        }
+                        modal.setAttribute('aria-labelledby', titleEl.id);
+                    }
+                }
+            });
+
+            // Reinitialize feather icons when any modal is shown.
+            document.querySelectorAll('.modal').forEach(function(modal) {
                 modal.addEventListener('shown.bs.modal', function() {
-                    console.log('Modal shown:', modal.id);
-                    feather.replace();
+                    if (window.feather && typeof window.feather.replace === 'function') {
+                        window.feather.replace();
+                    }
                 });
             });
 
-            // Test click handler
-            var portfolioCard = document.querySelector('[data-bs-target="#2006FrankJamison"]');
-            console.log('Portfolio card with data-bs-target="#2006FrankJamison" found:', !!portfolioCard);
+            // Add accessible names for placeholder-only inputs in "Leave a Reply" forms.
+            // Keeps the current look by avoiding visible labels.
+            document.querySelectorAll('form.js-leave-reply-form').forEach(function(form) {
+                form.querySelectorAll('input, textarea').forEach(function(field) {
+                    var type = (field.getAttribute('type') || '').toLowerCase();
+                    if (type === 'hidden') {
+                        return;
+                    }
+
+                    var ariaLabel = field.getAttribute('aria-label');
+                    if (!ariaLabel) {
+                        var placeholder = (field.getAttribute('placeholder') || '').trim();
+                        if (placeholder) {
+                            field.setAttribute('aria-label', placeholder);
+                        }
+                    }
+
+                    // Helpful autocomplete hints.
+                    if (!field.getAttribute('autocomplete')) {
+                        var name = (field.getAttribute('name') || '').toLowerCase();
+                        if (name === 'name') {
+                            field.setAttribute('autocomplete', 'name');
+                        } else if (name === 'email') {
+                            field.setAttribute('autocomplete', 'email');
+                        } else if (name === 'website') {
+                            field.setAttribute('autocomplete', 'url');
+                        }
+                    }
+                });
+            });
 
             // Ensure "VIEW PROJECT" links inside modals always navigate.
             // Some slider/touch libraries can suppress click events after a drag.

@@ -1,9 +1,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{headTitle}} || Frank Jamison's Professional Website</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
+    <title>{{ headTitle|default("FCJamison.com", true) }} || Frank Jamison's Professional Website</title>
+    <meta name="robots" content="{{ meta_robots|default('index, follow', true) }}" />
+    <meta name="description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
+    <link rel="canonical" href="{{ request.base_url }}">
+
+    <meta property="og:site_name" content="Frank Jamison">
+    <meta property="og:title" content="{{ headTitle|default('FCJamison.com', true) }}">
+    <meta property="og:description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
+    <meta property="og:url" content="{{ request.base_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo/logo.png', _external=True) }}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ headTitle|default('FCJamison.com', true) }}">
+    <meta name="twitter:description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
