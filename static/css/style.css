@@ -15470,8 +15470,14 @@ div#featured-project-carousel {
     font-weight: inherit;
 }
 
-.modal-body .news-details h4 {
+.modal-body .news-details h3 {
     font-size: 22px;
+    line-height: 1.35;
+    color: var(--color-lightn);
+}
+
+.modal-body .news-details h4 {
+    font-size: 20px;
     line-height: 1.35;
     color: var(--color-lightn);
 }
@@ -15482,7 +15488,7 @@ div#featured-project-carousel {
     color: var(--color-lightn);
 }
 
-.modal-body .news-details *+h4 {
+.modal-body .news-details *+h3 {
     padding-top: 20px;
 }
 
@@ -20976,6 +20982,7 @@ body.white-version .rn-btn-ulderline {
     color: var(--color-heading-wv);
 }
 
+.white-version .modal .modal-body .news-details h3,
 .white-version .modal .modal-body .news-details h4 {
     color: var(--color-heading-wv);
 }
