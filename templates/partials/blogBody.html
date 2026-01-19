@@ -1,3 +1,123 @@
+<div class="modal fade" id="blogModal2025JamisonStamps" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+            <!-- End of .modal-header -->
+
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/blog/blog-0037-JamisonStamps.png') }}" alt="Jamison Stamps & Books: Philately Done Right" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <span class="date">18 January 2026</span>
+                    <h2 class="title"> <a href="https://jamisonstamps.com" target="_blank">Jamison Stamps & Books: </a><br>Philately Done Right</h2>
+                    <p><strong>Jamison Stamps & Books</strong> is a purpose-built static website designed to support a real collecting and bookselling operation—one where accuracy, clarity, and long-term usability matter more than trends. The project reflects a deliberate design philosophy: keep the structure clean, the code readable, and the experience trustworthy.</p>
+                    <p>This is philately done right, translated into the language of the web.</p>
+
+                    <hr>
+
+                    <h4>Intentional from the Ground Up</h4>
+                    <p>From the beginning, this project was guided by a single principle: <em>build something that will still make sense years from now.</em> That decision shaped every technical and design choice that followed.</p>
+                    <p>Rather than relying on heavy frameworks or elaborate build systems, the site is built with static HTML, CSS, and light JavaScript. This keeps deployment simple, performance fast, and maintenance realistic. The result is a site that can be hosted anywhere, understood by anyone, and updated without ceremony.</p>
+                    <p>In other words, it’s designed to last.</p>
+
+                    <hr>
+
+                    <h4>Structure That Respects the Content</h4>
+                    <p>The information architecture favors clarity over cleverness. Pages are organized logically—home, informational content, supporting materials—each written with semantic HTML that clearly communicates intent.</p>
+                    <p>There’s no abstraction layer obscuring how things work. You can open any file and immediately understand the structure, the content flow, and how the page is assembled. This transparency makes the project approachable for future maintainers and reinforces the idea that good structure is a form of documentation.</p>
+
+                    <hr>
+
+                    <h4>Visual Design: Calm, Readable, Trustworthy</h4>
+                    <p>The visual design is intentionally restrained. Typography is readable and consistent. Spacing is generous. Color choices are neutral and unobtrusive, allowing the subject matter—stamps, books, and reference material—to take center stage.</p>
+                    <p>CSS is organized for human comprehension rather than compression. Rules are grouped logically, selectors are clear, and responsiveness is handled through targeted media queries instead of dramatic layout shifts. The site adapts smoothly across devices while maintaining a consistent visual identity.</p>
+                    <p>This isn’t a design that tries to impress. It’s a design that tries to reassure.</p>
+
+                    <hr>
+
+                    <h4>JavaScript as a Supporting Actor</h4>
+                    <p>JavaScript is used sparingly and with purpose. jQuery supports pagination and small usability enhancements, improving navigation through larger content sets without introducing unnecessary complexity.</p>
+                    <p>There’s no over-engineering here. No sprawling client-side logic. Each script does one job, does it predictably, and then gets out of the way. This keeps the site accessible, performant, and easy to debug—qualities that matter far more than novelty in real-world applications.</p>
+
+                    <hr>
+
+                    <h4>Built for Maintenance, Not Just Launch</h4>
+                    <p>One of the most practical aspects of this project is how clearly it anticipates ongoing maintenance.</p>
+                    <p>The directory structure is intuitive. Assets are organized sensibly. Supporting documentation and reference materials make it easier for someone else—developer or not—to update content without fear of breaking the site.</p>
+                    <p>That’s not accidental. In real environments, websites are often maintained by people who didn’t build them. This project respects that reality and designs for it.</p>
+
+                    <hr>
+
+                    <h4>Supporting Materials and Real-World Context</h4>
+                    <p>Beyond the core pages, the project includes supplementary assets such as print-ready materials, reference files, and layout samples. These elements reflect how the site fits into a broader workflow that extends beyond the browser.</p>
+                    <p>It’s a reminder that real websites support real activities. They don’t exist in isolation—they serve collections, businesses, and people.</p>
+
+                    <hr>
+
+                    <h4>Performance and Longevity</h4>
+                    <p>By keeping dependencies minimal and avoiding heavy client-side rendering, the site loads quickly and behaves consistently across browsers. There’s no fragile toolchain to maintain and no dependency on external services just to keep the lights on.</p>
+                    <p>This is a site designed to age gracefully—stable, predictable, and resistant to unnecessary breakage as technologies evolve.</p>
+
+                    <hr>
+
+                    <h4>Why This Project Matters</h4>
+                    <p>Jamison Stamps & Books isn’t flashy, and it doesn’t try to be. That restraint is the point.</p>
+                    <p>For employers and recruiters, this project demonstrates judgment: knowing when simplicity is the stronger choice. For developers, it highlights a solid grasp of fundamentals—HTML, CSS, and JavaScript—applied with intention and discipline.</p>
+                    <p>It shows that professionalism often looks quiet, not loud.</p>
+
+                    <hr>
+
+                    <h4>Frank's Final Thoughts</h4>
+                    <p>This project reflects a philosophy that carries through all of my work: build for humans first, maintainers second, and trends last.</p>
+                    <p>Jamison Stamps & Books is a site designed to be trusted, understood, and maintained over time. It does exactly what it needs to do—no more, no less—and does it well.</p>
+                    <p>That’s not an accident. That’s the craft.</p>
+
+                    <hr>
+                </div>
+
+                <!-- Comment Section Area Start -->
+                <div class="comment-inner">
+                    <h3 class="title mb--40 mt--50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Jamison Stamps &amp; Books: Philately Done Right">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Section End -->
+            </div>
+            <!-- End of .modal-body -->
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="blogModal2025PasswordCheck" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
