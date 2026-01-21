@@ -34,3 +34,6 @@ Thumbs.db
 
 # If you ever add local uploads, ignore them too
 /uploads/
+
+# Untracked local image (not referenced; keep ignored)
+/static/images/portfolio/Frank\ Headshot.jpg
