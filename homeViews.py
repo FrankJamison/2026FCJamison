@@ -1,1106 +1,250 @@
+import csv
 import os
 import smtplib
-import socket
 import ssl
-import atexit
-import subprocess
-import threading
-import time
-import shutil
-import re
-import glob
-from typing import Optional
+from datetime import datetime, timezone
 from email.message import EmailMessage
-from urllib.parse import urlparse
+from pathlib import Path
+from typing import Optional, Tuple
 
-import requests
-from flask import Response, abort, jsonify, redirect, render_template, request, send_from_directory, url_for
-from app import app
+from flask import abort, jsonify, redirect, render_template, request, url_for
 
+from __init__ import app
 
-PROJECTS_ROOT = os.path.abspath(
-    os.getenv(
-        "PROJECTS_ROOT",
-        os.path.join(os.path.dirname(__file__), "projects"),
-    )
-)
 
+def _truthy_env(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
-_globebank_php_proc: Optional[subprocess.Popen] = None
-_globebank_lock = threading.Lock()
-_globebank_php_port: Optional[int] = None
 
-_franksclassiccars_php_proc: Optional[subprocess.Popen] = None
-_franksclassiccars_lock = threading.Lock()
-_franksclassiccars_php_port: Optional[int] = None
-
-_virtualworld_java_proc: Optional[subprocess.Popen] = None
-_virtualworld_lock = threading.Lock()
-_virtualworld_java_port: Optional[int] = None
-
-
-def _find_php_executable() -> Optional[str]:
-    php = shutil.which('php')
-    if php:
-        return php
-
-    # WinGet installs often land here even if PATH isn't refreshed.
-    local_appdata = os.getenv('LOCALAPPDATA')
-    if not local_appdata:
-        return None
-    winget_packages = os.path.join(
-        local_appdata, 'Microsoft', 'WinGet', 'Packages')
-    if not os.path.isdir(winget_packages):
-        return None
-
-    for root, _, files in os.walk(winget_packages):
-        if 'php.exe' in files and 'PHP.PHP.' in root.replace('\\', '/'):
-            return os.path.join(root, 'php.exe')
-    return None
-
-
-def _find_java_executable(name: str) -> Optional[str]:
-    exe = shutil.which(name)
-    if exe:
-        return exe
-    return None
-
-
-def _is_port_open(host: str, port: int) -> bool:
-    try:
-        with socket.create_connection((host, port), timeout=0.25):
-            return True
-    except OSError:
-        return False
-
-
-def _php_server_has_mysqli(host: str, port: int) -> bool:
-    """Best-effort check to see if the running PHP server has mysqli enabled."""
-    try:
-        resp = requests.get(
-            f'http://{host}:{port}/diagnostic.php', timeout=1.5)
-        if resp.status_code != 200:
-            return False
-        body = resp.text
-        return ('mysqli: Installed' in body) or ('mysqli: installed' in body)
-    except Exception:
-        return False
-
-
-def _virtualworld_server_healthy(host: str, port: int) -> bool:
-    try:
-        resp = requests.get(f'http://{host}:{port}/api/health', timeout=1.5)
-        return resp.status_code == 200
-    except Exception:
-        return False
-
-
-def _pick_free_port(host: str, preferred_port: int, *, max_tries: int = 25) -> int:
-    port = preferred_port
-    for _ in range(max_tries):
-        if not _is_port_open(host, port):
-            return port
-        port += 1
-    raise RuntimeError('No free port found for PHP server.')
-
-
-def _ensure_globebank_php_server() -> tuple[str, int]:
-    """Ensure a PHP built-in server is running for GlobeBank.
-
-    Returns (host, port) for the PHP server.
-    """
-    host = (os.getenv('PHP_GLOBEBANK_HOST')
-            or '127.0.0.1').strip() or '127.0.0.1'
-    preferred_port = int((os.getenv('PHP_GLOBEBANK_PORT')
-                         or '8007').strip() or '8007')
-
-    global _globebank_php_port
-    if _globebank_php_port is not None and _is_port_open(host, _globebank_php_port):
-        return host, _globebank_php_port
-
-    # If something is already listening on the preferred port (e.g. VS Code task),
-    # only reuse it if it has mysqli enabled.
-    if _is_port_open(host, preferred_port) and _php_server_has_mysqli(host, preferred_port):
-        _globebank_php_port = preferred_port
-        return host, preferred_port
-
-    php_exe = _find_php_executable()
-    if not php_exe:
-        raise RuntimeError(
-            "PHP is not installed or not on PATH. "
-            "Install PHP (recommended: winget install -e --id PHP.PHP.8.4) and restart VS Code terminals."
-        )
-
-    project_dir = _project_dir('2007GlobeBank')
-    public_dir = os.path.join(project_dir, 'public')
-    if not os.path.isdir(public_dir):
-        raise RuntimeError('GlobeBank public/ directory is missing.')
-
-    php_dir = os.path.dirname(php_exe)
-    php_ext_dir = os.path.join(php_dir, 'ext')
-
-    with _globebank_lock:
-        global _globebank_php_proc
-
-        port = _pick_free_port(host, preferred_port)
-        _globebank_php_port = port
-
-        if _is_port_open(host, port):
-            return host, port
-
-        if _globebank_php_proc is not None and _globebank_php_proc.poll() is None:
-            # Process exists but port isn't reachable yet; give it a moment.
-            pass
-        else:
-            php_args = [php_exe]
-            if os.path.isdir(php_ext_dir):
-                php_args += ['-d',
-                             f'extension_dir={php_ext_dir}', '-d', 'extension=mysqli']
-            php_args += ['-S', f'{host}:{port}', '-t', public_dir]
-            _globebank_php_proc = subprocess.Popen(
-                php_args,
-                cwd=public_dir,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                creationflags=(
-                    subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
-            )
-
-        # Wait briefly for the server to come up.
-        deadline = time.time() + 3.0
-        while time.time() < deadline:
-            if _is_port_open(host, port) and _php_server_has_mysqli(host, port):
-                return host, port
-            time.sleep(0.05)
-
-        raise RuntimeError('PHP server failed to start for GlobeBank.')
-
-
-def _ensure_franksclassiccars_php_server() -> tuple[str, int]:
-    """Ensure a PHP built-in server is running for 2018FranksClassicCars.
-
-    Returns (host, port) for the PHP server.
-    """
-    host = (os.getenv('PHP_FRANKSCLASSICCARS_HOST')
-            or '127.0.0.1').strip() or '127.0.0.1'
-    preferred_port = int((os.getenv('PHP_FRANKSCLASSICCARS_PORT')
-                         or '8018').strip() or '8018')
-
-    global _franksclassiccars_php_port
-    if _franksclassiccars_php_port is not None and _is_port_open(host, _franksclassiccars_php_port):
-        return host, _franksclassiccars_php_port
-
-    # If something is already listening on the preferred port, reuse it if it
-    # looks like a PHP server with mysqli enabled.
-    if _is_port_open(host, preferred_port) and _php_server_has_mysqli(host, preferred_port):
-        _franksclassiccars_php_port = preferred_port
-        return host, preferred_port
-
-    php_exe = _find_php_executable()
-    if not php_exe:
-        raise RuntimeError(
-            "PHP is not installed or not on PATH. "
-            "Install PHP (recommended: winget install -e --id PHP.PHP.8.4) and restart VS Code terminals."
-        )
-
-    project_dir = _project_dir('2018FranksClassicCars')
-    index_path = os.path.join(project_dir, 'index.php')
-    if not os.path.isfile(index_path):
-        raise RuntimeError("2018FranksClassicCars index.php is missing.")
-
-    php_dir = os.path.dirname(php_exe)
-    php_ext_dir = os.path.join(php_dir, 'ext')
-
-    with _franksclassiccars_lock:
-        global _franksclassiccars_php_proc
-
-        port = _pick_free_port(host, preferred_port)
-        _franksclassiccars_php_port = port
-
-        if _is_port_open(host, port):
-            return host, port
-
-        if _franksclassiccars_php_proc is not None and _franksclassiccars_php_proc.poll() is None:
-            # Process exists but port isn't reachable yet; give it a moment.
-            pass
-        else:
-            php_args = [php_exe]
-            if os.path.isdir(php_ext_dir):
-                php_args += ['-d',
-                             f'extension_dir={php_ext_dir}', '-d', 'extension=mysqli']
-            php_args += ['-S', f'{host}:{port}', '-t', project_dir]
-            _franksclassiccars_php_proc = subprocess.Popen(
-                php_args,
-                cwd=project_dir,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                creationflags=(
-                    subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
-            )
-
-        deadline = time.time() + 3.0
-        while time.time() < deadline:
-            if _is_port_open(host, port):
-                return host, port
-            time.sleep(0.05)
-
-        raise RuntimeError(
-            'PHP server failed to start for 2018FranksClassicCars.')
-
-
-@atexit.register
-def _stop_globebank_php_server() -> None:
-    global _globebank_php_proc
-    proc = _globebank_php_proc
-    _globebank_php_proc = None
-    if proc is None:
-        return
-    try:
-        if proc.poll() is None:
-            proc.terminate()
-    except Exception:
-        pass
-
-
-@atexit.register
-def _stop_franksclassiccars_php_server() -> None:
-    global _franksclassiccars_php_proc
-    proc = _franksclassiccars_php_proc
-    _franksclassiccars_php_proc = None
-    if proc is None:
-        return
-    try:
-        if proc.poll() is None:
-            proc.terminate()
-    except Exception:
-        pass
-
-
-def _ensure_virtualworld_java_server() -> tuple[str, int]:
-    """Ensure the 2016VirtualWorld Java server is running locally.
-
-    Returns (host, port) for the Java server.
-    """
-    host = (os.getenv('VIRTUALWORLD_JAVA_HOST')
-            or '127.0.0.1').strip() or '127.0.0.1'
-    preferred_port = int((os.getenv('VIRTUALWORLD_JAVA_PORT')
-                         or '8093').strip() or '8093')
-
-    global _virtualworld_java_port
-    if (
-        _virtualworld_java_port is not None
-        and _is_port_open(host, _virtualworld_java_port)
-        and _virtualworld_server_healthy(host, _virtualworld_java_port)
-    ):
-        return host, _virtualworld_java_port
-
-    # If something is already listening on the preferred port, reuse it if it
-    # looks like the VirtualWorld Java server.
-    if _is_port_open(host, preferred_port) and _virtualworld_server_healthy(host, preferred_port):
-        _virtualworld_java_port = preferred_port
-        return host, preferred_port
-
-    javac_exe = _find_java_executable('javac')
-    java_exe = _find_java_executable('java')
-    if not javac_exe or not java_exe:
-        raise RuntimeError(
-            "Java (JDK) not found on PATH. Install a JDK (javac+java) and restart VS Code terminals. "
-            "Then run the 2016VirtualWorld Java server (see projects/2016VirtualWorld/README.md)."
-        )
-
-    project_dir = _project_dir('2016VirtualWorld')
-    src_dir = os.path.join(project_dir, 'VirtualWorld')
-    if not os.path.isdir(src_dir):
-        raise RuntimeError(
-            '2016VirtualWorld/VirtualWorld source directory is missing.')
-
-    bin_dir = os.path.join(project_dir, 'bin')
-    os.makedirs(bin_dir, exist_ok=True)
-
-    src_files = sorted(glob.glob(os.path.join(src_dir, '*.java')))
-    if not src_files:
-        raise RuntimeError('No Java source files found for 2016VirtualWorld.')
-
-    with _virtualworld_lock:
-        global _virtualworld_java_proc
-
-        port = _pick_free_port(host, preferred_port)
-        _virtualworld_java_port = port
-
-        if _is_port_open(host, port) and _virtualworld_server_healthy(host, port):
-            return host, port
-
-        try:
-            subprocess.run(
-                [javac_exe, '-d', bin_dir, *src_files],
-                cwd=project_dir,
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-        except subprocess.CalledProcessError:
-            raise RuntimeError(
-                'Failed to compile 2016VirtualWorld Java sources. Run the compile command in projects/2016VirtualWorld/README.md to see errors.'
-            )
-
-        _virtualworld_java_proc = subprocess.Popen(
-            [
-                java_exe,
-                '-cp',
-                bin_dir,
-                'VirtualWorld.VirtualWorldWebServer',
-                '--host',
-                host,
-                '--port',
-                str(port),
-            ],
-            cwd=project_dir,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            creationflags=(
-                subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0),
-        )
-
-        deadline = time.time() + 4.0
-        while time.time() < deadline:
-            if _is_port_open(host, port) and _virtualworld_server_healthy(host, port):
-                return host, port
-            time.sleep(0.05)
-
-        raise RuntimeError('2016VirtualWorld Java server failed to start.')
-
-
-@atexit.register
-def _stop_virtualworld_java_server() -> None:
-    global _virtualworld_java_proc
-    proc = _virtualworld_java_proc
-    _virtualworld_java_proc = None
-    if proc is None:
-        return
-    try:
-        if proc.poll() is None:
-            proc.terminate()
-    except Exception:
-        pass
-
-
-_HOP_BY_HOP_HEADERS = {
-    'connection',
-    'keep-alive',
-    'proxy-authenticate',
-    'proxy-authorization',
-    'te',
-    'trailers',
-    'transfer-encoding',
-    'upgrade',
-}
-
-
-def _rewrite_root_relative_urls(text: str, mount_path: str) -> str:
-    """Rewrite root-relative URLs so site-root projects work under a mount path.
-
-    Example: href="/resources/foo" -> href="/projects/2013FrankJamison/resources/foo"
-    """
-    prefix = mount_path.lstrip('/') + '/'
-
-    def _rewrite_attr(attr: str, s: str) -> str:
-        pattern = rf'{attr}=(?P<q>["\"])\/(?!{re.escape(prefix)})'
-        return re.sub(pattern, rf'{attr}=\g<q>{mount_path}/', s)
-
-    for a in ('href', 'src', 'action'):
-        text = _rewrite_attr(a, text)
-
-    text = re.sub(
-        rf'url\((?P<q>["\"]?)\/(?!{re.escape(prefix)})',
-        rf'url(\g<q>{mount_path}/',
-        text,
-    )
-
-    return text
-
-
-def _proxy_to_php_app(*, php_host: str, php_port: int, mount_path: str, subpath: str) -> Response:
-    """Reverse proxy a request to a local PHP server.
-
-    mount_path: e.g. '/projects/2007GlobeBank'
-    subpath: path after mount, without leading slash
-    """
-    subpath = (subpath or '').lstrip('/')
-    upstream_base = f'http://{php_host}:{php_port}'
-    upstream_url = f'{upstream_base}/{subpath}'
-
-    upstream_headers: dict[str, str] = {}
-    for k, v in request.headers.items():
-        lk = k.lower()
-        if lk in _HOP_BY_HOP_HEADERS or lk in {'host', 'content-length'}:
-            continue
-        upstream_headers[k] = v
-
-    upstream_headers['X-Forwarded-Proto'] = request.scheme
-    upstream_headers['X-Forwarded-Host'] = request.host
-    upstream_headers['X-Forwarded-Prefix'] = mount_path
-
-    resp = requests.request(
-        method=request.method,
-        url=upstream_url,
-        params=request.args,
-        data=request.get_data(),
-        headers=upstream_headers,
-        cookies=request.cookies,
-        allow_redirects=False,
-        timeout=10,
-    )
-
-    content_type = (resp.headers.get('Content-Type') or '').lower()
-    body: bytes = resp.content
-
-    # GlobeBank was originally built as a site-root PHP app, so it uses URLs like
-    # href="/stylesheets/..." and src="/images/...". When mounted under
-    # /projects/2007GlobeBank/, those URLs must be rewritten to keep assets loading.
-    if any(ct in content_type for ct in ('text/html', 'text/css', 'application/javascript', 'text/javascript')):
-        try:
-            text = resp.text
-            text = _rewrite_root_relative_urls(text, mount_path)
-
-            body = text.encode(resp.encoding or 'utf-8', errors='replace')
-        except Exception:
-            # If decoding/rewriting fails, fall back to the original bytes.
-            body = resp.content
-
-    out_headers: list[tuple[str, str]] = []
-    for k, v in resp.headers.items():
-        lk = k.lower()
-        if lk in _HOP_BY_HOP_HEADERS:
-            continue
-
-        if lk == 'location':
-            # Rewrite redirects back through Flask mount path.
-            location = v
-            if location.startswith(upstream_base + '/'):
-                location = mount_path + location[len(upstream_base):]
-            elif location.startswith('/'):
-                location = mount_path + location
-            out_headers.append((k, location))
-            continue
-
-        # Content-Length may have changed after rewriting.
-        if lk == 'content-length':
-            continue
-        out_headers.append((k, v))
-
-    return Response(body, status=resp.status_code, headers=out_headers)
-
-
-def _project_dir(project_slug: str) -> str:
-    # Basic traversal hardening.
-    if not project_slug or project_slug.startswith("."):
-        abort(404)
-    if any(sep in project_slug for sep in ("/", "\\")):
-        abort(404)
-
-    project_dir = os.path.join(PROJECTS_ROOT, project_slug)
-    if os.path.isdir(project_dir):
-        return project_dir
-
-    # Production is typically Linux (case-sensitive) while dev is often Windows
-    # (case-insensitive). If a project folder was uploaded with different
-    # capitalization, tolerate it.
-    try:
-        wanted = project_slug.casefold()
-        for entry in os.listdir(PROJECTS_ROOT):
-            if entry.casefold() != wanted:
-                continue
-            candidate = os.path.join(PROJECTS_ROOT, entry)
-            if os.path.isdir(candidate):
-                print(
-                    f"Project slug case mismatch: requested={project_slug!r} actual={entry!r} PROJECTS_ROOT={PROJECTS_ROOT!r}"
-                )
-                return candidate
-    except Exception as e:
-        print(
-            f"PROJECTS_ROOT not accessible: PROJECTS_ROOT={PROJECTS_ROOT!r} error={type(e).__name__}: {e}"
-        )
-
-    # Helpful diagnostic for production deployments where projects are copied
-    # separately (the repo gitignores `projects/`).
-    print(
-        f"Project not found: slug={project_slug!r} dir={project_dir!r} PROJECTS_ROOT={PROJECTS_ROOT!r}"
-    )
-    abort(404)
-
-
-def _infer_project_slug_from_referer() -> Optional[str]:
-    referer = (request.headers.get('Referer') or '').strip()
-    if not referer:
-        return None
-    try:
-        parsed = urlparse(referer)
-        path = parsed.path or ''
-    except Exception:
-        return None
-
-    m = re.match(r'^/projects/(?P<slug>[^/]+)/', path)
-    if not m:
-        return None
-    return m.group('slug')
-
-
-def _truthy_env(value: Optional[str]) -> bool:
+def _clean(value: Optional[str], *, max_len: int = 5000) -> str:
     if value is None:
-        return False
-    return value.strip().lower() in {"1", "true", "yes", "y", "on"}
+        return ""
+    value = str(value).strip()
+    if len(value) > max_len:
+        value = value[:max_len]
+    return value
 
 
-def _is_production_env() -> bool:
-    env_name = (os.getenv('FLASK_ENV') or os.getenv(
-        'ENV') or '').strip().lower()
-    return env_name == 'production'
+def _append_csv(path: Path, headers: list[str], row: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    file_exists = path.exists()
+
+    with path.open("a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=headers)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow({h: row.get(h, "") for h in headers})
 
 
-def _should_proxy_franksclassiccars() -> bool:
-    """Whether /projects/2018FranksClassicCars/* should execute via PHP."""
-    if _is_production_env():
-        return _truthy_env(os.getenv('FRANKSCLASSICCARS_PROXY_ENABLED'))
-    return _truthy_env(os.getenv('FRANKSCLASSICCARS_PROXY_ENABLED', '1'))
+def _smtp_context() -> ssl.SSLContext:
+    allow_invalid = _truthy_env("SMTP_ALLOW_INVALID_CERT", False)
+    ca_file = _clean(os.getenv("SMTP_CA_FILE"), max_len=2000)
 
+    if allow_invalid:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
 
-def _peek_tls_leaf_issuer(host: str, port: int) -> Optional[str]:
-    """Best-effort helper to identify TLS interception appliances.
-
-    Only used after a TLS verification failure, so it intentionally uses an
-    unverified context and reads only the leaf certificate's issuer.
-    """
-    try:
-        addrinfo = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
-        if not addrinfo:
-            return None
-        family, _, _, _, sockaddr = addrinfo[0]
-
-        context = ssl._create_unverified_context()
-        with socket.socket(family, socket.SOCK_STREAM) as sock:
-            sock.settimeout(5)
-            sock.connect(sockaddr)
-            with context.wrap_socket(sock, server_hostname=host) as tls_sock:
-                der = tls_sock.getpeercert(binary_form=True)
-                if not der:
-                    return None
-
-        pem = ssl.DER_cert_to_PEM_cert(der)
-        import os
-        import tempfile
-
-        tmp = tempfile.NamedTemporaryFile("w", delete=False, suffix=".pem")
-        try:
-            tmp.write(pem)
-            tmp.close()
-            info = ssl._ssl._test_decode_cert(tmp.name)
-        finally:
-            try:
-                os.unlink(tmp.name)
-            except Exception:
-                pass
-
-        issuer = info.get("issuer")
-        return str(issuer) if issuer else None
-    except Exception:
-        return None
-
-
-def _send_smtp_email(*, subject: str, body: str, reply_to: Optional[str] = None) -> None:
-    smtp_host = os.getenv("SMTP_HOST", "").strip()
-    smtp_port = int(os.getenv("SMTP_PORT", "587").strip() or "587")
-    smtp_user = os.getenv("SMTP_USER", "").strip()
-    smtp_password = os.getenv("SMTP_PASSWORD", "")
-    smtp_from = os.getenv(
-        "SMTP_FROM", "frank@fcjamison.com").strip() or "frank@fcjamison.com"
-    smtp_to = os.getenv(
-        "SMTP_TO", "frank@fcjamison.com").strip() or "frank@fcjamison.com"
-
-    use_ssl = _truthy_env(os.getenv("SMTP_USE_SSL"))
-    use_tls = _truthy_env(os.getenv("SMTP_USE_TLS", "1")) and not use_ssl
-
-    if not smtp_host:
-        raise RuntimeError("SMTP_HOST is not set")
-    if not smtp_user or not smtp_password:
-        raise RuntimeError("SMTP_USER/SMTP_PASSWORD are not set")
-
-    message = EmailMessage()
-    message["Subject"] = subject
-    message["From"] = smtp_from
-    message["To"] = smtp_to
-    if reply_to:
-        message["Reply-To"] = reply_to
-    message.set_content(body)
-
-    context = ssl.create_default_context()
-
-    ca_file = os.getenv("SMTP_CA_FILE", "").strip()
     if ca_file:
-        context.load_verify_locations(cafile=ca_file)
+        return ssl.create_default_context(cafile=ca_file)
 
-    # Dev-only escape hatch. Do NOT use in production.
-    if _truthy_env(os.getenv("SMTP_ALLOW_INVALID_CERT")):
-        context.check_hostname = False
-        context.verify_mode = ssl.CERT_NONE
-
-    if use_ssl:
-        with smtplib.SMTP_SSL(smtp_host, smtp_port, context=context) as server:
-            server.login(smtp_user, smtp_password)
-            server.send_message(message)
-        return
-
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        if use_tls:
-            server.starttls(context=context)
-        server.login(smtp_user, smtp_password)
-        server.send_message(message)
+    return ssl.create_default_context()
 
 
-@app.post('/leave-reply')
+def _send_email(*, subject: str, body: str, reply_to: Optional[str] = None) -> Tuple[bool, str]:
+    host = _clean(os.getenv("SMTP_HOST"), max_len=255)
+    port_raw = _clean(os.getenv("SMTP_PORT"), max_len=20) or "465"
+    user = _clean(os.getenv("SMTP_USER"), max_len=255)
+    password = os.getenv("SMTP_PASSWORD") or ""
+
+    from_addr = _clean(os.getenv("SMTP_FROM"), max_len=255) or user
+    to_addr = _clean(os.getenv("SMTP_TO"), max_len=255) or user
+
+    use_ssl = _truthy_env("SMTP_USE_SSL", True)
+    use_tls = _truthy_env("SMTP_USE_TLS", False)
+
+    if not host or not to_addr or not from_addr:
+        return False, "Email is not configured (missing SMTP_HOST/SMTP_FROM/SMTP_TO)."
+
+    msg = EmailMessage()
+    msg["Subject"] = subject
+    msg["From"] = from_addr
+    msg["To"] = to_addr
+    if reply_to:
+        msg["Reply-To"] = reply_to
+    msg.set_content(body)
+
+    try:
+        port = int(port_raw)
+    except ValueError:
+        return False, "Email is misconfigured (SMTP_PORT must be a number)."
+
+    ctx = _smtp_context()
+
+    try:
+        if use_ssl:
+            with smtplib.SMTP_SSL(host, port, context=ctx, timeout=20) as server:
+                if user:
+                    server.login(user, password)
+                server.send_message(msg)
+        else:
+            with smtplib.SMTP(host, port, timeout=20) as server:
+                server.ehlo()
+                if use_tls:
+                    server.starttls(context=ctx)
+                    server.ehlo()
+                if user:
+                    server.login(user, password)
+                server.send_message(msg)
+        return True, ""
+    except Exception as e:
+        return False, f"Email send failed: {e}"
+
+
+@app.get("/")
+def index():
+    return render_template("home/index.html")
+
+
+@app.get("/projects/<project_slug>")
+@app.get("/projects/<project_slug>/")
+def project_index(project_slug: str):
+    project_slug = _clean(project_slug, max_len=200)
+    if not project_slug or not all(ch.isalnum() or ch in {"-", "_"} for ch in project_slug):
+        abort(404)
+
+    # If a static build exists locally, prefer it.
+    static_root = Path(app.static_folder or "static")
+    local_index = static_root / "portfolio" / project_slug / "index.html"
+    if local_index.exists():
+        return redirect(url_for("static", filename=f"portfolio/{project_slug}/index.html"))
+
+    hosted = {
+        "2026SpacePortfolio": "https://spaceportfolio.fcjamison.com/",
+        "2026HackerNews": "https://hackernews.fcjamison.com/",
+        "2025PasswordCheck": "https://passwordcheck.fcjamison.com/",
+        "2020CharacterVault": "https://charactervault.fcjamison.com/",
+        "2018Questkeeper": "https://questkeeper.fcjamison.com/",
+        "2018FrankJamison": "https://frankjamison2018.fcjamison.com/",
+        "2018FranksClassicCars": "https://classiccars.fcjamison.com/",
+        "2007GlobeBank": "https://globebank.fcjamison.com/",
+    }
+    if project_slug in hosted:
+        return redirect(hosted[project_slug])
+
+    # Minimal fallback: project repos follow the slug name.
+    github_org = _clean(os.getenv("GITHUB_ORG"), max_len=100) or "FrankJamison"
+    return redirect(f"https://github.com/{github_org}/{project_slug}")
+
+
+@app.post("/leave-reply")
 def leave_reply():
-    # Honeypot: bots often fill hidden fields
-    if (request.form.get('hp') or '').strip():
-        return jsonify(ok=True)
+    hp = _clean(request.form.get("hp"), max_len=200)
+    if hp:
+        return jsonify({"ok": True})
 
-    name = (request.form.get('name') or '').strip()
-    email = (request.form.get('email') or '').strip()
-    website = (request.form.get('website') or '').strip()
-    comment = (request.form.get('comment') or '').strip()
-    blog_title = (request.form.get('blog_title') or '').strip()
-    page_url = (request.form.get('page_url') or request.referrer or '').strip()
+    name = _clean(request.form.get("name"), max_len=200)
+    email = _clean(request.form.get("email"), max_len=254)
+    website = _clean(request.form.get("website"), max_len=500)
+    comment = _clean(request.form.get("comment"), max_len=5000)
+    blog_title = _clean(request.form.get("blog_title"), max_len=300)
+    page_url = _clean(request.form.get("page_url"), max_len=2000)
 
     if not name or not email or not comment:
-        if request.accept_mimetypes.best == 'application/json':
-            return jsonify(ok=False, error='Please provide name, email, and a comment.'), 400
-        return redirect(request.form.get('next') or request.referrer or url_for('index'))
+        return jsonify({"ok": False, "error": "Name, email, and comment are required."})
 
-    if blog_title:
-        subject = f"FCJamison Blog Reply: {blog_title} — {name}"
-    else:
-        subject = f"FCJamison Blog Reply from {name}"
-    body_lines = [
-        f"Name: {name}",
-        f"Email: {email}",
-    ]
-    if blog_title:
-        body_lines.append(f"Blog: {blog_title}")
-    if website:
-        body_lines.append(f"Website: {website}")
-    if page_url:
-        body_lines.append(f"Page: {page_url}")
-    body_lines.append("")
-    body_lines.append("Comment:")
-    body_lines.append(comment)
-    body = "\n".join(body_lines)
+    now = datetime.now(timezone.utc).isoformat()
 
-    try:
-        # Send to frank@fcjamison.com from frank@fcjamison.com (configured via SMTP_FROM).
-        _send_smtp_email(subject=subject, body=body, reply_to=email)
-    except Exception as e:
-        # Keep response safe: no secrets, but provide actionable diagnostics.
-        print(f"leave_reply SMTP error: {type(e).__name__}: {e}")
+    _append_csv(
+        Path("data/leave_reply.csv"),
+        headers=["timestamp", "name", "email", "website", "blog_title", "page_url", "comment"],
+        row={
+            "timestamp": now,
+            "name": name,
+            "email": email,
+            "website": website,
+            "blog_title": blog_title,
+            "page_url": page_url,
+            "comment": comment,
+        },
+    )
 
-        error_message = "Email service error."
-        status_code = 500
+    subject = f"Portfolio blog reply: {blog_title or 'Leave a Reply'}"
+    body = "\n".join(
+        [
+            "New blog reply submitted:",
+            f"Time (UTC): {now}",
+            f"Name: {name}",
+            f"Email: {email}",
+            f"Website: {website}",
+            f"Blog title: {blog_title}",
+            f"Page: {page_url}",
+            "",
+            "Comment:",
+            comment,
+        ]
+    )
 
-        if isinstance(e, RuntimeError):
-            error_message = str(e)
-        elif isinstance(e, smtplib.SMTPAuthenticationError):
-            error_message = "SMTP authentication failed (check SMTP_USER/SMTP_PASSWORD)."
-        elif isinstance(e, smtplib.SMTPConnectError):
-            error_message = "SMTP connection failed (host/port/firewall)."
-        elif isinstance(e, smtplib.SMTPServerDisconnected):
-            error_message = "SMTP server disconnected unexpectedly."
-        elif isinstance(e, smtplib.SMTPException):
-            error_message = "SMTP error (check server settings)."
-        elif isinstance(e, ssl.SSLError):
-            error_message = f"SSL/TLS handshake failed (check SMTP_USE_SSL/SMTP_PORT): {e}"
-            if isinstance(e, ssl.SSLCertVerificationError):
-                issuer_hint = _peek_tls_leaf_issuer(
-                    os.getenv("SMTP_HOST", "").strip(),
-                    int(os.getenv("SMTP_PORT", "465").strip() or "465"),
-                )
-                if issuer_hint and (
-                    "Avast" in issuer_hint
-                    or "Web/Mail Shield" in issuer_hint
-                    or "SSL/TLS scanning" in issuer_hint
-                ):
-                    error_message = (
-                        "SSL/TLS certificate verification failed. "
-                        "It looks like your antivirus is intercepting SMTP TLS (e.g. Avast Web/Mail Shield). "
-                        "Disable SSL/TLS scanning for this connection, or set SMTP_ALLOW_INVALID_CERT=1 for local development only."
-                    )
-        elif isinstance(e, socket.gaierror):
-            error_message = "DNS lookup failed for SMTP_HOST."
-        elif isinstance(e, TimeoutError):
-            error_message = "SMTP connection timed out (host/port/firewall)."
-        elif isinstance(e, ConnectionRefusedError):
-            error_message = "SMTP connection refused (host/port)."
-        elif isinstance(e, OSError):
-            # Covers various networking errors.
-            error_message = f"Network error: {type(e).__name__}: {e}"
-        else:
-            # Fallback: include exception type/message (no secrets should appear here).
-            error_message = f"{type(e).__name__}: {e}"
+    ok, err = _send_email(subject=subject, body=body, reply_to=email)
+    if not ok:
+        return jsonify({"ok": False, "error": err})
 
-        if request.accept_mimetypes.best == 'application/json':
-            return jsonify(ok=False, error=error_message), status_code
-
-        return redirect(request.form.get('next') or request.referrer or url_for('index'))
-
-    if request.accept_mimetypes.best == 'application/json':
-        return jsonify(ok=True)
-    return redirect(request.form.get('next') or request.referrer or url_for('index'))
+    return jsonify({"ok": True})
 
 
-@app.post('/contact')
+@app.post("/contact")
 def contact_message():
-    # Honeypot: bots often fill hidden fields
-    if (request.form.get('hp') or '').strip():
-        return jsonify(ok=True)
+    hp = _clean(request.form.get("hp"), max_len=200)
+    if hp:
+        return jsonify({"ok": True})
 
-    name = (request.form.get('name') or '').strip()
-    email = (request.form.get('email') or '').strip()
-    phone = (request.form.get('phone') or '').strip()
-    subject = (request.form.get('subject') or '').strip()
-    message = (request.form.get('message') or '').strip()
-    page_url = (request.form.get('page_url') or request.referrer or '').strip()
+    name = _clean(request.form.get("name"), max_len=200)
+    phone = _clean(request.form.get("phone"), max_len=50)
+    email = _clean(request.form.get("email"), max_len=254)
+    subject = _clean(request.form.get("subject"), max_len=300)
+    message = _clean(request.form.get("message"), max_len=8000)
+    page_url = _clean(request.form.get("page_url"), max_len=2000)
 
     if not name or not email or not subject or not message:
-        if request.accept_mimetypes.best == 'application/json':
-            return jsonify(ok=False, error='Please provide name, email, subject, and a message.'), 400
-        return redirect(request.referrer or url_for('index'))
+        return jsonify({"ok": False, "error": "Name, email, subject, and message are required."})
 
-    mail_subject = f"FCJamison Contact: {subject}"
-    body_lines = [
-        f"Name: {name}",
-        f"Email: {email}",
-    ]
-    if phone:
-        body_lines.append(f"Phone: {phone}")
-    if page_url:
-        body_lines.append(f"Page: {page_url}")
-    body_lines.append("")
-    body_lines.append("Message:")
-    body_lines.append(message)
-    body = "\n".join(body_lines)
+    now = datetime.now(timezone.utc).isoformat()
 
-    try:
-        _send_smtp_email(subject=mail_subject, body=body, reply_to=email)
-    except Exception as e:
-        print(f"contact_message SMTP error: {type(e).__name__}: {e}")
-
-        error_message = "Email service error."
-        status_code = 500
-
-        if isinstance(e, RuntimeError):
-            error_message = str(e)
-        elif isinstance(e, smtplib.SMTPAuthenticationError):
-            error_message = "SMTP authentication failed (check SMTP_USER/SMTP_PASSWORD)."
-        elif isinstance(e, smtplib.SMTPConnectError):
-            error_message = "SMTP connection failed (host/port/firewall)."
-        elif isinstance(e, smtplib.SMTPServerDisconnected):
-            error_message = "SMTP server disconnected unexpectedly."
-        elif isinstance(e, smtplib.SMTPException):
-            error_message = "SMTP error (check server settings)."
-        elif isinstance(e, ssl.SSLError):
-            error_message = f"SSL/TLS handshake failed (check SMTP_USE_SSL/SMTP_PORT): {e}"
-            if isinstance(e, ssl.SSLCertVerificationError):
-                issuer_hint = _peek_tls_leaf_issuer(
-                    os.getenv("SMTP_HOST", "").strip(),
-                    int(os.getenv("SMTP_PORT", "465").strip() or "465"),
-                )
-                if issuer_hint and (
-                    "Avast" in issuer_hint
-                    or "Web/Mail Shield" in issuer_hint
-                    or "SSL/TLS scanning" in issuer_hint
-                ):
-                    error_message = (
-                        "SSL/TLS certificate verification failed. "
-                        "It looks like your antivirus is intercepting SMTP TLS (e.g. Avast Web/Mail Shield). "
-                        "Disable SSL/TLS scanning for this connection, or set SMTP_ALLOW_INVALID_CERT=1 for local development only."
-                    )
-        elif isinstance(e, socket.gaierror):
-            error_message = "DNS lookup failed for SMTP_HOST."
-        elif isinstance(e, TimeoutError):
-            error_message = "SMTP connection timed out (host/port/firewall)."
-        elif isinstance(e, ConnectionRefusedError):
-            error_message = "SMTP connection refused (host/port)."
-        elif isinstance(e, OSError):
-            error_message = f"Network error: {type(e).__name__}: {e}"
-        else:
-            error_message = f"{type(e).__name__}: {e}"
-
-        if request.accept_mimetypes.best == 'application/json':
-            return jsonify(ok=False, error=error_message), status_code
-        return redirect(request.referrer or url_for('index'))
-
-    if request.accept_mimetypes.best == 'application/json':
-        return jsonify(ok=True)
-    return redirect(request.referrer or url_for('index'))
-
-
-@app.route('/')
-@app.route('/index')
-def index():
-    data = {
-        'headTitle': 'FCJamison.com',
-    }
-    return render_template("home/index.html", **data)
-
-
-@app.route('/projects/2007GlobeBank/', defaults={'subpath': ''}, methods=[
-    'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS',
-])
-@app.route('/projects/2007GlobeBank/<path:subpath>', methods=[
-    'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS',
-])
-def globebank_proxy(subpath: str):
-    if _is_production_env() and not _truthy_env(os.getenv('GLOBEBANK_PROXY_ENABLED')):
-        # In production, GlobeBank should be served by PHP-FPM behind Nginx on a dedicated subdomain.
-        return redirect((os.getenv('GLOBEBANK_URL') or 'https://globebank.fcjamison.com/').strip())
-
-    # Avoid accidentally exposing internal diagnostics during normal browsing.
-    # Enable explicitly with GLOBEBANK_DIAGNOSTIC_ENABLED=1.
-    if (subpath or '').strip('/').lower() == 'diagnostic.php' and not _truthy_env(
-        os.getenv('GLOBEBANK_DIAGNOSTIC_ENABLED')
-    ):
-        return redirect('/projects/2007GlobeBank/')
-
-    try:
-        php_host, php_port = _ensure_globebank_php_server()
-    except Exception as e:
-        return Response(
-            f"GlobeBank PHP server not available: {type(e).__name__}: {e}\n",
-            status=500,
-            mimetype='text/plain',
-        )
-
-    return _proxy_to_php_app(
-        php_host=php_host,
-        php_port=php_port,
-        mount_path='/projects/2007GlobeBank',
-        subpath=subpath,
+    _append_csv(
+        Path("data/contact_messages.csv"),
+        headers=["timestamp", "name", "email", "phone", "subject", "page_url", "message"],
+        row={
+            "timestamp": now,
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "subject": subject,
+            "page_url": page_url,
+            "message": message,
+        },
     )
 
-
-def _virtualworld_java_base_url() -> str:
-    """Return the upstream base URL for the 2016VirtualWorld Java server.
-
-    Expected: 'http://127.0.0.1:8093' (no trailing slash)
-    """
-    url = (os.getenv('VIRTUALWORLD_JAVA_URL') or '').strip()
-    if url:
-        return url.rstrip('/')
-
-    if _truthy_env(os.getenv('VIRTUALWORLD_AUTO_START', '1')):
-        host, port = _ensure_virtualworld_java_server()
-        return f'http://{host}:{port}'
-
-    host = (os.getenv('VIRTUALWORLD_JAVA_HOST')
-            or '127.0.0.1').strip() or '127.0.0.1'
-    port = int((os.getenv('VIRTUALWORLD_JAVA_PORT')
-               or '8093').strip() or '8093')
-    return f'http://{host}:{port}'
-
-
-def _proxy_to_virtualworld_java_api(*, mount_path: str, subpath: str) -> Response:
-    """Reverse proxy a request to the 2016VirtualWorld Java API."""
-    subpath = (subpath or '').lstrip('/')
-    upstream_base = _virtualworld_java_base_url()
-    upstream_url = f'{upstream_base}/api/{subpath}'
-
-    upstream_headers: dict[str, str] = {}
-    for k, v in request.headers.items():
-        lk = k.lower()
-        if lk in _HOP_BY_HOP_HEADERS or lk in {'host', 'content-length'}:
-            continue
-        upstream_headers[k] = v
-
-    upstream_headers['X-Forwarded-Proto'] = request.scheme
-    upstream_headers['X-Forwarded-Host'] = request.host
-    upstream_headers['X-Forwarded-Prefix'] = mount_path
-
-    try:
-        resp = requests.request(
-            method=request.method,
-            url=upstream_url,
-            params=request.args,
-            data=request.get_data(),
-            headers=upstream_headers,
-            cookies=request.cookies,
-            allow_redirects=False,
-            timeout=10,
-        )
-    except requests.RequestException as e:
-        return Response(
-            (
-                "2016VirtualWorld Java API is not available. "
-                f"Upstream: {upstream_base}\\n"
-                f"Error: {type(e).__name__}: {e}\\n"
-            ),
-            status=502,
-            mimetype='text/plain',
-        )
-
-    out_headers: list[tuple[str, str]] = []
-    for k, v in resp.headers.items():
-        lk = k.lower()
-        if lk in _HOP_BY_HOP_HEADERS:
-            continue
-        if lk == 'content-length':
-            continue
-        out_headers.append((k, v))
-
-    return Response(resp.content, status=resp.status_code, headers=out_headers)
-
-
-@app.route(
-    '/projects/2016VirtualWorld/api/<path:subpath>',
-    methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-)
-def virtualworld_api_proxy(subpath: str):
-    """Dev helper: proxy /projects/2016VirtualWorld/api/* to the Java server.
-
-    In production, this path is typically reverse-proxied by Apache/Nginx.
-    """
-    if _is_production_env() and not _truthy_env(os.getenv('VIRTUALWORLD_PROXY_ENABLED')):
-        abort(404)
-
-    if request.method == 'OPTIONS':
-        # Keep preflight simple for local development.
-        return Response('', status=204)
-
-    return _proxy_to_virtualworld_java_api(mount_path='/projects/2016VirtualWorld', subpath=subpath)
-
-
-@app.get('/projects/<project_slug>/')
-def project_index(project_slug: str):
-    project_dir = _project_dir(project_slug)
-
-    # Prefer modern entrypoints, but support older archived sites.
-    for index_name in ('index.html', 'index.htm'):
-        index_path = os.path.join(project_dir, index_name)
-        if os.path.isfile(index_path):
-            # Serve through the same logic as other project files so legacy sites
-            # that use site-root URLs load correctly under /projects/<slug>/.
-            return project_file(project_slug=project_slug, filename=index_name)
-
-    # Some archived projects are PHP apps; serve the entrypoint file.
-    for candidate in ('public/index.php', 'index.php'):
-        candidate_path = os.path.join(project_dir, *candidate.split('/'))
-        if os.path.isfile(candidate_path):
-            # Never serve raw PHP source in production.
-            if _is_production_env():
-                if project_slug == '2007GlobeBank':
-                    return redirect((os.getenv('GLOBEBANK_URL') or 'https://globebank.fcjamison.com/').strip())
-
-                if project_slug == '2018FranksClassicCars':
-                    url = (os.getenv('FRANKSCLASSICCARS_URL') or '').strip()
-                    if url:
-                        return redirect(url)
-                abort(404)
-
-            # 2018FranksClassicCars is a PHP app; in dev, proxy to a local PHP server
-            # so pages execute instead of showing raw PHP source.
-            if project_slug == '2018FranksClassicCars' and _should_proxy_franksclassiccars():
-                try:
-                    php_host, php_port = _ensure_franksclassiccars_php_server()
-                except Exception as e:
-                    return Response(
-                        f"2018FranksClassicCars PHP server not available: {type(e).__name__}: {e}\n",
-                        status=500,
-                        mimetype='text/plain',
-                    )
-                return _proxy_to_php_app(
-                    php_host=php_host,
-                    php_port=php_port,
-                    mount_path='/projects/2018FranksClassicCars',
-                    subpath='',
-                )
-
-            # Optional: redirect to a real PHP server (so PHP executes).
-            if project_slug == '2007GlobeBank' and _truthy_env(os.getenv('PHP_GLOBEBANK_ENABLED')):
-                php_url = (os.getenv('PHP_GLOBEBANK_URL') or '').strip()
-                if php_url:
-                    if not php_url.endswith('/'):
-                        php_url += '/'
-                    return redirect(php_url)
-            return redirect(url_for('project_file', project_slug=project_slug, filename=candidate))
-
-    abort(404)
-
-
-@app.get('/projects/<project_slug>/<path:filename>')
-def project_file(project_slug: str, filename: str):
-    project_dir = _project_dir(project_slug)
-    mount_path = f'/projects/{project_slug}'
-
-    # Never serve raw PHP source in production.
-    if _is_production_env() and (filename or '').lower().endswith('.php'):
-        abort(404)
-
-    if project_slug == '2018FranksClassicCars' and _should_proxy_franksclassiccars():
-        try:
-            php_host, php_port = _ensure_franksclassiccars_php_server()
-        except Exception as e:
-            return Response(
-                f"2018FranksClassicCars PHP server not available: {type(e).__name__}: {e}\n",
-                status=500,
-                mimetype='text/plain',
-            )
-        return _proxy_to_php_app(
-            php_host=php_host,
-            php_port=php_port,
-            mount_path='/projects/2018FranksClassicCars',
-            subpath=filename,
-        )
-
-    resp = send_from_directory(project_dir, filename)
-
-    # Legacy static sites often use site-root paths like /resources/... which break
-    # when served under /projects/<slug>/. Rewrite a few common text types.
-    ext = os.path.splitext((filename or ''))[1].lower()
-    if ext in {'.html', '.htm', '.css'}:
-        try:
-            resp.direct_passthrough = False
-            raw = resp.get_data()
-
-            try:
-                text = raw.decode('utf-8')
-                encoding = 'utf-8'
-            except UnicodeDecodeError:
-                text = raw.decode('latin-1')
-                encoding = 'latin-1'
-
-            text = _rewrite_root_relative_urls(text, mount_path)
-            resp.set_data(text.encode(encoding, errors='replace'))
-            resp.headers.pop('Content-Length', None)
-        except Exception:
-            return resp
-
-    return resp
-
-
-@app.get('/resources/<path:subpath>')
-def legacy_project_resources(subpath: str):
-    """Support legacy sites that assume they're mounted at site-root.
-
-    Example: /resources/stylesheets/stylesheet.css
-
-    When browsing a project under /projects/<slug>/, infer <slug> from the
-    Referer header and redirect to the canonical mounted path so assets load.
-    """
-    project_slug = _infer_project_slug_from_referer()
-    if not project_slug:
-        abort(404)
-
-    # Validate slug and project exists.
-    _project_dir(project_slug)
-    return redirect(
-        url_for(
-            'project_file',
-            project_slug=project_slug,
-            filename=f'resources/{(subpath or "").lstrip("/")}',
-        )
+    mail_subject = f"Portfolio contact: {subject}"
+    body = "\n".join(
+        [
+            "New contact message submitted:",
+            f"Time (UTC): {now}",
+            f"Name: {name}",
+            f"Email: {email}",
+            f"Phone: {phone}",
+            f"Page: {page_url}",
+            "",
+            "Message:",
+            message,
+        ]
     )
+
+    ok, err = _send_email(subject=mail_subject, body=body, reply_to=email)
+    if not ok:
+        return jsonify({"ok": False, "error": err})
+
+    return jsonify({"ok": True})

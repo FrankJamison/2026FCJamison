@@ -1,5 +1,2 @@
-Flask
-python-dotenv
-waitress
-requests
-requests
+Flask>=2.2
+python-dotenv>=1.0

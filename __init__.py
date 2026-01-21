@@ -43,3 +43,8 @@ def inject_current_year():
         "current_year": datetime.now().year,
         "globebank_url": _globebank_url(),
     }
+
+
+# Register routes.
+# This keeps `flask run` working (it imports the app module but doesn't execute app.py).
+import homeViews  # noqa: E402,F401

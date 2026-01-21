@@ -1,0 +1,215 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flask: Create venv (.venv)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "if (!(Test-Path '.\\.venv\\Scripts\\python.exe')) { py -3 -m venv .venv }"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask: Install requirements (pip)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "& .\\.venv\\Scripts\\python.exe -m pip install --upgrade pip; & .\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt"
+            ],
+            "dependsOn": [
+                "Flask: Create venv (.venv)"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask: Run (dev server)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$env:FLASK_DEBUG='1'; $env:HOST='127.0.0.1'; $env:PORT='5000'; & .\\.venv\\Scripts\\python.exe .\\app.py"
+            ],
+            "dependsOn": [
+                "Flask: Install requirements (pip)"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "flask",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*\\* Serving Flask app.*",
+                    "endsPattern": ".*\\* Running on http://.*:5000.*"
+                }
+            }
+        },
+        {
+            "label": "Flask: Setup + Run",
+            "dependsOn": [
+                "Flask: Run (dev server)"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask: Setup + Run + Open Browser",
+            "dependsOn": [
+                "Flask: Setup + Run",
+                "Open Flask in Browser (:5000)"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Open in Browser",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "",
+                "http://2026fcjamison.localhost:5000/"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Open Flask in Browser (:5000)",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "",
+                "http://2026fcjamison.localhost:5000/"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "PHP: Run GlobeBank (dev server :8007)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$php = (Get-Command php -ErrorAction SilentlyContinue).Source; if (-not $php) { $php = (Get-ChildItem -Path (Join-Path $env:LOCALAPPDATA 'Microsoft\\WinGet\\Packages') -Filter php.exe -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -match 'PHP\\.PHP\\.' } | Select-Object -First 1).FullName }; if (-not $php) { Write-Error 'PHP not found. Install PHP via winget: winget install -e --id PHP.PHP.8.4 (or install XAMPP/WAMP). Then restart VS Code terminals.'; exit 1 }; $ext = Join-Path (Split-Path $php) 'ext'; if (!(Test-Path $ext)) { $ext = 'C:\\php\\ext' }; & $php -d extension_dir=$ext -d extension=mysqli -S 127.0.0.1:8007 -t .\\projects\\2007GlobeBank\\public"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "php",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*PHP.*Development Server.*",
+                    "endsPattern": ".*started.*"
+                }
+            }
+        },
+        {
+            "label": "Open GlobeBank (PHP :8007)",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "",
+                "http://2026fcjamison.localhost:8007/"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask: Run (dev server + PHP GlobeBank redirect)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$env:FLASK_DEBUG='1'; $env:HOST='127.0.0.1'; $env:PORT='5000'; $env:PHP_GLOBEBANK_ENABLED='1'; $env:PHP_GLOBEBANK_URL='http://2026fcjamison.localhost:8007/'; & .\\.venv\\Scripts\\python.exe .\\app.py"
+            ],
+            "dependsOn": [
+                "Flask: Install requirements (pip)",
+                "PHP: Run GlobeBank (dev server :8007)"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "flask",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*\\* Serving Flask app.*",
+                    "endsPattern": ".*\\* Running on http://.*:5000.*"
+                }
+            }
+        },
+        {
+            "label": "Dev: Flask + GlobeBank PHP + Open",
+            "dependsOn": [
+                "Flask: Run (dev server + PHP GlobeBank redirect)",
+                "Open Flask in Browser (:5000)",
+                "Open GlobeBank (PHP :8007)"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        }
+    ]
+}

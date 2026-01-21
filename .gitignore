@@ -1,16 +1,36 @@
-.venv/
+# --- Python build/runtime ---
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+*$py.class
 
-# Standalone portfolio projects live here and are versioned separately.
-projects/
- 
-# Ignore nested repo: 2018Questkeeper 
-projects/2018Questkeeper/
- 
-# Keep 2020BudgetApplication as standalone repo 
-projects/2020BudgetApplication/ 
- 
-# Ignore standalone nested repo 
-/projects/2020AngularCLIApp/ 
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+
+# --- Environment / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Flask / tooling caches ---
+.instance/
+.flaskenv
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+
+# Keep VS Code tasks/settings if you want reproducible dev setup
+!.vscode/
+
+# --- App runtime data (do not commit user submissions) ---
+# Contact + blog reply CSV storage created at runtime by homeViews.py
+/data/
+
+# If you ever add local uploads, ignore them too
+/uploads/
