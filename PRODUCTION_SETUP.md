@@ -1,18 +1,8 @@
 # Production setup for fcjamison.com
 
-## Running GlobeBank in production
+This project is a Flask site intended to run behind a reverse proxy (recommended: Nginx) with a production WSGI server (recommended here: **Gunicorn** on Linux).
 
-GlobeBank is a PHP app. In production, serve it with Nginx + PHP-FPM (not the Flask dev proxy).
-
-See: [deploy/VPS_NGINX_PHP_SETUP.md](deploy/VPS_NGINX_PHP_SETUP.md)
-
-AlmaLinux 9.x VPS:
-
-See: [deploy/VPS_ALMALINUX9_NGINX_PHP_SETUP.md](deploy/VPS_ALMALINUX9_NGINX_PHP_SETUP.md)
-
-This project is a Flask site intended to run behind a reverse proxy (recommended: Nginx) with a production WSGI server (recommended here: **Waitress**, because it works on both Linux and Windows).
-
-> If you are on a Linux VPS, the most common setup is: **Nginx (public)** → **Waitress (localhost:8000)**.
+> If you are on a Linux VPS, the most common setup is: **Nginx (public)** → **Gunicorn (localhost:8000)**.
 
 ## 1) Server prerequisites
 
@@ -44,7 +34,7 @@ cd /var/www/fcjamison
 python3 -m venv .venv
 . .venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-prod.txt
 ```
 
 ## 4) Configure environment variables
@@ -90,7 +80,7 @@ SMTP_USE_TLS=0
 SMTP_ALLOW_INVALID_CERT=0
 ```
 
-## 5) Run Waitress via systemd
+## 5) Run Gunicorn via systemd
 
 Create a service:
 
@@ -102,7 +92,7 @@ Paste:
 
 ```ini
 [Unit]
-Description=fcjamison.com Flask site (Waitress)
+Description=fcjamison.com Flask site (Gunicorn)
 After=network.target
 
 [Service]
@@ -111,8 +101,9 @@ Group=www-data
 WorkingDirectory=/var/www/fcjamison
 EnvironmentFile=/etc/fcjamison.env
 
-# Waitress listens only on localhost; Nginx is the public entry
-ExecStart=/var/www/fcjamison/.venv/bin/python -m waitress --listen=127.0.0.1:8000 wsgi:application
+# Gunicorn listens only on localhost; Nginx is the public entry
+# WSGI entrypoint: wsgi:application (see wsgi.py)
+ExecStart=/var/www/fcjamison/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 wsgi:application
 
 Restart=always
 RestartSec=3
