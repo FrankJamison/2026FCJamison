@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Background tile -->
+  <rect width="64" height="64" rx="16" fill="#0E1117"></rect>
+
+  <!-- Subtle inner glow layer -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#151A23"></rect>
+
+  <!-- Personality accent slash -->
+  <rect x="36" y="8" width="6" height="48" rx="3" transform="rotate(12 36 8)" fill="#4F9CF9"></rect>
+
+  <!-- F -->
+  <text x="24" y="41" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">
+        F
+  </text>
+
+  <!-- J -->
+  <text x="44" y="41" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">
+        J
+  </text>
+
+</svg>

@@ -3,7 +3,7 @@
 
 {% include  './partials/head.html'  %}
 
-<body class="template-color-1 spybody" data-spy="scroll" data-bs-target=".navbar-example2" data-offset="150">
+<body class="template-color-1 spybody">
 
     <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
@@ -15,7 +15,7 @@
                 <div class="header-left">
                     <div class="logo">
                         <a href="{{ url_for('index') }}">
-                            <img src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo">
+                            <img loading="eager" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -40,13 +40,15 @@
                     <!-- Start Header Right  -->
                     <div class="header-right">
                         <div class="hamberger-menu d-block d-xl-none">
-                            <i id="menuBtn" class="feather-menu humberger-menu" role="button" tabindex="0" aria-label="Open menu"></i>
+                            <button type="button" class="humberger-menu" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                                <i data-feather="menu" aria-hidden="true"></i>
+                            </button>
                         </div>
 
                         <div class="close-menu d-block">
-                            <span class="closeTrigger">
-                                <i data-feather="x" role="button" tabindex="0" aria-label="Close menu"></i>
-                            </span>
+                            <button type="button" class="closeTrigger" aria-label="Close menu" aria-controls="mobile-menu">
+                                <i data-feather="x" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                     <!-- End Header Right  -->
@@ -59,12 +61,12 @@
     <!-- End Header Area -->
 
     <!-- Start Popup Mobile Menu  -->
-    <div class="popup-mobile-menu">
+    <div id="mobile-menu" class="popup-mobile-menu" aria-hidden="true" aria-label="Mobile menu">
         <div class="inner">
             <div class="menu-top">
                 <div class="menu-header">
                     <a class="logo" href="{{ url_for('index') }}">
-                        <img src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Personal Portfolio">
+                        <img loading="eager" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Personal Portfolio">
                     </a>
                     <div class="close-button">
                         <button class="close-menu-activation close" type="button" aria-label="Close menu"><i data-feather="x"></i></button>
@@ -103,7 +105,7 @@
     <main class="main-page-wrapper" id="main-content">
 
         <!-- Start Slider Area -->
-        <div id="home" class="rn-slide-area">
+        <section id="home" class="rn-slide-area" aria-labelledby="home-title">
             <div class="slide slider-style-3">
                 <div class="container">
                     <div class="row slider-wrapper">
@@ -116,11 +118,10 @@
                                                 <div class="user">
                                                     <i data-feather="user"></i>
                                                 </div>
-                                                <h1 class="title">
+                                                <h1 class="title" id="home-title">
                                                     Hi, I’m <span>Frank</span>
                                                 </h1>
-                                                <p class="disc">Web designer and developer working in Hemet,
-                                                    CA.</p>
+                                                <p class="disc">Junior Web & Software Developer with real production experience, focused on building reliable, accessible web solutions.</p>
                                             </div>
                                             <div class="user-info-footer">
                                                 <div class="info">
@@ -143,7 +144,7 @@
                                         <div class="user-info-bottom">
                                             <span>Download my curriculum vitae: </span>
                                             <div class="button-wrapper d-flex">
-                                                <a class="rn-btn mr--30" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.docx') }}"><span>DOWNLOAD CV</span></a>
+                                                <a class="rn-btn mr--30" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}"><span>DOWNLOAD CV</span></a>
                                                 <a class="rn-btn" href="#contacts"><span>CONTACT ME</span></a>
                                             </div>
                                         </div>
@@ -156,24 +157,24 @@
                         <div class="order-1 order-xl-2 col-lg-12 col-xl-7">
                             <div class="background-image-area">
                                 <div class="thumbnail-image">
-                                    <img src="{{ url_for('static', filename='images/slider/banner-02.png') }}" alt="Frank Jamison &amp; Spouse">
+                                    <img loading="eager" decoding="async" fetchpriority="high" src="{{ url_for('static', filename='images/slider/banner-02.png') }}" alt="Frank Jamison &amp; Spouse">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <!-- End Slider Area -->
 
         <!-- Start Experience area -->
-        <div id="experience" class="rn-experience-area section-separator rn-section-gap">
+        <section id="experience" class="rn-experience-area section-separator rn-section-gap" aria-labelledby="experience-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="section-title text-center">
+                        <div class="section-title text-center">
                             <span class="subtitle">Over 15 years of experience</span>
-                            <h2 class="title">My Experience</h2>
+                            <h2 class="title" id="experience-title">My Experience</h2>
                         </div>
                     </div>
                 </div>
@@ -181,10 +182,10 @@
                     <div class="col-12 mt_experience">
 
                         <!-- single skills -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="experience-style-two">
+                        <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
-                                    <img src="{{ url_for('static', filename='images/experience/jamison_web_design_logo_dark.png') }}" alt="Jamison Web Design">
+                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/experience/jamison_web_design_logo_dark.png') }}" alt="Jamison Web Design">
                                 </div>
                                 <div class="experience-center">
                                     <span class="date">2006-Present</span>
@@ -201,10 +202,10 @@
                         <!-- single skills -->
 
                         <!-- single skills -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="experience-style-two">
+                        <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
-                                    <img src="{{ url_for('static', filename='images/experience/Broadridge2.png') }}" alt="Broadridge Advisor Solutions">
+                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/experience/Broadridge2.png') }}" alt="Broadridge Advisor Solutions">
                                 </div>
                                 <div class="experience-center">
                                     <span class="date">2016-2022</span>
@@ -223,27 +224,27 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <!-- End Experience area -->
 
         <!-- Start education section -->
-        <div id="education" class="rn-education-area rn-section-gap section-separator">
+        <section id="education" class="rn-education-area rn-section-gap section-separator" aria-labelledby="education-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="section-title text-center">
+                        <div class="section-title text-center">
                             <span class="subtitle">Post-Secondary</span>
-                            <h2 class="title">Education</h2>
+                            <h2 class="title" id="education-title">Education</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row mt--10">
                     <div class="col-12 mt_experience">
                         <!-- single skills -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="experience-style-two">
+                        <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
-                                    <img src="{{ url_for('static', filename='images/education/regis_university.png') }}" alt="Regis University">
+                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/regis_university.png') }}" alt="Regis University">
                                 </div>
                                 <div class="experience-center">
                                     <span class="date">2020-2021</span>
@@ -260,10 +261,10 @@
                         <!-- single skills -->
 
                         <!-- single skills -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="experience-style-two">
+                        <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
-                                    <img src="{{ url_for('static', filename='images/education/southern_new_hampshire_university.png') }}" alt="Southern New Hampshire University">
+                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/southern_new_hampshire_university.png') }}" alt="Southern New Hampshire University">
                                 </div>
                                 <div class="experience-center">
                                     <span class="date">2015-2019</span>
@@ -280,10 +281,10 @@
                         <!-- single skills -->
 
                         <!-- single skills -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="experience-style-two">
+                        <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
-                                    <img src="{{ url_for('static', filename='images/education/national_university.png') }}" alt="National University">
+                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/national_university.png') }}" alt="National University">
                                 </div>
                                 <div class="experience-center">
                                     <span class="date">2013-2015</span>
@@ -302,34 +303,34 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <!-- End education section -->
 
         <!-- Start Resume Area -->
-        <div class="rn-resume-area rn-section-gap section-separator" id="resume">
+        <section class="rn-resume-area rn-section-gap section-separator" id="resume" aria-labelledby="resume-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="section-title text-center">
+                        <div class="section-title text-center">
                             <span class="subtitle">15+ Years of Experience</span>
-                            <h2 class="title">My Resume</h2>
+                            <h2 class="title" id="resume-title">My Resume</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row mt--45">
                     <div class="col-lg-12">
-                        <ul data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
+                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="education-tab" data-bs-toggle="tab" href="#resume_list" role="tab" aria-controls="education" aria-selected="true">education & experience</a>
+                                <a class="nav-link active" id="education-tab" data-bs-toggle="tab" href="#resume_list" role="tab" aria-controls="resume_list" aria-selected="true">education & experience</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " id="professional-tab" data-bs-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="false">professional
+                                <a class="nav-link" id="professional-tab" data-bs-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="false">professional
                                     Skills</a>
                             </li>
                         </ul>
 
                         <!-- Start Tab Content Wrapper  -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="rn-nav-content tab-content" id="myTabContents">
+                        <div class="rn-nav-content tab-content" id="myTabContents">
 
                             <!-- Start Single Tab  -->
                             <div class="tab-pane show active fade single-tab-area" id="resume_list" role="tabpanel" aria-labelledby="education-tab">
@@ -687,7 +688,7 @@
                             <!-- End Single Tab  -->
 
                             <!-- Start Single Tab  -->
-                            <div class="tab-pane fade " id="professional" role="tabpanel" aria-labelledby="professional-tab">
+                            <div class="tab-pane fade" id="professional" role="tabpanel" aria-labelledby="professional-tab">
                                 <div class="personal-experience-inner mt--40">
                                     <div class="row row--40">
 
@@ -701,7 +702,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">C++</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay=".3s" role="progressbar" style="width: 70%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -710,7 +711,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">C#</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay=".4s" role="progressbar" style="width: 65%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">65%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">65%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -719,7 +720,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">ColdFusion</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay=".5s" role="progressbar" style="width: 70%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -728,7 +729,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">CSS</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".6s" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -737,7 +738,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">HTML</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -746,7 +747,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Java</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 60%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">60%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">60%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -755,7 +756,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">JavaScript</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -764,7 +765,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">PHP</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 75%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -773,7 +774,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Python</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -782,7 +783,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">SQL</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -802,7 +803,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Web Development, SQL</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay=".3s" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -811,7 +812,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Problem Solving, Automation</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay=".4s" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -820,7 +821,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Web Accessibility (WCAG), UX Compliance</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay=".5s" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -829,7 +830,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Debugging, Troubleshooting</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".6s" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -838,7 +839,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Technical Communication, Documentation</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -847,7 +848,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Systems Thinking, Workflow Design</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -856,7 +857,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Adaptability, Rapid Onboarding</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -865,7 +866,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Continuous Improvement, Iteration</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -874,7 +875,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">User-Centered Design, Usability</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -883,7 +884,7 @@
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Reliability, Ownership</h4>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
+                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -902,888 +903,894 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End Resume Area -->
-
-        <!-- Start Portfolio Area -->
-        <div id="portfolio" class="rn-portfolio-area portfolio-style-three rn-section-gap section-separator">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="section-title text-center">
-                            <span class="subtitle">2006 - Present</span>
-                            <h2 class="title">My Portfolio</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--25 mt_md--5 mt_sm--5">
-                    <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" data-aos-once="true" class="portfolio-wrapper portfolio-slick-activation slick-arrow-style-one rn-slick-dot-style">
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SpacePortfolio">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2026SpacePortfolio.png') }}" alt="Space Portfolio">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2026</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Space Portfolio <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2026HackerNews">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2026HackerNews.png') }}" alt="Hacker News Aggregator">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2026</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Hacker News Aggregator <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2025JamisonStamps">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2025JamisonStamps.png') }}" alt="Jamison Stamps & Books">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2025</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Jamison Stamps & Books <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2025PasswordCheck">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2025PasswordCheck.png') }}" alt="Password Exposure Checker">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2025</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Password Exposure Checker <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2025FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2025FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2025</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2024PassionateTeachingJourney">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2024PassionateTeachingJourney.png') }}" alt="PassionateTeachingJourney.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2024</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Passionate Teaching Journey <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2021DnD5eTools">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2021DnD5eTools.png') }}" alt="DnD5eTools.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2021</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">DnD5eTools.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVetNode">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020AncientWhiteArmyVetNode.png') }}" alt="AncientWhiteArmyVet.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">AncientWhiteArmyVet.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020CharacterVault">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020CharacterVault.png') }}" alt="Character Vault">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Character Vault <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AngularCLIApp">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020AngularCLIApp.png') }}" alt="Angular CLI Application">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Angular CLI Application <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020BudgetApplication">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020BudgetApplication.png') }}" alt="Budget Application">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Budget Application <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020PigGame">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020PigGame.png') }}" alt="Pig Game">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Pig Game <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVet">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2020AncientWhiteArmyVet.png') }}" alt="AncientWhiteArmyVet's RPG Tools">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2020</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">AncientWhiteArmyVet's RPG Tools <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2019FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2019FrankJamison.png') }}" alt="2019 FrankJamison.com Website">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2019</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">2019 FrankJamison.com Website <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2019VeteranJobInfo">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2019VeteranJobInfo.png') }}" alt="Veteran Job Info Website">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2019</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Veteran Job Info Website <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2019AncientWhiteArmyVet">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2019AncientWhiteArmyVet.png') }}" alt="Ancient White Army Vet's RPG Tools">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2019</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Ancient White Army Vet's RPG Tools <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2018Questkeeper">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2018Questkeeper.png') }}" alt="Questkeeper">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2018</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Questkeeper <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2018FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2018</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FranksClassicCars">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2018FranksClassicCars.png') }}" alt="Frank's Classic Cars">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2018</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Frank's Classic Cars <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RPGStatRoller">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2017RPGStatRoller.png') }}" alt="RPG Stat Roller">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2017</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">RPG Stat Roller <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RiversideMassageAndSpa">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2017RiversideMassageAndSpa.png') }}" alt="Riverside Massage and Spa">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2017</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Riverside Massage and Spa <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2017StopwatchApplication">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2017StopwatchApplication.png') }}" alt="Stopwatch Application">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2017</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Stopwatch Application <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2017JavaScriptGuessingGame">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2017JavaScriptGuessingGame.png') }}" alt="JavaScript Guessing Game">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2017</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">JavaScript Guessing Game <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2017FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2017FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2017</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2016FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2016FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2016</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2016VirtualWorld">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2016VirtualWorld.png') }}" alt="Virtual World">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2016</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Virtual World <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2015JamisonWebDesign">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2015JamisonWebDesign.png') }}" alt="Jamison Web Design">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2015</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Jamison Web Design <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2015MiFamiliaTacoCatering">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2015MiFamiliaTacoCatering.png') }}" alt="Mi Familia Taco Catering">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2015</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Mi Familia Taco Catering <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2015RPGBookProject">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2015RPGBookProject.png') }}" alt="RPG Book Project">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2015</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">RPG Book Project <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2015FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2015FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2015</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2013FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2013FrankJamison.png') }}" alt="FrankJamison.com">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2013</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2007GlobeBank">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2007GlobeBank.png') }}" alt="Globe Bank Front Page">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2007</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Globe Bank Front Page <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MSJCAdminOfJustice">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006MSJCAdminOfJustice.png') }}" alt="MSJC Administration of Justice Program Website">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">MSJC Administration of Justice Program Website <i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2006ZitaWorley">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006ZitaWorley.png') }}" alt="Zita Worley's Website">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Zita Worley's Website<i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MoonwalkManor">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006MoonwalkManor.png') }}" alt="Moonwalk Manor Front Page">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Moonwalk Manor Front Page<i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModalTypingSpeed">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006TypingSpeedTest.png') }}" alt="Typing Speed Test Project">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Typing Speed Test Project<i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2006FrankJamison">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006FrankJamison.png') }}" alt="2006 FrankJamison.com Website">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">FrankJamison.com<i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                            <!-- Start Single Portfolio  -->
-                            <div class="rn-portfolio-slick">
-                                <div class="rn-portfolio" data-bs-toggle="modal" data-bs-target="#portfolioModal2006AnalogClockProject">
-                                    <div class="inner">
-                                        <div class="thumbnail">
-                                            <a href="#">
-                                                <img src="{{ url_for('static', filename='images/portfolio/2006AnalogClock.png') }}" alt="2006 Analog Clock Project">
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <div class="category-info">
-                                                <div class="category-list">
-                                                    <a href="#">2006</a>
-                                                </div>
-                                            </div>
-                                            <h3 class="title"><a href="#">Analog Clock Project<i class="feather-arrow-up-right"></i></a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Portfolio  -->
-
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <!-- End portfolio Area -->
+            <!-- End Resume Area -->
 
-        <!-- Start News Area -->
-        {% include  './partials/news.html'  %}
-        <!-- ENd Mews Area -->
+            <!-- Start Portfolio Area -->
+            <section id="portfolio" class="rn-portfolio-area portfolio-style-three rn-section-gap section-separator" aria-labelledby="portfolio-title">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center">
+                                <span class="subtitle">2006 - Present</span>
+                                <h2 class="title" id="portfolio-title">My Portfolio</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt--25 mt_md--5 mt_sm--5">
+                        <div class="col-lg-12">
+                            <div class="portfolio-wrapper portfolio-carousel scroll-snap-carousel">
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SpacePortfolio">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2026SpacePortfolio.png') }}" alt="Space Portfolio">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2026</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Space Portfolio</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026HackerNews">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2026HackerNews.png') }}" alt="Hacker News Aggregator">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2026</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Hacker News Aggregator</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025JamisonStamps">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2025JamisonStamps.png') }}" alt="Jamison Stamps & Books">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2025</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Jamison Stamps & Books</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025PasswordCheck">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2025PasswordCheck.png') }}" alt="Password Exposure Checker">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2025</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Password Exposure Checker</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2025FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2025</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2024PassionateTeachingJourney">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2024PassionateTeachingJourney.png') }}" alt="PassionateTeachingJourney.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2024</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Passionate Teaching Journey</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2021DnD5eTools">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2021DnD5eTools.png') }}" alt="DnD5eTools.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2021</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>DnD5eTools.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVetNode">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020AncientWhiteArmyVetNode.png') }}" alt="AncientWhiteArmyVet.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>AncientWhiteArmyVet.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020CharacterVault">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020CharacterVault.png') }}" alt="Character Vault">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Character Vault</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AngularCLIApp">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020AngularCLIApp.png') }}" alt="Angular CLI Application">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Angular CLI Application</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020BudgetApplication">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020BudgetApplication.png') }}" alt="Budget Application">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Budget Application</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020PigGame">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020PigGame.png') }}" alt="Pig Game">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Pig Game</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVet">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2020AncientWhiteArmyVet.png') }}" alt="AncientWhiteArmyVet's RPG Tools">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2020</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>AncientWhiteArmyVet's RPG Tools</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2019FrankJamison.png') }}" alt="2019 FrankJamison.com Website">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2019</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019VeteranJobInfo">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2019VeteranJobInfo.png') }}" alt="Veteran Job Info Website">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2019</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Veteran Job Info Website</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019AncientWhiteArmyVet">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2019AncientWhiteArmyVet.png') }}" alt="Ancient White Army Vet's RPG Tools">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2019</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>AncientWhiteArmy Vet's RPG Tools</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018Questkeeper">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2018Questkeeper.png') }}" alt="Questkeeper">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2018</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Questkeeper</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2018FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2018</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FranksClassicCars">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2018FranksClassicCars.png') }}" alt="Frank's Classic Cars">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2018</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Frank's Classic Cars</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RPGStatRoller">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2017RPGStatRoller.png') }}" alt="RPG Stat Roller">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2017</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>RPG Stat Roller</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RiversideMassageAndSpa">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2017RiversideMassageAndSpa.png') }}" alt="Riverside Massage and Spa">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2017</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Riverside Massage and Spa</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017StopwatchApplication">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2017StopwatchApplication.png') }}" alt="Stopwatch Application">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2017</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Stopwatch Application</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017JavaScriptGuessingGame">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2017JavaScriptGuessingGame.png') }}" alt="JavaScript Guessing Game">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2017</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>JavaScript Guessing Game</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2017FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2017</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2016FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2016</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016VirtualWorld">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2016VirtualWorld.png') }}" alt="Virtual World">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2016</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Virtual World</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015JamisonWebDesign">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2015JamisonWebDesign.png') }}" alt="Jamison Web Design">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2015</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Jamison Web Design</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015MiFamiliaTacoCatering">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2015MiFamiliaTacoCatering.png') }}" alt="Mi Familia Taco Catering">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2015</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Mi Familia Taco Catering</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015RPGBookProject">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2015RPGBookProject.png') }}" alt="RPG Book Project">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2015</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>RPG Book Project</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2015FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2015</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2013FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2013FrankJamison.png') }}" alt="FrankJamison.com">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2013</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2007GlobeBank">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2007GlobeBank.png') }}" alt="Globe Bank Front Page">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2007</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Globe Bank Front Page</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MSJCAdminOfJustice">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006MSJCAdminOfJustice.png') }}" alt="MSJC Administration of Justice Program Website">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>MSJC AoJ Program</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006ZitaWorley">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006ZitaWorley.png') }}" alt="Zita Worley's Website">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Zita Worley's Website</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MoonwalkManor">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006MoonwalkManor.png') }}" alt="Moonwalk Manor Front Page">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Moonwalk Manor Front Page</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModalTypingSpeed">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006TypingSpeedTest.png') }}" alt="Typing Speed Test Project">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Typing Speed Test Project</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006FrankJamison">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006FrankJamison.png') }}" alt="2006 FrankJamison.com Website">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                                <!-- Start Single Portfolio  -->
+                                <div class="portfolio-item scroll-snap-item">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006AnalogClockProject">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/2006AnalogClock.png') }}" alt="2006 Analog Clock Project">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2006</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>Analog Clock Project</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <!-- End Single Portfolio  -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- End portfolio Area -->
+
+                <!-- Start News Area -->
+                {% include  './partials/news.html'  %}
+                <!-- ENd Mews Area -->
 
 
 
-        <!-- Modal Portfolio 2006frankjamison area Start -->
-        {% include  './partials/portfolioBody.html'  %}
-        <!-- End Modal Portfolio area -->
+                <!-- Modal Portfolio 2006frankjamison area Start -->
+                <template id="portfolio-modals-template">
+                    {% include  './partials/portfolioBody.html'  %}
+                </template>
+                <div id="portfolio-modals-root"></div>
+                <!-- End Modal Portfolio area -->
 
-        <!-- Modal Blog Body area Start -->
-        {% include  './partials/blogBody.html'  %}
-        <!-- End Modal Blog area -->
+                <!-- Modal Blog Body area Start -->
+                <template id="blog-modals-template">
+                    {% include  './partials/blogBody.html'  %}
+                </template>
+                <div id="blog-modals-root"></div>
+                <!-- End Modal Blog area -->
 
-        <!-- Start Contact Area -->
-        {% include  './partials/contact.html'  %}
-        <!-- End Contact Area -->
+                <!-- Start Contact Area -->
+                {% include  './partials/contact.html'  %}
+                <!-- End Contact Area -->
 
-        <!-- Back to  top Start -->
-        {% include  './partials/backToTop.html'  %}
-        <!-- Back to top end -->
+                <!-- Back to  top Start -->
+                {% include  './partials/backToTop.html'  %}
+                <!-- Back to top end -->
     </main>
 
     <!-- Rn footer area Start -->
@@ -1792,7 +1799,9 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="logo-thumbnail">
-                        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo-image"></a>
+                        <a href="{{ url_for('index') }}">
+                            <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo-image">
+                        </a>
                     </div>
 
                     <div class="social-share-style-1 mt--20">
