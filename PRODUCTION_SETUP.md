@@ -186,3 +186,5 @@ sudo journalctl -u fcjamison -n 200 --no-pager
 
 - The project includes `wsgi.py` so you can also run under Apache `mod_wsgi` if your host requires it.
 - This app expects to be run as a WSGI app in production; do not use `python app.py` for production traffic.
+- Frontend interactions are handled with vanilla JavaScript + Bootstrap's JS bundle (no jQuery/Slick runtime dependencies).
+- Static assets include an SVG favicon and a PDF CV under `static/`.

@@ -10,13 +10,15 @@ Personal portfolio site built with **Flask + Jinja2** and a modern front-end the
   - Blog “Leave a Reply” sends an email notification (AJAX POST).
   - Contact form sends an email (AJAX POST).
 - **Production-ready entrypoint**: includes `wsgi.py` for WSGI servers.
+- **Vanilla JS interactions**: menu, scrollspy, modals, and form handling in one bundle.
 
 ## Tech stack
 
 - Python / Flask
 - Jinja2 templates
-- Bootstrap + jQuery
-- Slick carousel
+- Bootstrap (JS bundle)
+- Feather icons
+- Vanilla JavaScript
 - SMTP via Python `smtplib`
 
 ## Project structure
@@ -32,6 +34,11 @@ Personal portfolio site built with **Flask + Jinja2** and a modern front-end the
 ### Using VS Code tasks (Windows)
 
 This repo includes VS Code tasks for setting up a venv and starting the app.
+
+Recommended tasks:
+
+- `Flask: Setup + Run`
+- `Flask: Setup + Run + Open Browser`
 
 ### GlobeBank (PHP project)
 

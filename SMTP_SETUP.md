@@ -1,6 +1,6 @@
-# SMTP setup (Leave a Reply)
+# SMTP setup (Contact + Leave a Reply)
 
-The “Leave a Reply” form sends email using SMTP via these environment variables (read in `homeViews.py`).
+The “Contact Me” and “Leave a Reply” forms send email using SMTP via these environment variables (read in `homeViews.py`).
 
 ## Required environment variables
 
