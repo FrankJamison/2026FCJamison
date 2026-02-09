@@ -7,10 +7,11 @@
 
     <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
-    <!-- Start Header -->
+    <!-- ****************************
+       Site header + primary navigation
+       **************************** -->
     <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div class="header-wrapper rn-popup-mobile-menu m--0 row align-items-center">
-            <!-- Start Header Left -->
+        <div class="header-wrapper rn-popup-mobile-menu margin-0 row align-items-center">
             <div class="col-lg-2 col-6">
                 <div class="header-left">
                     <div class="logo">
@@ -20,12 +21,9 @@
                     </div>
                 </div>
             </div>
-            <!-- End Header Left -->
-            <!-- Start Header Center -->
             <div class="col-lg-10 col-6">
                 <div class="header-center">
                     <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block onepagenav" aria-label="Primary">
-                        <!-- Start Mainmanu Nav -->
                         <ul class="primary-menu nav nav-pills">
                             <li class="nav-item current"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#experience">Experience</a></li>
@@ -35,9 +33,7 @@
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#blog">Blog</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
                         </ul>
-                        <!-- End Mainmanu Nav -->
                     </nav>
-                    <!-- Start Header Right  -->
                     <div class="header-right">
                         <div class="hamberger-menu d-block d-xl-none">
                             <button type="button" class="humberger-menu" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
@@ -51,16 +47,15 @@
                             </button>
                         </div>
                     </div>
-                    <!-- End Header Right  -->
 
                 </div>
             </div>
-            <!-- End Header Center -->
         </div>
     </header>
-    <!-- End Header Area -->
 
-    <!-- Start Popup Mobile Menu  -->
+    <!-- ****************************
+       Mobile menu panel (toggled via JS)
+       **************************** -->
     <div id="mobile-menu" class="popup-mobile-menu" aria-hidden="true" aria-label="Mobile menu">
         <div class="inner">
             <div class="menu-top">
@@ -84,8 +79,10 @@
                     <li class="nav-item"><a class="nav-link smoth-animation" href="#blog">Blog</a></li>
                     <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
                 </ul>
-                <!-- social sharea area -->
-                <div class="social-share-style-1 mt--40">
+                <!-- ****************************
+                   Mobile menu social link
+                   **************************** -->
+                <div class="social-share-style-1 margin-top-40">
                     <span class="title">find with me</span>
                     <ul class="social-share d-flex liststyle">
                         <li class="linkedin"><a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
@@ -96,15 +93,18 @@
                         </li>
                     </ul>
                 </div>
-                <!-- end -->
             </div>
         </div>
     </div>
-    <!-- End Popup Mobile Menu  -->
 
+    <!-- ****************************
+       Main content sections
+       **************************** -->
     <main class="main-page-wrapper" id="main-content">
 
-        <!-- Start Slider Area -->
+        <!-- ****************************
+           Hero section
+           **************************** -->
         <section id="home" class="rn-slide-area" aria-labelledby="home-title">
             <div class="slide slider-style-3">
                 <div class="container">
@@ -144,7 +144,7 @@
                                         <div class="user-info-bottom">
                                             <span>Download my curriculum vitae: </span>
                                             <div class="button-wrapper d-flex">
-                                                <a class="rn-btn mr--30" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}"><span>DOWNLOAD CV</span></a>
+                                                <a class="rn-btn margin-right-30" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}"><span>DOWNLOAD CV</span></a>
                                                 <a class="rn-btn" href="#contacts"><span>CONTACT ME</span></a>
                                             </div>
                                         </div>
@@ -165,10 +165,11 @@
                 </div>
             </div>
         </section>
-        <!-- End Slider Area -->
 
-        <!-- Start Experience area -->
-        <section id="experience" class="rn-experience-area section-separator rn-section-gap" aria-labelledby="experience-title">
+        <!-- ****************************
+           Experience timeline
+           **************************** -->
+        <section id="experience" class="rn-experience-area section-divider section-padding-vertical" aria-labelledby="experience-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -178,10 +179,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt--10">
+                <div class="row margin-top-10">
                     <div class="col-12 mt_experience">
 
-                        <!-- single skills -->
                         <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
@@ -199,9 +199,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- single skills -->
 
-                        <!-- single skills -->
                         <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
@@ -219,16 +217,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- single skills -->
 
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Experience area -->
 
-        <!-- Start education section -->
-        <section id="education" class="rn-education-area rn-section-gap section-separator" aria-labelledby="education-title">
+        <!-- ****************************
+           Education timeline
+           **************************** -->
+        <section id="education" class="rn-education-area section-padding-vertical section-divider" aria-labelledby="education-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -238,9 +236,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt--10">
+                <div class="row margin-top-10">
                     <div class="col-12 mt_experience">
-                        <!-- single skills -->
                         <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
@@ -258,9 +255,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- single skills -->
 
-                        <!-- single skills -->
                         <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
@@ -278,9 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- single skills -->
 
-                        <!-- single skills -->
                         <div class="experience-style-two">
                             <div class="experience-left">
                                 <div class="experience-image">
@@ -298,16 +291,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- single skills -->
 
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End education section -->
 
-        <!-- Start Resume Area -->
-        <section class="rn-resume-area rn-section-gap section-separator" id="resume" aria-labelledby="resume-title">
+        <!-- ****************************
+           Resume tabs: education/experience + skills
+           **************************** -->
+        <section class="rn-resume-area section-padding-vertical section-divider" id="resume" aria-labelledby="resume-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -317,7 +310,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt--45">
+                <div class="row margin-top-45">
                     <div class="col-lg-12">
                         <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
                             <li class="nav-item">
@@ -329,21 +322,17 @@
                             </li>
                         </ul>
 
-                        <!-- Start Tab Content Wrapper  -->
                         <div class="rn-nav-content tab-content" id="myTabContents">
 
-                            <!-- Start Single Tab  -->
                             <div class="tab-pane show active fade single-tab-area" id="resume_list" role="tabpanel" aria-labelledby="education-tab">
-                                <div class="personal-experience-inner mt--40">
+                                <div class="personal-experience-inner margin-top-40">
                                     <div class="row">
-                                        <!-- Start Skill List Area  -->
                                         <div class="col-lg-6 col-md-12 col-12">
                                             <div class="content">
                                                 <span class="subtitle">1986 - 2024</span>
                                                 <h3 class="maintitle">Education</h3>
                                                 <div class="experience-list">
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -352,15 +341,13 @@
                                                                     <span>University of Maryland University College (1986 - 1989)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>2.333/4.000</span>
+                                                                    <span>GPA: 2.333</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Associate of Science in Natural Sciences</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -369,15 +356,13 @@
                                                                     <span>Riverwside Community College (1992 - 1994)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.000/4.000</span>
+                                                                    <span>GPA: 3.000</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Associate of Science in Natural Sciences</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -392,9 +377,7 @@
                                                             <p class="description">Certified Novell Administrator - Netware 3</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -403,7 +386,7 @@
                                                                     <span>Mt. San Jacinto College (2005 - 2006)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.093/4.000</span>
+                                                                    <span>GPA: 3.093</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">
@@ -414,9 +397,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -425,15 +406,13 @@
                                                                     <span>California State University San Bernardino (1997 - 2001)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.558/4.000</span>
+                                                                    <span>GPA: 3.558</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Computer Engineering</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -442,32 +421,28 @@
                                                                     <span>National University (2013 - 2015)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.764/4.000</span>
+                                                                    <span>GPA: 3.764</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Bachelor of Science in Computer Science</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
                                                                     <h4>Profesional Certificate</h4>
-                                                                    <span>University of California Davis Continuing and Professional Education (2017 - 2018)</span>
+                                                                    <span>University of California Davis Continuing and<br>Professional Education (2017 - 2018)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.860/4.000</span>
+                                                                    <span>GPA: 3.860</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Web Development Certificate</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -476,15 +451,13 @@
                                                                     <span>Southern New Hampshire University (2016 - 2019)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>4.000/4.000</span>
+                                                                    <span>GPA: 4.000</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Master of Science in Information Technology w/conc. in Web Design</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -493,15 +466,13 @@
                                                                     <span>Regis University (2020 - 2021)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>3.917/4.000</span>
+                                                                    <span>GPA: 3.917</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Graduate Certificate in Full Stack+ Web Development</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -510,15 +481,13 @@
                                                                     <span>Chicago School of Professional Psychology (2022 - 2023)</span>
                                                                 </div>
                                                                 <div class="date-of-time">
-                                                                    <span>4.000/4.000</span>
+                                                                    <span>GPA: 4.000</span>
                                                                 </div>
                                                             </div>
                                                             <p class="description">Educational Psychology and Technology</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -533,21 +502,17 @@
                                                             <p class="description">Inspired Teaching and Learning with a Preliminary Teaching Credential and Intern Option (California)</p>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Skill List Area  -->
 
-                                        <!-- Start Skill List Area 2nd  -->
                                         <div class="col-lg-6 col-md-12 col-12 mt_md--60 mt_sm--60">
                                             <div class="content">
                                                 <span class="subtitle">2016 - Present</span>
                                                 <h3 class="maintitle">Job Experience</h3>
                                                 <div class="experience-list">
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -563,9 +528,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -582,9 +545,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -601,9 +562,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -620,9 +579,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -639,9 +596,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -658,9 +613,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
 
-                                                    <!-- Start Single List  -->
                                                     <div class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
@@ -677,237 +630,189 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single List  -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Skill List Area  -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Tab  -->
 
-                            <!-- Start Single Tab  -->
                             <div class="tab-pane fade" id="professional" role="tabpanel" aria-labelledby="professional-tab">
-                                <div class="personal-experience-inner mt--40">
+                                <div class="personal-experience-inner margin-top-40">
                                     <div class="row row--40">
 
-                                        <!-- Start Single Progressbar  -->
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="progress-wrapper">
                                                 <div class="content">
                                                     <span class="subtitle">Features</span>
                                                     <h3 class="maintitle">Languages</h3>
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">C++</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">C#</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">65%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">ColdFusion</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">CSS</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">HTML</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Java</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">60%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">JavaScript</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">PHP</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Python</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">SQL</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Single Progressbar  -->
 
-                                        <!-- Start Single Progressbar  -->
                                         <div class="col-lg-6 col-md-6 col-12 mt_sm--60">
                                             <div class="progress-wrapper">
                                                 <div class="content">
                                                     <span class="subtitle">Features</span>
                                                     <h3 class="maintitle">Developer Strengths</h3>
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Web Development, SQL</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Problem Solving, Automation</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Web Accessibility (WCAG), UX Compliance</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Debugging, Troubleshooting</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Technical Communication, Documentation</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Systems Thinking, Workflow Design</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Adaptability, Rapid Onboarding</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Continuous Improvement, Iteration</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">User-Centered Design, Usability</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
-                                                    <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
                                                         <h4 class="heading heading-h6">Reliability, Ownership</h4>
                                                         <div class="progress">
                                                             <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
-                                                    <!-- End Single Progress Charts -->
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Single Progressbar  -->
 
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Tab  -->
 
                         </div>
                     </div>
                 </div>
             </div>
             </div>
-            <!-- End Resume Area -->
 
-            <!-- Start Portfolio Area -->
-            <section id="portfolio" class="rn-portfolio-area portfolio-style-three rn-section-gap section-separator" aria-labelledby="portfolio-title">
+            <!-- ****************************
+               Portfolio carousel
+               **************************** -->
+            <section id="portfolio" class="rn-portfolio-area portfolio-style-three section-padding-vertical section-divider" aria-labelledby="portfolio-title">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -917,11 +822,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt--25 mt_md--5 mt_sm--5">
+                    <div class="row margin-top-25 mt_md--5 mt_sm--5">
                         <div class="col-lg-12">
                             <div class="portfolio-wrapper portfolio-carousel scroll-snap-carousel">
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SpacePortfolio">
                                         <div class="inner">
@@ -941,9 +845,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026HackerNews">
                                         <div class="inner">
@@ -963,9 +865,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025JamisonStamps">
                                         <div class="inner">
@@ -985,9 +885,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025PasswordCheck">
                                         <div class="inner">
@@ -1007,9 +905,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025FrankJamison">
                                         <div class="inner">
@@ -1029,9 +925,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2024PassionateTeachingJourney">
                                         <div class="inner">
@@ -1051,9 +945,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2021DnD5eTools">
                                         <div class="inner">
@@ -1073,9 +965,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVetNode">
                                         <div class="inner">
@@ -1095,9 +985,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020CharacterVault">
                                         <div class="inner">
@@ -1117,9 +1005,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AngularCLIApp">
                                         <div class="inner">
@@ -1139,9 +1025,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020BudgetApplication">
                                         <div class="inner">
@@ -1161,9 +1045,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020PigGame">
                                         <div class="inner">
@@ -1183,9 +1065,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVet">
                                         <div class="inner">
@@ -1205,9 +1085,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019FrankJamison">
                                         <div class="inner">
@@ -1227,9 +1105,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019VeteranJobInfo">
                                         <div class="inner">
@@ -1249,9 +1125,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019AncientWhiteArmyVet">
                                         <div class="inner">
@@ -1271,9 +1145,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018Questkeeper">
                                         <div class="inner">
@@ -1293,9 +1165,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FrankJamison">
                                         <div class="inner">
@@ -1315,9 +1185,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FranksClassicCars">
                                         <div class="inner">
@@ -1337,9 +1205,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RPGStatRoller">
                                         <div class="inner">
@@ -1359,9 +1225,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RiversideMassageAndSpa">
                                         <div class="inner">
@@ -1381,9 +1245,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017StopwatchApplication">
                                         <div class="inner">
@@ -1403,9 +1265,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017JavaScriptGuessingGame">
                                         <div class="inner">
@@ -1425,9 +1285,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017FrankJamison">
                                         <div class="inner">
@@ -1447,9 +1305,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016FrankJamison">
                                         <div class="inner">
@@ -1469,9 +1325,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016VirtualWorld">
                                         <div class="inner">
@@ -1491,9 +1345,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015JamisonWebDesign">
                                         <div class="inner">
@@ -1513,9 +1365,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015MiFamiliaTacoCatering">
                                         <div class="inner">
@@ -1535,9 +1385,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015RPGBookProject">
                                         <div class="inner">
@@ -1557,9 +1405,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015FrankJamison">
                                         <div class="inner">
@@ -1579,9 +1425,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2013FrankJamison">
                                         <div class="inner">
@@ -1601,9 +1445,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2007GlobeBank">
                                         <div class="inner">
@@ -1623,9 +1465,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MSJCAdminOfJustice">
                                         <div class="inner">
@@ -1645,9 +1485,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006ZitaWorley">
                                         <div class="inner">
@@ -1667,9 +1505,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MoonwalkManor">
                                         <div class="inner">
@@ -1689,9 +1525,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModalTypingSpeed">
                                         <div class="inner">
@@ -1711,9 +1545,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006FrankJamison">
                                         <div class="inner">
@@ -1733,9 +1565,7 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
-                                <!-- Start Single Portfolio  -->
                                 <div class="portfolio-item scroll-snap-item">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006AnalogClockProject">
                                         <div class="inner">
@@ -1755,47 +1585,49 @@
                                         </div>
                                     </button>
                                 </div>
-                                <!-- End Single Portfolio  -->
 
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
-                <!-- End portfolio Area -->
 
-                <!-- Start News Area -->
+                <!-- ****************************
+                   Blog feed
+                   **************************** -->
                 {% include  './partials/news.html'  %}
-                <!-- ENd Mews Area -->
 
 
 
-                <!-- Modal Portfolio 2006frankjamison area Start -->
+                <!-- ****************************
+                   Lazy-injected modal templates
+                   **************************** -->
                 <template id="portfolio-modals-template">
                     {% include  './partials/portfolioBody.html'  %}
                 </template>
                 <div id="portfolio-modals-root"></div>
-                <!-- End Modal Portfolio area -->
 
-                <!-- Modal Blog Body area Start -->
                 <template id="blog-modals-template">
                     {% include  './partials/blogBody.html'  %}
                 </template>
                 <div id="blog-modals-root"></div>
-                <!-- End Modal Blog area -->
 
-                <!-- Start Contact Area -->
+                <!-- ****************************
+                   Contact section
+                   **************************** -->
                 {% include  './partials/contact.html'  %}
-                <!-- End Contact Area -->
 
-                <!-- Back to  top Start -->
+                <!-- ****************************
+                   Back-to-top control
+                   **************************** -->
                 {% include  './partials/backToTop.html'  %}
-                <!-- Back to top end -->
     </main>
 
-    <!-- Rn footer area Start -->
-    <div id="footer" class="rn-footer-area footer-style-2 rn-section-gapTop section-separator">
-        <div class="container pb--80 pb_sm--40 plr_sm--20">
+    <!-- ****************************
+       Footer
+       **************************** -->
+    <div id="footer" class="rn-footer-area footer-style-2 section-padding-top section-divider">
+        <div class="container padding-bottom-80 pb_sm--40 plr_sm--20">
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="logo-thumbnail">
@@ -1804,7 +1636,7 @@
                         </a>
                     </div>
 
-                    <div class="social-share-style-1 mt--20">
+                    <div class="social-share-style-1 margin-top-20">
                         <span class="title">Find me</span>
                         <ul class="social-share d-flex liststyle" style="justify-content:center;">
                             <li class="linkedin">
@@ -1817,15 +1649,14 @@
                 </div>
             </div>
         </div>
-        <div class="copyright text-center ptb--40 section-separator">
+        <div class="copyright text-center padding-top-bottom-40 section-divider">
             <p class="description">© {{ current_year }}. All rights reserved.</p>
         </div>
     </div>
-    <!-- Rn footer area end -->
-
-    <!-- script Start -->
+    <!-- ****************************
+       Scripts
+       **************************** -->
     {% include  './partials/script.html'  %}
-    <!-- script end -->
 </body>
 
 </html>

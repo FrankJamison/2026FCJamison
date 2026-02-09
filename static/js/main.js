@@ -11,6 +11,9 @@
     const closeMenuControls = doc.querySelectorAll('.closeTrigger, .close-menu-activation');
     const mobileMenuLinks = doc.querySelectorAll('.popup-mobile-menu .primary-menu .nav-item a');
 
+    /* ****************************
+       Mobile menu toggle + state sync.
+       **************************** */
     function setMenuOpen(isOpen) {
         if (!mobileMenu) {
             return;
@@ -64,6 +67,9 @@
         });
     });
 
+    /* ****************************
+       Scroll-driven UI (back-to-top + sticky header).
+       **************************** */
     function updateBackToTop() {
         if (!backToTop) {
             return;
@@ -119,6 +125,9 @@
         smoothScrollTo(link.getAttribute('href'), offset);
     });
 
+    /* ****************************
+       Scrollspy for one-page navigation.
+       **************************** */
     function initScrollSpy() {
         const navLinks = Array.from(doc.querySelectorAll('.onepagenav .nav-link'));
         if (!navLinks.length) {
@@ -185,6 +194,9 @@
     updateStickyHeader();
     initScrollSpy();
 
+    /* ****************************
+       A11y helpers for keyboard activation.
+       **************************** */
     function initKeyboardActivation() {
         doc.addEventListener('keydown', (event) => {
             if (event.key !== 'Enter' && event.key !== ' ') {
@@ -243,6 +255,9 @@
         });
     }
 
+    /* ****************************
+       Ensure safe rel values for external links.
+       **************************** */
     function initExternalLinks(root = doc) {
         root.querySelectorAll('a[target="_blank"]').forEach((anchor) => {
             const rel = (anchor.getAttribute('rel') || '').trim();
@@ -258,6 +273,9 @@
         });
     }
 
+    /* ****************************
+       Modal ARIA enhancements and feather icon refresh.
+       **************************** */
     function initModalEnhancements(root = doc) {
         root.querySelectorAll('.modal').forEach((modal) => {
             if (!modal.hasAttribute('role')) {
@@ -301,6 +319,9 @@
 
     let modalNavigationBound = false;
 
+    /* ****************************
+       Leave-reply form helpers + modal link hardening.
+       **************************** */
     function initLeaveReplyForms(root = doc) {
         root.querySelectorAll('form.js-leave-reply-form').forEach((form) => {
             const statusEl = form.querySelector('.js-leave-reply-status');
@@ -469,6 +490,9 @@
         });
     }
 
+    /* ****************************
+       Lazy-inject modal templates on first open.
+       **************************** */
     function ensureModalTemplates(targetId) {
         if (!targetId || targetId.charAt(0) !== '#') {
             return;
@@ -497,6 +521,9 @@
         initLeaveReplyForms(root);
     }
 
+    /* ****************************
+       AJAX contact form submission.
+       **************************** */
     function initContactForm() {
         const contactForm = doc.querySelector('form.js-contact-form');
         if (!contactForm || contactForm.dataset.contactBound === 'true') {

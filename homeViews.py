@@ -117,7 +117,9 @@ def project_index(project_slug: str):
     if not project_slug or not all(ch.isalnum() or ch in {"-", "_"} for ch in project_slug):
         abort(404)
 
+    # ****************************
     # If a static build exists locally, prefer it.
+    # ****************************
     static_root = Path(app.static_folder or "static")
     local_index = static_root / "portfolio" / project_slug / "index.html"
     if local_index.exists():
@@ -136,13 +138,18 @@ def project_index(project_slug: str):
     if project_slug in hosted:
         return redirect(hosted[project_slug])
 
+    # ****************************
     # Minimal fallback: project repos follow the slug name.
+    # ****************************
     github_org = _clean(os.getenv("GITHUB_ORG"), max_len=100) or "FrankJamison"
     return redirect(f"https://github.com/{github_org}/{project_slug}")
 
 
 @app.post("/leave-reply")
 def leave_reply():
+    # ****************************
+    # Honeypot field: if filled, treat as bot submission.
+    # ****************************
     hp = _clean(request.form.get("hp"), max_len=200)
     if hp:
         return jsonify({"ok": True})
@@ -159,9 +166,13 @@ def leave_reply():
 
     now = datetime.now(timezone.utc).isoformat()
 
+    # ****************************
+    # Persist submissions locally for quick review/backup.
+    # ****************************
     _append_csv(
         Path("data/leave_reply.csv"),
-        headers=["timestamp", "name", "email", "website", "blog_title", "page_url", "comment"],
+        headers=["timestamp", "name", "email", "website",
+                 "blog_title", "page_url", "comment"],
         row={
             "timestamp": now,
             "name": name,
@@ -189,6 +200,9 @@ def leave_reply():
         ]
     )
 
+    # ****************************
+    # Send notification email with Reply-To set to the visitor.
+    # ****************************
     ok, err = _send_email(subject=subject, body=body, reply_to=email)
     if not ok:
         return jsonify({"ok": False, "error": err})
@@ -198,6 +212,9 @@ def leave_reply():
 
 @app.post("/contact")
 def contact_message():
+    # ****************************
+    # Honeypot field: if filled, treat as bot submission.
+    # ****************************
     hp = _clean(request.form.get("hp"), max_len=200)
     if hp:
         return jsonify({"ok": True})
@@ -214,9 +231,13 @@ def contact_message():
 
     now = datetime.now(timezone.utc).isoformat()
 
+    # ****************************
+    # Persist submissions locally for quick review/backup.
+    # ****************************
     _append_csv(
         Path("data/contact_messages.csv"),
-        headers=["timestamp", "name", "email", "phone", "subject", "page_url", "message"],
+        headers=["timestamp", "name", "email",
+                 "phone", "subject", "page_url", "message"],
         row={
             "timestamp": now,
             "name": name,
@@ -243,6 +264,9 @@ def contact_message():
         ]
     )
 
+    # ****************************
+    # Send notification email with Reply-To set to the visitor.
+    # ****************************
     ok, err = _send_email(subject=mail_subject, body=body, reply_to=email)
     if not ok:
         return jsonify({"ok": False, "error": err})
