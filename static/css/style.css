@@ -219,6 +219,20 @@ h1,
     }
 }
 
+/* Wider portfolio cards on desktop so long domains stay on one line. */
+@media only screen and (min-width: 1200px) {
+    .portfolio-carousel.scroll-snap-carousel {
+        grid-auto-columns: minmax(420px, 1fr);
+    }
+}
+
+/* Match blog card widths to portfolio cards on desktop. */
+@media only screen and (min-width: 1200px) {
+    .blog-carousel.scroll-snap-carousel {
+        grid-auto-columns: minmax(420px, 1fr);
+    }
+}
+
 h2,
 .h2 {
     font-size: var(--h2);
@@ -10861,7 +10875,23 @@ span.sr-only {
 .rn-blog .inner .content .category-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
     padding-bottom: 10px;
+}
+
+.rn-blog .inner .content .category-info {
+    flex-wrap: nowrap;
+}
+
+.rn-blog .inner .content .category-info .category-list {
+    margin-right: auto;
+}
+
+.rn-blog .inner .content .category-info .meta {
+    margin-left: auto;
+    text-align: right;
 }
 
 .rn-portfolio .inner .content .category-info .category-list,
@@ -11037,8 +11067,14 @@ span.sr-only {
 }
 
 .portfolio-carousel .portfolio-item {
+    display: flex;
     padding-block: var(--carousel-item-pad-block);
     padding-inline: var(--carousel-item-pad-inline);
+    cursor: pointer;
+}
+
+.portfolio-carousel .portfolio-item>.rn-portfolio {
+    flex: 1 1 auto;
 }
 
 .blog-carousel {
@@ -11054,4 +11090,25 @@ span.sr-only {
 .blog-carousel .blog-item {
     padding-block: var(--carousel-item-pad-block);
     padding-inline: var(--carousel-item-pad-inline);
+    display: flex;
+    cursor: pointer;
+}
+
+.blog-carousel .blog-item>.rn-blog {
+    flex: 1 1 auto;
+}
+
+.rn-blog .inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rn-blog .inner .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1 1 auto;
+    align-items: flex-start;
+    justify-content: flex-start;
 }

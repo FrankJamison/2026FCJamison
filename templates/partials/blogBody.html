@@ -1,3 +1,241 @@
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
+<div class="modal fade" id="blogModal2026SimpleFolio" tabindex="-1" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="blogModal2026SimpleFolioTitle">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/blog/blog-0041-SimpleFolio.png') }}" alt="SimpleFolio: Focused, Functional, and Built to Ship" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <time class="date" datetime="2026-02-16">16 February 2026</time>
+                    <h2 class="title" id="blogModal2026SimpleFolioTitle">SimpleFolio: Focused, Functional, and Built to Ship</h2>
+                    <p>When I built SimpleFolio, I was not trying to impress anyone with complexity. I was trying to demonstrate something more important. Good engineering starts with intentional simplicity.</p>
+                    <p>On the surface, it looks minimal and focused. Under the hood, it reflects a modern development workflow using Node.js, npm, Parcel, and a modular SCSS architecture.</p>
+                    <p>SimpleFolio is not just a static HTML file. It is a structured front-end project built with professional tooling and organized for maintainability.</p>
+
+                    <hr>
+
+                    <h3>A Modern Node-Based Workflow</h3>
+                    <p>This project uses a Node.js toolchain powered by Parcel as the bundler. The package.json defines development and production scripts, including npm start for local development and npm run build for generating an optimized production bundle in the dist directory.</p>
+                    <p>That means development happens in a structured environment with dependency management, automatic compilation, and optimized output. What ships to the browser is clean and efficient, but what supports it is a professional build system.</p>
+                    <p>This matters to me. Even when the end result is lightweight, the development process should reflect production standards.</p>
+
+                    <hr>
+
+                    <h3>Source Structure That Makes Sense</h3>
+                    <p>The source code lives inside the src directory, which contains index.html, index.js, and the SCSS entry file. Assets are organized logically and compiled through Parcel into the final output.</p>
+                    <p>The structure is easy to follow. There is no hidden logic or unexplained configuration. A developer cloning the repository can install dependencies, run the dev server, and immediately understand how the pieces fit together.</p>
+                    <p>Clarity in structure reduces friction. That principle applies whether I am building a small portfolio or a larger full-stack application.</p>
+
+                    <hr>
+
+                    <h3>SCSS Organized for Scale</h3>
+                    <p>The SCSS architecture is one of the most intentional parts of this project. Instead of placing all styling into a single stylesheet, the styles are divided into purpose-driven folders:</p>
+                    <p>The abstracts folder contains shared variables and configuration.<br>The base folder handles global resets and typography.<br>The layout folder defines structural patterns.<br>The components folder contains reusable UI elements.<br>The sections folder organizes page-specific styling.<br>The vendors folder isolates third-party overrides.<br>The layout folder defines structural patterns.</p>
+                    <p>This mirrors how scalable front-end systems are organized in larger applications. Variables define spacing and color relationships. Layout rules are separated from component logic. Section styling does not leak into unrelated areas.</p>
+                    <p>Because the SCSS compiles through Parcel, development stays modular while the production output remains optimized. That separation between source clarity and deployment efficiency is something I value across projects.</p>
+
+                    <hr>
+
+                    <h3>Semantic Markup With Intent</h3>
+                    <p>The HTML in src/index.html is structured with semantic clarity. Header and main regions are defined appropriately. Heading hierarchy follows a logical progression. Sections are clearly grouped.</p>
+                    <p>This is not decorative structure. It is deliberate.</p>
+                    <p>Clean semantic markup improves accessibility, readability, and long-term maintainability. If this project were integrated into a templating system or expanded into a dynamic application, the structure would already support that growth.</p>
+                    <p>I build markup with future adaptability in mind.</p>
+
+                    <hr>
+
+                    <h3>Purposeful JavaScript Enhancements</h3>
+                    <p>The JavaScript in src/index.js is intentionally minimal. It initializes enhancements such as scroll reveal effects and tilt interactions using small, focused libraries. These effects add polish without introducing unnecessary runtime weight.</p>
+                    <p>There is no heavy front-end framework driving the page. The enhancements are progressive and performance-aware.</p>
+                    <p>Choosing not to use a framework is still a decision. In this case, it demonstrates that I can evaluate when additional abstraction is warranted and when it is not.</p>
+
+                    <hr>
+
+                    <h3>Responsive by Design</h3>
+                    <p>Responsive behavior is handled through structured SCSS rules rather than ad hoc fixes. Breakpoints are defined intentionally and applied near the components or sections they affect. Layout shifts are predictable and controlled.</p>
+                    <p>Instead of shrinking a desktop layout until it works on mobile, the structure adapts naturally. Flexbox and grid are used deliberately. Spacing scales consistently.</p>
+                    <p>Responsive design is not a final step in the process. It is part of the architecture from the beginning.</p>
+
+                    <hr>
+
+                    <h3>Parcel and Production Readiness</h3>
+                    <p>Parcel serves as the build system, compiling SCSS, bundling JavaScript, and optimizing assets. The output is written to the dist directory, ready for deployment.</p>
+                    <p>Using Parcel simplifies configuration while still providing professional build behavior. There is automatic asset handling, fast development reload, and clean production output.</p>
+                    <p>The choice reflects a preference for tools that reduce overhead without sacrificing capability.</p>
+
+                    <hr>
+
+                    <h3>Code That Communicates</h3>
+                    <p>When I publish a repository, I assume someone will read it. That assumption shapes how I name files, organize directories, and manage dependencies. The package.json is concise. The folder structure is intentional. Styles are grouped logically.</p>
+                    <p>The project does not rely on excessive dependencies. Each tool included has a clear purpose.</p>
+                    <p>Code should communicate intent. If another developer steps into this repository, they should understand the system quickly. That clarity is not accidental. It is engineered.</p>
+
+                    <hr>
+
+                    <h3>What SimpleFolio Demonstrates</h3>
+                    <p>SimpleFolio demonstrates that I am comfortable working in a Node-based environment. It shows that I can structure SCSS for maintainability rather than convenience. It reflects familiarity with modern bundling tools and responsive layout engineering.</p>
+                    <p>It also demonstrates restraint. I know when to build lean. I know when to introduce complexity. I choose tools based on need, not trend.</p>
+                    <p>For technical reviewers, the repository communicates structure and discipline. For recruiters, it communicates stack fluency and modern workflow familiarity. For hiring managers, it communicates judgment.</p>
+
+                    <hr>
+
+                    <h3>Looking Ahead</h3>
+                    <p>Much of my broader development work includes backend systems, Flask applications, API integrations, and data-driven interfaces. SimpleFolio complements those projects by highlighting front-end craftsmanship.</p>
+                    <p>It is simple by design, but not simplistic. It is structured, tool-driven, and built with intention.</p>
+                    <p>Professional software does not have to be loud. It has to be clear, maintainable, and adaptable.</p>
+                    <p>That is what SimpleFolio represents.</p>
+
+                    <hr>
+                </div>
+
+                <div class="comment-inner">
+                    <h3 class="title margin-bottom-40 margin-top-50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="SimpleFolio: Focused, Functional, and Built to Ship">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
+<div class="modal fade" id="blogModal2026RandomThoughtsInTraffic" tabindex="-1" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="blogModal2026RandomThoughtsInTrafficTitle">
+    <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x"></i></span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/blog/blog-0040-RandomThoughtsInTraffic.png') }}" alt="Random Thoughts in Traffic: Notes from the Web" class="img-fluid modal-feat-img">
+                <div class="news-details">
+                    <time class="date" datetime="2026-02-09">09 February 2026</time>
+                    <h2 class="title" id="blogModal2026RandomThoughtsInTrafficTitle">Random Thoughts in Traffic: Notes from the Web</h2>
+                    <p>I built RandomThoughtsInTraffic.com because I wanted a place where technical writing could breathe. Most of my day-to-day work happens in fast-moving environments: shipping features, tightening performance, resolving bugs. I love that pace, but I also needed a space where I could slow down and think about the web itself—how it works, why it works, and how to explain it clearly. This site is my answer to that need, and it reflects how I think about design, development, and the craft of communication.</p>
+
+                    <hr>
+
+                    <h3>Design That Respects Reading</h3>
+
+                    <p>From the beginning, the goal was simple: make reading feel effortless. I didn’t want a homepage that felt like a feed or a post template that felt like a dashboard. I wanted the experience to feel like opening a well‑edited book—clean typography, steady rhythm, and a layout that doesn’t pull attention away from the words. That design intent shaped everything: line length, spacing, heading hierarchy, and how the page breathes on both desktop and mobile.</p>
+
+                    <hr>
+
+                    <h3>WordPress as a Deliberate Choice</h3>
+
+                    <p>I selected WordPress because I value stability and publishing speed. It’s a pragmatic choice, but it’s also the right one for this kind of project. WordPress gives me a mature ecosystem, a strong editor experience, and enough flexibility to make the site feel custom without needing a bespoke build. That means I can spend more time writing and refining, and less time maintaining infrastructure that doesn’t add value to the reader.</p>
+
+                    <hr>
+
+                    <h3>Theme and Layout Decisions</h3>
+
+                    <p>Theme choice followed the same philosophy. I picked a clean, content‑first theme and shaped it rather than fighting it. I kept the navigation minimal and predictable. I kept the layout focused on a single reading column. I wanted the title, the opening paragraph, and the section breaks to feel consistent across posts, so readers know what to expect every time they arrive. Consistency builds trust, especially in technical writing.</p>
+
+                    <hr>
+
+                    <h3>Performance, SEO, and Accessibility</h3>
+
+                    <p>Performance is part of the writing experience. A fast page respects the reader’s time. Caching and clean asset handling help make every post feel instant. I pay attention to structure and semantics because they matter for accessibility and search. It’s not just about ranking; it’s about making content discoverable and usable across devices and assistive technologies. The goal is to write for humans and to build for the widest possible audience.</p>
+
+                    <hr>
+
+                    <h3>Content Architecture and Voice</h3>
+
+                    <p>The content is focused on web fundamentals: HTML, CSS, and JavaScript. I write about them with a narrative voice because the point isn’t to dump documentation. The point is to show how these tools behave in the real world, how they affect user experience, and why they still matter. I also keep categories and tags intentional so the site stays navigable without becoming cluttered.</p>
+
+                    <hr>
+
+                    <h3>What This Shows About My Work</h3>
+
+                    <p>RandomThoughtsInTraffic.com is a clear window into my working style. It shows that I care about craft and usability, not just implementation. It shows that I can take a platform like WordPress and make it feel calm, professional, and purposeful. It shows that I think about performance, stability, and maintenance as first‑class concerns, even when the project’s primary output is content.</p>
+
+                    <hr>
+
+                    <h3>Closing Thoughts</h3>
+
+                    <p>This site is more than a blog—it’s a reflection of how I approach the web: thoughtfully, patiently, and with a constant focus on the reader. It’s a place where I can write with depth, build with intention, and keep the fundamentals at the center of everything.</p>
+
+                    <hr>
+                </div>
+
+                <div class="comment-inner">
+                    <h3 class="title margin-bottom-40 margin-top-50">Leave a Reply</h3>
+                    <form class="js-leave-reply-form" method="post" action="{{ url_for('leave_reply') }}">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <input type="hidden" name="next" value="{{ request.url }}">
+                                <input type="hidden" name="page_url" value="{{ request.url }}">
+                                <input type="hidden" name="blog_title" value="Random Thoughts in Traffic: Notes from the Web">
+                                <div class="rnform-group" style="display:none;">
+                                    <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
+                                </div>
+                                <div class="rnform-group"><input type="text" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="rnform-group"><input type="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="rnform-group"><input type="text" name="website" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12">
+                                <div class="rnform-group">
+                                    <textarea name="comment" placeholder="Comment" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="js-leave-reply-status" style="display:none;"></div>
+                                <button class="rn-btn" type="submit"><span>SUBMIT NOW</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2026HTML" tabindex="-1" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="blogModal2026HTMLTitle">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -120,7 +358,7 @@
                             <div class="col-lg-6 col-md-12 col-12">
                                 <input type="hidden" name="next" value="{{ request.url }}">
                                 <input type="hidden" name="page_url" value="{{ request.url }}">
-                                <input type="hidden" name="blog_title" value="Space Portfolio: A Full-Stack Flask Portfolio">
+                                <input type="hidden" name="blog_title" value="HTML: The Quiet Backbone of the Web">
                                 <div class="rnform-group" style="display:none;">
                                     <input type="text" name="hp" tabindex="-1" autocomplete="off" placeholder="Leave this field empty">
                                 </div>
@@ -148,6 +386,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2026SpacePortfolio" tabindex="-1" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="blogModal2026SpacePortfolioTitle">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -315,6 +556,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2026HackerNews" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -509,6 +753,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2025JamisonStamps" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -625,6 +872,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2025PasswordCheck" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -774,6 +1024,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2025FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -909,6 +1162,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2025FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1044,6 +1300,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2024PassionateTeachingJourney" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1150,6 +1409,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2021DnD5eTools" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1276,6 +1538,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020AncientWhiteArmyVetNode" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1403,6 +1668,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020CharacterVault" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1539,6 +1807,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020AngularCLIApp" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1666,6 +1937,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020BudgetApplication" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1780,6 +2054,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020PigGame" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -1924,6 +2201,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2020AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2028,6 +2308,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2019FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2128,6 +2411,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2019VeteranJobInfo" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2255,6 +2541,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2019AncientWhiteArmyVet" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2347,6 +2636,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2018Questkeeper" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2487,6 +2779,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2018FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2579,6 +2874,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2018FranksClassicCars" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2672,6 +2970,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2017RPGStatRoller" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2817,6 +3118,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2017RiversideMassageAndSpa" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -2939,6 +3243,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2017StopwatchApplication" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3146,6 +3453,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2017JavaScriptGuessingGame" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3227,6 +3537,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2017FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3341,6 +3654,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2016FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3512,6 +3828,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2016VirtualWorld" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3634,6 +3953,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2015JamisonWebDesign" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3725,6 +4047,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2015MiFamiliaTacoCatering" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3812,6 +4137,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2015RPGBookProject" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -3920,6 +4248,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2015FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4023,6 +4354,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2013FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4163,6 +4497,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2007GlobeBank" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4287,6 +4624,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2006MSJCAdminOfJustice" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4346,6 +4686,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2006ZitaWorley" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4417,6 +4760,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2006MoonwalkManor" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4476,6 +4822,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2006TypingSpeed" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4565,6 +4914,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModal2006FrankJamison" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4628,6 +4980,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModalAnalogClock" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">
@@ -4727,6 +5082,9 @@
     </div>
 </div>
 
+<!-- ****************************
+   Blog modal entry
+   **************************** -->
 <div class="modal fade" id="blogModalHelloWorld" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-news" role="document">
         <div class="modal-content">

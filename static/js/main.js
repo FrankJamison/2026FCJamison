@@ -388,7 +388,7 @@
                 }
 
                 const anchor = event.target && event.target.closest ?
-                    event.target.closest('.modal a.rn-btn.thumbs-icon') :
+                    event.target.closest('.modal a.rn-btn') :
                     null;
                 if (!anchor) {
                     return;
@@ -396,17 +396,17 @@
 
                 const href = anchor.getAttribute('href');
                 if (!href || href === '#' || href.toLowerCase().startsWith('javascript:')) {
+                    event.preventDefault();
                     return;
                 }
-                event.preventDefault();
-                event.stopPropagation();
 
-                if (anchor.target && anchor.target.toLowerCase() === '_blank') {
+                const target = (anchor.getAttribute('target') || '').toLowerCase();
+                if (target === '_blank') {
+                    event.preventDefault();
+                    event.stopPropagation();
+
                     win.open(href, '_blank', 'noopener,noreferrer');
-                    return;
                 }
-
-                win.location.assign(href);
             }, true);
         }
 
@@ -594,6 +594,46 @@
         });
     }
 
+    /* ****************************
+       Make entire portfolio card clickable.
+       **************************** */
+    function initPortfolioCardClicks() {
+        doc.addEventListener('click', (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                return;
+            }
+
+            const target = event.target;
+            if (!target || !target.closest) {
+                return;
+            }
+
+            if (target.closest('[data-bs-toggle="modal"][data-bs-target]')) {
+                return;
+            }
+
+            const item = target.closest('.portfolio-item');
+            if (!item) {
+                return;
+            }
+
+            const trigger = item.querySelector('[data-bs-toggle="modal"][data-bs-target]');
+            if (!trigger) {
+                return;
+            }
+
+            const interactive = target.closest('a, button, input, select, textarea, label');
+            if (interactive) {
+                return;
+            }
+
+            trigger.click();
+        }, true);
+    }
+
     doc.addEventListener('click', (event) => {
         const trigger = event.target && event.target.closest ?
             event.target.closest('[data-bs-toggle="modal"][data-bs-target]') :
@@ -611,6 +651,7 @@
     initModalEnhancements(doc);
     initLeaveReplyForms(doc);
     initContactForm();
+    initPortfolioCardClicks();
 
     if (win.feather && typeof win.feather.replace === 'function') {
         win.feather.replace();

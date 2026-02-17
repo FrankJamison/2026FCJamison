@@ -1,7 +1,13 @@
 <section class="rn-blog-area section-padding-vertical section-divider" id="blog" aria-labelledby="blog-title">
+    <!-- ****************************
+       Blog section container + layout
+       **************************** -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <!-- ****************************
+                    Section heading + subtitle
+                    **************************** -->
                 <div class="section-title text-center">
                     <span class="subtitle">Notes on learning, systems, and software development in progress</span>
                     <h2 class="title" id="blog-title">Building in Public</h2>
@@ -10,8 +16,60 @@
         </div>
         <div class="row margin-top-25 mt_md--5 mt_sm--5">
             <div class="col-lg-12">
+                <!-- ****************************
+                    Blog card carousel + modal triggers
+                    **************************** -->
                 <div class="blog-wrapper blog-carousel scroll-snap-carousel">
 
+                    <!-- Blog Item: SimpleFolio: Focused, Functional, and Built to Ship -->
+                    <div class="blog-item scroll-snap-item">
+                        <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2026SimpleFolio">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <span>
+                                        <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/blog/blog-0041-SimpleFolio.png') }}" alt="Professional portrait of a web developer in a navy suit and glasses seated in a modern office, with a blurred computer screen displaying code in the background, representing clean front-end development and portfolio design.">
+                                    </span>
+                                </div>
+                                <div class="content">
+                                    <div class="category-info">
+                                        <div class="category-list">
+                                            <time datetime="2026-02-16">16 February 2026</time>
+                                        </div>
+                                        <div class="meta">
+                                            <span><i class="feather-clock"></i> 9 min read</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="title"><span>SimpleFolio: Focused, Functional, and Built to Ship</span></h3>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Blog Item: Random Thoughts In Traffic: Notes from the Web -->
+                    <div class="blog-item scroll-snap-item">
+                        <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2026RandomThoughtsInTraffic">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <span>
+                                        <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/blog/blog-0040-RandomThoughtsInTraffic.png') }}" alt="RandomThoughtsInTraffic.com">
+                                    </span>
+                                </div>
+                                <div class="content">
+                                    <div class="category-info">
+                                        <div class="category-list">
+                                            <time datetime="2026-02-09">9 February 2026</time>
+                                        </div>
+                                        <div class="meta">
+                                            <span><i class="feather-clock"></i> 9 min read</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="title"><span>Random Thoughts In Traffic: Notes from the Web</span></h3>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Blog Item: Space Portfolio — A Full-Stack Flask Portfolio -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2026SpacePortfolio">
                             <div class="inner">
@@ -35,6 +93,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Hacker News Aggregator — Built to Read, Not Impress -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2026HackerNews">
                             <div class="inner">
@@ -58,6 +117,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Jamison Stamps & Books — Philately Done Right -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2025JamisonStamps">
                             <div class="inner">
@@ -81,6 +141,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Password Exposure Check — Privacy-First Security -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2025PasswordCheck">
                             <div class="inner">
@@ -104,6 +165,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — Practical Web Craft -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2025FrankJamison">
                             <div class="inner">
@@ -127,6 +189,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Passionate Teaching Journey: Learning to Teach -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2024PassionateTeachingJourney">
                             <div class="inner">
@@ -150,6 +213,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: D&D5eTools.com — Practical Utilities, Built with Intent -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2021DnD5eTools">
                             <div class="inner">
@@ -173,6 +237,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: AncientWhiteArmyVet.com — Practical Node, No Glitter -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020AncientWhiteArmyVetNode">
                             <div class="inner">
@@ -196,6 +261,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: The Character Vault — Clean CRUD, Clear Thinking -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020CharacterVault">
                             <div class="inner">
@@ -219,6 +285,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Angular CLI Application — Fundamentals with Intent -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020AngularCLIApp">
                             <div class="inner">
@@ -242,6 +309,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Budget Application — Core Front-End Logic -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020BudgetApplication">
                             <div class="inner">
@@ -265,6 +333,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: The Pig Game — Core JavaScript in Action -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020PigGame">
                             <div class="inner">
@@ -288,6 +357,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: AncientWhiteArmyVet’s RPG Tools — Static, Sharp, Useful -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2020AncientWhiteArmyVet">
                             <div class="inner">
@@ -305,12 +375,13 @@
                                             <span><i class="feather-clock"></i> 6 min read</span>
                                         </div>
                                     </div>
-                                    <h3 class="title"><span>AncientWhiteArmyVet’s RPG Tools:<br>Static, Sharp, Useful</span></h3>
+                                    <h3 class="title"><span>AncientWhiteArmyVet’s RPG Tools: Static, Sharp, Useful</span></h3>
                                 </div>
                             </div>
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — A Practical Web Portfolio -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2019FrankJamison">
                             <div class="inner">
@@ -334,6 +405,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: VeteranJobInfo.us — Built to Help, Not to Flex -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2019VeteranJobInfo">
                             <div class="inner">
@@ -357,6 +429,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: AncientWhiteArmyVet’s RPG Tools — Less Grind, More Game -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2019AncientWhiteArmyVet">
                             <div class="inner">
@@ -374,12 +447,13 @@
                                             <span><i class="feather-clock"></i> 4 min read</span>
                                         </div>
                                     </div>
-                                    <h3 class="title"><span>AncientWhiteArmyVet’s RPG Tools:<br>Less Grind, More Game</span></h3>
+                                    <h3 class="title"><span>AncientWhiteArmyVet’s RPG Tools: Less Grind, More Game</span></h3>
                                 </div>
                             </div>
                         </button>
                     </div>
 
+                    <!-- Blog Item: QuestKeeper — A Classic D&D Character Tracker -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2018Questkeeper">
                             <div class="inner">
@@ -403,6 +477,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — Built, Not Assembled -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2018FrankJamison">
                             <div class="inner">
@@ -426,6 +501,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Frank’s Classic Cars — Built the Old-School Way -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2018FranksClassicCars">
                             <div class="inner">
@@ -449,6 +525,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: 2017 RPG Stat Roller — Thoughtful Front-End Craft -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2017RPGStatRoller">
                             <div class="inner">
@@ -472,6 +549,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Riverside Massage & Spa — A Static Business Website -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2017RiversideMassageAndSpa">
                             <div class="inner">
@@ -495,6 +573,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: 2017 Stopwatch Application — Front-End Timekeeping Tool -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2017StopwatchApplication">
                             <div class="inner">
@@ -518,6 +597,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: JavaScript Guessing Game — Front-End Fundamentals -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2017JavaScriptGuessingGame">
                             <div class="inner">
@@ -541,6 +621,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — A Purpose-Built Resume -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2017FrankJamison">
                             <div class="inner">
@@ -564,6 +645,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — A Modern Resume Website -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2016FrankJamison">
                             <div class="inner">
@@ -587,6 +669,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: From Console to Browser — The Journey of Virtual World -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2016VirtualWorld">
                             <div class="inner">
@@ -610,6 +693,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Jamison Web Design — A Static Business Website -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2015JamisonWebDesign">
                             <div class="inner">
@@ -633,6 +717,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Mi Familia Taco Catering — Intentional Front-End Design -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2015MiFamiliaTacoCatering">
                             <div class="inner">
@@ -656,6 +741,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Chronicles of the 2015 RPG Book Project -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2015RPGBookProject">
                             <div class="inner">
@@ -679,6 +765,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — Foundations in Front-End Development -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2015FrankJamison">
                             <div class="inner">
@@ -702,6 +789,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: FrankJamison.com — A Personal Web Presence -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2013FrankJamison">
                             <div class="inner">
@@ -725,6 +813,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Globe Bank — Structured by Design -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2007GlobeBank">
                             <div class="inner">
@@ -748,6 +837,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Web Discipline and Authority — MSJC Administration of Justice Dept. -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2006MSJCAdminOfJustice">
                             <div class="inner">
@@ -771,6 +861,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: The Zita Worley Project — An Early Instructor Website -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2006ZitaWorley">
                             <div class="inner">
@@ -794,6 +885,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Moonwalk Manor — A Hotel on the Moon? -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2006MoonwalkManor">
                             <div class="inner">
@@ -817,6 +909,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Keystrokes Under Pressure — A 2006 Typing Speed Test -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2006TypingSpeed">
                             <div class="inner">
@@ -840,6 +933,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: A 2006 Time Capsule — FrankJamison.com v1.0 -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModal2006FrankJamison">
                             <div class="inner">
@@ -863,6 +957,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Building Time — Analog Clock Project -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModalAnalogClock">
                             <div class="inner">
@@ -886,6 +981,7 @@
                         </button>
                     </div>
 
+                    <!-- Blog Item: Hello, World (But Make It Intentional) -->
                     <div class="blog-item scroll-snap-item">
                         <button class="rn-blog" type="button" data-bs-toggle="modal" data-bs-target="#blogModalHelloWorld">
                             <div class="inner">
