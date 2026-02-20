@@ -491,6 +491,54 @@
     }
 
     /* ****************************
+       Read-time indicators for articles.
+
+       Populates .js-read-time spans using word count of each article's
+       .news-details content (excluding the meta row).
+       **************************** */
+    function initReadTimeIndicators(root) {
+        const scope = root && root.querySelectorAll ? root : doc;
+        scope.querySelectorAll('.news-details').forEach((newsDetails) => {
+            const indicator = newsDetails.querySelector('.js-read-time');
+            if (!indicator) {
+                return;
+            }
+
+            // Gather text from top-level nodes except the meta row.
+            // This includes text nodes so legacy articles that still have raw
+            // text inside .news-details get accurate read-time estimates.
+            const parts = [];
+            Array.from(newsDetails.childNodes).forEach((node) => {
+                // Element
+                if (node.nodeType === 1) {
+                    if (node.classList && node.classList.contains('article-meta')) {
+                        return;
+                    }
+                    parts.push((node.textContent || '').trim());
+                    return;
+                }
+
+                // Text
+                if (node.nodeType === 3) {
+                    const text = (node.textContent || '').trim();
+                    if (text) {
+                        parts.push(text);
+                    }
+                }
+            });
+
+            const text = parts.join(' ').replace(/\s+/g, ' ').trim();
+            const words = (text.match(/[A-Za-z0-9]+(?:[’'\-][A-Za-z0-9]+)*/g) || []).length;
+            const minutes = Math.max(1, Math.ceil(words / 200));
+
+            indicator.textContent = `${minutes} min read`;
+            indicator.setAttribute('aria-label', `Estimated read time: ${minutes} minute${minutes === 1 ? '' : 's'}`);
+            indicator.dataset.minutes = String(minutes);
+            indicator.dataset.words = String(words);
+        });
+    }
+
+    /* ****************************
        Lazy-inject modal templates on first open.
        **************************** */
     function ensureModalTemplates(targetId) {
@@ -519,6 +567,72 @@
         initExternalLinks(root);
         initModalEnhancements(root);
         initLeaveReplyForms(root);
+        initReadTimeIndicators(root);
+    }
+
+    /* ****************************
+       Chained modal buttons (dismiss one, open another).
+
+       Bootstrap data-attributes don't reliably open a second modal
+       on the same click that dismisses the first, so we do it
+       explicitly.
+       **************************** */
+    function initChainedModalButtons() {
+        doc.addEventListener('click', (event) => {
+            const target = event.target;
+            if (!target || !target.closest) {
+                return;
+            }
+
+            const trigger = target.closest('[data-bs-toggle="modal"][data-bs-target][data-bs-dismiss="modal"]');
+            if (!trigger) {
+                return;
+            }
+
+            const currentModalEl = trigger.closest('.modal');
+            if (!currentModalEl) {
+                return;
+            }
+
+            const targetId = (trigger.getAttribute('data-bs-target') || '').trim();
+            if (!targetId || targetId.charAt(0) !== '#') {
+                return;
+            }
+
+            // If Bootstrap isn't available for some reason, fall back to native behavior.
+            const bs = win.bootstrap;
+            if (!bs || !bs.Modal) {
+                return;
+            }
+
+            const targetModalEl = doc.querySelector(targetId);
+            if (!targetModalEl) {
+                // The template may be lazy-injected.
+                ensureModalTemplates(targetId);
+            }
+
+            const ensuredTargetEl = doc.querySelector(targetId);
+            if (!ensuredTargetEl) {
+                return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            const currentInstance = bs.Modal.getInstance(currentModalEl) || bs.Modal.getOrCreateInstance(currentModalEl);
+
+            const showTarget = () => {
+                const targetInstance = bs.Modal.getOrCreateInstance(ensuredTargetEl);
+                targetInstance.show();
+            };
+
+            currentModalEl.addEventListener('hidden.bs.modal', showTarget, {
+                once: true
+            });
+
+            currentInstance.hide();
+        }, true);
     }
 
     /* ****************************
@@ -634,6 +748,119 @@
         }, true);
     }
 
+    /* ****************************
+       Fix: taps inside scroll-snap carousels can be consumed by
+       horizontal scrolling/inertia (or focus/scroll handling), requiring a second click.
+       **************************** */
+    function initScrollSnapCarouselTapActivation() {
+        const TAP_DELTA_PX = 10;
+        const TAP_MAX_MS = 500;
+
+        let active = null;
+        const suppressTrustedClickUntil = new WeakMap();
+
+        doc.addEventListener('pointerdown', (event) => {
+            if (!event.isPrimary) {
+                return;
+            }
+            if (event.button != null && event.button !== 0) {
+                return;
+            }
+
+            const target = event.target;
+            if (!target || !target.closest) {
+                return;
+            }
+
+            const carousel = target.closest('.scroll-snap-carousel');
+            if (!carousel) {
+                return;
+            }
+
+            active = {
+                pointerId: event.pointerId,
+                carousel,
+                startX: event.clientX,
+                startY: event.clientY,
+                startTime: Date.now()
+            };
+        }, {
+            capture: true,
+            passive: true
+        });
+
+        // We force a click on pointerup to guarantee "one push".
+        // Suppress the browser's subsequent trusted click so Bootstrap doesn't open twice.
+        doc.addEventListener('click', (event) => {
+            const target = event.target;
+            if (!target || !target.closest) {
+                return;
+            }
+            const trigger = target.closest('[data-bs-toggle="modal"][data-bs-target]');
+            if (!trigger) {
+                return;
+            }
+
+            if (event.isTrusted) {
+                const until = suppressTrustedClickUntil.get(trigger) || 0;
+                if (until > Date.now()) {
+                    suppressTrustedClickUntil.delete(trigger);
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    event.stopPropagation();
+                }
+                return;
+            }
+
+            // Ignore synthetic clicks.
+            if (suppressTrustedClickUntil.has(trigger)) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                event.stopPropagation();
+            }
+        }, true);
+
+        doc.addEventListener('pointerup', (event) => {
+            if (!active) {
+                return;
+            }
+            if (!event.isPrimary || event.pointerId !== active.pointerId) {
+                return;
+            }
+
+            const target = event.target;
+            const carousel = active.carousel;
+            const startX = active.startX;
+            const startY = active.startY;
+            const startTime = active.startTime;
+            active = null;
+
+            if (!target || !target.closest || !carousel || !carousel.contains(target)) {
+                return;
+            }
+
+            const dx = Math.abs(event.clientX - startX);
+            const dy = Math.abs(event.clientY - startY);
+            const dt = Date.now() - startTime;
+            if (dx > TAP_DELTA_PX || dy > TAP_DELTA_PX || dt > TAP_MAX_MS) {
+                return;
+            }
+
+            // Prefer the exact trigger clicked; otherwise fall back to the card's trigger.
+            let trigger = target.closest('[data-bs-toggle="modal"][data-bs-target]');
+            if (!trigger) {
+                const item = target.closest('.portfolio-item, .blog-item');
+                trigger = item ? item.querySelector('[data-bs-toggle="modal"][data-bs-target]') : null;
+            }
+            if (!trigger) {
+                return;
+            }
+
+            suppressTrustedClickUntil.set(trigger, Date.now() + 750);
+            trigger.click();
+        }, true);
+    }
+
     doc.addEventListener('click', (event) => {
         const trigger = event.target && event.target.closest ?
             event.target.closest('[data-bs-toggle="modal"][data-bs-target]') :
@@ -650,8 +877,11 @@
     initExternalLinks(doc);
     initModalEnhancements(doc);
     initLeaveReplyForms(doc);
+    initReadTimeIndicators(doc);
     initContactForm();
+    initChainedModalButtons();
     initPortfolioCardClicks();
+    initScrollSnapCarouselTapActivation();
 
     if (win.feather && typeof win.feather.replace === 'function') {
         win.feather.replace();
