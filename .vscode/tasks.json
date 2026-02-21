@@ -2,24 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Setup Web Workspace",
-            "type": "shell",
-            "command": "powershell",
-            "args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-Command",
-                "& 'C:\\Users\\frank\\setup-web-workspace.ps1' -WorkspaceFolder '${workspaceFolder}'"
-            ],
-            "dependsOn": [
-                "Flask: Run (dev server)",
-                "Open in Browser"
-            ],
-            "dependsOrder": "sequence",
-            "problemMatcher": []
-        },
-        {
             "label": "Flask: Run (dev server)",
             "type": "shell",
             "command": "powershell",
@@ -55,17 +37,33 @@
         {
             "label": "Open in Browser",
             "type": "shell",
-            "command": "cmd",
+            "command": "start",
             "args": [
-                "/c",
-                "start",
-                "",
-                "http://2026fcjamison.localhost:5000/"
+                "chrome",
+                "http://fcjamison.comv2026.localhost:5000/"
             ],
             "presentation": {
                 "reveal": "never",
                 "panel": "shared"
             },
+            "problemMatcher": []
+        },
+        {
+            "label": "Dev: Flask + Open Browser",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "Write-Host 'Starting Flask + opening browser...'"
+            ],
+            "dependsOn": [
+                "Flask: Run (dev server)",
+                "Open in Browser"
+            ],
+            "dependsOrder": "sequence",
             "problemMatcher": []
         }
     ]

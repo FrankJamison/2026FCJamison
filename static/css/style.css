@@ -194,6 +194,11 @@ h1,
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
+/* Portfolio cards must be wide enough for long domain titles (e.g. PassionateTeachingJourney.com). */
+.portfolio-carousel.scroll-snap-carousel {
+    grid-auto-columns: minmax(640px, 1fr);
+}
+
 @media (hover: none) and (pointer: coarse) {
     .scroll-snap-carousel {
         -webkit-overflow-scrolling: auto;
@@ -228,7 +233,7 @@ h1,
 /* Wider portfolio cards on desktop so long domains stay on one line. */
 @media only screen and (min-width: 1200px) {
     .portfolio-carousel.scroll-snap-carousel {
-        grid-auto-columns: minmax(520px, 1fr);
+        grid-auto-columns: minmax(640px, 1fr);
     }
 }
 
@@ -9215,6 +9220,17 @@ button.rn-btn.thumbs-icon svg {
     line-height: 1.25;
 }
 
+div[id^="portfolioModal"].modal .modal-dialog .modal-content .modal-body .text-content h3 {
+    font-size: clamp(1.85rem, calc(1.35rem + 1.6vw), 2.8rem);
+    white-space: nowrap;
+}
+
+@media screen and (min-width: 992px) {
+    div[id^="portfolioModal"].modal .modal-dialog .modal-content .modal-body .text-content h3 {
+        font-size: clamp(1.55rem, calc(1.05rem + 1.0vw), 2.15rem);
+    }
+}
+
 .modal .modal-dialog .modal-content .modal-body .text-content h3 span {
     display: block;
     font-size: var(--font-size-b1);
@@ -11078,6 +11094,9 @@ span.sr-only {
     display: block;
 }
 
+.portfolio-carousel .rn-portfolio .inner .content .title span {
+    white-space: nowrap;
+}
 
 .rn-portfolio:hover .inner .content .title span,
 .rn-portfolio:focus-visible .inner .content .title span,
