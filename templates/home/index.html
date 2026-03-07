@@ -12,11 +12,11 @@
     <!-- ****************************
        Site header + primary navigation
        **************************** -->
-    <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div class="header-wrapper rn-popup-mobile-menu margin-0 row align-items-center">
+    <header class="site-header site-header--fixed site-header--sticky">
+        <div class="margin-0 row align-items-center site-header__wrapper">
             <div class="col-lg-2 col-6">
-                <div class="header-left">
-                    <div class="logo">
+                <div class="site-header__left">
+                    <div class="site-header__logo">
                         <a href="{{ url_for('index') }}">
                             <img loading="eager" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo">
                         </a>
@@ -24,26 +24,26 @@
                 </div>
             </div>
             <div class="col-lg-10 col-6">
-                <div class="header-center">
-                    <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block onepagenav" aria-label="Primary">
-                        <ul class="primary-menu nav nav-pills">
-                            <li class="nav-item current"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#experience">Experience</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#education">Education</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
+                <div class="site-header__center">
+                    <nav class="navbar-example2 d-none d-xl-block onepagenav site-header__nav site-header__side-nav" aria-label="Primary">
+                        <ul class="nav nav-pills site-header__menu">
+                            <li class="nav-item current site-header__menu-item"><a class="nav-link smoth-animation active site-header__menu-link" href="#home">Home</a></li>
+                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#experience">Experience</a></li>
+                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#education">Education</a></li>
+                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#resume">Resume</a></li>
+                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#portfolio">Portfolio</a></li>
+                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#contacts">Contact</a></li>
                         </ul>
                     </nav>
-                    <div class="header-right">
+                    <div class="site-header__right">
                         <div class="hamberger-menu d-block d-xl-none">
-                            <button type="button" class="humberger-menu" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                            <button type="button" class="site-header__toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
                                 <i data-feather="menu" aria-hidden="true"></i>
                             </button>
                         </div>
 
-                        <div class="close-menu d-block">
-                            <button type="button" class="closeTrigger" aria-label="Close menu" aria-controls="mobile-menu">
+                        <div class="d-block site-header__close-menu">
+                            <button type="button" class="site-header__close" aria-label="Close menu" aria-controls="mobile-menu">
                                 <i data-feather="x" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -57,27 +57,27 @@
     <!-- ****************************
        Mobile menu panel (toggled via JS)
        **************************** -->
-    <div id="mobile-menu" class="popup-mobile-menu" aria-hidden="true" aria-label="Mobile menu">
-        <div class="inner">
-            <div class="menu-top">
-                <div class="menu-header">
-                    <a class="logo" href="{{ url_for('index') }}">
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true" aria-label="Mobile menu">
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__top">
+                <div class="mobile-menu__header">
+                    <a class="mobile-menu__logo" href="{{ url_for('index') }}">
                         <img loading="eager" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Personal Portfolio">
                     </a>
-                    <div class="close-button">
-                        <button class="close-menu-activation close" type="button" aria-label="Close menu"><i data-feather="x"></i></button>
+                    <div class="mobile-menu__close">
+                        <button class="mobile-menu__close-button" type="button" aria-label="Close menu"><i data-feather="x"></i></button>
                     </div>
                 </div>
                 <p class="discription"></p>
             </div>
-            <div class="content">
-                <ul class="primary-menu nav nav-pills onepagenav">
-                    <li class="nav-item current"><a class="nav-link smoth-animation" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
+            <div class="mobile-menu__content">
+                <ul class="nav nav-pills onepagenav mobile-menu__menu">
+                    <li class="nav-item current mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#home">Home</a></li>
+                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#experience">Experience</a></li>
+                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#education">Education</a></li>
+                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#resume">Resume</a></li>
+                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#contacts">Contact</a></li>
                 </ul>
                 <!-- ****************************
                    Mobile menu social link

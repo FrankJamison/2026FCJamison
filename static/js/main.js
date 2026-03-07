@@ -5,11 +5,11 @@
     const win = window;
     const html = doc.documentElement;
     const backToTop = doc.querySelector('.backto-top');
-    const header = doc.querySelector('.header--sticky');
-    const mobileMenu = doc.getElementById('mobile-menu');
-    const openMenuBtn = doc.querySelector('.humberger-menu');
-    const closeMenuControls = doc.querySelectorAll('.closeTrigger, .close-menu-activation');
-    const mobileMenuLinks = doc.querySelectorAll('.popup-mobile-menu .primary-menu .nav-item a');
+    const header = doc.querySelector('.site-header--sticky');
+    const mobileMenu = doc.querySelector('.mobile-menu');
+    const openMenuBtn = doc.querySelector('.site-header__toggle');
+    const closeMenuControls = doc.querySelectorAll('.site-header__close, .mobile-menu__close-button');
+    const mobileMenuLinks = doc.querySelectorAll('.mobile-menu__menu-link');
 
     /* ****************************
        Mobile menu toggle + state sync.
@@ -18,7 +18,7 @@
         if (!mobileMenu) {
             return;
         }
-        mobileMenu.classList.toggle('menu-open', isOpen);
+        mobileMenu.classList.toggle('mobile-menu--open', isOpen);
         mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
         if (openMenuBtn) {
             openMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -54,15 +54,14 @@
         });
     });
 
-    doc.querySelectorAll('.popup-mobile-menu .has-droupdown > a').forEach((link) => {
+    doc.querySelectorAll('.mobile-menu__menu-item--dropdown > a').forEach((link) => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            const submenu = link.parentElement ? link.parentElement.querySelector('.submenu') : null;
-            const isOpen = link.classList.toggle('open');
+            const submenu = link.parentElement ? link.parentElement.querySelector('.mobile-menu__submenu') : null;
+            const isOpen = link.classList.toggle('mobile-menu__menu-link--open');
             link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             if (submenu) {
-                submenu.classList.toggle('active', isOpen);
-                submenu.style.display = isOpen ? 'block' : 'none';
+                submenu.classList.toggle('mobile-menu__submenu--open', isOpen);
             }
         });
     });
@@ -88,7 +87,7 @@
         if (!header) {
             return;
         }
-        header.classList.toggle('sticky', win.scrollY > 250);
+        header.classList.toggle('site-header--scrolled', win.scrollY > 250);
     }
 
     if (backToTop) {
