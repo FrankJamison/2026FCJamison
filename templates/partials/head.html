@@ -1,22 +1,74 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ headTitle|default("FCJamison.com", true) }} || Frank Jamison's Professional Portfolio</title>
+    <title>{{ headTitle|default(site_default_title, true) }}{% if site_title_suffix %} || {{ site_title_suffix }}{% endif %}</title>
     <meta name="robots" content="{{ meta_robots|default('index, follow', true) }}" />
-    <meta name="description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
+    <meta name="author" content="{{ site_owner_name }}">
+    <meta name="description" content="{{ headDescription|default(site_default_description, true) }}">
     <link rel="canonical" href="{{ request.base_url }}">
 
-    <meta property="og:site_name" content="Frank Jamison">
-    <meta property="og:title" content="{{ headTitle|default('FCJamison.com', true) }}">
-    <meta property="og:description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
+    {% set og_image = site_og_image_url if site_og_image_url else url_for('static', filename=site_logo_path, _external=True) %}
+
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="{{ headTitle|default(site_default_title, true) }}">
+    <meta property="og:description" content="{{ headDescription|default(site_default_description, true) }}">
     <meta property="og:url" content="{{ request.base_url }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ url_for('static', filename='images/logo/logo.png', _external=True) }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:alt" content="{{ site_owner_name }} logo">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ headTitle|default('FCJamison.com', true) }}">
-    <meta name="twitter:description" content="{{ headDescription|default("Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.", true) }}">
+    {% if site_twitter_handle %}
+    <meta name="twitter:site" content="{{ site_twitter_handle }}">
+    {% endif %}
+    <meta name="twitter:title" content="{{ headTitle|default(site_default_title, true) }}">
+    <meta name="twitter:description" content="{{ headDescription|default(site_default_description, true) }}">
+    <meta name="twitter:image" content="{{ og_image }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [{
+                    "@type": "WebSite",
+                    "name": {
+                        {
+                            site_name | tojson
+                        }
+                    },
+                    "url": {
+                        {
+                            request.url_root | tojson
+                        }
+                    }
+                },
+                {
+                    "@type": "Person",
+                    "name": {
+                        {
+                            site_owner_name | tojson
+                        }
+                    },
+                    "url": {
+                        {
+                            request.url_root | tojson
+                        }
+                    } {
+                        %
+                        if site_owner_email %
+                    },
+                    "email": {
+                        {
+                            ("mailto:"~site_owner_email) | tojson
+                        }
+                    } {
+                        % endif %
+                    }
+                }
+            ]
+        }
+    </script>
     <!-- ****************************
        Favicon
        **************************** -->

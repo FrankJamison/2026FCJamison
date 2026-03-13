@@ -6,10 +6,58 @@ from datetime import datetime, timezone
 from email.message import EmailMessage
 from pathlib import Path
 from typing import Optional, Tuple
+from urllib.parse import urljoin
 
-from flask import abort, jsonify, redirect, render_template, request, url_for
+from flask import Response, abort, jsonify, redirect, render_template, request, url_for
 
 from __init__ import app
+
+
+PROJECT_HOSTED = {
+    "2026SpacePortfolio": "https://spaceportfolio.fcjamison.com/",
+    "2026HackerNews": "https://hackernews.fcjamison.com/",
+    "2025PasswordCheck": "https://passwordcheck.fcjamison.com/",
+    "2020CharacterVault": "https://charactervault.fcjamison.com/",
+    "2018Questkeeper": "https://questkeeper.fcjamison.com/",
+    "2018FrankJamison": "https://frankjamison2018.fcjamison.com/",
+    "2018FranksClassicCars": "https://classiccars.fcjamison.com/",
+    "2007GlobeBank": "https://globebank.fcjamison.com/",
+}
+
+
+def _get_local_portfolio_slugs() -> list[str]:
+    static_root = Path(app.static_folder or "static")
+    portfolio_root = static_root / "portfolio"
+    if not portfolio_root.exists() or not portfolio_root.is_dir():
+        return []
+
+    slugs: list[str] = []
+    for child in portfolio_root.iterdir():
+        if not child.is_dir():
+            continue
+        if (child / "index.html").exists():
+            slugs.append(child.name)
+    return sorted(set(slugs))
+
+
+def _site_url_root() -> str:
+    configured = (os.getenv("SITE_URL") or "").strip()
+    if configured:
+        return configured.rstrip("/") + "/"
+    return request.url_root
+
+
+def _parse_env_list(name: str) -> list[str]:
+    raw = os.getenv(name)
+    if not raw:
+        return []
+    parts: list[str] = []
+    for line in raw.replace(",", "\n").splitlines():
+        item = line.strip()
+        if not item:
+            continue
+        parts.append(item)
+    return parts
 
 
 def _truthy_env(name: str, default: bool = False) -> bool:
@@ -110,6 +158,70 @@ def index():
     return render_template("home/index.html")
 
 
+@app.get("/robots.txt")
+def robots_txt():
+    site_root = _site_url_root().rstrip("/")
+    body = "\n".join(
+        [
+            "User-agent: *",
+            "Disallow:",
+            f"Sitemap: {site_root}/sitemap.xml",
+            "",
+        ]
+    )
+    return Response(body, mimetype="text/plain")
+
+
+@app.get("/sitemap.xml")
+def sitemap_xml():
+    today = datetime.now(timezone.utc).date().isoformat()
+    urls: list[tuple[str, str]] = []
+    seen: set[str] = set()
+
+    def add_url(loc: str) -> None:
+        loc = (loc or "").strip()
+        if not loc or loc in seen:
+            return
+        seen.add(loc)
+        urls.append((loc, today))
+
+    add_url(url_for("index", _external=True))
+
+    for path in _parse_env_list("SITEMAP_PATHS"):
+        if path.startswith("http://") or path.startswith("https://"):
+            add_url(path)
+            continue
+        normalized = path if path.startswith("/") else f"/{path}"
+        add_url(urljoin(_site_url_root(), normalized.lstrip("/")))
+
+    for abs_url in _parse_env_list("SITEMAP_URLS"):
+        add_url(abs_url)
+
+    include_projects = _truthy_env("SITEMAP_INCLUDE_PROJECTS", True)
+    if include_projects:
+        project_slugs = sorted(set(PROJECT_HOSTED.keys())
+                               | set(_get_local_portfolio_slugs()))
+        for slug in project_slugs:
+            add_url(url_for("project_index", project_slug=slug, _external=True))
+
+    lines: list[str] = [
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+        "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">",
+    ]
+    for loc, lastmod in urls:
+        lines.extend(
+            [
+                "  <url>",
+                f"    <loc>{loc}</loc>",
+                f"    <lastmod>{lastmod}</lastmod>",
+                "  </url>",
+            ]
+        )
+    lines.append("</urlset>")
+
+    return Response("\n".join(lines) + "\n", mimetype="application/xml")
+
+
 @app.get("/projects/<project_slug>")
 @app.get("/projects/<project_slug>/")
 def project_index(project_slug: str):
@@ -125,18 +237,8 @@ def project_index(project_slug: str):
     if local_index.exists():
         return redirect(url_for("static", filename=f"portfolio/{project_slug}/index.html"))
 
-    hosted = {
-        "2026SpacePortfolio": "https://spaceportfolio.fcjamison.com/",
-        "2026HackerNews": "https://hackernews.fcjamison.com/",
-        "2025PasswordCheck": "https://passwordcheck.fcjamison.com/",
-        "2020CharacterVault": "https://charactervault.fcjamison.com/",
-        "2018Questkeeper": "https://questkeeper.fcjamison.com/",
-        "2018FrankJamison": "https://frankjamison2018.fcjamison.com/",
-        "2018FranksClassicCars": "https://classiccars.fcjamison.com/",
-        "2007GlobeBank": "https://globebank.fcjamison.com/",
-    }
-    if project_slug in hosted:
-        return redirect(hosted[project_slug])
+    if project_slug in PROJECT_HOSTED:
+        return redirect(PROJECT_HOSTED[project_slug])
 
     # ****************************
     # Minimal fallback: project repos follow the slug name.

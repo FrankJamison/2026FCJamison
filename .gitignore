@@ -13,6 +13,22 @@ ENV/
 .env.*
 !.env.example
 
+# --- Deploy (keep configs, ignore secret artifacts) ---
+/deploy/**/.env
+/deploy/**/.env.*
+/deploy/**/secrets*
+/deploy/**/private/
+/deploy/**/ssl/
+/deploy/**/certs/
+/deploy/**/*.key
+/deploy/**/*.pem
+/deploy/**/*.p12
+/deploy/**/*.pfx
+/deploy/**/*.jks
+/deploy/**/*.crt
+/deploy/**/*.cer
+/deploy/**/*.csr
+
 # --- Flask / tooling caches ---
 .instance/
 .flaskenv

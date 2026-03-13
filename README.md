@@ -55,6 +55,27 @@ Local development supports a repo-root `.env` file (loaded by `python-dotenv`) a
 - `PORT` (default: `5000`)
 - `FLASK_DEBUG` (`1`/`0`)
 
+### SEO / multi-site
+
+These settings let you reuse the same codebase across multiple sites by configuring branding/metadata via env vars (no template edits required).
+
+- `SITE_URL` (recommended in production) — absolute public root URL like `https://example.com` (used for sitemap/robots when behind a proxy).
+- `SITE_NAME` — site name (used for OpenGraph + JSON-LD).
+- `SITE_OWNER_NAME` — author/owner name.
+- `SITE_OWNER_EMAIL` — optional (used in JSON-LD as `mailto:`).
+- `SITE_DEFAULT_TITLE` — default `<title>` when a page doesn’t override `headTitle`.
+- `SITE_TITLE_SUFFIX` — appended to the title (set to empty to disable).
+- `SITE_DEFAULT_DESCRIPTION` — default meta description when a page doesn’t override `headDescription`.
+- `SITE_LOGO_PATH` — static path for logo (relative to `static/`), default `images/logo/logo.png`.
+- `SITE_OG_IMAGE_URL` — optional absolute URL to use for `og:image`/`twitter:image`.
+- `SITE_TWITTER_HANDLE` — optional, `@handle`.
+
+Sitemap controls:
+
+- `SITEMAP_INCLUDE_PROJECTS` — `1`/`0` (default: `1`).
+- `SITEMAP_PATHS` — extra on-site paths to include (comma or newline separated), e.g. `/about,/contact`.
+- `SITEMAP_URLS` — extra absolute URLs to include (comma or newline separated).
+
 ### SMTP (required for forms)
 
 Forms:
