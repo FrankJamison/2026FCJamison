@@ -2,3 +2,6 @@
 
 # Import the Flask app and route registrations.
 from __init__ import app as application
+
+# Compatibility: some hosts/panels expect `wsgi:app`.
+app = application
