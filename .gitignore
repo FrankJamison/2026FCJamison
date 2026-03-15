@@ -5,8 +5,12 @@ __pycache__/
 
 # --- Virtual environments ---
 .venv/
+.venv-linux/
 venv/
 ENV/
+
+# --- Windows Zone.Identifier metadata (can appear when copying from Windows) ---
+*:Zone.Identifier
 
 # --- Environment / secrets ---
 .env

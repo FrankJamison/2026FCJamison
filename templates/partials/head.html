@@ -27,48 +27,32 @@
     <meta name="twitter:image" content="{{ og_image }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [{
-                    "@type": "WebSite",
-                    "name": {
-                        {
-                            site_name | tojson
-                        }
-                    },
-                    "url": {
-                        {
-                            request.url_root | tojson
-                        }
-                    }
-                },
-                {
-                    "@type": "Person",
-                    "name": {
-                        {
-                            site_owner_name | tojson
-                        }
-                    },
-                    "url": {
-                        {
-                            request.url_root | tojson
-                        }
-                    } {
-                        %
-                        if site_owner_email %
-                    },
-                    "email": {
-                        {
-                            ("mailto:"~site_owner_email) | tojson
-                        }
-                    } {
-                        % endif %
-                    }
-                }
-            ]
-        }
-    </script>
+    {% if site_owner_email %}
+    {% set person_schema = {
+        "@type": "Person",
+        "name": site_owner_name,
+        "url": request.url_root,
+        "email": "mailto:" ~ site_owner_email
+    } %}
+    {% else %}
+    {% set person_schema = {
+        "@type": "Person",
+        "name": site_owner_name,
+        "url": request.url_root
+    } %}
+    {% endif %}
+
+    <script type="application/ld+json">{{ {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "name": site_name,
+                "url": request.url_root
+            },
+            person_schema
+        ]
+    }|tojson }}</script>
     <!-- ****************************
        Favicon
        **************************** -->

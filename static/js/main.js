@@ -11,6 +11,90 @@
     const closeMenuControls = doc.querySelectorAll('.site-header__close, .mobile-menu__close-button');
     const mobileMenuLinks = doc.querySelectorAll('.mobile-menu__menu-link');
 
+    let isMobileMenuOpen = false;
+    let lastFocusedBeforeMenuOpen = null;
+
+    function getFocusableElements(container) {
+        if (!container) {
+            return [];
+        }
+        const selectors = [
+            'a[href]:not([tabindex="-1"])',
+            'button:not([disabled]):not([tabindex="-1"])',
+            'input:not([disabled]):not([type="hidden"]):not([tabindex="-1"])',
+            'select:not([disabled]):not([tabindex="-1"])',
+            'textarea:not([disabled]):not([tabindex="-1"])',
+            '[tabindex]:not([tabindex="-1"])'
+        ];
+
+        return Array.from(container.querySelectorAll(selectors.join(',')))
+            .filter((el) => {
+                if (!el || typeof el.focus !== 'function') {
+                    return false;
+                }
+                if (el.getAttribute('aria-hidden') === 'true') {
+                    return false;
+                }
+                if (el.hasAttribute('hidden')) {
+                    return false;
+                }
+                return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+            });
+    }
+
+    function focusFirstMobileMenuControl() {
+        if (!mobileMenu) {
+            return;
+        }
+        const closeButton = mobileMenu.querySelector('.mobile-menu__close-button');
+        if (closeButton) {
+            closeButton.focus();
+            return;
+        }
+        const focusables = getFocusableElements(mobileMenu);
+        if (focusables.length) {
+            focusables[0].focus();
+        }
+    }
+
+    function handleMobileMenuKeydown(event) {
+        if (!isMobileMenuOpen || !mobileMenu) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            setMenuOpen(false);
+            return;
+        }
+
+        if (event.key !== 'Tab') {
+            return;
+        }
+
+        const focusables = getFocusableElements(mobileMenu);
+        if (!focusables.length) {
+            event.preventDefault();
+            return;
+        }
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = doc.activeElement;
+
+        if (event.shiftKey) {
+            if (active === first || !mobileMenu.contains(active)) {
+                event.preventDefault();
+                last.focus();
+            }
+        } else {
+            if (active === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+    }
+
     /* ****************************
        Mobile menu toggle + state sync.
        **************************** */
@@ -18,12 +102,35 @@
         if (!mobileMenu) {
             return;
         }
+        const wasOpen = isMobileMenuOpen;
+        isMobileMenuOpen = isOpen;
+
+        if (isOpen && !wasOpen) {
+            lastFocusedBeforeMenuOpen = doc.activeElement;
+        }
+
         mobileMenu.classList.toggle('mobile-menu--open', isOpen);
         mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
         if (openMenuBtn) {
             openMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
         html.style.overflow = isOpen ? 'hidden' : '';
+
+        if (isOpen) {
+            doc.addEventListener('keydown', handleMobileMenuKeydown, true);
+            win.setTimeout(() => {
+                focusFirstMobileMenuControl();
+            }, 0);
+        } else {
+            doc.removeEventListener('keydown', handleMobileMenuKeydown, true);
+            const toRestore = lastFocusedBeforeMenuOpen;
+            lastFocusedBeforeMenuOpen = null;
+            if (toRestore && typeof toRestore.focus === 'function') {
+                win.setTimeout(() => {
+                    toRestore.focus();
+                }, 0);
+            }
+        }
     }
 
     if (openMenuBtn) {

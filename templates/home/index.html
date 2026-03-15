@@ -57,7 +57,7 @@
     <!-- ****************************
        Mobile menu panel (toggled via JS)
        **************************** -->
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true" aria-label="Mobile menu">
+    <aside id="mobile-menu" class="mobile-menu" aria-hidden="true" aria-label="Mobile menu">
         <div class="mobile-menu__inner">
             <div class="mobile-menu__top">
                 <div class="mobile-menu__header">
@@ -65,37 +65,39 @@
                         <img loading="eager" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Frank Jamison logo">
                     </a>
                     <div class="mobile-menu__close">
-                        <button class="mobile-menu__close-button" type="button" aria-label="Close menu"><i data-feather="x"></i></button>
+                        <button class="mobile-menu__close-button" type="button" aria-label="Close menu"><i data-feather="x" aria-hidden="true"></i></button>
                     </div>
                 </div>
                 <p class="discription"></p>
             </div>
             <div class="mobile-menu__content">
-                <ul class="nav nav-pills onepagenav mobile-menu__menu">
-                    <li class="nav-item current mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#home">Home</a></li>
-                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#experience">Experience</a></li>
-                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#education">Education</a></li>
-                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#resume">Resume</a></li>
-                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#contacts">Contact</a></li>
-                </ul>
-                <!-- ****************************
-                   Mobile menu social link
-                   **************************** -->
-                <div class="social-share-style-1 margin-top-40">
-                    <span class="title">find with me</span>
-                    <ul class="social-share d-flex liststyle">
-                        <li class="linkedin"><a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg></a>
-                        </li>
+                <nav aria-label="Mobile navigation">
+                    <ul class="nav nav-pills onepagenav mobile-menu__menu">
+                        <li class="nav-item current mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#home">Home</a></li>
+                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#experience">Experience</a></li>
+                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#education">Education</a></li>
+                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#resume">Resume</a></li>
+                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#contacts">Contact</a></li>
                     </ul>
-                </div>
+                    <!-- ****************************
+                       Mobile menu social link
+                       **************************** -->
+                    <div class="social-share-style-1 margin-top-40" aria-label="Social links">
+                        <span class="title">find with me</span>
+                        <ul class="social-share d-flex liststyle">
+                            <li class="linkedin"><a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin" aria-hidden="true">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
-    </div>
+    </aside>
 
     <!-- ****************************
        Main content sections
@@ -116,7 +118,7 @@
                                         <div class="user-info-top">
                                             <div class="user-info-header">
                                                 <div class="user">
-                                                    <i data-feather="user"></i>
+                                                    <i data-feather="user" aria-hidden="true"></i>
                                                 </div>
                                                 <h1 class="title" id="home-title">
                                                     Hi, I’m <span>Frank</span>
@@ -125,15 +127,15 @@
                                             </div>
                                             <div class="user-info-footer">
                                                 <div class="info">
-                                                    <i data-feather="file"></i>
+                                                    <i data-feather="file" aria-hidden="true"></i>
                                                     <span>Web designer & developer</span>
                                                 </div>
                                                 <div class="info">
-                                                    <i data-feather="mail"></i>
-                                                    <span>frank@fcjamison.com</span>
+                                                    <i data-feather="mail" aria-hidden="true"></i>
+                                                    <a href="mailto:frank@fcjamison.com">frank@fcjamison.com</a>
                                                 </div>
                                                 <div class="info">
-                                                    <i data-feather="map-pin"></i>
+                                                    <i data-feather="map-pin" aria-hidden="true"></i>
                                                     <span>Hemet, CA</span>
                                                 </div>
                                             </div>
@@ -334,9 +336,9 @@
                                             <div class="content">
                                                 <span class="subtitle">1986 - 2024</span>
                                                 <h3 class="maintitle">Education</h3>
-                                                <div class="experience-list">
+                                                <div class="experience-list" role="list">
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -351,7 +353,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -366,7 +368,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -381,7 +383,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -401,7 +403,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -416,7 +418,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -431,7 +433,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -446,7 +448,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -461,7 +463,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -476,7 +478,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -491,7 +493,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -514,9 +516,9 @@
                                             <div class="content">
                                                 <span class="subtitle">2016 - Present</span>
                                                 <h3 class="maintitle">Job Experience</h3>
-                                                <div class="experience-list">
+                                                <div class="experience-list" role="list">
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -532,7 +534,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -549,7 +551,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -566,7 +568,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -583,7 +585,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -600,7 +602,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -617,7 +619,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="resume-single-list">
+                                                    <div class="resume-single-list" role="listitem">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -828,10 +830,31 @@
                     </div>
                     <div class="row margin-top-25 mt_md--5 mt_sm--5">
                         <div class="col-lg-12">
-                            <div class="portfolio-wrapper portfolio-carousel scroll-snap-carousel">
+                            <div class="portfolio-wrapper portfolio-carousel scroll-snap-carousel" role="list" aria-label="Portfolio items">
+
+                                <!-- Portfolio Item: FilmFestival -->
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
+                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026FilmFestival">
+                                        <div class="inner">
+                                            <div class="thumbnail">
+                                                <span>
+                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/044-2026-Film-Festival.png') }}" alt="Square, modern FilmFestival emblem featuring a large green robot with glowing red eyes at the center, surrounded by three smaller red, orange, and purple robots below. The design includes bold “FILMFESTIVAL” lettering at the top, glowing circuit-like lines, and vibrant neon accents in blue, yellow, and pink, all styled as a colorful tech-inspired badge on a transparent background.">
+                                                </span>
+                                            </div>
+                                            <div class="content">
+                                                <div class="category-info">
+                                                    <div class="category-list">
+                                                        <span>2026</span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="title"><span>FilmFestival</span></h3>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
 
                                 <!-- Portfolio Item: RoboFriends -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026RoboFriends">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -852,7 +875,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: Digital Rain -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026DigitalRain">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -873,7 +896,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2026 SimpleFolio -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SimpleFolio">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -894,7 +917,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2026 RandomThoughtsInTraffic.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026RandomThoughtsInTraffic">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -915,7 +938,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2026 Space Portfolio -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SpacePortfolio">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -936,7 +959,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2026 Hacker News Aggregator -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026HackerNews">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -957,7 +980,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2025 Jamison Stamps & Books -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025JamisonStamps">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -978,7 +1001,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2025 Password Exposure Checker -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025PasswordCheck">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -999,7 +1022,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2025 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2025FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1020,7 +1043,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2024 Passionate Teaching Journey -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2024PassionateTeachingJourney">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1041,7 +1064,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2021 DnD5eTools.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2021DnD5eTools">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1062,7 +1085,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2020 AncientWhiteArmyVet.com (Node) -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVetNode">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1083,7 +1106,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2020 Character Vault -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020CharacterVault">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1104,7 +1127,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2020 Angular CLI Application -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AngularCLIApp">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1125,7 +1148,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: The Budget Application -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020TheBudgetApplication">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1146,7 +1169,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2020 Pig Game -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020PigGame">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1167,7 +1190,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2020 AncientWhiteArmyVet's RPG Tools -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2020AncientWhiteArmyVet">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1188,7 +1211,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2019 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1209,7 +1232,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2019 VeteranJobInfo.us Website -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019VeteranJobInfo">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1230,7 +1253,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2019 AncientWhiteArmy Vet's RPG Tools -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2019AncientWhiteArmyVet">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1251,7 +1274,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2018 Questkeeper -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018Questkeeper">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1272,7 +1295,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2018 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1293,7 +1316,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2018 Frank's Classic Cars -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2018FranksClassicCars">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1314,7 +1337,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2017 RPG Stat Roller -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RPGStatRoller">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1335,7 +1358,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2017 Riverside Massage and Spa -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017RiversideMassageAndSpa">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1356,7 +1379,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2017 Stopwatch and Countdown Timer -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017StopwatchApplication">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1377,7 +1400,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2017 JavaScript Guessing Game -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017JavaScriptGuessingGame">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1398,7 +1421,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2017 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2017FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1419,7 +1442,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2016 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1440,7 +1463,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2016 Virtual World -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2016VirtualWorld">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1461,7 +1484,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2015 Jamison Web Design -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015JamisonWebDesign">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1482,7 +1505,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2015 Mi Familia Taco Catering -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015MiFamiliaTacoCatering">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1503,7 +1526,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2015 The RPG Book Library -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015RPGBooksProject">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1524,7 +1547,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2015 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2015FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1545,7 +1568,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: FrankJamison.com v2013 -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2013FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1566,7 +1589,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2007 Globe Bank Website -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2007GlobeBank">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1587,7 +1610,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 MSJC Administration of Justice Department Website -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MSJCAdminOfJustice">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1608,7 +1631,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 Zita Worley's Website -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006ZitaWorley">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1629,7 +1652,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 Moonwalk Manor Front Page -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MoonwalkManor">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1650,7 +1673,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 Typing Speed Test Project -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModalTypingSpeed">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1671,7 +1694,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006FrankJamison">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1692,7 +1715,7 @@
                                 </div>
 
                                 <!-- Portfolio Item: 2006 Analog Clock Project -->
-                                <div class="portfolio-item scroll-snap-item">
+                                <div class="portfolio-item scroll-snap-item" role="listitem">
                                     <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006AnalogClockProject">
                                         <div class="inner">
                                             <div class="thumbnail">
@@ -1748,33 +1771,33 @@
     <!-- ****************************
        Footer
        **************************** -->
-    <div id="footer" class="rn-footer-area footer-style-2 section-padding-top section-divider">
+    <footer id="footer" class="rn-footer-area footer-style-2 section-padding-top section-divider">
         <div class="container padding-bottom-80 pb_sm--40 plr_sm--20">
             <div class="row">
                 <div class="col-12 text-center">
                     <div class="logo-thumbnail">
                         <a href="{{ url_for('index') }}">
-                            <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="logo-image">
+                            <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/logo/logo.png') }}" alt="Frank Jamison logo">
                         </a>
                     </div>
 
-                    <div class="social-share-style-1 margin-top-20">
+                    <nav class="social-share-style-1 margin-top-20" aria-label="Social links">
                         <span class="title">Find me</span>
                         <ul class="social-share d-flex liststyle" style="justify-content:center;">
                             <li class="linkedin">
-                                <a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer">
-                                    <i data-feather="linkedin"></i>
+                                <a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                                    <i data-feather="linkedin" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>
         <div class="copyright text-center padding-top-bottom-40 section-divider">
             <p class="description">© {{ current_year }}. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
     <!-- ****************************
        Scripts
        **************************** -->

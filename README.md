@@ -138,3 +138,13 @@ Note: `/contact` and `/leave-reply` write CSV files under `data/`, so ensure the
 
 - **Forms return `{ ok: false }`**: SMTP env vars are missing or failing; see [SMTP_SETUP.md](SMTP_SETUP.md) and check server logs.
 - **TLS/cert errors locally**: some antivirus tools intercept SMTP TLS; `SMTP_ALLOW_INVALID_CERT=1` is available for dev only.
+
+## Accessibility / WCAG
+
+This project is intended to be WCAG-aligned (target: WCAG 2.2 AA). For a repeatable checklist (automated + manual verification), see [ACCESSIBILITY.md](ACCESSIBILITY.md).
+
+Quick regression check:
+
+```bash
+python3 tools/a11y_sanity_check.py
+```
