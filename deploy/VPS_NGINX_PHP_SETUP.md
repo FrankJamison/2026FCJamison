@@ -1,7 +1,8 @@
 # VPS deployment (Nginx + Flask + PHP-FPM + MySQL + HTTPS)
 
 Goal:
-- `https://fcjamison.com` → Flask app (Waitress on localhost)
+
+- `https://fcjamison.com` → Flask app (Gunicorn on localhost)
 - `https://globebank.fcjamison.com` → GlobeBank PHP app (PHP-FPM)
 - `https://classiccars.fcjamison.com` → Frank's Classic Cars PHP app (PHP-FPM)
 - MySQL/MariaDB runs on the same VPS
@@ -11,6 +12,7 @@ This avoids the dev-only Flask→PHP proxy and runs GlobeBank as a real PHP app 
 ## 0) DNS
 
 Create an `A` record:
+
 - `fcjamison.com` → your VPS IP
 - `www.fcjamison.com` → your VPS IP
 - `globebank.fcjamison.com` → your VPS IP
@@ -85,7 +87,7 @@ SMTP_USE_TLS=0
 SMTP_ALLOW_INVALID_CERT=0
 ```
 
-## 5) Flask: systemd (Waitress)
+## 5) Flask: systemd (Gunicorn)
 
 Copy `deploy/systemd/fcjamison.service` to `/etc/systemd/system/fcjamison.service`, then:
 
@@ -103,6 +105,7 @@ sudo systemctl status fcjamison --no-pager
 ### Configure DB credentials
 
 Edit:
+
 - `/var/www/globebank/private/db_credentials.php`
 
 Point it at your local MySQL/MariaDB and set a strong password.
@@ -132,6 +135,7 @@ mysql -u frankjamison_globe_bank_user -p frankjamison_globe_bank < /var/www/glob
 ## 8) Nginx sites
 
 Copy:
+
 - `deploy/nginx/fcjamison.com.conf` → `/etc/nginx/sites-available/fcjamison.com`
 - `deploy/nginx/globebank.fcjamison.com.conf` → `/etc/nginx/sites-available/globebank.fcjamison.com`
 - `deploy/nginx/classiccars.fcjamison.com.conf` → `/etc/nginx/sites-available/classiccars.fcjamison.com`

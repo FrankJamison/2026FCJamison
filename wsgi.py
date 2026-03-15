@@ -1,3 +1,4 @@
 """WSGI entrypoint for production servers (Gunicorn, mod_wsgi, etc)."""
 
-from app import app as application
+# Import the Flask app and route registrations.
+from __init__ import app as application

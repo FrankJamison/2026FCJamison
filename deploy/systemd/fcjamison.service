@@ -1,8 +1,8 @@
-# systemd unit for fcjamison.com (Waitress)
+# systemd unit for fcjamison.com (Gunicorn)
 # Copy to: /etc/systemd/system/fcjamison.service
 
 [Unit]
-Description=fcjamison.com Flask site (Waitress)
+Description=fcjamison.com Flask site (Gunicorn)
 After=network.target
 
 [Service]
@@ -10,7 +10,9 @@ User=www-data
 Group=www-data
 WorkingDirectory=/var/www/fcjamison
 EnvironmentFile=/etc/fcjamison.env
-ExecStart=/var/www/fcjamison/.venv/bin/python -m waitress --listen=127.0.0.1:8000 wsgi:application
+# Bind on localhost; terminate TLS / public HTTP at Nginx/Apache.
+# WSGI entrypoint: wsgi:application (see wsgi.py)
+ExecStart=/var/www/fcjamison/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 wsgi:application
 Restart=always
 RestartSec=3
 

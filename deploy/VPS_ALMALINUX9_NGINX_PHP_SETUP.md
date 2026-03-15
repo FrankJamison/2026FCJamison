@@ -1,13 +1,15 @@
 # AlmaLinux 9.x VPS deployment (Nginx + Flask + PHP-FPM + MariaDB + HTTPS)
 
 Target:
-- `https://fcjamison.com` → Flask app (Waitress on localhost)
+
+- `https://fcjamison.com` → Flask app (Gunicorn on localhost)
 - `https://globebank.fcjamison.com` → GlobeBank PHP app (PHP-FPM)
 - MariaDB (MySQL-compatible) on the same VPS
 
 ## 0) DNS
 
 Create `A` records pointing to your VPS IP:
+
 - `fcjamison.com`
 - `www.fcjamison.com`
 - `globebank.fcjamison.com`
@@ -32,6 +34,7 @@ sudo dnf -y install certbot python3-certbot-nginx
 ```
 
 Notes:
+
 - `php-mysqlnd` is the key package that provides `mysqli`.
 - AlmaLinux 9 ships a supported PHP via AppStream (often 8.1). That’s fine for GlobeBank.
 
@@ -122,6 +125,7 @@ sudo dnf -y install policycoreutils-python-utils
 ## 5) Deploy files
 
 Suggested layout:
+
 - Flask site repo: `/var/www/fcjamison`
 - GlobeBank app: `/var/www/globebank` (copy `projects/2007GlobeBank/*` here)
 
@@ -209,11 +213,13 @@ mysql -u frankjamison_globe_bank_user -p frankjamison_globe_bank < /var/www/glob
 ```
 
 Update GlobeBank credentials:
+
 - `/var/www/globebank/private/db_credentials.php`
 
 ## 10) Nginx configs
 
 Copy:
+
 - `deploy/nginx/fcjamison.com.conf` → `/etc/nginx/conf.d/fcjamison.com.conf`
 - `deploy/nginx/globebank.fcjamison.com.conf` → `/etc/nginx/conf.d/globebank.fcjamison.com.conf`
 
@@ -236,6 +242,7 @@ sudo certbot --nginx -d fcjamison.com -d www.fcjamison.com -d globebank.fcjamiso
 - `https://globebank.fcjamison.com/`
 
 If GlobeBank errors:
+
 - `sudo tail -n 200 /var/log/nginx/error.log`
 - `sudo journalctl -u php-fpm -n 200 --no-pager`
 
