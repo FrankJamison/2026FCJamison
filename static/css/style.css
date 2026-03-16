@@ -183,7 +183,25 @@ h1{
 
 /* Portfolio cards must be wide enough for long domain titles (e.g. PassionateTeachingJourney.com). */
 .portfolio-carousel.scroll-snap-carousel{
-    grid-auto-columns: minmax(640px, 1fr);
+    grid-auto-columns: minmax(260px, 1fr);
+}
+
+@media only screen and (min-width: 576px) {
+    .portfolio-carousel.scroll-snap-carousel{
+        grid-auto-columns: minmax(300px, 1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .portfolio-carousel.scroll-snap-carousel{
+        grid-auto-columns: minmax(340px, 1fr);
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .portfolio-carousel.scroll-snap-carousel{
+        grid-auto-columns: minmax(380px, 1fr);
+    }
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -220,7 +238,7 @@ h1{
 /* Wider portfolio cards on desktop so long domains stay on one line. */
 @media only screen and (min-width: 1200px) {
     .portfolio-carousel.scroll-snap-carousel{
-        grid-auto-columns: minmax(640px, 1fr);
+        grid-auto-columns: minmax(420px, 1fr);
     }
 }
 
@@ -4173,6 +4191,20 @@ textarea:-ms-input-placeholder{
     width: 20px;
 }
 
+@media only screen and (max-width: 767px) {
+    #footer .social-share-style-1{
+        text-align: center;
+    }
+
+    #footer .social-share-style-1 .title{
+        display: block;
+    }
+
+    #footer .social-share-style-1 .social-share{
+        justify-content: center;
+    }
+}
+
 
 
 
@@ -4976,12 +5008,66 @@ button.rn-btn.thumbs-icon svg{
 }
 
 @media only screen and (max-width: 575px) {
+    .modal .button-group>a.rn-btn,
+    .modal .button-group>button.rn-btn{
+        font-size: var(--font-size-b3);
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.2;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    .modal .button-group>a.rn-btn>span,
+    .modal .button-group>button.rn-btn>span{
+        font-size: inherit;
+        line-height: inherit;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    .modal .button-group>a.rn-btn svg,
+    .modal .button-group>button.rn-btn svg{
+        width: 1em;
+        height: 1em;
+        flex: 0 0 auto;
+        margin-left: auto;
+        margin-right: 0;
+        margin-top: 0;
+        position: static;
+        align-self: center;
+        stroke-width: 2.75;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body .text-content .button-group>a.rn-btn svg,
+    .modal .modal-dialog .modal-content .modal-body .text-content .button-group>button.rn-btn svg{
+        margin-right: 0;
+        position: static;
+        width: 1em;
+        height: 1em;
+        stroke-width: 2.75;
+    }
+
+    .modal .button-group>a.rn-btn.thumbs-icon svg,
+    .modal .button-group>button.rn-btn.thumbs-icon svg{
+        margin-top: 0;
+    }
+
     .modal .button-group{
         grid-template-columns: 1fr;
     }
 
     .modal .button-group>.rn-btn-project-details{
         grid-column: auto;
+        justify-content: flex-start;
+    }
+
+    .modal .button-group>.rn-btn-project-details>span{
+        text-align: left;
+    }
+
+    .modal .button-group>.rn-btn-project-details svg{
+        margin-left: auto;
     }
 }
 
@@ -5736,8 +5822,8 @@ ol.carousel-indicators{
 
 .modal-body .news-details .date{
     display: block;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     color: var(--color-lightn);
     font-weight: 500;
     margin-bottom: 9px;
@@ -5752,17 +5838,43 @@ ol.carousel-indicators{
     margin-bottom: 9px;
 }
 
+@media only screen and (max-width: 575px) {
+    .modal-body .news-details .article-meta{
+        grid-template-columns: 1fr auto;
+    }
+
+    .modal-body .news-details .article-meta .date{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .modal-body .news-details .article-meta .read-time{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .modal-body .news-details .article-meta .article-tags{
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: stretch;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 .modal-body .news-details .article-meta .date{
     display: inline;
     margin-bottom: 0;
     color: var(--color-primary);
+    grid-column: 1;
     justify-self: start;
     align-self: start;
 }
 
-.modal-body .news-details .read-time{
-    font-size: 14px;
-    line-height: 24px;
+.modal-body .news-details .article-meta .read-time{
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     color: var(--color-primary);
     font-weight: 500;
     grid-column: 3;
@@ -5777,9 +5889,13 @@ ol.carousel-indicators{
     flex-wrap: wrap;
     gap: 6px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-width: 0;
-    justify-self: center;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: stretch;
+    align-self: start;
+    text-align: center;
 }
 
 .modal-body .news-details .article-tag{
@@ -5791,15 +5907,15 @@ ol.carousel-indicators{
     color: var(--color-lightn);
     font-weight: 500;
     font-family: var(--font-primary);
-    font-size: 11px;
-    line-height: 20px;
+    font-size: 1.1rem;
+    line-height: 2rem;
     letter-spacing: 1px;
     text-transform: uppercase;
     white-space: nowrap;
 }
 
 .modal-body .news-details .title{
-    font-size: 32px;
+    font-size: clamp(2.4rem, 2.2rem + 0.8vw, 2.8rem);
     font-weight: 700;
     line-height: 1.2;
     color: var(--color-lightn);
@@ -5808,8 +5924,8 @@ ol.carousel-indicators{
 }
 
 .modal-body .news-details p{
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
     color: var(--color-body);
     font-weight: 400;
     margin-top: 0;
@@ -5818,8 +5934,8 @@ ol.carousel-indicators{
 
 .modal-body .news-details ul,
 .modal-body .news-details ol{
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
     color: var(--color-body);
     font-weight: 400;
     margin-top: 0;
@@ -5835,19 +5951,19 @@ ol.carousel-indicators{
 }
 
 .modal-body .news-details h3{
-    font-size: 22px;
+    font-size: 2.2rem;
     line-height: 1.35;
     color: var(--color-lightn);
 }
 
 .modal-body .news-details h4{
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 1.35;
     color: var(--color-lightn);
 }
 
 .modal-body .news-details h5{
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 1.35;
     color: var(--color-lightn);
 }
@@ -5916,6 +6032,13 @@ ol.carousel-indicators{
 @media only screen and (max-width: 575px) {
     .rn-nav-list{
         margin-top: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #resume > .container{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
 }
 
@@ -6290,6 +6413,14 @@ ol.carousel-indicators{
 @media only screen and (max-width: 767px) {
     .experience-style-two .experience-image{
         max-width: 100%;
+    }
+
+    .rn-education-area .experience-style-two .experience-image img{
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -6776,6 +6907,22 @@ span.sr-only{
 
 .contact-about-area .social-area .social-icone{
     margin-top: 24px;
+}
+
+@media only screen and (max-width: 767px) {
+    .contact-about-area .social-area{
+        text-align: center;
+    }
+
+    .contact-about-area .social-area .social-icone{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-about-area .social-area .social-icone a{
+        margin-right: 0;
+    }
 }
 
 .contact-about-area .social-area .social-icone a{
@@ -7382,7 +7529,13 @@ span.sr-only{
 }
 
 .portfolio-carousel .rn-portfolio .inner .content .title span{
-    white-space: nowrap;
+    white-space: normal;
+}
+
+@media only screen and (min-width: 1200px) {
+    .portfolio-carousel .rn-portfolio .inner .content .title span{
+        white-space: nowrap;
+    }
 }
 
 .rn-portfolio:hover .inner .content .title span,
@@ -7483,6 +7636,13 @@ span.sr-only{
     padding-block: var(--carousel-item-pad-block);
     padding-inline: var(--carousel-item-pad-inline);
     cursor: pointer;
+}
+
+@media only screen and (max-width: 575px) {
+    .portfolio-carousel .portfolio-item{
+        padding-block: 20px;
+        padding-inline: 8px;
+    }
 }
 
 .portfolio-carousel .portfolio-item>.rn-portfolio{

@@ -1,4 +1,5 @@
 {
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv-linux/bin/python",
-    "editor.columnSelection": false
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "editor.columnSelection": false,
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
