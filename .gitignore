@@ -57,7 +57,3 @@ Thumbs.db
 
 # Untracked local image (not referenced; keep ignored)
 /static/images/portfolio/Frank\ Headshot.jpg
-
-# --- Generated reports (do not commit) ---
-/unused-css-report.txt
-/unused-assets-report.txt

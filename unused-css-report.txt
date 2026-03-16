@@ -1,0 +1,5844 @@
+Unused CSS purge report (2026-03-06 20:53:30 Pacific Standard Time)
+
+Removed rules: 1460
+
+- .h1
+  classes: h1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h2
+  classes: h2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h3
+  classes: h3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h4
+  classes: h4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h5
+  classes: h5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h6
+  classes: h6
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h1
+  classes: h1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h2
+  classes: h2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h3
+  classes: h3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h4
+  classes: h4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h5
+  classes: h5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h6
+  classes: h6
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h1
+  classes: h1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h2
+  classes: h2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h3
+  classes: h3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h4
+  classes: h4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h5
+  classes: h5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h6
+  classes: h6
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h1
+  classes: h1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h2
+  classes: h2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h3
+  classes: h3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h4
+  classes: h4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h5
+  classes: h5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h6
+  classes: h6
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .b1
+  classes: b1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .b2
+  classes: b2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .b3
+  classes: b3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .b4
+  classes: b4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-negative-25
+  classes: margin-bottom-negative-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-negative-30
+  classes: margin-bottom-negative-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-0
+  classes: padding-left-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-0
+  classes: padding-right-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-0
+  classes: padding-top-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-0
+  classes: padding-bottom-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-0
+  classes: margin-right-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-0
+  classes: margin-left-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-0
+  classes: margin-top-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-0
+  classes: margin-bottom-0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-5
+  classes: padding-top-bottom-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-5
+  classes: padding-left-right-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-5
+  classes: padding-top-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-5
+  classes: padding-bottom-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-5
+  classes: padding-left-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-5
+  classes: padding-right-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-5
+  classes: margin-top-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-5
+  classes: margin-bottom-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-5
+  classes: margin-right-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-5
+  classes: margin-left-5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-10
+  classes: padding-top-bottom-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-10
+  classes: padding-left-right-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-10
+  classes: padding-top-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-10
+  classes: padding-bottom-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-10
+  classes: padding-left-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-10
+  classes: padding-right-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-10
+  classes: margin-bottom-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-10
+  classes: margin-right-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-10
+  classes: margin-left-10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-15
+  classes: padding-top-bottom-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-15
+  classes: padding-left-right-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-15
+  classes: padding-top-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-15
+  classes: padding-bottom-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-15
+  classes: padding-left-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-15
+  classes: padding-right-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-15
+  classes: margin-top-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-15
+  classes: margin-bottom-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-15
+  classes: margin-right-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-15
+  classes: margin-left-15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-20
+  classes: padding-top-bottom-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-20
+  classes: padding-left-right-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-20
+  classes: padding-top-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-20
+  classes: padding-bottom-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-20
+  classes: padding-left-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-20
+  classes: padding-right-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-20
+  classes: margin-bottom-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-20
+  classes: margin-right-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-20
+  classes: margin-left-20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-25
+  classes: padding-top-bottom-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-25
+  classes: padding-left-right-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-25
+  classes: padding-top-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-25
+  classes: padding-bottom-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-25
+  classes: padding-left-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-25
+  classes: padding-right-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-25
+  classes: margin-bottom-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-25
+  classes: margin-right-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-25
+  classes: margin-left-25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-30
+  classes: padding-top-bottom-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-30
+  classes: padding-left-right-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-30
+  classes: padding-top-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-30
+  classes: padding-bottom-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-30
+  classes: padding-left-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-30
+  classes: padding-right-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-30
+  classes: margin-top-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-30
+  classes: margin-left-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-35
+  classes: padding-top-bottom-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-35
+  classes: padding-left-right-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-35
+  classes: padding-top-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-35
+  classes: padding-bottom-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-35
+  classes: padding-left-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-35
+  classes: padding-right-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-35
+  classes: margin-top-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-35
+  classes: margin-bottom-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-35
+  classes: margin-right-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-35
+  classes: margin-left-35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-40
+  classes: padding-left-right-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-40
+  classes: padding-top-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-40
+  classes: padding-bottom-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-40
+  classes: padding-left-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-40
+  classes: padding-right-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-40
+  classes: margin-right-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-40
+  classes: margin-left-40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-45
+  classes: padding-top-bottom-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-45
+  classes: padding-left-right-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-45
+  classes: padding-top-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-45
+  classes: padding-bottom-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-45
+  classes: padding-left-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-45
+  classes: padding-right-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-45
+  classes: margin-bottom-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-45
+  classes: margin-right-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-45
+  classes: margin-left-45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-50
+  classes: padding-top-bottom-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-50
+  classes: padding-left-right-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-50
+  classes: padding-top-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-50
+  classes: padding-bottom-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-50
+  classes: padding-left-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-50
+  classes: padding-right-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-50
+  classes: margin-bottom-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-50
+  classes: margin-right-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-50
+  classes: margin-left-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-55
+  classes: padding-top-bottom-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-55
+  classes: padding-left-right-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-55
+  classes: padding-top-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-55
+  classes: padding-bottom-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-55
+  classes: padding-left-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-55
+  classes: padding-right-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-55
+  classes: margin-top-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-55
+  classes: margin-bottom-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-55
+  classes: margin-right-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-55
+  classes: margin-left-55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-60
+  classes: padding-top-bottom-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-60
+  classes: padding-left-right-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-60
+  classes: padding-top-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-60
+  classes: padding-bottom-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-60
+  classes: padding-left-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-60
+  classes: padding-right-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-60
+  classes: margin-top-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-60
+  classes: margin-bottom-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-60
+  classes: margin-right-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-60
+  classes: margin-left-60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-65
+  classes: padding-top-bottom-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-65
+  classes: padding-left-right-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-65
+  classes: padding-top-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-65
+  classes: padding-bottom-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-65
+  classes: padding-left-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-65
+  classes: padding-right-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-65
+  classes: margin-top-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-65
+  classes: margin-bottom-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-65
+  classes: margin-right-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-65
+  classes: margin-left-65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-70
+  classes: padding-top-bottom-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-70
+  classes: padding-left-right-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-70
+  classes: padding-top-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-70
+  classes: padding-bottom-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-70
+  classes: padding-left-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-70
+  classes: padding-right-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-70
+  classes: margin-top-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-70
+  classes: margin-bottom-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-70
+  classes: margin-right-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-70
+  classes: margin-left-70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-75
+  classes: padding-top-bottom-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-75
+  classes: padding-left-right-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-75
+  classes: padding-top-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-75
+  classes: padding-bottom-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-75
+  classes: padding-left-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-75
+  classes: padding-right-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-75
+  classes: margin-top-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-75
+  classes: margin-bottom-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-75
+  classes: margin-right-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-75
+  classes: margin-left-75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-80
+  classes: padding-top-bottom-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-80
+  classes: padding-left-right-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-80
+  classes: padding-top-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-80
+  classes: padding-left-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-80
+  classes: padding-right-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-80
+  classes: margin-top-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-80
+  classes: margin-bottom-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-80
+  classes: margin-right-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-80
+  classes: margin-left-80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-85
+  classes: padding-top-bottom-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-85
+  classes: padding-left-right-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-85
+  classes: padding-top-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-85
+  classes: padding-bottom-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-85
+  classes: padding-left-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-85
+  classes: padding-right-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-85
+  classes: margin-top-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-85
+  classes: margin-bottom-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-85
+  classes: margin-right-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-85
+  classes: margin-left-85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-90
+  classes: padding-top-bottom-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-90
+  classes: padding-left-right-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-90
+  classes: padding-top-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-90
+  classes: padding-bottom-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-90
+  classes: padding-left-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-90
+  classes: padding-right-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-90
+  classes: margin-top-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-90
+  classes: margin-bottom-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-90
+  classes: margin-right-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-90
+  classes: margin-left-90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-95
+  classes: padding-top-bottom-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-95
+  classes: padding-left-right-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-95
+  classes: padding-top-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-95
+  classes: padding-bottom-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-95
+  classes: padding-left-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-95
+  classes: padding-right-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-95
+  classes: margin-top-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-95
+  classes: margin-bottom-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-95
+  classes: margin-right-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-95
+  classes: margin-left-95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-100
+  classes: padding-top-bottom-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-100
+  classes: padding-left-right-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-100
+  classes: padding-top-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-100
+  classes: padding-bottom-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-100
+  classes: padding-left-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-100
+  classes: padding-right-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-100
+  classes: margin-top-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-100
+  classes: margin-bottom-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-100
+  classes: margin-right-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-100
+  classes: margin-left-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-105
+  classes: padding-top-bottom-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-105
+  classes: padding-left-right-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-105
+  classes: padding-top-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-105
+  classes: padding-bottom-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-105
+  classes: padding-left-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-105
+  classes: padding-right-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-105
+  classes: margin-top-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-105
+  classes: margin-bottom-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-105
+  classes: margin-right-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-105
+  classes: margin-left-105
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-110
+  classes: padding-top-bottom-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-110
+  classes: padding-left-right-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-110
+  classes: padding-top-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-110
+  classes: padding-bottom-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-110
+  classes: padding-left-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-110
+  classes: padding-right-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-110
+  classes: margin-top-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-110
+  classes: margin-bottom-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-110
+  classes: margin-right-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-110
+  classes: margin-left-110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-115
+  classes: padding-top-bottom-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-115
+  classes: padding-left-right-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-115
+  classes: padding-top-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-115
+  classes: padding-bottom-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-115
+  classes: padding-left-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-115
+  classes: padding-right-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-115
+  classes: margin-top-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-115
+  classes: margin-bottom-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-115
+  classes: margin-right-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-115
+  classes: margin-left-115
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-120
+  classes: padding-top-bottom-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-120
+  classes: padding-left-right-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-120
+  classes: padding-top-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-120
+  classes: padding-bottom-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-120
+  classes: padding-left-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-120
+  classes: padding-right-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-120
+  classes: margin-top-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-120
+  classes: margin-bottom-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-120
+  classes: margin-right-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-120
+  classes: margin-left-120
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-125
+  classes: padding-top-bottom-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-125
+  classes: padding-left-right-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-125
+  classes: padding-top-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-125
+  classes: padding-bottom-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-125
+  classes: padding-left-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-125
+  classes: padding-right-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-125
+  classes: margin-top-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-125
+  classes: margin-bottom-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-125
+  classes: margin-right-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-125
+  classes: margin-left-125
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-130
+  classes: padding-top-bottom-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-130
+  classes: padding-left-right-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-130
+  classes: padding-top-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-130
+  classes: padding-bottom-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-130
+  classes: padding-left-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-130
+  classes: padding-right-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-130
+  classes: margin-top-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-130
+  classes: margin-bottom-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-130
+  classes: margin-right-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-130
+  classes: margin-left-130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-135
+  classes: padding-top-bottom-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-135
+  classes: padding-left-right-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-135
+  classes: padding-top-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-135
+  classes: padding-bottom-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-135
+  classes: padding-left-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-135
+  classes: padding-right-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-135
+  classes: margin-top-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-135
+  classes: margin-bottom-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-135
+  classes: margin-right-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-135
+  classes: margin-left-135
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-140
+  classes: padding-top-bottom-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-140
+  classes: padding-left-right-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-140
+  classes: padding-top-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-140
+  classes: padding-bottom-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-140
+  classes: padding-left-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-140
+  classes: padding-right-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-140
+  classes: margin-top-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-140
+  classes: margin-bottom-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-140
+  classes: margin-right-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-140
+  classes: margin-left-140
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-145
+  classes: padding-top-bottom-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-145
+  classes: padding-left-right-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-145
+  classes: padding-top-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-145
+  classes: padding-bottom-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-145
+  classes: padding-left-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-145
+  classes: padding-right-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-145
+  classes: margin-top-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-145
+  classes: margin-bottom-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-145
+  classes: margin-right-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-145
+  classes: margin-left-145
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-150
+  classes: padding-top-bottom-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-150
+  classes: padding-left-right-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-150
+  classes: padding-top-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-150
+  classes: padding-bottom-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-150
+  classes: padding-left-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-150
+  classes: padding-right-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-150
+  classes: margin-top-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-150
+  classes: margin-bottom-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-150
+  classes: margin-right-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-150
+  classes: margin-left-150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-155
+  classes: padding-top-bottom-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-155
+  classes: padding-left-right-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-155
+  classes: padding-top-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-155
+  classes: padding-bottom-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-155
+  classes: padding-left-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-155
+  classes: padding-right-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-155
+  classes: margin-top-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-155
+  classes: margin-bottom-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-155
+  classes: margin-right-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-155
+  classes: margin-left-155
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-160
+  classes: padding-top-bottom-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-160
+  classes: padding-left-right-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-160
+  classes: padding-top-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-160
+  classes: padding-bottom-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-160
+  classes: padding-left-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-160
+  classes: padding-right-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-160
+  classes: margin-top-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-160
+  classes: margin-bottom-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-160
+  classes: margin-right-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-160
+  classes: margin-left-160
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-165
+  classes: padding-top-bottom-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-165
+  classes: padding-left-right-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-165
+  classes: padding-top-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-165
+  classes: padding-bottom-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-165
+  classes: padding-left-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-165
+  classes: padding-right-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-165
+  classes: margin-top-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-165
+  classes: margin-bottom-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-165
+  classes: margin-right-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-165
+  classes: margin-left-165
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-170
+  classes: padding-top-bottom-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-170
+  classes: padding-left-right-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-170
+  classes: padding-top-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-170
+  classes: padding-bottom-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-170
+  classes: padding-left-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-170
+  classes: padding-right-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-170
+  classes: margin-top-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-170
+  classes: margin-bottom-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-170
+  classes: margin-right-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-170
+  classes: margin-left-170
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-175
+  classes: padding-top-bottom-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-175
+  classes: padding-left-right-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-175
+  classes: padding-top-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-175
+  classes: padding-bottom-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-175
+  classes: padding-left-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-175
+  classes: padding-right-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-175
+  classes: margin-top-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-175
+  classes: margin-bottom-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-175
+  classes: margin-right-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-175
+  classes: margin-left-175
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-180
+  classes: padding-top-bottom-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-180
+  classes: padding-left-right-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-180
+  classes: padding-top-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-180
+  classes: padding-bottom-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-180
+  classes: padding-left-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-180
+  classes: padding-right-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-180
+  classes: margin-top-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-180
+  classes: margin-bottom-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-180
+  classes: margin-right-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-180
+  classes: margin-left-180
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-185
+  classes: padding-top-bottom-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-185
+  classes: padding-left-right-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-185
+  classes: padding-top-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-185
+  classes: padding-bottom-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-185
+  classes: padding-left-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-185
+  classes: padding-right-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-185
+  classes: margin-top-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-185
+  classes: margin-bottom-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-185
+  classes: margin-right-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-185
+  classes: margin-left-185
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-190
+  classes: padding-top-bottom-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-190
+  classes: padding-left-right-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-190
+  classes: padding-top-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-190
+  classes: padding-bottom-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-190
+  classes: padding-left-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-190
+  classes: padding-right-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-190
+  classes: margin-top-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-190
+  classes: margin-bottom-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-190
+  classes: margin-right-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-190
+  classes: margin-left-190
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-195
+  classes: padding-top-bottom-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-195
+  classes: padding-left-right-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-195
+  classes: padding-top-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-195
+  classes: padding-bottom-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-195
+  classes: padding-left-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-195
+  classes: padding-right-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-195
+  classes: margin-top-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-195
+  classes: margin-bottom-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-195
+  classes: margin-right-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-195
+  classes: margin-left-195
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-bottom-200
+  classes: padding-top-bottom-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-right-200
+  classes: padding-left-right-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-top-200
+  classes: padding-top-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-bottom-200
+  classes: padding-bottom-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-left-200
+  classes: padding-left-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-right-200
+  classes: padding-right-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-200
+  classes: margin-top-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-bottom-200
+  classes: margin-bottom-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-right-200
+  classes: margin-right-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-left-200
+  classes: margin-left-200
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--5
+  classes: ptb_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--5
+  classes: plr_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--5
+  classes: pt_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--5
+  classes: pb_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--5
+  classes: pl_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--5
+  classes: pr_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--5
+  classes: mt_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--5
+  classes: mb_lp--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--10
+  classes: ptb_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--10
+  classes: plr_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--10
+  classes: pt_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--10
+  classes: pb_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--10
+  classes: pl_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--10
+  classes: pr_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--10
+  classes: mt_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--10
+  classes: mb_lp--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--15
+  classes: ptb_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--15
+  classes: plr_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--15
+  classes: pt_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--15
+  classes: pb_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--15
+  classes: pl_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--15
+  classes: pr_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--15
+  classes: mt_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--15
+  classes: mb_lp--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--20
+  classes: ptb_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--20
+  classes: plr_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--20
+  classes: pt_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--20
+  classes: pb_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--20
+  classes: pl_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--20
+  classes: pr_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--20
+  classes: mt_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--20
+  classes: mb_lp--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--25
+  classes: ptb_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--25
+  classes: plr_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--25
+  classes: pt_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--25
+  classes: pb_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--25
+  classes: pl_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--25
+  classes: pr_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--25
+  classes: mt_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--25
+  classes: mb_lp--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--30
+  classes: ptb_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--30
+  classes: plr_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--30
+  classes: pt_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--30
+  classes: pb_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--30
+  classes: pl_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--30
+  classes: pr_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--30
+  classes: mt_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--30
+  classes: mb_lp--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--35
+  classes: ptb_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--35
+  classes: plr_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--35
+  classes: pt_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--35
+  classes: pb_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--35
+  classes: pl_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--35
+  classes: pr_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--35
+  classes: mt_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--35
+  classes: mb_lp--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--40
+  classes: ptb_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--40
+  classes: plr_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--40
+  classes: pt_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--40
+  classes: pb_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--40
+  classes: pl_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--40
+  classes: pr_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--40
+  classes: mt_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--40
+  classes: mb_lp--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--45
+  classes: ptb_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--45
+  classes: plr_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--45
+  classes: pt_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--45
+  classes: pb_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--45
+  classes: pl_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--45
+  classes: pr_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--45
+  classes: mt_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--45
+  classes: mb_lp--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--50
+  classes: ptb_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--50
+  classes: plr_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--50
+  classes: pt_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--50
+  classes: pb_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--50
+  classes: pl_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--50
+  classes: pr_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--50
+  classes: mt_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--50
+  classes: mb_lp--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--55
+  classes: ptb_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--55
+  classes: plr_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--55
+  classes: pt_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--55
+  classes: pb_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--55
+  classes: pl_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--55
+  classes: pr_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--55
+  classes: mt_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--55
+  classes: mb_lp--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--60
+  classes: ptb_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--60
+  classes: plr_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--60
+  classes: pt_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--60
+  classes: pb_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--60
+  classes: pl_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--60
+  classes: pr_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--60
+  classes: mt_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--60
+  classes: mb_lp--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--65
+  classes: ptb_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--65
+  classes: plr_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--65
+  classes: pt_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--65
+  classes: pb_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--65
+  classes: pl_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--65
+  classes: pr_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--65
+  classes: mt_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--65
+  classes: mb_lp--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--70
+  classes: ptb_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--70
+  classes: plr_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--70
+  classes: pt_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--70
+  classes: pb_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--70
+  classes: pl_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--70
+  classes: pr_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--70
+  classes: mt_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--70
+  classes: mb_lp--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--75
+  classes: ptb_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--75
+  classes: plr_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--75
+  classes: pt_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--75
+  classes: pb_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--75
+  classes: pl_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--75
+  classes: pr_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--75
+  classes: mt_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--75
+  classes: mb_lp--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--80
+  classes: ptb_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--80
+  classes: plr_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--80
+  classes: pt_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--80
+  classes: pb_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--80
+  classes: pl_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--80
+  classes: pr_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--80
+  classes: mt_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--80
+  classes: mb_lp--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--85
+  classes: ptb_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--85
+  classes: plr_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--85
+  classes: pt_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--85
+  classes: pb_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--85
+  classes: pl_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--85
+  classes: pr_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--85
+  classes: mt_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--85
+  classes: mb_lp--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--90
+  classes: ptb_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--90
+  classes: plr_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--90
+  classes: pt_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--90
+  classes: pb_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--90
+  classes: pl_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--90
+  classes: pr_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--90
+  classes: mt_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--90
+  classes: mb_lp--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--95
+  classes: ptb_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--95
+  classes: plr_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--95
+  classes: pt_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--95
+  classes: pb_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--95
+  classes: pl_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--95
+  classes: pr_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--95
+  classes: mt_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--95
+  classes: mb_lp--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lp--100
+  classes: ptb_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lp--100
+  classes: plr_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lp--100
+  classes: pt_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lp--100
+  classes: pb_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lp--100
+  classes: pl_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lp--100
+  classes: pr_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lp--100
+  classes: mt_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lp--100
+  classes: mb_lp--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .ptb_lg--5
+  classes: ptb_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--5
+  classes: plr_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--5
+  classes: pt_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--5
+  classes: pb_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--5
+  classes: pl_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--5
+  classes: pr_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--5
+  classes: mt_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--5
+  classes: mb_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--5
+  classes: ml_lg--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--10
+  classes: ptb_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--10
+  classes: plr_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--10
+  classes: pt_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--10
+  classes: pb_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--10
+  classes: pl_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--10
+  classes: pr_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--10
+  classes: mt_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--10
+  classes: mb_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--10
+  classes: ml_lg--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--15
+  classes: ptb_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--15
+  classes: plr_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--15
+  classes: pt_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--15
+  classes: pb_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--15
+  classes: pl_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--15
+  classes: pr_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--15
+  classes: mt_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--15
+  classes: mb_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--15
+  classes: ml_lg--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--20
+  classes: ptb_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--20
+  classes: plr_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--20
+  classes: pt_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--20
+  classes: pb_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--20
+  classes: pl_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--20
+  classes: pr_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--20
+  classes: mt_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--20
+  classes: mb_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--20
+  classes: ml_lg--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--25
+  classes: ptb_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--25
+  classes: plr_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--25
+  classes: pt_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--25
+  classes: pb_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--25
+  classes: pl_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--25
+  classes: pr_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--25
+  classes: mt_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--25
+  classes: mb_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--25
+  classes: ml_lg--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--30
+  classes: ptb_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--30
+  classes: plr_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--30
+  classes: pt_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--30
+  classes: pb_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--30
+  classes: pl_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--30
+  classes: pr_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--30
+  classes: mt_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--30
+  classes: mb_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--30
+  classes: ml_lg--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--35
+  classes: ptb_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--35
+  classes: plr_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--35
+  classes: pt_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--35
+  classes: pb_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--35
+  classes: pl_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--35
+  classes: pr_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--35
+  classes: mt_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--35
+  classes: mb_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--35
+  classes: ml_lg--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--40
+  classes: ptb_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--40
+  classes: plr_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--40
+  classes: pt_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--40
+  classes: pb_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--40
+  classes: pl_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--40
+  classes: pr_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--40
+  classes: mt_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--40
+  classes: mb_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--40
+  classes: ml_lg--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--45
+  classes: ptb_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--45
+  classes: plr_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--45
+  classes: pt_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--45
+  classes: pb_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--45
+  classes: pl_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--45
+  classes: pr_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--45
+  classes: mt_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--45
+  classes: mb_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--45
+  classes: ml_lg--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--50
+  classes: ptb_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--50
+  classes: plr_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--50
+  classes: pt_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--50
+  classes: pb_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--50
+  classes: pl_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--50
+  classes: pr_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--50
+  classes: mb_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--50
+  classes: ml_lg--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--55
+  classes: ptb_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--55
+  classes: plr_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--55
+  classes: pt_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--55
+  classes: pb_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--55
+  classes: pl_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--55
+  classes: pr_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--55
+  classes: mt_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--55
+  classes: mb_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--55
+  classes: ml_lg--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--60
+  classes: ptb_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--60
+  classes: plr_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--60
+  classes: pt_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--60
+  classes: pb_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--60
+  classes: pl_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--60
+  classes: pr_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--60
+  classes: mt_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--60
+  classes: mb_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--60
+  classes: ml_lg--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--65
+  classes: ptb_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--65
+  classes: plr_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--65
+  classes: pt_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--65
+  classes: pb_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--65
+  classes: pl_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--65
+  classes: pr_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--65
+  classes: mt_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--65
+  classes: mb_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--65
+  classes: ml_lg--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--70
+  classes: ptb_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--70
+  classes: plr_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--70
+  classes: pt_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--70
+  classes: pb_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--70
+  classes: pl_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--70
+  classes: pr_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--70
+  classes: mt_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--70
+  classes: mb_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--70
+  classes: ml_lg--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--75
+  classes: ptb_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--75
+  classes: plr_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--75
+  classes: pt_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--75
+  classes: pb_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--75
+  classes: pl_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--75
+  classes: pr_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--75
+  classes: mt_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--75
+  classes: mb_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--75
+  classes: ml_lg--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--80
+  classes: ptb_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--80
+  classes: plr_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--80
+  classes: pt_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--80
+  classes: pb_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--80
+  classes: pl_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--80
+  classes: pr_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--80
+  classes: mt_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--80
+  classes: mb_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--80
+  classes: ml_lg--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--85
+  classes: ptb_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--85
+  classes: plr_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--85
+  classes: pt_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--85
+  classes: pb_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--85
+  classes: pl_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--85
+  classes: pr_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--85
+  classes: mt_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--85
+  classes: mb_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--85
+  classes: ml_lg--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--90
+  classes: ptb_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--90
+  classes: plr_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--90
+  classes: pt_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--90
+  classes: pb_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--90
+  classes: pl_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--90
+  classes: pr_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--90
+  classes: mt_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--90
+  classes: mb_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--90
+  classes: ml_lg--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--95
+  classes: ptb_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--95
+  classes: plr_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--95
+  classes: pt_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--95
+  classes: pb_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--95
+  classes: pl_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--95
+  classes: pr_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--95
+  classes: mt_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--95
+  classes: mb_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--95
+  classes: ml_lg--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_lg--100
+  classes: ptb_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_lg--100
+  classes: plr_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_lg--100
+  classes: pt_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_lg--100
+  classes: pb_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_lg--100
+  classes: pl_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_lg--100
+  classes: pr_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_lg--100
+  classes: mt_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_lg--100
+  classes: mb_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_lg--100
+  classes: ml_lg--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--0
+  classes: ptb_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--0
+  classes: pl_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--0
+  classes: pr_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--0
+  classes: pt_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--0
+  classes: pb_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_md--0
+  classes: mr_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_md--0
+  classes: ml_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--0
+  classes: mt_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--0
+  classes: mb_md--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--250
+  classes: ptb_md--250
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--5
+  classes: ptb_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--5
+  classes: plr_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--5
+  classes: pt_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--5
+  classes: pb_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--5
+  classes: pl_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--5
+  classes: pr_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--5
+  classes: mb_md--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--10
+  classes: ptb_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--10
+  classes: plr_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--10
+  classes: pt_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--10
+  classes: pb_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--10
+  classes: pl_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--10
+  classes: pr_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--10
+  classes: mt_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--10
+  classes: mb_md--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--15
+  classes: ptb_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--15
+  classes: plr_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--15
+  classes: pt_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--15
+  classes: pb_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--15
+  classes: pl_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--15
+  classes: pr_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--15
+  classes: mt_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--15
+  classes: mb_md--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--20
+  classes: ptb_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--20
+  classes: plr_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--20
+  classes: pt_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--20
+  classes: pb_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--20
+  classes: pl_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--20
+  classes: pr_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--20
+  classes: mt_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--20
+  classes: mb_md--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--25
+  classes: ptb_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--25
+  classes: plr_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--25
+  classes: pt_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--25
+  classes: pb_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--25
+  classes: pl_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--25
+  classes: pr_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--25
+  classes: mt_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--25
+  classes: mb_md--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--30
+  classes: ptb_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--30
+  classes: plr_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--30
+  classes: pt_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--30
+  classes: pb_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--30
+  classes: pl_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--30
+  classes: pr_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--30
+  classes: mt_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--30
+  classes: mb_md--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--35
+  classes: ptb_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--35
+  classes: plr_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--35
+  classes: pt_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--35
+  classes: pb_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--35
+  classes: pl_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--35
+  classes: pr_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--35
+  classes: mt_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--35
+  classes: mb_md--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--40
+  classes: ptb_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--40
+  classes: plr_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--40
+  classes: pt_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--40
+  classes: pb_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--40
+  classes: pl_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--40
+  classes: pr_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--40
+  classes: mb_md--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--45
+  classes: ptb_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--45
+  classes: plr_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--45
+  classes: pt_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--45
+  classes: pb_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--45
+  classes: pl_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--45
+  classes: pr_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--45
+  classes: mt_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--45
+  classes: mb_md--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--50
+  classes: ptb_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--50
+  classes: plr_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--50
+  classes: pt_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--50
+  classes: pb_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--50
+  classes: pl_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--50
+  classes: pr_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--50
+  classes: mb_md--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--55
+  classes: ptb_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--55
+  classes: plr_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--55
+  classes: pt_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--55
+  classes: pb_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--55
+  classes: pl_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--55
+  classes: pr_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--55
+  classes: mt_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--55
+  classes: mb_md--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--60
+  classes: ptb_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--60
+  classes: plr_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--60
+  classes: pt_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--60
+  classes: pb_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--60
+  classes: pl_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--60
+  classes: pr_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--60
+  classes: mb_md--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--65
+  classes: ptb_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--65
+  classes: plr_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--65
+  classes: pt_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--65
+  classes: pb_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--65
+  classes: pl_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--65
+  classes: pr_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--65
+  classes: mt_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--65
+  classes: mb_md--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--70
+  classes: ptb_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--70
+  classes: plr_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--70
+  classes: pt_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--70
+  classes: pb_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--70
+  classes: pl_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--70
+  classes: pr_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--70
+  classes: mt_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--70
+  classes: mb_md--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--75
+  classes: ptb_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--75
+  classes: plr_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--75
+  classes: pt_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--75
+  classes: pb_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--75
+  classes: pl_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--75
+  classes: pr_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--75
+  classes: mt_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--75
+  classes: mb_md--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--80
+  classes: ptb_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--80
+  classes: plr_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--80
+  classes: pt_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--80
+  classes: pb_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--80
+  classes: pl_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--80
+  classes: pr_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--80
+  classes: mt_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--80
+  classes: mb_md--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--85
+  classes: ptb_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--85
+  classes: plr_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--85
+  classes: pt_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--85
+  classes: pb_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--85
+  classes: pl_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--85
+  classes: pr_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--85
+  classes: mt_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--85
+  classes: mb_md--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--90
+  classes: ptb_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--90
+  classes: plr_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--90
+  classes: pt_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--90
+  classes: pb_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--90
+  classes: pl_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--90
+  classes: pr_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--90
+  classes: mt_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--90
+  classes: mb_md--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--95
+  classes: ptb_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--95
+  classes: plr_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--95
+  classes: pt_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--95
+  classes: pb_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--95
+  classes: pl_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--95
+  classes: pr_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--95
+  classes: mt_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--95
+  classes: mb_md--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_md--100
+  classes: ptb_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_md--100
+  classes: plr_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_md--100
+  classes: pt_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_md--100
+  classes: pb_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_md--100
+  classes: pl_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_md--100
+  classes: pr_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_md--100
+  classes: mt_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_md--100
+  classes: mb_md--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--250
+  classes: ptb_sm--250
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--0
+  classes: ptb_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--0
+  classes: pl_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--0
+  classes: pr_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--0
+  classes: pt_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--0
+  classes: pb_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--0
+  classes: mr_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--0
+  classes: ml_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--0
+  classes: mt_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--0
+  classes: mb_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--150
+  classes: pt_sm--150
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--110
+  classes: pb_sm--110
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--5
+  classes: ptb_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--5
+  classes: plr_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--5
+  classes: pt_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--5
+  classes: pb_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--5
+  classes: pl_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--5
+  classes: pr_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--5
+  classes: ml_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--5
+  classes: mr_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--5
+  classes: mb_sm--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--10
+  classes: ptb_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--10
+  classes: plr_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--10
+  classes: pt_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--10
+  classes: pb_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--10
+  classes: pl_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--10
+  classes: pr_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--10
+  classes: mt_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--10
+  classes: ml_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--10
+  classes: mr_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--10
+  classes: mb_sm--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--15
+  classes: ptb_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--15
+  classes: plr_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--15
+  classes: pt_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--15
+  classes: pb_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--15
+  classes: pl_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--15
+  classes: pr_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--15
+  classes: mt_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--15
+  classes: ml_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--15
+  classes: mr_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--15
+  classes: mb_sm--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--20
+  classes: ptb_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--20
+  classes: pt_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--20
+  classes: pb_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--20
+  classes: pl_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--20
+  classes: pr_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--20
+  classes: mt_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--20
+  classes: ml_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--20
+  classes: mr_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--20
+  classes: mb_sm--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--25
+  classes: ptb_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--25
+  classes: plr_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--25
+  classes: pt_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--25
+  classes: pb_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--25
+  classes: pl_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--25
+  classes: pr_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--25
+  classes: mt_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--25
+  classes: ml_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--25
+  classes: mr_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--25
+  classes: mb_sm--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--30
+  classes: ptb_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--30
+  classes: plr_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--30
+  classes: pt_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--30
+  classes: pb_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--30
+  classes: pl_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--30
+  classes: pr_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--30
+  classes: mt_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--30
+  classes: ml_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--30
+  classes: mr_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--30
+  classes: mb_sm--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--35
+  classes: ptb_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--35
+  classes: plr_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--35
+  classes: pt_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--35
+  classes: pb_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--35
+  classes: pl_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--35
+  classes: pr_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--35
+  classes: mt_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--35
+  classes: ml_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--35
+  classes: mr_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--35
+  classes: mb_sm--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--40
+  classes: ptb_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--40
+  classes: plr_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--40
+  classes: pt_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--40
+  classes: pl_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--40
+  classes: pr_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--40
+  classes: ml_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--40
+  classes: mr_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--40
+  classes: mb_sm--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--45
+  classes: ptb_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--45
+  classes: plr_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--45
+  classes: pt_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--45
+  classes: pb_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--45
+  classes: pl_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--45
+  classes: pr_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--45
+  classes: mt_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--45
+  classes: ml_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--45
+  classes: mr_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--45
+  classes: mb_sm--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--50
+  classes: ptb_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--50
+  classes: plr_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--50
+  classes: pt_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--50
+  classes: pb_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--50
+  classes: pl_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--50
+  classes: pr_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--50
+  classes: ml_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--50
+  classes: mr_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--50
+  classes: mb_sm--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--55
+  classes: ptb_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--55
+  classes: plr_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--55
+  classes: pt_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--55
+  classes: pb_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--55
+  classes: pl_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--55
+  classes: pr_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--55
+  classes: mt_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--55
+  classes: ml_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--55
+  classes: mr_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--55
+  classes: mb_sm--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--60
+  classes: ptb_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--60
+  classes: plr_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--60
+  classes: pt_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--60
+  classes: pb_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--60
+  classes: pl_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--60
+  classes: pr_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--60
+  classes: ml_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--60
+  classes: mr_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--60
+  classes: mb_sm--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--65
+  classes: ptb_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--65
+  classes: plr_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--65
+  classes: pt_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--65
+  classes: pb_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--65
+  classes: pl_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--65
+  classes: pr_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--65
+  classes: mt_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--65
+  classes: ml_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--65
+  classes: mr_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--65
+  classes: mb_sm--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--70
+  classes: ptb_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--70
+  classes: plr_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--70
+  classes: pt_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--70
+  classes: pb_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--70
+  classes: pl_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--70
+  classes: pr_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--70
+  classes: mt_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--70
+  classes: ml_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--70
+  classes: mr_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--70
+  classes: mb_sm--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--75
+  classes: ptb_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--75
+  classes: plr_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--75
+  classes: pt_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--75
+  classes: pb_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--75
+  classes: pl_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--75
+  classes: pr_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--75
+  classes: mt_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--75
+  classes: ml_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--75
+  classes: mr_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--75
+  classes: mb_sm--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--80
+  classes: ptb_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--80
+  classes: plr_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--80
+  classes: pt_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--80
+  classes: pb_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--80
+  classes: pl_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--80
+  classes: pr_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--80
+  classes: mt_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--80
+  classes: ml_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--80
+  classes: mr_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--80
+  classes: mb_sm--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--85
+  classes: ptb_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--85
+  classes: plr_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--85
+  classes: pt_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--85
+  classes: pb_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--85
+  classes: pl_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--85
+  classes: pr_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--85
+  classes: mt_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--85
+  classes: ml_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--85
+  classes: mr_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--85
+  classes: mb_sm--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--90
+  classes: ptb_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--90
+  classes: plr_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--90
+  classes: pt_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--90
+  classes: pb_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--90
+  classes: pl_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--90
+  classes: pr_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--90
+  classes: mt_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--90
+  classes: ml_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--90
+  classes: mr_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--90
+  classes: mb_sm--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--95
+  classes: ptb_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--95
+  classes: plr_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--95
+  classes: pt_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--95
+  classes: pb_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--95
+  classes: pl_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--95
+  classes: pr_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--95
+  classes: mt_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--95
+  classes: ml_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--95
+  classes: mr_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--95
+  classes: mb_sm--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_sm--100
+  classes: ptb_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_sm--100
+  classes: plr_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--100
+  classes: pt_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--100
+  classes: pb_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--100
+  classes: pl_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--100
+  classes: pr_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--100
+  classes: mt_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--100
+  classes: ml_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--100
+  classes: mr_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--100
+  classes: mb_sm--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_sm--0
+  classes: pl_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_sm--0
+  classes: pr_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_sm--0
+  classes: pt_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_sm--0
+  classes: pb_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mr_sm--0
+  classes: mr_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ml_sm--0
+  classes: ml_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_sm--0
+  classes: mt_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_sm--0
+  classes: mb_sm--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--5
+  classes: ptb_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--5
+  classes: plr_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--5
+  classes: pt_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--5
+  classes: pb_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--5
+  classes: pl_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--5
+  classes: pr_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--5
+  classes: mt_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--5
+  classes: mb_mobile--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--10
+  classes: ptb_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--10
+  classes: plr_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--10
+  classes: pt_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--10
+  classes: pb_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--10
+  classes: pl_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--10
+  classes: pr_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--10
+  classes: mt_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--10
+  classes: mb_mobile--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--15
+  classes: ptb_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--15
+  classes: plr_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--15
+  classes: pt_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--15
+  classes: pb_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--15
+  classes: pl_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--15
+  classes: pr_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--15
+  classes: mt_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--15
+  classes: mb_mobile--15
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--20
+  classes: ptb_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--20
+  classes: plr_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--20
+  classes: pt_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--20
+  classes: pb_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--20
+  classes: pl_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--20
+  classes: pr_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--20
+  classes: mt_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--20
+  classes: mb_mobile--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--25
+  classes: ptb_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--25
+  classes: plr_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--25
+  classes: pt_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--25
+  classes: pb_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--25
+  classes: pl_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--25
+  classes: pr_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--25
+  classes: mt_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--25
+  classes: mb_mobile--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--30
+  classes: ptb_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--30
+  classes: plr_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--30
+  classes: pt_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--30
+  classes: pb_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--30
+  classes: pl_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--30
+  classes: pr_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--30
+  classes: mt_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--30
+  classes: mb_mobile--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--35
+  classes: ptb_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--35
+  classes: plr_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--35
+  classes: pt_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--35
+  classes: pb_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--35
+  classes: pl_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--35
+  classes: pr_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--35
+  classes: mt_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--35
+  classes: mb_mobile--35
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--40
+  classes: ptb_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--40
+  classes: plr_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--40
+  classes: pt_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--40
+  classes: pb_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--40
+  classes: pl_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--40
+  classes: pr_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--40
+  classes: mt_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--40
+  classes: mb_mobile--40
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--45
+  classes: ptb_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--45
+  classes: plr_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--45
+  classes: pt_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--45
+  classes: pb_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--45
+  classes: pl_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--45
+  classes: pr_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--45
+  classes: mt_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--45
+  classes: mb_mobile--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--50
+  classes: ptb_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--50
+  classes: plr_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--50
+  classes: pt_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--50
+  classes: pb_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--50
+  classes: pl_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--50
+  classes: pr_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--50
+  classes: mt_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--50
+  classes: mb_mobile--50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--55
+  classes: ptb_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--55
+  classes: plr_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--55
+  classes: pt_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--55
+  classes: pb_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--55
+  classes: pl_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--55
+  classes: pr_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--55
+  classes: mt_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--55
+  classes: mb_mobile--55
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--60
+  classes: ptb_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--60
+  classes: plr_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--60
+  classes: pt_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--60
+  classes: pb_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--60
+  classes: pl_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--60
+  classes: pr_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--60
+  classes: mt_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--60
+  classes: mb_mobile--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--65
+  classes: ptb_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--65
+  classes: plr_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--65
+  classes: pt_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--65
+  classes: pb_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--65
+  classes: pl_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--65
+  classes: pr_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--65
+  classes: mt_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--65
+  classes: mb_mobile--65
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--70
+  classes: ptb_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--70
+  classes: plr_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--70
+  classes: pt_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--70
+  classes: pb_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--70
+  classes: pl_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--70
+  classes: pr_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--70
+  classes: mt_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--70
+  classes: mb_mobile--70
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--75
+  classes: ptb_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--75
+  classes: plr_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--75
+  classes: pt_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--75
+  classes: pb_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--75
+  classes: pl_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--75
+  classes: pr_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--75
+  classes: mt_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--75
+  classes: mb_mobile--75
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--80
+  classes: ptb_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--80
+  classes: plr_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--80
+  classes: pt_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--80
+  classes: pb_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--80
+  classes: pl_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--80
+  classes: pr_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--80
+  classes: mt_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--80
+  classes: mb_mobile--80
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--85
+  classes: ptb_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--85
+  classes: plr_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--85
+  classes: pt_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--85
+  classes: pb_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--85
+  classes: pl_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--85
+  classes: pr_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--85
+  classes: mt_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--85
+  classes: mb_mobile--85
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--90
+  classes: ptb_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--90
+  classes: plr_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--90
+  classes: pt_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--90
+  classes: pb_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--90
+  classes: pl_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--90
+  classes: pr_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--90
+  classes: mt_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--90
+  classes: mb_mobile--90
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--95
+  classes: ptb_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--95
+  classes: plr_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--95
+  classes: pt_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--95
+  classes: pb_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--95
+  classes: pl_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--95
+  classes: pr_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--95
+  classes: mt_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--95
+  classes: mb_mobile--95
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .ptb_mobile--100
+  classes: ptb_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .plr_mobile--100
+  classes: plr_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pt_mobile--100
+  classes: pt_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_mobile--100
+  classes: pb_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pl_mobile--100
+  classes: pl_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pr_mobile--100
+  classes: pr_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mt_mobile--100
+  classes: mt_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .mb_mobile--100
+  classes: mb_mobile--100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 575px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .margin-top-neg-30
+  classes: margin-top-neg-30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-neg-100
+  classes: margin-top-neg-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .small-margin-pricing
+  classes: small-margin-pricing
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 479px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .margin-bottom-neg-responsive
+  classes: margin-bottom-neg-responsive
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .margin-bottom-neg-responsive
+  classes: margin-bottom-neg-responsive
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .margin-bottom-neg-responsive
+  classes: margin-bottom-neg-responsive
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 575px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .testimonial-pb
+  classes: testimonial-pb
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .pb_xl--130
+  classes: pb_xl--130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .pb_xl--130
+  classes: pb_xl--130
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .clearfix:before
+  classes: clearfix
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .clearfix:after
+  classes: clearfix
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .clearfix:after
+  classes: clearfix
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .fix
+  classes: fix
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image
+  classes: bg_image
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--1
+  classes: bg_image--1
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--2
+  classes: bg_image--2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--3
+  classes: bg_image--3
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--4
+  classes: bg_image--4
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--5
+  classes: bg_image--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--6
+  classes: bg_image--6
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--7
+  classes: bg_image--7
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--8
+  classes: bg_image--8
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--9
+  classes: bg_image--9
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--10
+  classes: bg_image--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--11
+  classes: bg_image--11
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--12
+  classes: bg_image--12
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .bg_image--13
+  classes: bg_image--13
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .fullscreen
+  classes: fullscreen
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--0
+  classes: row--0
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--5
+  classes: row--5
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--10
+  classes: row--10
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--20
+  classes: row--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--20
+  classes: row--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--20
+  classes: row--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--20
+  classes: row--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--20
+  classes: row--20
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--25
+  classes: row--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--25
+  classes: row--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--25
+  classes: row--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--25
+  classes: row--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--25
+  classes: row--25
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--30
+  classes: row--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--30
+  classes: row--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--30
+  classes: row--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--30
+  classes: row--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--30
+  classes: row--30
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--45
+  classes: row--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--45
+  classes: row--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--45
+  classes: row--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--45
+  classes: row--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--45
+  classes: row--45
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--60
+  classes: row--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .row--60
+  classes: row--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 1200px) and (max-width: 1599px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--60
+  classes: row--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--60
+  classes: row--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .row--60
+  classes: row--60
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- #scrollUp
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- #scrollUp
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- #scrollUp
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- #scrollUp::before
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- #scrollUp::after
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- #scrollUp
+  classes: -
+  ids: scrollUp
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .form-message
+  classes: form-message
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .form-message.error
+  classes: form-message, error
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .form-message.success
+  classes: form-message, success
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .template-color-2
+  classes: template-color-2
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .border-none
+  classes: border-none
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .h-100
+  classes: h-100
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .color-white
+  classes: color-white
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .hover-effect-gradient
+  classes: hover-effect-gradient
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .hover-effect-gradient::before
+  classes: hover-effect-gradient
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .hover-effect-gradient:hover::before
+  classes: hover-effect-gradient
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-play-button
+  classes: video-play-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-play-button:before
+  classes: video-play-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-play-button:after
+  classes: video-play-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-play-button:hover:after
+  classes: video-play-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-overlay
+  classes: video-overlay
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-overlay-close
+  classes: video-overlay-close
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .video-overlay-close:hover
+  classes: video-overlay-close
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .background-primary
+  classes: background-primary
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-neg-50
+  classes: margin-top-neg-50
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .color-body-white
+  classes: color-body-white
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .color-lightn
+  classes: color-lightn
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .border-style
+  classes: border-style
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .padding-none
+  classes: padding-none
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .cd-words-wrapper
+  classes: cd-words-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .cd-headline.clip .cd-words-wrapper
+  classes: cd-headline, clip, cd-words-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .cd-headline.clip .cd-words-wrapper::after
+  classes: cd-headline, clip, cd-words-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .tab-navigation-button
+  classes: tab-navigation-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .tab-navigation-button
+  classes: tab-navigation-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 992px) and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .tab-navigation-button
+  classes: tab-navigation-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .tab-navigation-button
+  classes: tab-navigation-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .tab-navigation-button
+  classes: tab-navigation-button
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 575px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .navigation-wrapper
+  classes: navigation-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .navigation-wrapper
+  classes: navigation-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (min-width: 768px) and (max-width: 991px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .navigation-wrapper
+  classes: navigation-wrapper
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .sticky-top
+  classes: sticky-top
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .error-msg
+  classes: error-msg
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .success-msg
+  classes: success-msg
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .color-body
+  classes: color-body
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .about-skill-style
+  classes: about-skill-style
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .service-card-one
+  classes: service-card-one
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog::before
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog:hover::before
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .margin-top-neg-sm
+  classes: margin-top-neg-sm
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 767px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .margin-top-neg-sm
+  classes: margin-top-neg-sm
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 575px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .blog-carousel
+  classes: blog-carousel
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .blog-carousel
+  classes: blog-carousel
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- @media only screen and (max-width: 1199px)
+  classes: -
+  ids: -
+  reason: At-rule body became empty after pruning
+- .blog-carousel .blog-item
+  classes: blog-carousel, blog-item
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .blog-carousel .blog-item>.rn-blog
+  classes: blog-carousel, blog-item, rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS
+- .rn-blog:focus:not(:focus-visible)
+  classes: rn-blog
+  ids: -
+  reason: Pure class/id selector not referenced in templates or main JS

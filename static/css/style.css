@@ -107,7 +107,7 @@ html{
     margin: 0;
     padding: 0;
     font-size: 10px;
-    overflow-x: hidden;
+    overflow: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -233,9 +233,17 @@ h1{
     .scroll-snap-carousel{
         grid-auto-columns: minmax(380px, 1fr);
     }
+}
 
-    /* Wider portfolio/blog cards on desktop so long domains stay on one line. */
-    .portfolio-carousel.scroll-snap-carousel,
+/* Wider portfolio cards on desktop so long domains stay on one line. */
+@media only screen and (min-width: 1200px) {
+    .portfolio-carousel.scroll-snap-carousel{
+        grid-auto-columns: minmax(420px, 1fr);
+    }
+}
+
+/* Match blog card widths to portfolio cards on desktop. */
+@media only screen and (min-width: 1200px) {
     .blog-carousel.scroll-snap-carousel{
         grid-auto-columns: minmax(420px, 1fr);
     }
@@ -283,13 +291,18 @@ h6 a,
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6{
+h3{
     font-weight: var(--s-bold);
 }
 
+h4,
+h5{
+    font-weight: var(--s-bold);
+}
+
+h6{
+    font-weight: var(--s-bold);
+}
 
 p{
     font-size: var(--font-size-b2);
@@ -299,9 +312,21 @@ p{
     margin: 0 0 32px;
 }
 
+p.b1{
+    font-size: var(--font-size-b1);
+    line-height: var(--line-height-b1);
+}
+
+p.b3{
+    font-size: var(--font-size-b3);
+    line-height: var(--line-height-b3);
+}
+
 @media only screen and (max-width: 767px) {
     p{
         margin: 0 0 24px;
+        font-size: var(--font-size-b2);
+        line-height: var(--line-height-b2);
     }
 }
 
@@ -345,6 +370,14 @@ p.b3{
 p:last-child{
     margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
 
 table{
     border-collapse: collapse;
@@ -463,6 +496,10 @@ ol ul{
    Section Separation
    **************************** */
 
+
+
+
+
 .margin-0{
     margin: 0;
 }
@@ -499,17 +536,141 @@ ol ul{
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .margin-top-10{
     margin-top: 10px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .margin-top-20{
     margin-top: 20px !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .margin-top-25{
     margin-top: 25px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .margin-bottom-30{
     margin-bottom: 30px !important;
@@ -519,9 +680,41 @@ ol ul{
     margin-right: 30px !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .padding-top-bottom-40{
     padding: 40px 0 !important;
 }
+
+
+
+
+
+
+
+
+
+
 
 .margin-top-40{
     margin-top: 40px !important;
@@ -531,73 +724,1834 @@ ol ul{
     margin-bottom: 40px !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .margin-top-45{
     margin-top: 45px !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .margin-top-50{
     margin-top: 50px !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .padding-bottom-80{
     padding-bottom: 80px !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .mt_lg--50{
         margin-top: 50px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .mt_md--5{
         margin-top: 5px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     .mt_md--40{
         margin-top: 40px !important;
     }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .mt_md--50{
         margin-top: 50px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     .mt_md--60{
         margin-top: 60px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 }
 
 @media only screen and (max-width: 767px) {
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .mt_sm--5{
         margin-top: 5px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     .plr_sm--20{
         padding: 0 20px !important;
     }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .pb_sm--40{
         padding-bottom: 40px !important;
     }
 
+    
+
+    
+
     .mt_sm--40{
         margin-top: 40px !important;
     }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     .mt_sm--50{
         margin-top: 50px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     .mt_sm--60{
         margin-top: 60px !important;
     }
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 }
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 479px) {
     .contact-input{
@@ -605,11 +2559,19 @@ ol ul{
     }
 }
 
+
+
+
+
+
+
 @media only screen and (max-width: 575px) {
     .mt-contact-sm{
         margin-top: 30px !important;
     }
 }
+
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .contact-input{
@@ -622,6 +2584,10 @@ ol ul{
         padding-bottom: 30px;
     }
 }
+
+
+
+
 
 @media only screen and (max-width: 1199px) {
     .mt_experience{
@@ -772,7 +2738,6 @@ dd{
 dt{
     font-weight: bold;
     color: var(--color-heading);
-    margin-bottom: 10px;
 }
 
 menu,
@@ -809,7 +2774,10 @@ svg:not(:root){
     overflow: hidden;
 }
 
-figure,
+figure{
+    margin: 0;
+}
+
 form{
     margin: 0;
 }
@@ -865,6 +2833,7 @@ input[type=radio]{
 input[type=search]{
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
+    appearance: textfield;
     appearance: textfield;
     padding-right: 2px;
     width: 270px;
@@ -923,6 +2892,15 @@ table a,
 table a:link,
 table a:visited{
     text-decoration: underline;
+}
+
+dt{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+dd{
+    margin: 0 15px 15px;
 }
 
 caption{
@@ -1447,32 +3425,81 @@ input[type=submit]:hover{
    font-family: 'Red Hat Display', sans-serif;
    **************************** */
 
+
+
+
+
+
+
 /* ****************************
    Background Image
    **************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ****************************
    Height and width
    **************************** */
 
+
 /* ****************************
    Custom Row
    **************************** */
+
 
 .row--0>[class*=col]{
     padding-left: 0px;
     padding-right: 0px;
 }
 
+
+
 .row--5>[class*=col]{
     padding-left: 5px;
     padding-right: 5px;
 }
 
+
+
 .row--10>[class*=col]{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+
+
+
+
+
+
+
+
+
 
 .row--20>[class*=col],
 .row--20>[class*=col-]{
@@ -1516,6 +3543,16 @@ input[type=submit]:hover{
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 .row--25>[class*=col],
 .row--25>[class*=col-]{
     padding-left: 25px;
@@ -1558,6 +3595,16 @@ input[type=submit]:hover{
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 .row--30>[class*=col],
 .row--30>[class*=col-]{
     padding-left: 30px;
@@ -1599,6 +3646,16 @@ input[type=submit]:hover{
         padding-right: 15px !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 .row--45>[class*=col],
 .row--45>[class*=col-]{
@@ -1717,6 +3774,16 @@ input[type=submit]:hover{
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 .row--60>[class*=col],
 .row--60>[class*=col-]{
     padding-left: 60px;
@@ -1763,11 +3830,26 @@ input[type=submit]:hover{
    Input Placeholder
    **************************** */
 input:-moz-placeholder,
-textarea:-moz-placeholder,
+textarea:-moz-placeholder{
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: opacity(1);
+}
+
 input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: opacity(1);
+}
+
 input::-moz-placeholder,
-textarea::-moz-placeholder,
+textarea::-moz-placeholder{
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: opacity(1);
+}
+
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder{
     opacity: 1;
@@ -1780,9 +3862,13 @@ textarea:-ms-input-placeholder{
    **************************** */
 [data-overlay],
 [data-black-overlay],
-[data-white-overlay],
+[data-white-overlay]{
+    position: relative;
+    z-index: 2;
+}
+
 [data-overlay]>div,
-[data-overlay]>* ,
+[data-overlay]>*,
 [data-black-overlay]>div,
 [data-black-overlay]>*,
 [data-white-overlay]>div,
@@ -1879,6 +3965,17 @@ textarea:-ms-input-placeholder{
    Scroll Up
    **************************** */
 
+
+
+
+
+
+
+
+
+
+
+
 #scrollUp span.text{
     position: relative;
     display: inline-block;
@@ -1912,14 +4009,40 @@ textarea:-ms-input-placeholder{
    Contact Form
    **************************** */
 
+
+
+
+
+
 /* ****************************
    Banner Area Styles
    **************************** */
+
+
+
+
+
 
 .liststyle{
     padding: 0;
     list-style: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .video-play-button img{
     position: relative;
@@ -1955,11 +4078,17 @@ textarea:-ms-input-placeholder{
     }
 }
 
+
+
 .video-overlay.open{
     position: fixed;
     z-index: 1000;
     opacity: 1;
 }
+
+
+
+
 
 .video-overlay iframe{
     position: absolute;
@@ -2035,7 +4164,10 @@ textarea:-ms-input-placeholder{
     display: none;
 }
 
-.social-share-style-1 .social-share li a.border-none,
+.social-share-style-1 .social-share li a.border-none{
+    border-radius: 0;
+}
+
 .social-share-style-1 .social-share li a.border-none::before{
     border-radius: 0;
 }
@@ -2043,6 +4175,7 @@ textarea:-ms-input-placeholder{
 .social-share-style-1 .social-share li a.circle{
     border-radius: 50%;
 }
+
 
 .social-share-style-1 .social-share li a:hover{
     transform: translateY(-5px);
@@ -2072,9 +4205,24 @@ textarea:-ms-input-placeholder{
     }
 }
 
+
+
+
+
+
+
+
 .w-100{
     width: 100%;
 }
+
+
+
+
+
+
+
+
 
 .cd-words-wrapper b{
     display: inline-block;
@@ -2103,6 +4251,10 @@ textarea:-ms-input-placeholder{
     display: inline-block;
     padding: 0;
 }
+
+
+
+
 
 .cd-headline.clip b{
     opacity: 0;
@@ -2465,13 +4617,20 @@ body.template-color-1{
     font-family: var(--font-secondary);
 }
 
-.site-header__nav .site-header__menu .site-header__menu-link.current,
+.site-header__nav .site-header__menu .site-header__menu-link.current{
+    opacity: 1;
+    color: var(--color-white);
+}
+
 .site-header__nav .site-header__menu .site-header__menu-item.current .site-header__menu-link{
     opacity: 1;
     color: var(--color-white);
 }
 
-.site-header__nav .site-header__menu:hover .site-header__menu-link,
+.site-header__nav .site-header__menu:hover .site-header__menu-link{
+    opacity: 0.5;
+}
+
 .site-header--sticky.site-header--scrolled .site-header__nav .site-header__menu .site-header__menu-link{
     opacity: 0.5;
 }
@@ -2801,6 +4960,7 @@ button.rn-btn.thumbs-icon svg{
     top: 122px;
 }
 
+
 .button-group{
     margin: -15px;
 }
@@ -2929,7 +5089,10 @@ button.rn-btn.thumbs-icon svg{
 }
 
 .button-style-border-radius .button-group a.rn-btn,
-.button-style-border-radius .button-group button.rn-btn,
+.button-style-border-radius .button-group button.rn-btn{
+    border-radius: 0;
+}
+
 .button-style-border-radius .button-group a.rn-btn::before,
 .button-style-border-radius .button-group button.rn-btn::before{
     border-radius: 0;
@@ -3397,6 +5560,10 @@ button.rn-btn.thumbs-icon svg{
     object-fit: contain;
 }
 
+
+
+
+
 .modal{
     z-index: 99999999;
     background: #212428;
@@ -3543,6 +5710,7 @@ div[id^="portfolioModal"].modal .modal-dialog .modal-content .modal-body .text-c
     width: 19px;
 }
 
+
 .modal .carousel{
     position: relative;
 }
@@ -3583,6 +5751,7 @@ ol.carousel-indicators{
     top: 0;
     z-index: 5;
 }
+
 
 .modal-body .modal-feat-img{
     margin-left: auto;
@@ -3661,21 +5830,46 @@ ol.carousel-indicators{
 }
 
 .modal-body .news-details .article-meta{
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    gap: 12px;
-    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 8px;
     margin-bottom: 9px;
+}
+
+@media only screen and (max-width: 575px) {
+    .modal-body .news-details .article-meta{
+        grid-template-columns: 1fr auto;
+    }
+
+    .modal-body .news-details .article-meta .date{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .modal-body .news-details .article-meta .read-time{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .modal-body .news-details .article-meta .article-tags{
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: stretch;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 .modal-body .news-details .article-meta .date{
     display: inline;
     margin-bottom: 0;
     color: var(--color-primary);
-    order: 1;
-    flex: 0 0 auto;
-    white-space: nowrap;
+    grid-column: 1;
+    justify-self: start;
+    align-self: start;
 }
 
 .modal-body .news-details .article-meta .read-time{
@@ -3683,11 +5877,11 @@ ol.carousel-indicators{
     line-height: 2.4rem;
     color: var(--color-primary);
     font-weight: 500;
-    order: 3;
-    margin-left: auto;
-    flex: 0 0 auto;
+    grid-column: 3;
+    margin-left: 0;
     text-align: right;
     white-space: nowrap;
+    align-self: start;
 }
 
 .modal-body .news-details .article-tags{
@@ -3696,27 +5890,12 @@ ol.carousel-indicators{
     gap: 6px;
     justify-content: center;
     align-items: flex-start;
-    flex: 1 1 0%;
-    order: 2;
     min-width: 0;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: stretch;
+    align-self: start;
     text-align: center;
-}
-
-@media only screen and (max-width: 767px) {
-    .modal-body .news-details .article-meta{
-        flex-wrap: wrap;
-        gap: 8px 12px;
-    }
-
-    .modal-body .news-details .article-meta .read-time{
-        order: 2;
-    }
-
-    .modal-body .news-details .article-tags{
-        width: 100%;
-        flex: 0 0 100%;
-        order: 3;
-    }
 }
 
 .modal-body .news-details .article-tag{
@@ -3744,7 +5923,15 @@ ol.carousel-indicators{
     margin-bottom: 40px;
 }
 
-.modal-body .news-details p,
+.modal-body .news-details p{
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+    color: var(--color-body);
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
 .modal-body .news-details ul,
 .modal-body .news-details ol{
     font-size: 1.6rem;
@@ -3769,7 +5956,12 @@ ol.carousel-indicators{
     color: var(--color-lightn);
 }
 
-.modal-body .news-details h4,
+.modal-body .news-details h4{
+    font-size: 2rem;
+    line-height: 1.35;
+    color: var(--color-lightn);
+}
+
 .modal-body .news-details h5{
     font-size: 2rem;
     line-height: 1.35;
@@ -4141,7 +6333,10 @@ ol.carousel-indicators{
     transition: var(--transition);
 }
 
-.personal-experience-inner .experience-list .resume-single-list .inner.psudo-after-none::after,
+.personal-experience-inner .experience-list .resume-single-list .inner.psudo-after-none::after{
+    display: none;
+}
+
 .personal-experience-inner .experience-list .resume-single-list .inner.psudo-after-none::before{
     display: none;
 }
@@ -4409,6 +6604,17 @@ ol.carousel-indicators{
     opacity: 0.9;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 .tab-navigation-button .nav-item{
     margin: 0;
 }
@@ -4464,6 +6670,11 @@ span.sr-only{
 /* ****************************
    Pricing Area Styles
    **************************** */
+
+
+
+
+
 
 .navigation-wrapper ul{
     border-radius: 10px;
@@ -4577,6 +6788,8 @@ span.sr-only{
         padding: 15px 15px;
     }
 }
+
+
 
 /* ****************************
    Contact Area Styles
@@ -4748,6 +6961,8 @@ span.sr-only{
     color: var(--color-white);
 }
 
+
+
 .contact-about-area:hover .thumbnail img{
     transform: scale(1.1);
 }
@@ -4910,10 +7125,14 @@ span.sr-only{
     }
 }
 
+
+
 .error-msg p{
     color: #f10;
     font-size: 16px;
 }
+
+
 
 .success-msg p{
     color: green;
@@ -4924,9 +7143,14 @@ span.sr-only{
     border-radius: 10px;
 }
 
+
 .title.small-h2{
     font-size: clamp(2.2rem, 2rem + 0.9vw, 3.2rem) !important;
 }
+
+
+
+
 
 .about-skill-style li{
     display: flex;
@@ -4943,6 +7167,8 @@ span.sr-only{
 .about-skill-style li span{
     color: var(--color-body);
 }
+
+
 
 .service-card-one .inner svg{
     width: 55px;
@@ -5265,7 +7491,12 @@ span.sr-only{
 }
 
 .rn-portfolio .inner .content .category-info .meta span i,
-.rn-blog .inner .content .category-info .meta span i,
+.rn-blog .inner .content .category-info .meta span i{
+    margin-right: 2px;
+    font-size: 13px;
+    transition: var(--transition);
+}
+
 .rn-portfolio .inner .content .category-info .meta span a i,
 .rn-blog .inner .content .category-info .meta span a i{
     margin-right: 2px;
@@ -5333,11 +7564,18 @@ span.sr-only{
 }
 
 .rn-portfolio:hover .thumbnail a img,
-.rn-blog:hover .thumbnail a img,
+.rn-blog:hover .thumbnail a img{
+    transform: scale(1.1);
+}
+
 .rn-portfolio:hover video,
 .rn-blog:hover video{
     transform: scale(1.1);
 }
+
+
+
+
 
 .backto-top{
     position: fixed;
@@ -5411,6 +7649,14 @@ span.sr-only{
     flex: 1 1 auto;
 }
 
+
+
+
+
+
+
+
+
 .rn-blog .inner{
     height: 100%;
     display: flex;
@@ -5426,7 +7672,10 @@ span.sr-only{
     justify-content: flex-start;
 }
 
-.scroll-snap-carousel:focus,
+.scroll-snap-carousel:focus{
+    outline: none;
+}
+
 .rn-portfolio:focus:not(:focus-visible){
     outline: none;
 }
