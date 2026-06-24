@@ -1,0 +1,386 @@
+/* Analytics dashboard stylesheet
+   Sections:
+   01. Page shell
+   02. KPI cards
+   03. Control row
+   04. Trend chart
+   05. Tables and breakdown cards
+   06. Responsive rules
+*/
+
+/* ****************************
+    Page shell
+    **************************** */
+.analytics-admin-wrap {
+    /* Full-height shell keeps the analytics page feeling like a standalone dashboard instead of a section clipped inside the site chrome. */
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1f2328, #14171a);
+    color: #c4cfde;
+    padding: 36px 0 48px;
+}
+
+.analytics-admin-card {
+    /* The slightly translucent card preserves separation from the gradient background without introducing a flat block of color. */
+    background: rgba(34, 38, 43, 0.96);
+    border: 1px solid rgba(225, 74, 115, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+    padding: 18px;
+    height: 100%;
+}
+
+.analytics-admin-card h2,
+.analytics-admin-card h3 {
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+
+/* ****************************
+   KPI cards
+   **************************** */
+.analytics-kpi-grid {
+    /* Four equal columns works for the current KPI set and keeps the top-line metrics visually balanced. */
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.analytics-kpi {
+    border-radius: 10px;
+    border: 1px solid rgba(225, 74, 115, 0.2);
+    background: rgba(26, 29, 33, 0.88);
+    padding: 12px;
+}
+
+.analytics-kpi-label {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #9aa4b2;
+}
+
+.analytics-kpi-value {
+    margin: 8px 0 0;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #e14a73;
+}
+
+/* ****************************
+   Control row
+   **************************** */
+.analytics-controls {
+    /* Wrapping controls prevents the action row from breaking on smaller screens while keeping the primary form and exports together. */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.analytics-controls .hint {
+    margin: 0;
+    color: #9aa4b2;
+    font-size: 1.2rem;
+}
+
+.analytics-controls form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.analytics-controls input[type="number"] {
+    width: 110px;
+    background: #171b20;
+    border: 1px solid rgba(225, 74, 115, 0.26);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 7px 10px;
+}
+
+/* ****************************
+   Trend chart
+   **************************** */
+.analytics-table-wrap {
+    /* Horizontal scrolling is intentional here because the table has more columns than a mobile viewport can safely compress. */
+    overflow-x: auto;
+}
+
+/* ****************************
+   Tables and breakdown cards
+   **************************** */
+.analytics-breakdown-grid {
+    /* The first card spans both columns so the event mix gets enough room for the donut + legend pairing. */
+    margin-top: 16px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.analytics-breakdown-card {
+    border: 1px solid rgba(225, 74, 115, 0.2);
+    border-radius: 12px;
+    background: rgba(19, 22, 26, 0.78);
+    padding: 12px;
+}
+
+.analytics-breakdown-card h4 {
+    margin: 0 0 10px;
+    color: #f5f7fa;
+    font-size: 1.5rem;
+}
+
+.analytics-breakdown-card--mix {
+    grid-column: 1 / -1;
+}
+
+.event-mix-layout {
+    /* Donut plus legend is a two-column layout on wide screens so the chart and labels stay readable side by side. */
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+}
+
+.event-mix-donut {
+    /* The donut is built with a circle plus an inner cutout instead of SVG so the chart stays lightweight and pure CSS. */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(145, 158, 171, 0.2);
+}
+
+.event-mix-donut::after {
+    content: "";
+    position: absolute;
+    inset: 28px;
+    border-radius: 50%;
+    background: #15191e;
+    box-shadow: inset 0 0 0 1px rgba(145, 158, 171, 0.2);
+}
+
+.event-mix-center-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    text-align: center;
+    pointer-events: none;
+}
+
+.event-mix-center-label strong {
+    color: #f5f7fa;
+    font-size: 1.9rem;
+    line-height: 1.1;
+}
+
+.event-mix-center-label span {
+    color: #9aa4b2;
+    font-size: 1.1rem;
+    margin-top: 4px;
+}
+
+.event-mix-legend {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 12px;
+}
+
+.event-mix-legend li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.event-mix-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+}
+
+.event-mix-label {
+    /* Long event names are truncated so one verbose label does not distort the entire legend layout. */
+    color: #d9e1ec;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-mix-value {
+    color: #9aa4b2;
+    font-size: 1.2rem;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.analytics-breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.analytics-breakdown-table th,
+.analytics-breakdown-table td {
+    /* Fixed spacing and no wrapping keeps the comparison tables easy to scan across rows. */
+    border-bottom: 1px solid rgba(145, 158, 171, 0.16);
+    padding: 8px 6px;
+    font-size: 1.25rem;
+}
+
+.analytics-breakdown-table th {
+    color: #f5f7fa;
+    text-align: left;
+    font-weight: 600;
+}
+
+.analytics-breakdown-empty {
+    margin: 0;
+    color: #9aa4b2;
+    font-size: 1.2rem;
+}
+
+.analytics-mini-chart {
+    /* The compact chart uses a small, consistent height so the dashboard does not visually collapse into a full-width graph. */
+    margin: 6px 0 16px;
+    border: 1px solid rgba(225, 74, 115, 0.2);
+    border-radius: 12px;
+    background: rgba(19, 22, 26, 0.78);
+    padding: 12px;
+}
+
+.analytics-mini-chart-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.analytics-mini-chart-head p {
+    margin: 0;
+    color: #9aa4b2;
+    font-size: 1.2rem;
+}
+
+.analytics-mini-bars {
+    /* Column flow makes every day a predictable slot, which is easier to compare than a flex row with variable bar spacing. */
+    height: 120px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(4px, 1fr);
+    gap: 4px;
+    align-items: end;
+}
+
+.analytics-mini-bar {
+    width: 100%;
+    border-radius: 999px 999px 3px 3px;
+    background: linear-gradient(180deg, #f08da8, #e14a73);
+    min-height: 2px;
+    opacity: 0.95;
+}
+
+.analytics-mini-bar.is-zero {
+    /* Zero-height bars stay visible as a subtle placeholder so gaps are still legible in the trend history. */
+    opacity: 0.22;
+    background: rgba(145, 158, 171, 0.45);
+}
+
+.analytics-mini-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #9aa4b2;
+    font-size: 1.1rem;
+}
+
+.analytics-table {
+    /* A minimum width preserves the data columns; we would rather scroll than crush the labels into unreadable text. */
+    width: 100%;
+    min-width: 860px;
+    border-collapse: collapse;
+}
+
+.analytics-table th,
+.analytics-table td {
+    border-bottom: 1px solid rgba(145, 158, 171, 0.16);
+    padding: 10px 8px;
+    white-space: nowrap;
+}
+
+.analytics-table th {
+    color: #f5f7fa;
+    font-weight: 600;
+    text-align: left;
+}
+
+.event-bar-track {
+    /* The track/fill pair gives the table a quick visual read without replacing the actual numeric values. */
+    width: 220px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(145, 158, 171, 0.2);
+    overflow: hidden;
+}
+
+.event-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #e14a73, #f08da8);
+}
+
+/* ****************************
+   Responsive rules
+   **************************** */
+.analytics-admin-links {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 991px) {
+    .analytics-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .analytics-admin-wrap {
+        /* Tighten top padding on phones so the content starts sooner without losing breathing room. */
+        padding-top: 24px;
+    }
+
+    .analytics-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .analytics-breakdown-grid {
+        /* Stack the cards vertically on smaller screens because the donut/legend and tables need full-width reading space. */
+        grid-template-columns: 1fr;
+    }
+
+    .event-mix-layout {
+        /* The mix layout collapses to one column so the chart and legend do not become cramped side-by-side. */
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .event-mix-legend {
+        /* One legend column is easier to scan on mobile and avoids awkward two-item rows. */
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}

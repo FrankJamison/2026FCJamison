@@ -1,63 +1,267 @@
-# SMTP setup (Contact + Leave a Reply)
+# SMTP Setup
 
-The “Contact Me” and “Leave a Reply” forms send email using SMTP via these environment variables (read in `homeViews.py`).
+This document defines a secure and operationally sound SMTP setup for form notifications used by:
 
-## Required environment variables
+- POST /contact
+- POST /leave-reply
 
-- `SMTP_HOST` — SMTP server hostname (example: `smtp.office365.com`, `smtp.gmail.com`, etc)
-- `SMTP_PORT` — usually `587` (STARTTLS) or `465` (SSL)
-- `SMTP_USER` — SMTP username (usually `frank@fcjamison.com`)
-- `SMTP_PASSWORD` — SMTP/app password
+The implementation is in homeViews.py and sends mail through SMTP with TLS.
 
-If you only have **IMAP** settings: those are for receiving mail, not sending. You still need the **SMTP** host/port for sending.
+## 1. Runtime Behavior (Source of Truth)
 
-## Optional environment variables
+The app resolves SMTP settings as follows:
 
-- `SMTP_FROM` — defaults to `frank@fcjamison.com`
-- `SMTP_TO` — defaults to `frank@fcjamison.com`
-- `SMTP_USE_TLS` — defaults to `1` (STARTTLS). Set to `0` to disable.
-- `SMTP_USE_SSL` — defaults to `0`. Set to `1` if your provider requires SSL on connect (usually port `465`).
-- `SMTP_CA_FILE` — path to a CA bundle file to trust (use this if your mail server uses a private/self-signed CA).
-- `SMTP_ALLOW_INVALID_CERT` — dev-only escape hatch to disable certificate verification (`1` to enable). Do not use in production.
+- SMTP_PORT defaults to 465
+- SMTP_USE_SSL defaults to 1 (implicit TLS, SMTPS)
+- SMTP_USE_TLS defaults to 0 (STARTTLS disabled unless enabled)
+- SMTP_FROM defaults to SMTP_USER
+- SMTP_TO defaults to SMTP_USER
+- SMTP_ALLOW_INVALID_CERT defaults to 0 (certificate validation ON)
+- SMTP_CA_FILE optional custom trust bundle path
 
-## Local dev on Windows
+Validation requirements in code:
 
-### Option A: PowerShell (current terminal session only)
+- SMTP_HOST must be set
+- SMTP_FROM must resolve to non-empty
+- SMTP_TO must resolve to non-empty
+- SMTP_PORT must be numeric
 
-```powershell
-$env:SMTP_HOST = "mail.fcjamison.com"
-$env:SMTP_PORT = "465"
-$env:SMTP_USER = "frank@fcjamison.com"
-$env:SMTP_PASSWORD = "YOUR_PASSWORD_OR_APP_PASSWORD"
-$env:SMTP_FROM = "frank@fcjamison.com"
-$env:SMTP_TO = "frank@fcjamison.com"
-$env:SMTP_USE_TLS = "0"
-$env:SMTP_USE_SSL = "1"
+If SMTP_USER is set, authentication login is attempted.
+
+## 2. Required and Optional Variables
+
+### Required for production
+
+- SMTP_HOST: SMTP server hostname
+- SMTP_PORT: 465 (SMTPS) or 587 (STARTTLS)
+- SMTP_FROM: sender envelope/header address
+- SMTP_TO: notification recipient address
+
+### Usually required (authenticated providers)
+
+- SMTP_USER: SMTP username
+- SMTP_PASSWORD: SMTP password or API key
+
+### Optional
+
+- SMTP_USE_SSL: 1 for SMTPS (port 465), 0 otherwise
+- SMTP_USE_TLS: 1 for STARTTLS (port 587), 0 otherwise
+- SMTP_CA_FILE: custom CA bundle path for private/self-signed chains
+- SMTP_ALLOW_INVALID_CERT: dev-only escape hatch; never enable in production
+
+## 3. Recommended Secure Modes
+
+Choose exactly one transport mode:
+
+### Mode A (recommended default): SMTPS
+
+- SMTP_PORT=465
+- SMTP_USE_SSL=1
+- SMTP_USE_TLS=0
+
+### Mode B: STARTTLS
+
+- SMTP_PORT=587
+- SMTP_USE_SSL=0
+- SMTP_USE_TLS=1
+
+Do not enable both SMTP_USE_SSL and SMTP_USE_TLS at the same time.
+
+## 4. Production Environment Examples
+
+### 4.1 Linux systemd service (recommended)
+
+Create or edit your unit override:
+
+```bash
+sudo systemctl edit fcjamison
 ```
 
-Restart the Flask app after setting these.
+Add:
 
-### Option B: System/User environment variables
+```ini
+[Service]
+Environment="SMTP_HOST=smtp.sendgrid.net"
+Environment="SMTP_PORT=465"
+Environment="SMTP_USER=apikey"
+Environment="SMTP_PASSWORD=REPLACE_WITH_SECRET"
+Environment="SMTP_FROM=no-reply@fcjamison.com"
+Environment="SMTP_TO=frank@fcjamison.com"
+Environment="SMTP_USE_SSL=1"
+Environment="SMTP_USE_TLS=0"
+Environment="SMTP_ALLOW_INVALID_CERT=0"
+```
 
-Set the same variables in Windows “Environment Variables”, then restart VS Code and Flask.
+Apply and restart:
 
-## Notes
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart fcjamison
+sudo systemctl status fcjamison --no-pager
+```
 
-- “From frank@fcjamison.com” requires the SMTP account/provider to allow sending as that address.
-- The code sets `Reply-To` to the visitor’s email so you can reply easily.
-- If you get TLS verification errors mentioning `Avast Web/Mail Shield` or “SSL/TLS scanning”, your local antivirus is intercepting the SMTP connection. Disable SSL/TLS scanning for SMTP (preferred) or set `SMTP_ALLOW_INVALID_CERT=1` for local development only.
+### 4.2 .env file (single-host deployments)
 
-## Common settings for `mail.fcjamison.com`
+Use only where filesystem access is controlled and backups are encrypted.
 
-If your provider says “IMAP with SSL”, that often pairs with **SMTP over SSL**:
+```dotenv
+SMTP_HOST=smtp.sendgrid.net
+SMTP_PORT=465
+SMTP_USER=apikey
+SMTP_PASSWORD=REPLACE_WITH_SECRET
+SMTP_FROM=no-reply@fcjamison.com
+SMTP_TO=frank@fcjamison.com
+SMTP_USE_SSL=1
+SMTP_USE_TLS=0
+SMTP_ALLOW_INVALID_CERT=0
+```
 
-- `SMTP_HOST=mail.fcjamison.com`
-- `SMTP_PORT=465`
-- `SMTP_USE_SSL=1`
-- `SMTP_USE_TLS=0`
+File permissions:
 
-If that doesn’t work, the other common option is STARTTLS:
+```bash
+chmod 600 .env
+chown <app_user>:<app_group> .env
+```
 
-- `SMTP_PORT=587`
-- `SMTP_USE_TLS=1`
-- `SMTP_USE_SSL=0`
+## 5. Provider Blueprints
+
+### SendGrid
+
+- SMTP_HOST=smtp.sendgrid.net
+- SMTP_PORT=465 (or 587)
+- SMTP_USER=apikey
+- SMTP_PASSWORD=<SendGrid API key>
+
+### Mailgun
+
+- SMTP_HOST=smtp.mailgun.org
+- SMTP_PORT=465 (or 587)
+- SMTP_USER=postmaster@<your-domain>
+- SMTP_PASSWORD=<Mailgun SMTP password>
+
+### Office 365
+
+- SMTP_HOST=smtp.office365.com
+- SMTP_PORT=587
+- SMTP_USE_SSL=0
+- SMTP_USE_TLS=1
+- SMTP_USER=<mailbox>
+- SMTP_PASSWORD=<app password or policy-compliant credential>
+
+### Gmail Workspace
+
+- SMTP_HOST=smtp.gmail.com
+- SMTP_PORT=587
+- SMTP_USE_SSL=0
+- SMTP_USE_TLS=1
+- SMTP_USER=<mailbox>
+- SMTP_PASSWORD=<app password>
+
+## 6. Operational Hardening
+
+### Secrets management
+
+- Do not commit credentials to git.
+- Prefer environment injection from secret stores (Vault, AWS SSM, Azure Key Vault, Doppler, 1Password Connect).
+- Rotate SMTP_PASSWORD/API keys on a schedule (at least every 90 days).
+
+### Identity and deliverability
+
+- Ensure SMTP_FROM is a verified sender/domain in your provider.
+- Configure SPF, DKIM, and DMARC for your sending domain.
+- Keep SMTP_FROM aligned with your authenticated domain to avoid rejection/spam scoring.
+
+### TLS and trust
+
+- Keep SMTP_ALLOW_INVALID_CERT=0 in production.
+- Use SMTP_CA_FILE only when a private CA is required.
+- Monitor certificate expiry for private mail infrastructure.
+
+## 7. Verification and Smoke Testing
+
+### App-level validation
+
+1. Restart the app after setting environment variables.
+2. Submit /contact with a real reachable email in the form.
+3. Confirm:
+   - HTTP response is ok: true
+   - a CSV row is written under data/
+   - notification email arrives in SMTP_TO mailbox
+
+### Connectivity check from host
+
+SMTPS 465:
+
+```bash
+openssl s_client -connect <SMTP_HOST>:465 -servername <SMTP_HOST> -brief
+```
+
+STARTTLS 587:
+
+```bash
+openssl s_client -starttls smtp -connect <SMTP_HOST>:587 -servername <SMTP_HOST> -brief
+```
+
+## 8. Troubleshooting Playbook
+
+### Authentication failed
+
+Symptoms:
+
+- Email send failed: authentication failed / invalid login
+
+Actions:
+
+1. Verify SMTP_USER and SMTP_PASSWORD
+2. Confirm provider requires API key format (for example, SendGrid uses SMTP_USER=apikey)
+3. Validate account policy (MFA/app password requirements)
+
+### TLS handshake or certificate errors
+
+Symptoms:
+
+- certificate verify failed
+- hostname mismatch
+
+Actions:
+
+1. Verify host and port pair are correct
+2. Ensure the server cert chain is valid for the configured hostname
+3. If private CA is used, set SMTP_CA_FILE
+4. Do not use SMTP_ALLOW_INVALID_CERT in production
+
+### Timeouts or connection refused
+
+Actions:
+
+1. Confirm outbound firewall rules allow SMTP_HOST:SMTP_PORT
+2. Confirm provider is reachable from server network
+3. Increase network observability (host firewall logs, provider status page)
+
+### Emails not delivered (but send succeeds)
+
+Actions:
+
+1. Check spam/quarantine inboxes
+2. Verify SPF, DKIM, DMARC
+3. Review provider suppression/bounce lists
+4. Ensure SMTP_FROM domain is verified and permitted
+
+## 9. Production Checklist
+
+- SMTP_HOST set
+- SMTP_PORT set correctly for selected mode
+- SMTP_USE_SSL / SMTP_USE_TLS configured as one valid pair
+- SMTP_USER and SMTP_PASSWORD set (if provider requires auth)
+- SMTP_FROM and SMTP_TO set explicitly
+- SMTP_ALLOW_INVALID_CERT=0
+- SPF, DKIM, DMARC configured
+- Secrets managed outside git
+- Form submission smoke test passed
+- Delivery verified in target mailbox
+
+## 10. Notes for This Repository
+
+- The app writes form payloads to CSV and then attempts SMTP delivery.
+- Reply-To is set to the visitor email when provided, allowing direct response.
+- SMTP errors are returned from server-side send attempts and should be monitored in application logs.

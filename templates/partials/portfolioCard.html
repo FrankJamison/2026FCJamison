@@ -1,0 +1,24 @@
+{% macro portfolio_card(year, title, image_base, alt_text, modal_target) -%}
+<div class="portfolio-item scroll-snap-item" role="listitem">
+    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#{{ modal_target }}">
+        <div class="inner">
+            <div class="thumbnail">
+                <span>
+                    <picture>
+                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/' ~ image_base ~ '.webp') }}">
+                        <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/' ~ image_base ~ '.webp') }}" alt="{{ alt_text }}">
+                    </picture>
+                </span>
+            </div>
+            <div class="content">
+                <div class="category-info">
+                    <div class="category-list">
+                        <span>{{ year }}</span>
+                    </div>
+                </div>
+                <span class="title"><span>{{ title | safe }}</span></span>
+            </div>
+        </div>
+    </button>
+</div>
+{%- endmacro %}

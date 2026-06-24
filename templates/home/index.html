@@ -3,15 +3,17 @@
 
 <!-- Head/meta + global styles -->
 {% include  './partials/head.html'  %}
+{% from './partials/navItems.html' import nav_item %}
+{% from './partials/featuredProjects.html' import featured_project_card %}
+{% from './partials/progressItem.html' import progress_item %}
+{% from './partials/experienceCard.html' import experience_card %}
+{% from './partials/educationCard.html' import education_card %}
+{% from './partials/portfolioCard.html' import portfolio_card %}
 
 <body class="template-color-1 spybody">
-
-    <!-- Skip link for keyboard users -->
     <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
 
-    <!-- ****************************
-       Site header + primary navigation
-       **************************** -->
+    <!-- Site chrome: fixed header plus a mirrored mobile nav for one-page navigation -->
     <header class="site-header site-header--fixed site-header--sticky">
         <div class="margin-0 row align-items-center site-header__wrapper">
             <div class="col-lg-2 col-6">
@@ -27,12 +29,12 @@
                 <div class="site-header__center">
                     <nav class="navbar-example2 d-none d-xl-block onepagenav site-header__nav site-header__side-nav" aria-label="Primary">
                         <ul class="nav nav-pills site-header__menu">
-                            <li class="nav-item current site-header__menu-item"><a class="nav-link smoth-animation active site-header__menu-link" href="#home">Home</a></li>
-                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#experience">Experience</a></li>
-                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#education">Education</a></li>
-                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#resume">Resume</a></li>
-                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item site-header__menu-item"><a class="nav-link smoth-animation site-header__menu-link" href="#contacts">Contact</a></li>
+                            <!-- Navigation data: label, section href, list-item class, and link class. -->
+                            {{ nav_item('Home', '#home', 'nav-item current site-header__menu-item', 'nav-link smoth-animation active site-header__menu-link') }}
+                            {{ nav_item('Featured Projects', '#featured-projects', 'nav-item site-header__menu-item', 'nav-link smoth-animation site-header__menu-link') }}
+                            {{ nav_item('Resume', '#resume', 'nav-item site-header__menu-item', 'nav-link smoth-animation site-header__menu-link') }}
+                            {{ nav_item('Portfolio', '#portfolio', 'nav-item site-header__menu-item', 'nav-link smoth-animation site-header__menu-link') }}
+                            {{ nav_item('Contact', '#contacts', 'nav-item site-header__menu-item', 'nav-link smoth-animation site-header__menu-link') }}
                         </ul>
                     </nav>
                     <div class="site-header__right">
@@ -41,22 +43,12 @@
                                 <i data-feather="menu" aria-hidden="true"></i>
                             </button>
                         </div>
-
-                        <div class="d-block site-header__close-menu">
-                            <button type="button" class="site-header__close" aria-label="Close menu" aria-controls="mobile-menu">
-                                <i data-feather="x" aria-hidden="true"></i>
-                            </button>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ****************************
-       Mobile menu panel (toggled via JS)
-       **************************** -->
     <aside id="mobile-menu" class="mobile-menu" aria-hidden="true" aria-label="Mobile menu">
         <div class="mobile-menu__inner">
             <div class="mobile-menu__top">
@@ -68,94 +60,55 @@
                         <button class="mobile-menu__close-button" type="button" aria-label="Close menu"><i data-feather="x" aria-hidden="true"></i></button>
                     </div>
                 </div>
-                <p class="discription"></p>
             </div>
             <div class="mobile-menu__content">
                 <nav aria-label="Mobile navigation">
                     <ul class="nav nav-pills onepagenav mobile-menu__menu">
-                        <li class="nav-item current mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#home">Home</a></li>
-                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#experience">Experience</a></li>
-                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#education">Education</a></li>
-                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#resume">Resume</a></li>
-                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item mobile-menu__menu-item"><a class="nav-link smoth-animation mobile-menu__menu-link" href="#contacts">Contact</a></li>
+                        <!-- Same navigation data as the desktop menu, styled for the mobile drawer. -->
+                        {{ nav_item('Home', '#home', 'nav-item current mobile-menu__menu-item', 'nav-link smoth-animation active mobile-menu__menu-link') }}
+                        {{ nav_item('Featured Projects', '#featured-projects', 'nav-item mobile-menu__menu-item', 'nav-link smoth-animation mobile-menu__menu-link') }}
+                        {{ nav_item('Resume', '#resume', 'nav-item mobile-menu__menu-item', 'nav-link smoth-animation mobile-menu__menu-link') }}
+                        {{ nav_item('Portfolio', '#portfolio', 'nav-item mobile-menu__menu-item', 'nav-link smoth-animation mobile-menu__menu-link') }}
+                        {{ nav_item('Contact', '#contacts', 'nav-item mobile-menu__menu-item', 'nav-link smoth-animation mobile-menu__menu-link') }}
                     </ul>
-                    <!-- ****************************
-                       Mobile menu social link
-                       **************************** -->
-                    <div class="social-share-style-1 margin-top-40" aria-label="Social links">
-                        <span class="title">find with me</span>
-                        <ul class="social-share d-flex liststyle">
-                            <li class="linkedin"><a href="https://www.linkedin.com/in/frank-jamison/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin" aria-hidden="true">
-                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                        <rect x="2" y="9" width="4" height="12"></rect>
-                                        <circle cx="4" cy="4" r="2"></circle>
-                                    </svg></a>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
             </div>
         </div>
     </aside>
 
-    <!-- ****************************
-       Main content sections
-       **************************** -->
     <main class="main-page-wrapper" id="main-content">
-
-        <!-- ****************************
-           Hero section
-           **************************** -->
+        <!-- Hero: concise positioning, current role target, and primary conversion actions -->
         <section id="home" class="rn-slide-area" aria-labelledby="home-title">
             <div class="slide slider-style-3">
                 <div class="container">
                     <div class="row slider-wrapper">
                         <div class="order-2 order-xl-1 col-lg-12 col-xl-5 mt_lg--50 mt_md--50 mt_sm--50">
                             <div class="slider-info">
-                                <div class="row">
-                                    <div class="col-xl-12 col-lg-12 col-12">
-                                        <div class="user-info-top">
-                                            <div class="user-info-header">
-                                                <div class="user">
-                                                    <i data-feather="user" aria-hidden="true"></i>
-                                                </div>
-                                                <h1 class="title" id="home-title">
-                                                    Hi, I’m <span>Frank</span>
-                                                </h1>
-                                                <p class="disc">Junior Web & Software Developer with real production experience, focused on building reliable, accessible web solutions.</p>
-                                            </div>
-                                            <div class="user-info-footer">
-                                                <div class="info">
-                                                    <i data-feather="file" aria-hidden="true"></i>
-                                                    <span>Web designer & developer</span>
-                                                </div>
-                                                <div class="info">
-                                                    <i data-feather="mail" aria-hidden="true"></i>
-                                                    <a href="mailto:frank@fcjamison.com">frank@fcjamison.com</a>
-                                                </div>
-                                                <div class="info">
-                                                    <i data-feather="map-pin" aria-hidden="true"></i>
-                                                    <span>Hemet, CA</span>
-                                                </div>
-                                            </div>
+                                <div class="user-info-top">
+                                    <div class="user-info-header">
+                                        <div class="user">
+                                            <i data-feather="user" aria-hidden="true"></i>
                                         </div>
+                                        <h1 class="title" id="home-title">Hi, I'm <span>Frank</span></h1>
+                                        <p class="disc">Full-stack developer building reliable, accessible web applications with Python, Flask, and modern frontend tooling.</p>
+                                        <p class="disc disc-secondary">Currently pursuing full-time individual-contributor web development roles across product and platform teams.</p>
                                     </div>
-
-                                    <div class="col-xl-12 col-lg-12 col-12">
-                                        <div class="user-info-bottom">
-                                            <span>Download my curriculum vitae: </span>
-                                            <div class="button-wrapper d-flex">
-                                                <a class="rn-btn margin-right-30" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}"><span>DOWNLOAD CV</span></a>
-                                                <a class="rn-btn" href="#contacts"><span>CONTACT ME</span></a>
-                                            </div>
-                                        </div>
+                                    <div class="user-info-footer">
+                                        <div class="info"><i data-feather="file" aria-hidden="true"></i><span>Software Developer</span></div>
+                                        <div class="info"><i data-feather="mail" aria-hidden="true"></i><a href="mailto:frank@fcjamison.com">frank@fcjamison.com</a></div>
+                                        <div class="info"><i data-feather="map-pin" aria-hidden="true"></i><span>Hemet, CA</span></div>
                                     </div>
-
+                                </div>
+                                <div class="user-info-bottom">
+                                    <span>Explore case studies or download my curriculum vitae:</span>
+                                    <div class="button-wrapper">
+                                        <a class="rn-btn hero-cta-primary" href="#featured-projects" data-track-event="hero_cta_click" data-track-label="view_case_studies"><span>VIEW CASE STUDIES</span></a>
+                                        <a class="rn-btn hero-cta-secondary" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}" data-track-event="hero_cta_click" data-track-label="download_cv"><span>DOWNLOAD CV</span></a>
+                                        <a class="rn-btn hero-cta-secondary" href="#contacts" data-track-event="hero_cta_click" data-track-label="start_conversation"><span>START A CONVERSATION</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="order-1 order-xl-2 col-lg-12 col-xl-7">
                             <div class="background-image-area">
                                 <div class="thumbnail-image">
@@ -168,133 +121,26 @@
             </div>
         </section>
 
-        <!-- ****************************
-           Experience timeline
-           **************************** -->
-        <section id="experience" class="rn-experience-area section-divider section-padding-vertical" aria-labelledby="experience-title">
+        <!-- Featured projects: selected work with problem / solution / impact framing -->
+        <section id="featured-projects" class="rn-blog-area section-padding-vertical section-divider" aria-labelledby="featured-projects-title">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title text-center">
-                            <span class="subtitle">Over 15 years of experience</span>
-                            <h2 class="title" id="experience-title">My Experience</h2>
+                            <span class="subtitle">Web Development | Full-Stack Engineering | Technical Writing</span>
+                            <h2 class="title" id="featured-projects-title">Featured Projects</h2>
+                            <p class="description">Selected projects with clear business context, implementation approach, and measurable outcomes.</p>
                         </div>
                     </div>
                 </div>
-                <div class="row margin-top-10">
-                    <div class="col-12 mt_experience">
-
-                        <div class="experience-style-two">
-                            <div class="experience-left">
-                                <div class="experience-image">
-                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/experience/jamison_web_design_logo_dark.png') }}" alt="Jamison Web Design">
-                                </div>
-                                <div class="experience-center">
-                                    <span class="date">2006-Present</span>
-                                    <h3 class="experience-title">
-                                        Jamison Web Design.
-                                    </h3>
-                                    <h4 class="subtitle">
-                                        Web Designer & Developer
-                                    </h4>
-                                    <p class="disc">Thoughtful design for the modern web</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="experience-style-two">
-                            <div class="experience-left">
-                                <div class="experience-image">
-                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/experience/Broadridge2.png') }}" alt="Broadridge Advisor Solutions">
-                                </div>
-                                <div class="experience-center">
-                                    <span class="date">2016-2022</span>
-                                    <h3 class="experience-title">
-                                        Broadridge Advisor Solutions
-                                    </h3>
-                                    <h4 class="subtitle">
-                                        Junior Software Developer
-                                    </h4>
-                                    <p class="disc">Developing practical solutions through code</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ****************************
-           Education timeline
-           **************************** -->
-        <section id="education" class="rn-education-area section-padding-vertical section-divider" aria-labelledby="education-title">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle">Post-Secondary</span>
-                            <h2 class="title" id="education-title">Education</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row margin-top-10">
-                    <div class="col-12 mt_experience">
-                        <div class="experience-style-two">
-                            <div class="experience-left">
-                                <div class="experience-image">
-                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/regis_university.png') }}" alt="Regis University">
-                                </div>
-                                <div class="experience-center">
-                                    <span class="date">2020-2021</span>
-                                    <h3 class="experience-title">
-                                        Regis University.
-                                    </h3>
-                                    <h4 class="subtitle">
-                                        Master's Certificate
-                                    </h4>
-                                    <p class="disc">Full Stack+ Web Development</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="experience-style-two">
-                            <div class="experience-left">
-                                <div class="experience-image">
-                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/southern_new_hampshire_university.png') }}" alt="Southern New Hampshire University">
-                                </div>
-                                <div class="experience-center">
-                                    <span class="date">2015-2019</span>
-                                    <h3 class="experience-title">
-                                        Southern New Hampshire University.
-                                    </h3>
-                                    <h4 class="subtitle">
-                                        Master of Science
-                                    </h4>
-                                    <p class="disc">Information Technology w/concentration in Web Design</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="experience-style-two">
-                            <div class="experience-left">
-                                <div class="experience-image">
-                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/education/national_university.png') }}" alt="National University">
-                                </div>
-                                <div class="experience-center">
-                                    <span class="date">2013-2015</span>
-                                    <h3 class="experience-title">
-                                        National University.
-                                    </h3>
-                                    <h4 class="subtitle">
-                                        Bachelor of Science
-                                    </h4>
-                                    <p class="disc">Computer Science</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="row margin-top-40">
+                    <!-- Featured project data: image key, alt text, title, stack, problem, build summary, impact, URLs, and tracking labels. -->
+                    {{ featured_project_card('StackNScroll.com', 'StackNScroll.com - Technical Writing Platform', 'StackNScroll.com', 'WordPress, PHP, JavaScript', 'Needed a scalable publishing workflow for long-form technical content.', 'Built an editorial platform with optimized templates, navigation, and content architecture.', 'Reduced editorial overhead and improved release consistency for long-form publishing.', 'https://www.stacknscroll.com/', 'https://github.com/FrankJamison/StackNScroll', 'stacknscroll_view_site', 'stacknscroll_view_code', 'eager', 'high') }}
+                    {{ featured_project_card('PassionateTeachingJourney.com', 'Passionate Teaching Journey - Education Blog', 'Passionate Teaching Journey', 'WordPress, PHP, CSS', 'Needed an education publishing workflow with clear topic-to-content pathways.', 'Built a custom content model with theme refinements and article-first layouts.', 'Improved content discoverability and reduced navigation friction for readers.', 'https://www.passionateteachingjourney.com/', 'https://github.com/FrankJamison/PassionateTeachingJourney.com', 'passionate_teaching_journey_view_site', 'passionate_teaching_journey_view_code') }}
+                    {{ featured_project_card('JamisonStamps.com', 'JamisonStamps.com - E-Commerce Platform', 'JamisonStamps.com', 'PHP, MySQL, PayPal API', 'Needed a maintainable commerce workflow for catalog management and sales.', 'Built an end-to-end storefront with catalog, checkout, and payment integration.', 'Improved checkout reliability and reduced manual order handling.', 'https://www.jamisonstamps.com/', 'https://github.com/FrankJamison/Jamison-Stamps-and-Books', 'jamison_stamps_view_site', 'jamison_stamps_view_code') }}
+                    {{ featured_project_card('Password-Check-Application', 'Password Exposure Checker - Security Tool', 'Password Exposure Checker', 'PHP, Python, HIBP API', 'Needed a secure breach-check workflow without direct credential exposure.', 'Built a privacy-first verification flow using k-anonymity hashing and API orchestration.', 'Lowered credential-exposure risk and improved user trust in breach checks.', 'https://passwordcheck.fcjamison.com/', 'https://github.com/FrankJamison/Password-Exposure-Checker', 'password_checker_view_site', 'password_checker_view_code') }}
+                    {{ featured_project_card('Hacker-News-Aggregator-Application', 'Hacker News Aggregator', 'Hacker News Aggregator', 'PHP, Python, CSS', 'Needed a repeatable technical-news workflow with less manual discovery effort.', 'Built an automated ingestion and presentation pipeline for curated news content.', 'Reduced research time and context switching by centralizing technical news.', 'https://hackernews.fcjamison.com/', 'https://github.com/FrankJamison/2026HackerNews', 'hacker_news_view_site', 'hacker_news_view_code') }}
+                    {{ featured_project_card('DnD5eTools.com', 'DnD5eTools - D&D Companion Tool', 'DnD5eTools.com', 'JavaScript, HTML, CSS', 'Needed an in-session utility workflow for repetitive tabletop setup tasks.', 'Built a lightweight browser toolkit with data-driven generators and reusable utilities.', 'Reduced table-side setup time and improved in-session pacing.', 'https://www.dnd5etools.com/', 'https://github.com/FrankJamison/DnD5eTools.com', 'dnd5etools_view_site', 'dnd5etools_view_code') }}
                 </div>
             </div>
         </section>
@@ -302,6 +148,7 @@
         <!-- ****************************
            Resume tabs: education/experience + skills
            **************************** -->
+        <!-- Resume: education, experience, and skills summarized for recruiter scanning -->
         <section class="rn-resume-area section-padding-vertical section-divider" id="resume" aria-labelledby="resume-title">
             <div class="container">
                 <div class="row">
@@ -334,179 +181,16 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12 col-12">
                                             <div class="content">
-                                                <span class="subtitle">1986 - 2024</span>
-                                                <h3 class="maintitle">Education</h3>
+                                                <span class="subtitle">2021</span>
+                                                <h3 class="maintitle">Education and Credentials</h3>
                                                 <div class="experience-list" role="list">
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Associate Degree Coursework</h4>
-                                                                    <span>University of Maryland University College (1986 - 1989)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 2.333</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Associate of Science in Natural Sciences</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Associate Degree</h4>
-                                                                    <span>Riverwside Community College (1992 - 1994)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.000</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Associate of Science in Natural Sciences</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Novell Certification</h4>
-                                                                    <span>Computer Learning Center (1997 - 1998)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>Certified</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Certified Novell Administrator - Netware 3</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Associate Degrees</h4>
-                                                                    <span>Mt. San Jacinto College (2005 - 2006)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.093</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">
-                                                                Associate of Arts in Liberal Arts<br>
-                                                                Associate of Arts in Social/Behavioral Sciences<br>
-                                                                Associate of Arts in Humanities<br>
-                                                                Associate of Science in Mathematics/Science<br>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Bachelor Degree Coursework</h4>
-                                                                    <span>California State University San Bernardino (1997 - 2001)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.558</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Computer Engineering</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Bachelor Degree</h4>
-                                                                    <span>National University (2013 - 2015)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.764</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Bachelor of Science in Computer Science</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Profesional Certificate</h4>
-                                                                    <span>University of California Davis Continuing and<br>Professional Education (2017 - 2018)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.860</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Web Development Certificate</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Master's Degree</h4>
-                                                                    <span>Southern New Hampshire University (2016 - 2019)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 4.000</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Master of Science in Information Technology w/conc. in Web Design</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Graduate Certificate</h4>
-                                                                    <span>Regis University (2020 - 2021)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 3.917</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Graduate Certificate in Full Stack+ Web Development</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Doctoral Degree Work</h4>
-                                                                    <span>Chicago School of Professional Psychology (2022 - 2023)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 4.000</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Educational Psychology and Technology</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Master's Degree Work</h4>
-                                                                    <span>National University (2023 - 2024)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>GPA: 4.000</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Inspired Teaching and Learning with a Preliminary Teaching Credential and Intern Option (California)</p>
-                                                        </div>
-                                                    </div>
+                                                    <!-- Education data: credential title, institution, year, GPA, and summary. -->
+                                                    {{ education_card('Graduate Certificate', 'Regis University', '2021', '3.92', 'Graduate Certificate in Full-Stack Web Development with applied work in backend integration, database workflows, and modern frontend delivery.') }}
+                                                    {{ education_card("Master's Degree", 'Southern New Hampshire University', '2019', '4.00', 'Master of Science in Information Technology with concentration in Web Design, emphasizing usability, information architecture, and maintainable web systems.') }}
+                                                    {{ education_card('Professional Certificate', 'University of California Davis Continuing and Professional Education', '2018', '3.86', 'Web Development Certificate focused on frontend architecture, responsive UI, and production-ready implementation practices.') }}
+                                                    {{ education_card('Bachelor Degree', 'National University', '2015', '3.76', 'Bachelor of Science in Computer Science') }}
+                                                    {{ education_card('Associate Degrees', 'Mt. San Jacinto College', '2006', '3.09', 'Associate of Arts in Liberal Arts; Associate of Arts in Social/Behavioral Sciences; Associate of Arts in Humanities; Associate of Science in Mathematics/Science') }}
+                                                    {{ education_card('Associate Degree', 'Riverside Community College', '1994', '3.00', 'Associate of Science in Natural Sciences') }}
 
                                                 </div>
                                             </div>
@@ -515,126 +199,56 @@
                                         <div class="col-lg-6 col-md-12 col-12 mt_md--60 mt_sm--60">
                                             <div class="content">
                                                 <span class="subtitle">2016 - Present</span>
-                                                <h3 class="maintitle">Job Experience</h3>
+                                                <h3 class="maintitle">Professional Experience</h3>
                                                 <div class="experience-list" role="list">
+                                                    <!-- Experience data: role title, employer, date range, and bullet list of responsibilities and outcomes. -->
+                                                    {{ experience_card('Associate Software Developer', 'Broadridge Advisor Solutions', '2019 - 2022', [
+                                                        'Developed and maintained enterprise web applications using ColdFusion, Microsoft SQL Server, HTML, CSS, and JavaScript across the full software development lifecycle.',
+                                                        'Designed and delivered a bulk-update utility that reduced manual processing effort by more than 50 percent for internal operational workflows.',
+                                                        'Remediated and updated more than 50 website templates to support WCAG 2.0 AA accessibility compliance, including semantic markup, forms, labels, and keyboard navigation.',
+                                                        'Investigated and resolved production defects, database issues, and release-related problems while collaborating with QA, analysts, and stakeholder teams.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Technical Support Specialist</h4>
-                                                                    <span>Broadridge Advisor Solutions (2016 - 2018)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Delivered high-volume technical support during the 2017–2018 performance cycle while maintaining top-tier customer satisfaction, demonstrating strong analytical and debugging skills.</li>
-                                                                <li>Investigated and resolved 6,900+ Help Desk Incidents (HDIs) during the 2017–2018 cycle, consistently identifying root causes and translating user issues into actionable technical solutions.</li>
-                                                                <li>Contributed to internal web development by assisting with coding and building reusable templates for the Broadridge DESK Support Site, supporting scalable documentation and improved support workflows.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Client Support Associate', 'Broadridge Advisor Solutions', '2016 - 2018', [
+                                                        'Resolved 6,904 Help Desk incidents during the 2017-2018 performance period, the highest incident-resolution volume on the team.',
+                                                        'Provided technical support for websites, hosting environments, advisor-facing applications, and digital marketing systems via phone, email, and ticketing workflows.',
+                                                        'Diagnosed and documented reproducible defects, collaborated with development and operations teams, and authored support documentation and knowledge-base content.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Associate Software Developer</h4>
-                                                                    <span>Broadridge Advisor Solutions (2019 - 2022)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Developed, enhanced, and maintained production web applications supporting financial advisors using ColdFusion and Microsoft SQL Server.</li>
-                                                                <li>Architected an internal administrative tool for technical support teams to manage broker-dealer and compliance data, reducing task completion time by approximately 50%.</li>
-                                                                <li>Led accessibility remediation across more than 50 production website templates to achieve WCAG 2.0 AA compliance.</li>
-                                                                <li>Diagnosed and resolved complex software defects, performance bottlenecks, and data integrity issues in a regulated environment.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Instructional Laboratory Technician', 'Mt. San Jacinto College', '2022 - 2024', [
+                                                        'Prepared and maintained physics laboratory equipment, PASCO systems, and instructional technology for multiple course sections.',
+                                                        'Configured, calibrated, tested, and troubleshot oscilloscopes, sensors, power systems, and supporting software used in lab instruction.',
+                                                        'Supported faculty and students during laboratory exercises, data collection activities, and technical issue resolution.',
+                                                        'Managed laboratory inventory, documentation, equipment checkout workflows, and safety/compliance records.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Instructional Laboratory Technician</h4>
-                                                                    <span>Mt. San Jacinto College (2022 - 2024)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Supported physics laboratories by configuring, testing, and maintaining technical equipment, ensuring reliable operation across multiple instructional environments.</li>
-                                                                <li>Diagnosed and resolved hardware, software, and instrumentation issues, applying systematic troubleshooting and documentation practices.</li>
-                                                                <li>Assisted faculty and students by translating complex technical concepts into clear, actionable guidance.</li>
-                                                                <li>Managed lab workflows, data collection processes, and procedural documentation to support consistency, accuracy, and repeatability.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Learning Support Specialist', 'Tutor Me Education', '2025 - Present', [
+                                                        'Delivered individualized, data-informed support plans with measurable goals and iterative adjustments.',
+                                                        'Analyzed performance signals to identify bottlenecks and refine intervention strategy based on outcomes.',
+                                                        'Converted complex topics into clear, stepwise guidance, strengthening user-focused solution design.',
+                                                        'Maintained detailed progress records and strategy documentation to ensure reliable, repeatable support.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Math Instructor</h4>
-                                                                    <span>Excelsior Charter School (2024 - 2025)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Designed and delivered structured, logic-driven lessons that emphasized problem decomposition, pattern recognition, and step-by-step reasoning.</li>
-                                                                <li>Adapted instruction based on continuous assessment and feedback, reinforcing iterative improvement and outcome-driven refinement.</li>
-                                                                <li>Communicated complex concepts clearly to diverse learners, strengthening skills in technical explanation and user-focused thinking.</li>
-                                                                <li>Developed digital instructional materials and workflows to support consistency, scalability, and student engagement.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Math Instructor', 'Excelsior Charter School', '2024 - 2025', [
+                                                        'Designed and delivered structured, logic-driven instruction centered on decomposition, pattern recognition, and algorithmic reasoning.',
+                                                        'Used assessment data and feedback loops to iteratively improve outcomes, mirroring test-and-refine product workflows.',
+                                                        'Translated complex technical concepts into clear explanations, strengthening onboarding and documentation-oriented communication.',
+                                                        'Built reusable digital instructional assets and repeatable workflows to improve consistency and scalability.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Classroom Instructional Aide</h4>
-                                                                    <span>Tahquitz High School (2025)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Provided one-on-one and small-group academic support, reinforcing structured problem-solving and step-by-step reasoning.</li>
-                                                                <li>Assisted in implementing instructional workflows and classroom procedures, supporting consistency and efficiency.</li>
-                                                                <li>Clarified complex concepts and instructions for students, strengthening skills in clear technical communication and user support.</li>
-                                                                <li>Supported differentiated instruction and accommodations, developing adaptability and attention to edge cases.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Classroom Instructional Aide', 'Tahquitz High School', '2025', [
+                                                        'Provided targeted one-on-one and small-group support using structured troubleshooting and step-by-step guidance.',
+                                                        'Executed defined workflows and operating procedures with reliability across fast-moving classroom environments.',
+                                                        'Clarified complex instructions for diverse users, strengthening technical communication and support delivery skills.',
+                                                        'Adapted instruction for edge cases and accommodations, reinforcing flexibility and user-centered problem solving.'
+                                                    ]) }}
 
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Substitute/Guest Teacher</h4>
-                                                                    <span>Hemet/San Jacinto Unified School Districts (2025 - Present)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Stepped into diverse classroom environments with minimal ramp-up time, quickly interpreting lesson plans and maintaining instructional continuity.</li>
-                                                                <li>Adapted to varying systems, expectations, and student needs, demonstrating flexibility and rapid problem-solving.</li>
-                                                                <li>Communicated instructions clearly and enforced structured workflows to keep classrooms operating smoothly.</li>
-                                                                <li>Documented outcomes and provided feedback to permanent instructors, supporting consistent handoff and process continuity.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="resume-single-list" role="listitem">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Learning Support Specialist</h4>
-                                                                    <span>Tutor Me Education (2025 - Present)</span>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="description">
-                                                                <li>Delivered individualized instruction tailored to diverse learning profiles, reinforcing structured problem-solving and adaptive approaches.</li>
-                                                                <li>Analyzed student performance to identify gaps and adjust strategies, applying iterative refinement based on feedback and outcomes.</li>
-                                                                <li>Broke down complex concepts into clear, manageable steps, strengthening skills in technical explanation and user-focused design.</li>
-                                                                <li>Maintained detailed documentation of progress, accommodations, and strategies to ensure consistency and continuity.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    {{ experience_card('Substitute/Guest Teacher', 'Hemet/San Jacinto Unified School Districts', '2025 - Present', [
+                                                        'Onboarded quickly into varied environments and maintained continuity with minimal ramp-up time.',
+                                                        'Adapted to changing requirements and constraints while preserving delivery quality and classroom stability.',
+                                                        'Communicated process and expectations clearly to maintain consistent execution under time pressure.',
+                                                        'Produced clear handoff notes and outcome documentation to support continuity across teams.'
+                                                    ]) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -650,77 +264,21 @@
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="progress-wrapper">
                                                 <div class="content">
-                                                    <span class="subtitle">Features</span>
-                                                    <h3 class="maintitle">Languages</h3>
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">C++</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">C#</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">65%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">ColdFusion</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">CSS</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">HTML</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Java</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">60%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">JavaScript</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">PHP</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Python</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">SQL</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
-                                                        </div>
-                                                    </div>
+                                                    <span class="subtitle">Web Development Skills</span>
+                                                    <h3 class="maintitle">Frontend and Web Application Stack</h3>
+                                                    <!-- Skill data: label and displayed proficiency percentage. -->
+                                                    {{ progress_item('HTML5', 95) }}
+                                                    {{ progress_item('CSS3', 95) }}
+                                                    {{ progress_item('JavaScript', 88) }}
+                                                    {{ progress_item('Bootstrap', 90) }}
+                                                    {{ progress_item('PHP', 78) }}
+                                                    {{ progress_item('Flask and Jinja2', 85) }}
+                                                    {{ progress_item('React', 72) }}
+                                                    {{ progress_item('Angular', 68) }}
+                                                    {{ progress_item('ColdFusion', 82) }}
+                                                    {{ progress_item('Web Accessibility (WCAG 2.0 AA)', 92) }}
+                                                    {{ progress_item('Semantic HTML and ARIA', 90) }}
+                                                    {{ progress_item('Git and GitHub Workflow', 88) }}
 
                                                 </div>
                                             </div>
@@ -729,77 +287,21 @@
                                         <div class="col-lg-6 col-md-6 col-12 mt_sm--60">
                                             <div class="progress-wrapper">
                                                 <div class="content">
-                                                    <span class="subtitle">Features</span>
-                                                    <h3 class="maintitle">Developer Strengths</h3>
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Web Development, SQL</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Problem Solving, Automation</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Web Accessibility (WCAG), UX Compliance</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Debugging, Troubleshooting</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Technical Communication, Documentation</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Systems Thinking, Workflow Design</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Adaptability, Rapid Onboarding</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Continuous Improvement, Iteration</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">85%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">User-Centered Design, Usability</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="progress-charts">
-                                                        <h4 class="heading heading-h6">Reliability, Ownership</h4>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
-                                                        </div>
-                                                    </div>
+                                                    <span class="subtitle">Broader Technical and Delivery Skills</span>
+                                                    <h3 class="maintitle">Cross-Functional Engineering Strengths</h3>
+                                                    <!-- Skill data: label and displayed proficiency percentage. -->
+                                                    {{ progress_item('Python', 87) }}
+                                                    {{ progress_item('SQL Server and Relational Data', 90) }}
+                                                    {{ progress_item('MySQL and MariaDB', 82) }}
+                                                    {{ progress_item('Debugging and Production Support', 92) }}
+                                                    {{ progress_item('Technical Documentation', 91) }}
+                                                    {{ progress_item('SDLC Collaboration (Agile/Scrum)', 88) }}
+                                                    {{ progress_item('User Support and Technical Assistance', 90) }}
+                                                    {{ progress_item('AI-Assisted Development (Copilot/ChatGPT)', 85) }}
+                                                    {{ progress_item('Information Architecture and Content Strategy', 84) }}
+                                                    {{ progress_item('Stakeholder Communication', 90) }}
+                                                    {{ progress_item('Reliability and Ownership', 95) }}
+                                                    {{ progress_item('Software Quality Assurance', 87) }}
 
                                                 </div>
                                             </div>
@@ -816,147 +318,30 @@
             </div>
 
             <!-- ****************************
-               Portfolio carousel
+               Portfolio archive grid
                **************************** -->
+            <!-- Portfolio archive: chronological project history, newest work first -->
             <section id="portfolio" class="rn-portfolio-area portfolio-style-three section-padding-vertical section-divider" aria-labelledby="portfolio-title">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center">
                                 <span class="subtitle">2006 - Present</span>
-                                <h2 class="title" id="portfolio-title">My Portfolio</h2>
+                                <h2 class="title" id="portfolio-title">Project Archive</h2>
+                                <p class="description">A complete index of projects across software, web, and learning initiatives.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row margin-top-25 mt_md--5 mt_sm--5">
                         <div class="col-lg-12">
-                            <div class="portfolio-wrapper portfolio-carousel scroll-snap-carousel" role="list" aria-label="Portfolio items">
-
-                                <!-- Portfolio Item: 2-Day-Shower-Specialists -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal20262DayShowerSpecialists">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/045-2026-2-Day-Shower-Specialists.png') }}" alt="Colorful modern logo for 2-Day Shower Specialists featuring a stylized showerhead with flowing water, a web landing page interface with a quote button, performance gauge, and rocket icon representing speed, surrounded by bright blue and aqua design elements on a transparent background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>2-Day Shower Specialists</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: FilmFestival -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026FilmFestival">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/044-2026-Film-Festival.png') }}" alt="Square, modern Film Festival emblem featuring a large green robot with glowing red eyes at the center, surrounded by three smaller red, orange, and purple robots below. The design includes bold “FILM FESTIVAL” lettering at the top, glowing circuit-like lines, and vibrant neon accents in blue, yellow, and pink, all styled as a colorful tech-inspired badge on a transparent background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Film Festival</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: RoboFriends -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026RoboFriends">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/042-2026-RoboFriends.png') }}" alt="Square, modern RoboFriends emblem featuring a large green robot with glowing red eyes at the center, surrounded by three smaller red, orange, and purple robots below. The design includes bold “ROBOFRIENDS” lettering at the top, glowing circuit-like lines, and vibrant neon accents in blue, yellow, and pink, all styled as a colorful tech-inspired badge on a transparent background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>RoboFriends</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: Digital Rain -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026DigitalRain">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/041-2026-Digital-Rain.png') }}" alt="Glowing green DR monogram centered over cascading vertical code with the words Digital Rain beneath it, set against a dark background with a luminous matrix style effect.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>DigitalRain</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2026 SimpleFolio -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026SimpleFolio">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/040-2026-SimpleFolio.png') }}" alt="Illustrated logo graphic for SimpleFolio featuring a bold blue nameplate surrounded by creative and professional elements, including a glowing light bulb, camera, traffic light, upward trending chart, open planner, pencils, paper clips, and a small gold star, arranged on a stylized roadway background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>SimpleFolio</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2026 RandomThoughtsInTraffic.com -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2026RandomThoughtsInTraffic">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/039-2026-Random-Thoughts-in-Traffic.png') }}" alt="Illustrated logo showing three cars driving toward the viewer at dusk with a city skyline in the background, a glowing light bulb inside a thought bubble above the center car, and the text Random Thoughts InTraffic.com below in gray and orange lettering.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2026</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>RandomThoughts<wbr>InTraffic.com</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
+                            <div class="portfolio-wrapper portfolio-grid" role="list" aria-label="Portfolio items">
+                                <!-- Portfolio archive data: year, visible title, image key, image alt text, and modal target id. -->
+                                {{ portfolio_card('2026', '2-Day Shower Specialists', '045-2026-2-Day-Shower-Specialists', 'Colorful modern logo for 2-Day Shower Specialists featuring a stylized showerhead with flowing water, a web landing page interface with a quote button, performance gauge, and rocket icon representing speed, surrounded by bright blue and aqua design elements on a transparent background.', 'portfolioModal20262DayShowerSpecialists') }}
+                                {{ portfolio_card('2026', 'Film Festival', '044-2026-Film-Festival', 'Square, modern Film Festival emblem featuring a large green robot with glowing red eyes at the center, surrounded by three smaller red, orange, and purple robots below. The design includes bold “FILM FESTIVAL” lettering at the top, glowing circuit-like lines, and vibrant neon accents in blue, yellow, and pink, all styled as a colorful tech-inspired badge on a transparent background.', 'portfolioModal2026FilmFestival') }}
+                                {{ portfolio_card('2026', 'RoboFriends', '042-2026-RoboFriends', 'Square, modern RoboFriends emblem featuring a large green robot with glowing red eyes at the center, surrounded by three smaller red, orange, and purple robots below. The design includes bold “ROBOFRIENDS” lettering at the top, glowing circuit-like lines, and vibrant neon accents in blue, yellow, and pink, all styled as a colorful tech-inspired badge on a transparent background.', 'portfolioModal2026RoboFriends') }}
+                                {{ portfolio_card('2026', 'DigitalRain', '041-2026-Digital-Rain', 'Glowing green DR monogram centered over cascading vertical code with the words Digital Rain beneath it, set against a dark background with a luminous matrix style effect.', 'portfolioModal2026DigitalRain') }}
+                                {{ portfolio_card('2026', 'SimpleFolio', '040-2026-SimpleFolio', 'Illustrated logo graphic for SimpleFolio featuring a bold blue nameplate surrounded by creative and professional elements, including a glowing light bulb, camera, traffic light, upward trending chart, open planner, pencils, paper clips, and a small gold star, arranged on a stylized roadway background.', 'portfolioModal2026SimpleFolio') }}
+                                {{ portfolio_card('2026', 'RandomThoughtsInTraffic.com', '039-2026-Random-Thoughts-in-Traffic', 'Illustrated logo showing three cars driving toward the viewer at dusk with a city skyline in the background, a glowing light bulb inside a thought bubble above the center car, and the text Random Thoughts InTraffic.com below in gray and orange lettering.', 'portfolioModal2026RandomThoughtsInTraffic') }}
 
                                 <!-- Portfolio Item: 2026 Space Portfolio -->
                                 <div class="portfolio-item scroll-snap-item" role="listitem">
@@ -964,7 +349,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/038-2026-Space-Portfolio.png') }}" alt="Logo design for Space Portfolio featuring a sleek silver spacecraft launching upward with a glowing trail that arcs around a view of Earth from space. The words SPACE PORTFOLIO appear in bold metallic lettering against a dark star filled background, creating a futuristic, high tech aesthetic.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/038-2026-Space-Portfolio.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/038-2026-Space-Portfolio.png') }}" alt="Logo design for Space Portfolio featuring a sleek silver spacecraft launching upward with a glowing trail that arcs around a view of Earth from space. The words SPACE PORTFOLIO appear in bold metallic lettering against a dark star filled background, creating a futuristic, high tech aesthetic.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -973,7 +360,7 @@
                                                         <span>2026</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Space Portfolio</span></h3>
+                                                <span class="title"><span>Space Portfolio</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -985,7 +372,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/037-2026-Hacker-News-Aggregator.png') }}" alt="Stylized HN logo with metallic blue and orange gradient letters over a glowing tech inspired background, with the text HackerNewsAggregator displayed beneath in a clean modern font.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/037-2026-Hacker-News-Aggregator.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/037-2026-Hacker-News-Aggregator.png') }}" alt="Stylized HN logo with metallic blue and orange gradient letters over a glowing tech inspired background, with the text HackerNewsAggregator displayed beneath in a clean modern font.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -994,7 +383,7 @@
                                                         <span>2026</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Hacker News Aggregator</span></h3>
+                                                <span class="title"><span>Hacker News Aggregator</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1006,7 +395,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/036-2026-Jamison-Stamps-and-Books.png') }}" alt="Vintage style crest logo for Jamison Stamps and Books featuring stacked antique books, a magnifying glass, classic postage stamps, and an old parcel tied with twine, rendered in warm sepia tones with ornate decorative framing.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/036-2026-Jamison-Stamps-and-Books.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/036-2026-Jamison-Stamps-and-Books.png') }}" alt="Vintage style crest logo for Jamison Stamps and Books featuring stacked antique books, a magnifying glass, classic postage stamps, and an old parcel tied with twine, rendered in warm sepia tones with ornate decorative framing.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1015,7 +406,7 @@
                                                         <span>2026</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Jamison Stamps & Books</span></h3>
+                                                <span class="title"><span>Jamison Stamps & Books</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1027,7 +418,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/035-2025-Password-Exposure-Checker.png') }}" alt="Shield shaped cybersecurity logo split into two halves, one with a padlock icon and the other with digital code graphics, with a glowing horizontal light effect across the center and the text PasswordExposureApp displayed beneath it.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/035-2025-Password-Exposure-Checker.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/035-2025-Password-Exposure-Checker.png') }}" alt="Shield shaped cybersecurity logo split into two halves, one with a padlock icon and the other with digital code graphics, with a glowing horizontal light effect across the center and the text PasswordExposureApp displayed beneath it.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1036,7 +429,7 @@
                                                         <span>2025</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Password Exposure Checker</span></h3>
+                                                <span class="title"><span>Password Exposure Checker</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1048,7 +441,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/034-2025-FrankJamison.com.png') }}" alt="Stylized metallic FJ monogram logo layered over dark blue geometric panels with subtle glow effects, with the text FrankJamison.com displayed beneath the emblem.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/034-2025-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/034-2025-FrankJamison.com.png') }}" alt="Stylized metallic FJ monogram logo layered over dark blue geometric panels with subtle glow effects, with the text FrankJamison.com displayed beneath the emblem.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1057,7 +452,7 @@
                                                         <span>2025</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1069,7 +464,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/033-2024-PassionateTeachingJourney.com.png') }}" alt="Decorative crest logo featuring an open book with a fountain pen resting across its pages, a glowing sunrise over a winding path in the background, and the text PassionateTeachingJourney.com displayed beneath the illustration in gold lettering">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/033-2024-PassionateTeachingJourney.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/033-2024-PassionateTeachingJourney.com.png') }}" alt="Decorative crest logo featuring an open book with a fountain pen resting across its pages, a glowing sunrise over a winding path in the background, and the text PassionateTeachingJourney.com displayed beneath the illustration in gold lettering">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1078,7 +475,7 @@
                                                         <span>2024</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>PassionateTeaching<wbr>Journey.com</span></h3>
+                                                <span class="title"><span>Passionate Teaching Journey.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1090,7 +487,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/032-2021-DnD5eTools.com.png') }}" alt="Fantasy themed logo for DnD5eTools.com featuring a red dragon breathing fire behind an open spellbook, surrounded by a sword, treasure chest, potion bottle, scroll, and a set of colorful polyhedral dice including a twenty sided die. The scene is framed in a shield shaped crest with flames in the background and the text DnD5eTools.com displayed prominently at the bottom.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/032-2021-DnD5eTools.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/032-2021-DnD5eTools.com.png') }}" alt="Fantasy themed logo for DnD5eTools.com featuring a red dragon breathing fire behind an open spellbook, surrounded by a sword, treasure chest, potion bottle, scroll, and a set of colorful polyhedral dice including a twenty sided die. The scene is framed in a shield shaped crest with flames in the background and the text DnD5eTools.com displayed prominently at the bottom.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1099,7 +498,7 @@
                                                         <span>2021</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>DnD5eTools.com</span></h3>
+                                                <span class="title"><span>DnD5eTools.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1111,7 +510,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/031-2020-AncientWhiteArmyVets-RPG-Tools-v2020.2.png') }}" alt="Stylized emblem featuring a metallic skull wearing a combat helmet with a triangular Old Ironsides insignia on the front. The skull has glowing red eyes and wears a military style headset with microphone. Crossed weapons and ammunition flank the skull inside a shield shaped frame. A banner across the bottom reads AncientWhiteArmyVet.com..com">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/031-2020-AncientWhiteArmyVets-RPG-Tools-v2020.2.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/031-2020-AncientWhiteArmyVets-RPG-Tools-v2020.2.png') }}" alt="Stylized emblem featuring a metallic skull wearing a combat helmet with a triangular Old Ironsides insignia on the front. The skull has glowing red eyes and wears a military style headset with microphone. Crossed weapons and ammunition flank the skull inside a shield shaped frame. A banner across the bottom reads AncientWhiteArmyVet.com..com">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1120,7 +521,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>AncientWhite<wbr>ArmyVet.com</span></h3>
+                                                <span class="title"><span>AncientWhite<wbr>ArmyVet.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1132,7 +533,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/030-2020-Character-Vault.png') }}" alt="Illustrated fantasy themed logo for Character Vault featuring an ornate circular vault door with glowing blue gemstones and a compass rose design. In front of the vault sits an open character journal displaying a hooded adventurer reading a spellbook. Surrounding objects include a lit candle, quill and ink bottle, potion vial, gold coins, parchment, and a blue twenty sided die. A banner at the bottom reads Character Vault.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/030-2020-Character-Vault.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/030-2020-Character-Vault.png') }}" alt="Illustrated fantasy themed logo for Character Vault featuring an ornate circular vault door with glowing blue gemstones and a compass rose design. In front of the vault sits an open character journal displaying a hooded adventurer reading a spellbook. Surrounding objects include a lit candle, quill and ink bottle, potion vial, gold coins, parchment, and a blue twenty sided die. A banner at the bottom reads Character Vault.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1141,7 +544,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Character Vault</span></h3>
+                                                <span class="title"><span>Character Vault</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1153,7 +556,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/029-2020-Angular-CLI-Application.png') }}" alt="Stylized graphic featuring a red Angular shield logo centered over glowing blue code panels, flanked by navigation arrows and surrounded by developer tools, with the text Angular CLI Application displayed prominently beneath the emblem.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/029-2020-Angular-CLI-Application.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/029-2020-Angular-CLI-Application.png') }}" alt="Stylized graphic featuring a red Angular shield logo centered over glowing blue code panels, flanked by navigation arrows and surrounded by developer tools, with the text Angular CLI Application displayed prominently beneath the emblem.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1162,7 +567,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Angular CLI Application</span></h3>
+                                                <span class="title"><span>Angular CLI Application</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1174,7 +579,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/028-2020-The-Budget-Application.png') }}" alt="Illustrated emblem for a Budget Application featuring a clipboard with colorful bar and pie charts, stacks of cash and gold coins, a calculator displaying numbers, a red pen, and financial documents. A green upward arrow suggests growth, and a banner at the bottom reads Budget Application.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/028-2020-The-Budget-Application.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/028-2020-The-Budget-Application.png') }}" alt="Illustrated emblem for a Budget Application featuring a clipboard with colorful bar and pie charts, stacks of cash and gold coins, a calculator displaying numbers, a red pen, and financial documents. A green upward arrow suggests growth, and a banner at the bottom reads Budget Application.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1183,7 +590,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Budget Application</span></h3>
+                                                <span class="title"><span>Budget Application</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1195,7 +602,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/027-2020-The-Pig-Game.png') }}" alt="Illustrated fantasy style logo for The Pig Game featuring a cheerful pig in a green hooded cloak holding a frothy mug of ale in one hand and dice in the other. Gold coins spill around the character, with additional dice, a small dagger, and money bags at the bottom. A wooden banner across the center reads The Pig Game in bold carved lettering against a glowing golden background.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/027-2020-The-Pig-Game.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/027-2020-The-Pig-Game.png') }}" alt="Illustrated fantasy style logo for The Pig Game featuring a cheerful pig in a green hooded cloak holding a frothy mug of ale in one hand and dice in the other. Gold coins spill around the character, with additional dice, a small dagger, and money bags at the bottom. A wooden banner across the center reads The Pig Game in bold carved lettering against a glowing golden background.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1204,7 +613,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>The Pig Game</span></h3>
+                                                <span class="title"><span>The Pig Game</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1216,7 +625,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/026-2020-AncientWhiteArmyVets-RPG-Tools-v2020.1.png') }}" alt="Fantasy themed logo featuring a glowing twenty sided die at the center surrounded by a sword, shield, helmet, scroll, and smaller dice, with a banner reading AncientWhiteArmyVet’s RPG Tools in bold medieval lettering against a fiery golden arcane circle background.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/026-2020-AncientWhiteArmyVets-RPG-Tools-v2020.1.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/026-2020-AncientWhiteArmyVets-RPG-Tools-v2020.1.png') }}" alt="Fantasy themed logo featuring a glowing twenty sided die at the center surrounded by a sword, shield, helmet, scroll, and smaller dice, with a banner reading AncientWhiteArmyVet’s RPG Tools in bold medieval lettering against a fiery golden arcane circle background.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1225,7 +636,7 @@
                                                         <span>2020</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>AncientWhite<wbr>ArmyVet's RPG Tools</span></h3>
+                                                <span class="title"><span>AncientWhite<wbr>ArmyVet's RPG Tools</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1237,7 +648,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/025-2019-FrankJamison.com.png') }}" alt="Circular metallic blue emblem featuring the initials FJ in bold, beveled lettering at the center, surrounded by a glowing ring and subtle geometric textures. The design has a futuristic, polished look with a faint cosmic style background, and the text FrankJamison.com appears below the emblem in silver lettering.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/025-2019-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/025-2019-FrankJamison.com.png') }}" alt="Circular metallic blue emblem featuring the initials FJ in bold, beveled lettering at the center, surrounded by a glowing ring and subtle geometric textures. The design has a futuristic, polished look with a faint cosmic style background, and the text FrankJamison.com appears below the emblem in silver lettering.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1246,7 +659,7 @@
                                                         <span>2019</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1258,7 +671,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/024-2019-VeteranJobInfo.us.png') }}" alt="Emblem style logo for VeteranJobInfo.us featuring a gold trimmed shield with the American flag, crossed flags and dog tags, two silhouetted soldiers at the top, and a bright starburst above the crest. A red, white, and blue banner across the center displays the name VeteranJobInfo.us, with metallic gold accents and patriotic detailing throughout.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/024-2019-VeteranJobInfo.us.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/024-2019-VeteranJobInfo.us.png') }}" alt="Emblem style logo for VeteranJobInfo.us featuring a gold trimmed shield with the American flag, crossed flags and dog tags, two silhouetted soldiers at the top, and a bright starburst above the crest. A red, white, and blue banner across the center displays the name VeteranJobInfo.us, with metallic gold accents and patriotic detailing throughout.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1267,7 +682,7 @@
                                                         <span>2019</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Veteran Job Info Website</span></h3>
+                                                <span class="title"><span>Veteran Job Info Website</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1279,7 +694,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/023-2019-AncientWhiteArmyVets-RPG-Tools.png') }}" alt="Emblem style logo for AncientWhiteArmyVet’s RPG Tools featuring a skull wearing a military helmet with a headset and glowing orange eyes. The helmet displays an Old Ironsides insignia. Behind the skull are crossed ammunition rounds and large twenty sided dice marked 8, and 20. The skull rests above an open book, with a banner reading AncientWhiteArmyVet’s at the top and RPG Tools at the bottom in bold, engraved lettering.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/023-2019-AncientWhiteArmyVets-RPG-Tools.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/023-2019-AncientWhiteArmyVets-RPG-Tools.png') }}" alt="Emblem style logo for AncientWhiteArmyVet’s RPG Tools featuring a skull wearing a military helmet with a headset and glowing orange eyes. The helmet displays an Old Ironsides insignia. Behind the skull are crossed ammunition rounds and large twenty sided dice marked 8, and 20. The skull rests above an open book, with a banner reading AncientWhiteArmyVet’s at the top and RPG Tools at the bottom in bold, engraved lettering.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1288,7 +705,7 @@
                                                         <span>2019</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>AncientWhite<wbr>ArmyVet's RPG Tools</span></h3>
+                                                <span class="title"><span>AncientWhite<wbr>ArmyVet's RPG Tools</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1300,7 +717,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/022-2018-QuestKeeper.png') }}" alt="Fantasy style logo for QuestKeeper featuring an open illuminated spellbook with character sheet pages, a glowing twenty sided die showing the number 20 floating above it, and a starry magical background. The project name “QuestKeeper” appears below the book in elegant serif lettering with gold accents.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/022-2018-QuestKeeper.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/022-2018-QuestKeeper.png') }}" alt="Fantasy style logo for QuestKeeper featuring an open illuminated spellbook with character sheet pages, a glowing twenty sided die showing the number 20 floating above it, and a starry magical background. The project name “QuestKeeper” appears below the book in elegant serif lettering with gold accents.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1309,7 +728,7 @@
                                                         <span>2018</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Questkeeper</span></h3>
+                                                <span class="title"><span>Questkeeper</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1321,7 +740,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/021-2018-FrankJamison.com.png') }}" alt="Gold and navy crest style logo reading FrankJamison.com, featuring a large home under a bright sun within an arched frame, decorative scrollwork, and two crossed checkered flags at the bottom, all set against a dark background with glowing highlights.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/021-2018-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/021-2018-FrankJamison.com.png') }}" alt="Gold and navy crest style logo reading FrankJamison.com, featuring a large home under a bright sun within an arched frame, decorative scrollwork, and two crossed checkered flags at the bottom, all set against a dark background with glowing highlights.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1330,7 +751,7 @@
                                                         <span>2018</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1342,7 +763,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/020-2018-Franks-Classic-Cars.png') }}" alt="Shield styled logo for Frank’s Classic Cars featuring two vintage muscle cars, one black and one red, positioned side by side against a dramatic fiery background. Bold gold lettering displays the business name above a banner that reads Since 1969, with checkered racing accents and crossed flags completing the emblem design.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/020-2018-Franks-Classic-Cars.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/020-2018-Franks-Classic-Cars.png') }}" alt="Shield styled logo for Frank’s Classic Cars featuring two vintage muscle cars, one black and one red, positioned side by side against a dramatic fiery background. Bold gold lettering displays the business name above a banner that reads Since 1969, with checkered racing accents and crossed flags completing the emblem design.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1351,7 +774,7 @@
                                                         <span>2018</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Frank's Classic Cars</span></h3>
+                                                <span class="title"><span>Frank's Classic Cars</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1363,7 +786,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/019-2017-RPG-Stat-Roller.png') }}" alt="Glowing fantasy style emblem for RPG Stat Roller featuring a radiant twenty sided die displaying the numbers 12, 7, and 18, crossed by a sword and battle axe behind it. The design is framed with golden light effects and spark like stars, with the title RPG Stat Roller displayed in bold, metallic lettering beneath the die.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/019-2017-RPG-Stat-Roller.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/019-2017-RPG-Stat-Roller.png') }}" alt="Glowing fantasy style emblem for RPG Stat Roller featuring a radiant twenty sided die displaying the numbers 12, 7, and 18, crossed by a sword and battle axe behind it. The design is framed with golden light effects and spark like stars, with the title RPG Stat Roller displayed in bold, metallic lettering beneath the die.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1372,7 +797,7 @@
                                                         <span>2017</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>RPG Stat Roller</span></h3>
+                                                <span class="title"><span>RPG Stat Roller</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1384,7 +809,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/018-2017-Riverside-Massage-and-Spa.png') }}" alt="Decorative logo for Riverside Massage and Spa featuring a circular gold framed scene of a tranquil river at sunset with stacked stones, bamboo, a pink lotus flower, and two lit candles, with the business name displayed prominently below in elegant lettering.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/018-2017-Riverside-Massage-and-Spa.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/018-2017-Riverside-Massage-and-Spa.png') }}" alt="Decorative logo for Riverside Massage and Spa featuring a circular gold framed scene of a tranquil river at sunset with stacked stones, bamboo, a pink lotus flower, and two lit candles, with the business name displayed prominently below in elegant lettering.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1393,7 +820,7 @@
                                                         <span>2017</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Riverside Massage and Spa</span></h3>
+                                                <span class="title"><span>Riverside Massage and Spa</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1405,7 +832,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/017-2017-Stopwatch-and-Countdown-Timer.png') }}" alt="Stylized glowing stopwatch emblem with a digital display reading 00:00:00, surrounded by colorful light effects and subtle question marks, above bold text that reads Stopwatch & Countdown Timer on a dark background">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/017-2017-Stopwatch-and-Countdown-Timer.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/017-2017-Stopwatch-and-Countdown-Timer.png') }}" alt="Stylized glowing stopwatch emblem with a digital display reading 00:00:00, surrounded by colorful light effects and subtle question marks, above bold text that reads Stopwatch & Countdown Timer on a dark background">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1414,7 +843,7 @@
                                                         <span>2017</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Stopwatch Application</span></h3>
+                                                <span class="title"><span>Stopwatch Application</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1426,7 +855,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/016-2017-JavaScript-Guessing-Game.png') }}" alt="Stylized emblem logo for The Guessing Game featuring a large gold question mark and exclamation mark inside a circular badge with starburst lighting effects, a dark blue and gold color scheme, and a banner across the center reading The Guessing Game against a cosmic inspired background.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/016-2017-JavaScript-Guessing-Game.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/016-2017-JavaScript-Guessing-Game.png') }}" alt="Stylized emblem logo for The Guessing Game featuring a large gold question mark and exclamation mark inside a circular badge with starburst lighting effects, a dark blue and gold color scheme, and a banner across the center reading The Guessing Game against a cosmic inspired background.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1435,7 +866,7 @@
                                                         <span>2017</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>JavaScript Guessing Game</span></h3>
+                                                <span class="title"><span>JavaScript Guessing Game</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1447,7 +878,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/015-2017-FrankJamison.com.png') }}" alt="Shield-style logo for FrankJamison.com featuring a mountain landscape, a leaping fish hooked on a fishing line, crossed hooks at the bottom, and bold “FRANK JAMISON .COM” lettering across the center in green and gold tones.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/015-2017-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/015-2017-FrankJamison.com.png') }}" alt="Shield-style logo for FrankJamison.com featuring a mountain landscape, a leaping fish hooked on a fishing line, crossed hooks at the bottom, and bold “FRANK JAMISON .COM” lettering across the center in green and gold tones.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1456,7 +889,7 @@
                                                         <span>2017</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1468,7 +901,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/014-2016-FrankJamison.com.png') }}" alt="Glowing metallic shield emblem with the initials FJ in the center, rendered in blue and silver tones with a futuristic, space inspired glow, and the text FrankJamison.com displayed beneath the shield on a dark background">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/014-2016-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/014-2016-FrankJamison.com.png') }}" alt="Glowing metallic shield emblem with the initials FJ in the center, rendered in blue and silver tones with a futuristic, space inspired glow, and the text FrankJamison.com displayed beneath the shield on a dark background">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1477,7 +912,7 @@
                                                         <span>2016</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1489,7 +924,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/013-2016-Virtual-World.png') }}" alt="Glowing neon sphere styled like a holographic globe, split in teal and magenta tones, with a grid overlay and a bright light at the horizon illuminating distant mountains inside the orb. The sphere rests on a luminous circular base against a black background, with the title “Virtual World” displayed below in a matching blue and purple gradient.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/013-2016-Virtual-World.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/013-2016-Virtual-World.png') }}" alt="Glowing neon sphere styled like a holographic globe, split in teal and magenta tones, with a grid overlay and a bright light at the horizon illuminating distant mountains inside the orb. The sphere rests on a luminous circular base against a black background, with the title “Virtual World” displayed below in a matching blue and purple gradient.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1498,7 +935,7 @@
                                                         <span>2016</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Virtual World</span></h3>
+                                                <span class="title"><span>Virtual World</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1510,7 +947,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/012-2015-Jamison-Web-Design.png') }}" alt="Futuristic digital illustration of a developer seated at a desk surrounded by three large monitors filled with code, illuminated in blue and magenta neon lighting, with a glowing JWD Jamison Web Design logo above and a stylized digital planet displayed on the center screen.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/012-2015-Jamison-Web-Design.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/012-2015-Jamison-Web-Design.png') }}" alt="Futuristic digital illustration of a developer seated at a desk surrounded by three large monitors filled with code, illuminated in blue and magenta neon lighting, with a glowing JWD Jamison Web Design logo above and a stylized digital planet displayed on the center screen.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1519,7 +958,7 @@
                                                         <span>2015</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Jamison Web Design</span></h3>
+                                                <span class="title"><span>Jamison Web Design</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1531,7 +970,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/011-2015-Mi-Familia-Taco-Catering.png') }}" alt="Illustrated logo for Mi Familia Taco Catering featuring three tacos filled with meat and vegetables, surrounded by avocado, lime slices, salsa, peppers, and a lantern, with colorful papel picado banners above and a decorative ribbon banner displaying the business name.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/011-2015-Mi-Familia-Taco-Catering.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/011-2015-Mi-Familia-Taco-Catering.png') }}" alt="Illustrated logo for Mi Familia Taco Catering featuring three tacos filled with meat and vegetables, surrounded by avocado, lime slices, salsa, peppers, and a lantern, with colorful papel picado banners above and a decorative ribbon banner displaying the business name.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1540,7 +981,7 @@
                                                         <span>2015</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>Mi Familia Taco Catering</span></h3>
+                                                <span class="title"><span>Mi Familia Taco Catering</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1552,7 +993,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/010-2015-RPG-Books-Project.png') }}" alt="Illustrated emblem for The RPG Book Library featuring a stack of antique books with an open glowing tome on top, a blue twenty sided die, a sword, lantern, quill and ink bottle, and decorative gold lettering on a carved banner.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/010-2015-RPG-Books-Project.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/010-2015-RPG-Books-Project.png') }}" alt="Illustrated emblem for The RPG Book Library featuring a stack of antique books with an open glowing tome on top, a blue twenty sided die, a sword, lantern, quill and ink bottle, and decorative gold lettering on a carved banner.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1561,7 +1004,7 @@
                                                         <span>2015</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>The RPG Book Library</span></h3>
+                                                <span class="title"><span>The RPG Book Library</span></span>
                                             </div>
                                         </div>
                                     </button>
@@ -1573,7 +1016,9 @@
                                         <div class="inner">
                                             <div class="thumbnail">
                                                 <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/009-2015-FrankJamison.com.png') }}" alt="Illustrated emblem logo for FrankJamison.com featuring a circular wooden frame with a lantern, a mountain sunrise over a lake and pine forest, a campsite with a tent and campfire in the foreground, and a carved wooden banner across the bottom displaying the text FrankJamison.com.">
+                                                    <picture>
+                                                        <source type="image/webp" srcset="{{ url_for('static', filename='images/portfolio/009-2015-FrankJamison.com.webp') }}"><img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/009-2015-FrankJamison.com.png') }}" alt="Illustrated emblem logo for FrankJamison.com featuring a circular wooden frame with a lantern, a mountain sunrise over a lake and pine forest, a campsite with a tent and campfire in the foreground, and a carved wooden banner across the bottom displaying the text FrankJamison.com.">
+                                                    </picture>
                                                 </span>
                                             </div>
                                             <div class="content">
@@ -1582,179 +1027,20 @@
                                                         <span>2015</span>
                                                     </div>
                                                 </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
+                                                <span class="title"><span>FrankJamison.com</span></span>
                                             </div>
                                         </div>
                                     </button>
                                 </div>
 
-                                <!-- Portfolio Item: FrankJamison.com v2013 -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2013FrankJamison">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/008-2013-FrankJamison.com.png') }}" alt="Decorative circular emblem logo featuring a mountain landscape at sunrise reflected over a lake, surrounded by a gold compass-style frame with pine branches and pinecones at the base. A ribbon banner across the bottom displays the text FrankJamison.com.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2013</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2007 Globe Bank Website -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2007GlobeBank">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/007-2007-Globe-Bank.png') }}" alt="Globe Bank logo featuring a gold and navy shield with a classical bank building in front of a globe, flanked by laurel branches and a banner reading Globe Bank on a dark background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2007</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Globe Bank</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 MSJC Administration of Justice Department Website -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MSJCAdminOfJustice">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/006-2006-MSJC-Admin-Of-Justice-Dept.png') }}" alt="Gold and navy shield style emblem for the MSJC Administration of Justice Department featuring scales of justice at the center, laurel branches on both sides, a star above, and the words “MSJC” and “Administration of Justice” displayed prominently.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>MSJC Administration of<wbr>Justice Dept. Website</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 Zita Worley's Website -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006ZitaWorley">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/005-2006-Zita-Worleys-Website.png') }}" alt="Illustrated emblem featuring stacked antique books, an open journal with an ink bottle and quill, a candle, magnifying glass, and spectacles arranged before a faint globe backdrop, with a banner reading “Zita Worley’s Website” in ornate lettering.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Zita Worley's Website</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 Moonwalk Manor Front Page -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006MoonwalkManor">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/004-2006-Moonwalk-Manor.png') }}" alt="Moonwalk Manor Front Page">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Moonwalk Manor</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 Typing Speed Test Project -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModalTypingSpeed">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/003-2006-Typing-Speed-Test.png') }}" alt="Stylized Typing Speed Test logo featuring a speedometer gauge with a sweeping needle, a keyboard integrated into the design, metallic and blue accents, and bold lettering that emphasizes performance, speed, and technical precision against a dark background.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Typing Speed Test Project</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 FrankJamison.com -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006FrankJamison">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/002-2006-FrankJamison.com.png') }}" alt="Futuristic logo featuring a glowing blue digital globe, a computer monitor with light effects, metallic gears, and gold accents, with bold text reading FrankJamison.com across the front.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>FrankJamison.com</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <!-- Portfolio Item: 2006 Analog Clock Project -->
-                                <div class="portfolio-item scroll-snap-item" role="listitem">
-                                    <button class="rn-portfolio" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal2006AnalogClockProject">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <span>
-                                                    <img loading="lazy" decoding="async" src="{{ url_for('static', filename='images/portfolio/001-2006-Analog-Clock-Project.png') }}" alt="Logo featuring a detailed analog clock with gold hour and minute hands, red second hand, metallic gears in the background, and bold text reading “Analog Clock Project” in blue, white, and gold styling on a dark backdrop.">
-                                                </span>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="category-list">
-                                                        <span>2006</span>
-                                                    </div>
-                                                </div>
-                                                <h3 class="title"><span>Analog Clock Project</span></h3>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
+                                {{ portfolio_card('2013', 'FrankJamison.com', '008-2013-FrankJamison.com', 'Decorative circular emblem logo featuring a mountain landscape at sunrise reflected over a lake, surrounded by a gold compass-style frame with pine branches and pinecones at the base. A ribbon banner across the bottom displays the text FrankJamison.com.', 'portfolioModal2013FrankJamison') }}
+                                {{ portfolio_card('2007', 'Globe Bank', '007-2007-Globe-Bank', 'Globe Bank logo featuring a gold and navy shield with a classical bank building in front of a globe, flanked by laurel branches and a banner reading Globe Bank on a dark background.', 'portfolioModal2007GlobeBank') }}
+                                {{ portfolio_card('2006', 'MSJC Administration of<wbr>Justice Dept. Website', '006-2006-MSJC-Admin-Of-Justice-Dept', 'Gold and navy shield style emblem for the MSJC Administration of Justice Department featuring scales of justice at the center, laurel branches on both sides, a star above, and the words “MSJC” and “Administration of Justice” displayed prominently.', 'portfolioModal2006MSJCAdminOfJustice') }}
+                                {{ portfolio_card('2006', "Zita Worley's Website", '005-2006-Zita-Worleys-Website', 'Illustrated emblem featuring stacked antique books, an open journal with an ink bottle and quill, a candle, magnifying glass, and spectacles arranged before a faint globe backdrop, with a banner reading “Zita Worley’s Website” in ornate lettering.', 'portfolioModal2006ZitaWorley') }}
+                                {{ portfolio_card('2006', 'Moonwalk Manor', '004-2006-Moonwalk-Manor', 'Moonwalk Manor Front Page', 'portfolioModal2006MoonwalkManor') }}
+                                {{ portfolio_card('2006', 'Typing Speed Test Project', '003-2006-Typing-Speed-Test', 'Stylized Typing Speed Test logo featuring a speedometer gauge with a sweeping needle, a keyboard integrated into the design, metallic and blue accents, and bold lettering that emphasizes performance, speed, and technical precision against a dark background.', 'portfolioModalTypingSpeed') }}
+                                {{ portfolio_card('2006', 'FrankJamison.com', '002-2006-FrankJamison.com', 'Futuristic logo featuring a glowing blue digital globe, a computer monitor with light effects, metallic gears, and gold accents, with bold text reading FrankJamison.com across the front.', 'portfolioModal2006FrankJamison') }}
+                                {{ portfolio_card('2006', 'Analog Clock Project', '001-2006-Analog-Clock-Project', 'Logo featuring a detailed analog clock with gold hour and minute hands, red second hand, metallic gears in the background, and bold text reading “Analog Clock Project” in blue, white, and gold styling on a dark backdrop.', 'portfolioModal2006AnalogClockProject') }}
 
                             </div>
                         </div>
@@ -1762,12 +1048,7 @@
                 </div>
                 </div>
 
-                <!-- ****************************
-                         Project details modals
-                   **************************** -->
-                <!-- ****************************
-                   Lazy-injected modal templates
-                   **************************** -->
+                <!-- Lazy-injected modal templates keep the initial page lighter while preserving every project detail -->
                 <template id="portfolio-modals-template">
                     {% include  './partials/portfolioBody.html'  %}
                 </template>
@@ -1778,14 +1059,10 @@
                 </template>
                 <div id="blog-modals-root"></div>
 
-                <!-- ****************************
-                   Contact section
-                   **************************** -->
+                <!-- Contact section: final CTA for direct outreach and role discussion -->
                 {% include  './partials/contact.html'  %}
 
-                <!-- ****************************
-                   Back-to-top control
-                   **************************** -->
+                <!-- Utility control: quick return to the top of the long one-page layout -->
                 {% include  './partials/backToTop.html'  %}
     </main>
 
@@ -1812,6 +1089,18 @@
                             </li>
                         </ul>
                     </nav>
+
+                    {% if analytics_kpi_badges %}
+                    <section class="portfolio-kpi-strip" aria-label="Portfolio performance metrics from the last 30 days">
+                        {% for badge in analytics_kpi_badges %}
+                        <article class="portfolio-kpi-badge">
+                            <p class="portfolio-kpi-value" data-kpi-key="{{ badge.key }}">{{ badge.value }}</p>
+                            <p class="portfolio-kpi-label">{{ badge.label }}</p>
+                            <p class="portfolio-kpi-hint">{{ badge.hint }}</p>
+                        </article>
+                        {% endfor %}
+                    </section>
+                    {% endif %}
                 </div>
             </div>
         </div>

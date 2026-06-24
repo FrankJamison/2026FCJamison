@@ -40,14 +40,14 @@ app.config["SITE_OWNER_NAME"] = _env_str("SITE_OWNER_NAME", "Frank Jamison")
 app.config["SITE_OWNER_EMAIL"] = _env_str(
     "SITE_OWNER_EMAIL", "frank@fcjamison.com")
 app.config["SITE_DEFAULT_TITLE"] = _env_str(
-    "SITE_DEFAULT_TITLE", app.config["SITE_NAME"])
+    "SITE_DEFAULT_TITLE", "Full-Stack Web Developer")
 app.config["SITE_TITLE_SUFFIX"] = _env_str(
     "SITE_TITLE_SUFFIX",
-    "Frank Jamison's Professional Portfolio",
+    "Frank Jamison | Python, Flask, React",
 )
 app.config["SITE_DEFAULT_DESCRIPTION"] = _env_str(
     "SITE_DEFAULT_DESCRIPTION",
-    "Frank Jamison — web designer and developer. Portfolio projects, blog posts, and contact.",
+    "Full-stack web developer specializing in Python, Flask, and React. View case studies, featured projects, and 15+ years of experience in web development, accessibility, and technical documentation.",
 )
 
 # Relative to /static

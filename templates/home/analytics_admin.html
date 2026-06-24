@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Analytics Admin || FCJamison.com</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/analytics-admin.css') }}">
+</head>
+
+<body class="template-color-1">
+    {% from './partials/analyticsCards.html' import analytics_kpi, analytics_breakdown_card %}
+    <main class="analytics-admin-wrap">
+        <div class="container">
+            <div class="analytics-admin-card">
+                <h2>Analytics Admin</h2>
+                <p class="hint">Retention: {{ analytics_retention_days }} days | Max rows: {{ analytics_max_rows }}</p>
+                <div class="analytics-kpi-grid">
+                    {{ analytics_kpi('Events (' ~ analytics_days ~ 'd)', analytics_summary.events) }}
+                    {{ analytics_kpi('CTA Clicks', analytics_summary.cta_clicks) }}
+                    {{ analytics_kpi('Contact Success Rate', '%.1f'|format(analytics_summary.contact_success_rate) ~ '%') }}
+                    {{ analytics_kpi('Section Engagement', analytics_summary.engaged_sections) }}
+                </div>
+            </div>
+
+            <div class="analytics-admin-card" style="margin-top: 16px;">
+                <h3>Daily Trend</h3>
+                <div class="analytics-controls">
+                    <form method="get" action="{{ url_for('analytics_admin') }}">
+                        <input type="hidden" name="token" value="{{ analytics_token }}">
+                        <label for="days" class="hint">Window days</label>
+                        <input id="days" name="days" type="number" min="7" max="365" value="{{ analytics_days }}">
+                        <button class="rn-btn" type="submit"><span>UPDATE</span></button>
+                    </form>
+                    <a class="rn-btn" href="{{ url_for('analytics_prune', token=analytics_token) }}"><span>RUN PRUNE</span></a>
+                    <a class="rn-btn" href="{{ url_for('analytics_export_bundle_zip', token=analytics_token, days=analytics_days) }}"><span>EXPORT ZIP BUNDLE</span></a>
+                    <a class="rn-btn" href="{{ url_for('analytics_export_csv', token=analytics_token, days=analytics_days) }}"><span>EXPORT CSV</span></a>
+                    <a class="rn-btn" href="{{ url_for('analytics_export_raw_csv', token=analytics_token, days=analytics_days) }}"><span>EXPORT RAW CSV</span></a>
+                    <a class="rn-btn" href="{{ url_for('analytics_summary', days=analytics_days) }}"><span>JSON SUMMARY</span></a>
+                </div>
+
+                <section class="analytics-mini-chart" aria-label="Compact event trend chart">
+                    <div class="analytics-mini-chart-head">
+                        <p>Daily event volume trend</p>
+                        <p>{{ analytics_days }}-day window</p>
+                    </div>
+                    <div class="analytics-mini-bars" role="img" aria-label="Bar chart of events by day">
+                        {% for row in analytics_series %}
+                        <div class="analytics-mini-bar{% if row.events == 0 %} is-zero{% endif %}" style="height: {% if row.events == 0 %}2{% else %}{{ row.bar_pct }}{% endif %}%;" title="{{ row.date }} | {{ row.events }} events"></div>
+                        {% endfor %}
+                    </div>
+                    <div class="analytics-mini-axis" aria-hidden="true">
+                        <span>{{ analytics_series[0].date if analytics_series else '' }}</span>
+                        <span>
+                            {% if analytics_has_activity %}
+                            Activity detected
+                            {% else %}
+                            No tracked activity yet
+                            {% endif %}
+                        </span>
+                        <span>{{ analytics_series[-1].date if analytics_series else '' }}</span>
+                    </div>
+                </section>
+
+                <div class="analytics-table-wrap">
+                    <table class="analytics-table" aria-label="Daily analytics trend table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Events</th>
+                                <th>Volume</th>
+                                <th>CTA Clicks</th>
+                                <th>Contact Attempts</th>
+                                <th>Contact Successes</th>
+                                <th>Sections</th>
+                                <th>Max Scroll</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in analytics_series %}
+                            <tr>
+                                <td>{{ row.date }}</td>
+                                <td>{{ row.events }}</td>
+                                <td>
+                                    <div class="event-bar-track" aria-hidden="true">
+                                        <div class="event-bar-fill" style="width: {{ row.bar_pct }}%;"></div>
+                                    </div>
+                                </td>
+                                <td>{{ row.cta_clicks }}</td>
+                                <td>{{ row.contact_attempts }}</td>
+                                <td>{{ row.contact_successes }}</td>
+                                <td>{{ row.engaged_sections }}</td>
+                                <td>{{ row.max_scroll }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <section class="analytics-breakdown-grid" aria-label="Top analytics breakdowns">
+                    {% call analytics_breakdown_card('Event Type Mix', 'No events available to calculate a distribution yet.', analytics_event_mix, 'analytics-breakdown-card--mix') %}
+                    <div class="event-mix-layout">
+                        {% set mix_ns = namespace(stops=[]) %}
+                        {% set offset_ns = namespace(offset=0.0) %}
+                        {% for item in analytics_event_mix %}
+                        {% set start = offset_ns.offset %}
+                        {% set end = offset_ns.offset + item.percent %}
+                        {% set _ = mix_ns.stops.append(item.color ~ ' ' ~ ('%.1f'|format(start)) ~ '% ' ~ ('%.1f'|format(end)) ~ '%') %}
+                        {% set offset_ns.offset = end %}
+                        {% endfor %}
+
+                        <div class="event-mix-donut" style="background: conic-gradient({{ mix_ns.stops|join(', ') }});" aria-label="Donut chart of event type distribution">
+                            <div class="event-mix-center-label">
+                                <strong>{{ analytics_summary.events }}</strong>
+                                <span>Total Events</span>
+                            </div>
+                        </div>
+
+                        <ul class="event-mix-legend" aria-label="Event type legend">
+                            {% for item in analytics_event_mix %}
+                            <li>
+                                <span class="event-mix-swatch" style="background-color: {{ item.color }};"></span>
+                                <span class="event-mix-label" title="{{ item.label }}">{{ item.label }}</span>
+                                <span class="event-mix-value">{{ item.percent }}%</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endcall %}
+
+                    {% call analytics_breakdown_card('Top Actions', 'No tracked actions for this window yet.', analytics_top_actions) %}
+                    <table class="analytics-breakdown-table" aria-label="Top tracked actions">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in analytics_top_actions %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endcall %}
+
+                    {% call analytics_breakdown_card('Top Sections', 'No section visibility events in this window.', analytics_top_sections) %}
+                    <table class="analytics-breakdown-table" aria-label="Top viewed sections">
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>Views</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in analytics_top_sections %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endcall %}
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

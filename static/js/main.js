@@ -744,6 +744,279 @@
     /* ****************************
        AJAX contact form submission.
        **************************** */
+    function postAnalyticsEvent(eventName, payload) {
+        if (!eventName) {
+            return;
+        }
+
+        const eventPayload = Object.assign({
+            event: eventName,
+            client_timestamp: new Date().toISOString()
+        }, payload || {});
+
+        const endpoint = '/analytics/event';
+        const body = JSON.stringify(eventPayload);
+
+        if (win.navigator && typeof win.navigator.sendBeacon === 'function' && typeof win.Blob !== 'undefined') {
+            try {
+                const blob = new Blob([body], {
+                    type: 'application/json'
+                });
+                if (win.navigator.sendBeacon(endpoint, blob)) {
+                    return;
+                }
+            } catch (_error) {
+                // Fall through to fetch when beacon fails.
+            }
+        }
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body,
+            keepalive: true
+        }).catch(() => {
+            // No-op: analytics delivery should never block UX.
+        });
+    }
+
+    function trackConversionEvent(eventName, label, extras) {
+        if (!eventName) {
+            return;
+        }
+
+        const payload = {
+            event_category: 'portfolio_conversion',
+            event_label: label || 'unspecified',
+            page_path: win.location ? win.location.pathname : ''
+        };
+
+        if (extras && typeof extras === 'object') {
+            Object.keys(extras).forEach((key) => {
+                payload[key] = extras[key];
+            });
+        }
+
+        postAnalyticsEvent(eventName, payload);
+
+        if (typeof win.gtag === 'function') {
+            win.gtag('event', eventName, payload);
+            return;
+        }
+
+        if (Array.isArray(win.dataLayer)) {
+            win.dataLayer.push(Object.assign({
+                event: eventName
+            }, payload));
+            return;
+        }
+
+        if (!Array.isArray(win.__fcAnalyticsQueue)) {
+            win.__fcAnalyticsQueue = [];
+        }
+        win.__fcAnalyticsQueue.push({
+            event: eventName,
+            payload,
+            ts: Date.now()
+        });
+    }
+
+    function initScrollDepthTracking() {
+        const milestones = [25, 50, 75, 100];
+        const sent = {};
+        let ticking = false;
+
+        function emitMilestones() {
+            ticking = false;
+            const root = doc.documentElement;
+            const maxScrollable = Math.max((root ? root.scrollHeight : 0) - win.innerHeight, 0);
+
+            if (maxScrollable <= 0) {
+                if (!sent[100]) {
+                    sent[100] = true;
+                    trackConversionEvent('scroll_depth_milestone', 'scroll_100', {
+                        scroll_percent: 100
+                    });
+                }
+                return;
+            }
+
+            const progress = Math.min(100, Math.round((win.scrollY / maxScrollable) * 100));
+            milestones.forEach((milestone) => {
+                if (progress >= milestone && !sent[milestone]) {
+                    sent[milestone] = true;
+                    trackConversionEvent('scroll_depth_milestone', `scroll_${milestone}`, {
+                        scroll_percent: milestone
+                    });
+                }
+            });
+        }
+
+        function onScroll() {
+            if (ticking) {
+                return;
+            }
+            ticking = true;
+            win.requestAnimationFrame(emitMilestones);
+        }
+
+        win.addEventListener('scroll', onScroll, {
+            passive: true
+        });
+        win.addEventListener('resize', onScroll, {
+            passive: true
+        });
+        emitMilestones();
+    }
+
+    function initSectionEngagementTracking() {
+        if (typeof win.IntersectionObserver !== 'function') {
+            return;
+        }
+
+        const sectionIds = ['home', 'featured-projects', 'resume', 'portfolio', 'contacts'];
+        const sections = sectionIds
+            .map((id) => doc.getElementById(id))
+            .filter(Boolean);
+
+        if (!sections.length) {
+            return;
+        }
+
+        const seen = new Set();
+        const markSeen = (sectionId) => {
+            if (!sectionId || seen.has(sectionId)) {
+                return;
+            }
+            seen.add(sectionId);
+            trackConversionEvent('section_visible', sectionId, {
+                section_id: sectionId
+            });
+        };
+
+        const emitFromViewportProbe = () => {
+            const probeY = win.innerHeight * 0.45;
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= probeY && rect.bottom >= probeY) {
+                    markSeen(section.id || '');
+                }
+            });
+        };
+
+        let probeTicking = false;
+        const onViewportChange = () => {
+            if (probeTicking) {
+                return;
+            }
+            probeTicking = true;
+            win.requestAnimationFrame(() => {
+                probeTicking = false;
+                emitFromViewportProbe();
+            });
+        };
+
+        const observer = new win.IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.45) {
+                    return;
+                }
+
+                const section = entry.target;
+                const sectionId = section.id || '';
+                if (!sectionId) {
+                    return;
+                }
+
+                markSeen(sectionId);
+                observer.unobserve(section);
+            });
+        }, {
+            threshold: [0.45, 0.6, 0.8]
+        });
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+
+        win.addEventListener('scroll', onViewportChange, {
+            passive: true
+        });
+        win.addEventListener('resize', onViewportChange, {
+            passive: true
+        });
+        emitFromViewportProbe();
+    }
+
+    function initFooterKpiRefresh() {
+        const valueNodes = Array.from(doc.querySelectorAll('.portfolio-kpi-value[data-kpi-key]'));
+        if (!valueNodes.length) {
+            return;
+        }
+
+        fetch('/analytics/summary?days=30', {
+                headers: {
+                    Accept: 'application/json'
+                }
+            })
+            .then((response) => response.json())
+            .then((result) => {
+                const summary = result && result.summary ? result.summary : null;
+                if (!summary) {
+                    return;
+                }
+
+                valueNodes.forEach((node) => {
+                    const key = (node.getAttribute('data-kpi-key') || '').trim();
+                    if (!key) {
+                        return;
+                    }
+
+                    if (key === 'contact_success_rate') {
+                        const value = Number(summary.contact_success_rate || 0);
+                        node.textContent = `${value.toFixed(1)}%`;
+                        return;
+                    }
+
+                    const value = summary[key];
+                    if (value === undefined || value === null) {
+                        return;
+                    }
+                    node.textContent = String(value);
+                });
+            })
+            .catch(() => {
+                // Keep server-rendered values when refresh is unavailable.
+            });
+    }
+
+    function initConversionClickTracking() {
+        doc.addEventListener('click', (event) => {
+            const trigger = event.target && event.target.closest ?
+                event.target.closest('[data-track-event]') :
+                null;
+
+            if (!trigger) {
+                return;
+            }
+
+            const eventName = (trigger.getAttribute('data-track-event') || '').trim();
+            if (!eventName) {
+                return;
+            }
+
+            const label = (trigger.getAttribute('data-track-label') || trigger.textContent || '').trim();
+            const href = (trigger.getAttribute('href') || '').trim();
+
+            trackConversionEvent(eventName, label, {
+                link_url: href
+            });
+        }, true);
+    }
+
     function initContactForm() {
         const contactForm = doc.querySelector('form.js-contact-form');
         if (!contactForm || contactForm.dataset.contactBound === 'true') {
@@ -752,6 +1025,7 @@
         contactForm.dataset.contactBound = 'true';
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault();
+            trackConversionEvent('contact_submit_attempt', 'contact_form');
 
             const statusEl = contactForm.querySelector('.js-contact-status');
             const submitBtn = contactForm.querySelector('button[type="submit"], input[type="submit"]');
@@ -792,14 +1066,21 @@
                     const response = result.response;
                     const data = result.data;
                     if (response.ok && data && data.ok) {
+                        trackConversionEvent('contact_submit_success', 'contact_form');
                         setStatus('Thanks! Your message was sent.', true);
                         contactForm.reset();
                     } else {
                         const message = (data && data.error) ? data.error : 'Sorry - could not send your message.';
+                        trackConversionEvent('contact_submit_error', 'contact_form', {
+                            error_type: 'application_or_validation'
+                        });
                         setStatus(message, false);
                     }
                 })
                 .catch(() => {
+                    trackConversionEvent('contact_submit_error', 'contact_form', {
+                        error_type: 'network'
+                    });
                     setStatus('Sorry - network error while sending.', false);
                 })
                 .finally(() => {
@@ -852,6 +1133,258 @@
 
             trigger.click();
         }, true);
+    }
+
+    /* ****************************
+       Auto-add compact tech chips to portfolio grid cards.
+       **************************** */
+    function initPortfolioGridTechChips() {
+        const grid = doc.querySelector('#portfolio .portfolio-grid');
+        if (!grid) {
+            return;
+        }
+
+        const portfolioTemplate = doc.getElementById('portfolio-modals-template');
+        const repoStackOverrides = {
+            'FrankJamison/2-Day-Shower-Specialists': ['JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/RoboFriends': ['React', 'JavaScript', 'CSS', 'REST API'],
+            'FrankJamison/2026SimpleFolio': ['HTML', 'SCSS', 'JavaScript'],
+            'FrankJamison/2026RandomThoughtsInTraffic': ['PHP', 'JavaScript', 'Vue', 'TypeScript'],
+            'FrankJamison/PassionateTeachingJourney.com': ['PHP', 'JavaScript', 'Vue', 'TypeScript'],
+            'FrankJamison/FrankJamison.com-v2025': ['PHP', 'JavaScript', 'CSS'],
+            'FrankJamison/Mi-Familia-Taco-Catering': ['HTML', 'CSS', 'JavaScript'],
+            'FrankJamison/Angular-CLI-Application': ['Angular', 'TypeScript', 'SCSS', 'JavaScript'],
+            'FrankJamison/The-Budget-Application': ['JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/AncientWhiteArmyVets-RPG-Tools-v2019': ['HTML', 'Sass', 'JavaScript', 'CSS'],
+            'FrankJamison/AncientWhiteArmyVets-RPG-Tools-v2020.2': ['Node.js', 'MySQL', 'JavaScript', 'CSS'],
+            'FrankJamison/2016VirtualWorld': ['Java', 'JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/FrankJamison.com-v2017': ['JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/2018FranksClassicCars': ['PHP', 'CSS', 'XSLT'],
+            'FrankJamison/Typing-Speed-Test': ['JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/Zita-Worleys-Website': ['HTML', 'CSS'],
+            'FrankJamison/Jamison-Stamps-and-Books': ['PHP', 'JavaScript', 'CSS', 'Shell'],
+            'FrankJamison/Globe-Bank': ['PHP', 'CSS', 'Hack'],
+            'FrankJamison/FrankJamison.com-v2006': ['JavaScript', 'HTML', 'CSS'],
+            'FrankJamison/Password-Exposure-Checker': ['Python', 'PHP', 'REST API', 'CSS'],
+            'FrankJamison/2026HackerNews': ['Python', 'PHP', 'REST API', 'CSS']
+        };
+
+        const techMatchers = [{
+                label: 'React',
+                test: /\breact\b/i
+            },
+            {
+                label: 'Vue',
+                test: /\bvue\b/i
+            },
+            {
+                label: 'Angular',
+                test: /\bangular\b/i
+            },
+            {
+                label: 'Flask',
+                test: /\bflask\b/i
+            },
+            {
+                label: 'WordPress',
+                test: /\bwordpress\b/i
+            },
+            {
+                label: 'Node.js',
+                test: /(node\.js|\bnode\b|\bexpress\b)/i
+            },
+            {
+                label: 'TypeScript',
+                test: /\btypescript\b/i
+            },
+            {
+                label: 'SCSS',
+                test: /\bscss\b/i
+            },
+            {
+                label: 'Sass',
+                test: /\bsass\b/i
+            },
+            {
+                label: 'MySQL',
+                test: /\bmysql\b/i
+            },
+            {
+                label: 'MongoDB',
+                test: /\bmongodb\b/i
+            },
+            {
+                label: 'PayPal API',
+                test: /\bpaypal\b/i
+            },
+            {
+                label: 'REST API',
+                test: /\b(rest|api|json)\b/i
+            },
+            {
+                label: 'Canvas API',
+                test: /\bcanvas api\b/i
+            },
+            {
+                label: 'Parcel',
+                test: /\bparcel\b/i
+            },
+            {
+                label: 'Bootstrap',
+                test: /\bbootstrap\b/i
+            },
+            {
+                label: 'PHP',
+                test: /\bphp\b/i
+            },
+            {
+                label: 'Python',
+                test: /\bpython\b/i
+            },
+            {
+                label: 'Java',
+                test: /\bjava\b/i
+            },
+            {
+                label: 'JavaScript',
+                test: /(\bjavascript\b|vanilla js|vanilla javascript)/i
+            },
+            {
+                label: 'HTML',
+                test: /(\bhtml\b|semantic html)/i
+            },
+            {
+                label: 'CSS',
+                test: /(\bcss\b|responsive)/i
+            },
+            {
+                label: 'Shell',
+                test: /\bshell\b/i
+            },
+            {
+                label: 'XSLT',
+                test: /\bxslt\b/i
+            },
+            {
+                label: 'Hack',
+                test: /\bhack\b/i
+            }
+        ];
+
+        function getModalById(modalId) {
+            const direct = doc.getElementById(modalId);
+            if (direct) {
+                return direct;
+            }
+            if (!portfolioTemplate || !portfolioTemplate.content) {
+                return null;
+            }
+            return portfolioTemplate.content.querySelector(`#${modalId}`);
+        }
+
+        function normalizeAndRankTags(rawTags) {
+            const tags = [...rawTags];
+
+            // Framework-to-language coupling so stack chips stay semantically complete.
+            if (tags.includes('Flask') && !tags.includes('Python')) {
+                tags.push('Python');
+            }
+
+            const priority = [
+                'Flask',
+                'Python',
+                'React',
+                'Vue',
+                'Angular',
+                'Node.js',
+                'PHP',
+                'TypeScript',
+                'JavaScript',
+                'Java',
+                'WordPress',
+                'MySQL',
+                'MongoDB',
+                'SCSS',
+                'Sass',
+                'HTML',
+                'CSS',
+                'Bootstrap',
+                'Parcel',
+                'Canvas API',
+                'REST API',
+                'PayPal API',
+                'Shell',
+                'XSLT',
+                'Hack'
+            ];
+
+            const ranked = tags.sort((a, b) => {
+                const aIndex = priority.indexOf(a);
+                const bIndex = priority.indexOf(b);
+                const aRank = aIndex === -1 ? Number.MAX_SAFE_INTEGER : aIndex;
+                const bRank = bIndex === -1 ? Number.MAX_SAFE_INTEGER : bIndex;
+                return aRank - bRank;
+            });
+
+            return ranked.slice(0, 4);
+        }
+
+        function deriveTechTags(sourceText, repoKey) {
+            if (repoKey && repoStackOverrides[repoKey]) {
+                return normalizeAndRankTags(repoStackOverrides[repoKey]);
+            }
+
+            const tags = [];
+            techMatchers.forEach((matcher) => {
+                if (matcher.test.test(sourceText) && !tags.includes(matcher.label)) {
+                    tags.push(matcher.label);
+                }
+            });
+            if (!tags.length) {
+                return ['Web'];
+            }
+            return normalizeAndRankTags(tags);
+        }
+
+        grid.querySelectorAll('.portfolio-item').forEach((item) => {
+            const content = item.querySelector('.content');
+            const trigger = item.querySelector('[data-bs-toggle="modal"][data-bs-target]');
+            if (!content || !trigger) {
+                return;
+            }
+
+            const existing = content.querySelector('.portfolio-tech-chips');
+            if (existing) {
+                existing.remove();
+            }
+
+            const targetId = (trigger.getAttribute('data-bs-target') || '').trim();
+            if (!targetId || targetId.charAt(0) !== '#') {
+                return;
+            }
+
+            const modalId = targetId.slice(1);
+            const modal = getModalById(modalId);
+            const descriptionEl = modal ? modal.querySelector('.text-content p.margin-bottom-30') : null;
+            const linksText = modal ? Array.from(modal.querySelectorAll('.text-content .button-group a')).map((a) => a.getAttribute('href') || '').join(' ') : '';
+            const sourceText = `${descriptionEl ? descriptionEl.textContent || '' : ''} ${linksText}`.toLowerCase();
+            const repoMatch = linksText.match(/https:\/\/github\.com\/([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)/i);
+            const repoKey = repoMatch ? repoMatch[1] : '';
+
+            const chips = deriveTechTags(sourceText, repoKey);
+            const chipsWrap = doc.createElement('div');
+            chipsWrap.className = 'portfolio-tech-chips';
+            chipsWrap.setAttribute('aria-label', 'Technology stack');
+
+            chips.forEach((chipText) => {
+                const chip = doc.createElement('span');
+                chip.className = 'portfolio-tech-chip';
+                chip.textContent = chipText;
+                chipsWrap.appendChild(chip);
+            });
+
+            content.appendChild(chipsWrap);
+        });
     }
 
     /* ****************************
@@ -984,9 +1517,14 @@
     initModalEnhancements(doc);
     initLeaveReplyForms(doc);
     initReadTimeIndicators(doc);
+    initSectionEngagementTracking();
+    initScrollDepthTracking();
+    initConversionClickTracking();
+    initFooterKpiRefresh();
     initContactForm();
     initChainedModalButtons();
     initPortfolioCardClicks();
+    initPortfolioGridTechChips();
     initScrollSnapCarouselTapActivation();
 
     if (win.feather && typeof win.feather.replace === 'function') {

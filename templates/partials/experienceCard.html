@@ -1,0 +1,17 @@
+{% macro experience_card(title, organization, dates, bullets) -%}
+<div class="resume-single-list" role="listitem">
+    <div class="inner">
+        <div class="heading">
+            <div class="title">
+                <h4>{{ title }}</h4>
+                <span>{{ organization }} ({{ dates }})</span>
+            </div>
+        </div>
+        <ul class="description">
+            {% for bullet in bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{%- endmacro %}

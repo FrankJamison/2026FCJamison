@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-                    <span class="subtitle">Get in Touch</span>
-                    <h2 class="title" id="contact-title">Contact Me</h2>
+                    <span class="subtitle">Open to Full-Time Web Development Roles</span>
+                    <h2 class="title" id="contact-title">Let’s Talk About the Role</h2>
                 </div>
             </div>
         </div>
@@ -17,10 +17,12 @@
                     </div>
                     <div class="title-area">
                         <h3 class="title">Frank Jamison</h3>
-                        <span>Web Designer &amp; Developer</span>
+                        <span>Full-Stack Web Developer</span>
                     </div>
                     <div class="description">
-                        <p>I’m available for freelance and contract work. Send me a message and I’ll get back to you.</p>
+                        <p>I partner with teams that need reliable web delivery, accessible UX, and clean, maintainable code.</p>
+                        <span class="availability">Availability: Open to full-time software engineering opportunities</span>
+                        <span class="response-time">Typical response time: Within 1 business day</span>
                         <span class="phone">Phone: <a href="tel:+19512937815">(951) 293-7815</a></span>
                         <span class="mail">Email: <a href="mailto:frank@fcjamison.com">frank@fcjamison.com</a></span>
                     </div>
@@ -36,6 +38,21 @@
             <div class="col-lg-7 contact-input">
                 <div class="contact-form-wrapper">
                     <div class="introduce">
+                        <div class="contact-conversion-callout" role="note" aria-label="Best fit role details">
+                            <h3>Best-Fit Roles</h3>
+                            <ul>
+                                <li>Full-stack web development on Python and modern JavaScript stacks</li>
+                                <li>Accessibility and UX improvements for production applications</li>
+                                <li>Legacy modernization for maintainability, reliability, and performance</li>
+                            </ul>
+                            <p>I do my best work on teams with clear ownership, collaborative code review, and measurable delivery goals.</p>
+                            <p>For the fastest reply, include role title, team focus, hiring timeline, and expected start date.</p>
+                            <div class="contact-quick-actions">
+                                <a class="rn-btn" href="mailto:frank@fcjamison.com?subject=Employment%20Opportunity%20-%20FCJamison.com" data-track-event="contact_quick_action_click" data-track-label="email_directly"><span>EMAIL DIRECTLY</span></a>
+                                <a class="rn-btn" href="{{ url_for('static', filename='downloads/Frank Jamison 2026 CV.pdf') }}" data-track-event="contact_quick_action_click" data-track-label="view_cv"><span>VIEW CV</span></a>
+                            </div>
+                        </div>
+
                         <form class="js-contact-form rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="{{ url_for('contact_message') }}">
                             <input type="hidden" name="page_url" value="{{ request.url }}">
                             <div class="rnform-group" style="display:none;" aria-hidden="true">

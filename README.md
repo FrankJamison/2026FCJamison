@@ -4,19 +4,11 @@ Live site: https://www.fcjamison.com
 
 Developer-focused Flask + Jinja2 portfolio site. The homepage is server-rendered, static assets live under `static/`, and the Contact / Blog Reply forms submit via AJAX and send notification email via SMTP.
 
-## Quick start (Windows + VS Code)
+## Quick start (local development)
 
-1. Ensure you have a local venv with deps installed (see **Manual setup** below).
-
-2. Run the VS Code task `Dev: Flask + Open Browser`
-
-- Starts the dev server (`Flask: Run (dev server)`) and opens the browser
-
-3. Open:
-
-- http://fcjamison.comv2026.localhost:5000/
-
-Note: `*.localhost` typically resolves to `127.0.0.1` without editing hosts files.
+1. Create a virtual environment and install dependencies (see **Manual setup** below).
+2. Start the app with `python app.py`.
+3. Open `http://127.0.0.1:5000/` in your browser.
 
 ## Manual setup
 
@@ -41,7 +33,7 @@ $env:PORT='5000'
 & .\.venv\Scripts\python.exe .\app.py
 ```
 
-Then open http://127.0.0.1:5000/ (or http://fcjamison.comv2026.localhost:5000/).
+Then open http://127.0.0.1:5000/.
 
 ## Configuration
 
@@ -89,6 +81,40 @@ SMTP env vars are documented in [SMTP_SETUP.md](SMTP_SETUP.md). The important on
 - `SMTP_USER`, `SMTP_PASSWORD`
 - `SMTP_FROM`, `SMTP_TO` (defaults to `SMTP_USER`)
 - `SMTP_USE_SSL` (default: `1`) / `SMTP_USE_TLS` (default: `0`)
+
+### Analytics (events + admin)
+
+Analytics endpoints:
+
+- `POST /analytics/event` (ingest)
+- `GET /analytics/summary?days=30` (JSON metrics)
+
+Protected admin:
+
+- `GET /analytics/admin?token=...&days=30`
+- `GET /analytics/prune?token=...`
+- `GET /analytics/export.csv?token=...&days=30` (daily aggregates)
+- `GET /analytics/export-raw.csv?token=...&days=30` (raw events)
+- `GET /analytics/export-bundle.zip?token=...&days=30` (aggregate + raw CSV in one zip)
+
+Bundle contents:
+
+- `README.txt` (generation timestamp, day window, and file/column notes)
+- `analytics-<days>d.csv`
+- `analytics-raw-<days>d.csv`
+
+Analytics environment variables:
+
+- `ANALYTICS_EVENTS_PATH` (default: `data/analytics_events.csv`)
+- `ANALYTICS_RETENTION_DAYS` (default: `180`, min `7`, max `3650`)
+- `ANALYTICS_MAX_ROWS` (default: `200000`, min `1000`)
+- `ANALYTICS_PRUNE_MIN_INTERVAL_SEC` (default: `900`)
+- `ANALYTICS_ADMIN_TOKEN` (required to enable `/analytics/admin` and `/analytics/prune`)
+
+Notes:
+
+- Unknown events and probable bot/noise requests are ignored at ingest.
+- Pruning runs automatically during event ingest and can be triggered manually from the admin route.
 
 ## Project layout
 
@@ -148,3 +174,82 @@ Quick regression check:
 ```bash
 python3 tools/a11y_sanity_check.py
 ```
+
+## Image optimization (portfolio WebP)
+
+### Current strategy
+
+The portfolio section uses **WebP-only images** for all 50+ project thumbnails and featured project cards. All PNG source files have been deleted from `static/images/portfolio/`, and only `.webp` files remain. This approach:
+
+- Reduces disk space by ~50% per image (PNG → WebP compression)
+- Eliminates browser fallback logic, simplifying template code
+- Targets modern browsers only (all major browsers support WebP as of 2024)
+
+**Browser support:** WebP is supported in Chrome, Edge, Firefox, Safari 16+, and modern mobile browsers. Older browsers (IE 11, pre-2018 Safari, older Android) will not display portfolio images.
+
+### Templates updated
+
+The following templates reference portfolio images exclusively via WebP:
+
+- `templates/partials/portfolioBody.html` — all 45 project modals
+- `templates/partials/portfolioCard.html` — grid card macro
+- `templates/partials/featuredProjects.html` — featured project cards (6 featured projects)
+
+All `src` and `srcset` attributes now reference `.webp` files only.
+
+### Historical: Image conversion
+
+If regenerating WebP files from source images is ever needed:
+
+```bash
+python3 tools/convert_portfolio_images_to_webp.py
+```
+
+This tool generates `.webp` sibling files from any source images present. (Currently archived for reference; not actively used after PNG-only migration.)
+
+## Challenges and Improvements
+
+### Migration to WebP-only (June 2026)
+
+**Objective:** Delete all redundant PNG files from `static/images/portfolio/` and update templates to reference WebP exclusively, reducing storage and simplifying image handling logic.
+
+**Challenges encountered:**
+
+1. **Template caching during development** — After updating 45+ image references in `portfolioBody.html`, the Flask development server continued serving old template output. Templates are cached in Flask's Jinja2 engine; simply reloading the browser cache wasn't sufficient. **Solution:** Restart the Flask dev server (`FLASK_DEBUG=1` doesn't auto-reload Jinja2 template changes in all cases).
+
+2. **Large batch replacements** — Replacing 45+ nearly-identical lines across multiple files risked syntax errors or missed items. **Solution:** Broke replacements into 5 sequential batches (covering items 045→001) with explicit verification between batches to ensure accuracy.
+
+3. **Multiple template contexts** — Portfolio images appear in three separate template contexts:
+   - Modal detail views (`portfolioBody.html`)
+   - Grid cards (`portfolioCard.html`)
+   - Featured project showcase (`featuredProjects.html`)
+
+   Each context had different markup patterns (direct `src`, picture/srcset, macro parameters), requiring context-aware search-and-replace strategies.
+
+4. **Distinguishing portfolio vs. blog images** — The blog folder (`static/images/blog/`) contains PNG-only images with no WebP equivalents (intentional for blog authoring flexibility). During cleanup, it was critical not to accidentally delete or convert blog images. **Solution:** Worked exclusively in the portfolio folder with explicit file paths.
+
+5. **Terminal-based regex challenges in WSL** — Initial attempts to use `sed` commands in WSL via terminal tools produced inconsistent results. **Solution:** Shifted to file-based tools (multi_replace_string_in_file) which proved more reliable for batch operations.
+
+### Lessons learned & recommendations
+
+1. **Plan template changes holistically** — When updating many similar references across multiple templates, map out all contexts first (search for all uses) before implementing changes.
+
+2. **Verify file existence before deletion** — Before committing to deletion of 50 files, explicitly confirm that WebP equivalents exist for all items.
+
+3. **Monitor resource loading** — After template updates, use browser DevTools or Playwright's network inspection to confirm all expected resources load (no 404s).
+
+4. **Document image strategy** — Clearly state in README which folders use which formats (portfolio = WebP-only, blog = PNG-only) to prevent confusion during future maintenance.
+
+5. **Batch operations efficiency** — For large-scale replacements, the multi_replace_string_in_file tool with 5–17 replacements per batch proved faster and more reliable than terminal-based regex or sequential single-file edits.
+
+### Future improvements
+
+1. **Lazy-loaded image placeholders** — Implement blur-up or LQIP (Low Quality Image Placeholders) for portfolio images to improve perceived performance while WebP files load.
+
+2. **Responsive image variants** — Generate smaller WebP variants for mobile screens (e.g., 320px, 640px) to reduce bandwidth and load times.
+
+3. **Automated image validation in CI/CD** — Add a pre-commit or pre-deploy check that verifies all template image references correspond to actual files on disk, catching broken references early.
+
+4. **Image metadata tagging** — Extend the portfolio schema to include dimensions, alt-text consistency checks, and a manifest file listing all expected images.
+
+5. **Progressive enhancement for unsupported browsers** — If future requirements demand support for older browsers, add a server-side image format negotiation header (`Accept: image/webp`) and serve PNG fallbacks dynamically.

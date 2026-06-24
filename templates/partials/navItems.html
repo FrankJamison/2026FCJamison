@@ -1,0 +1,3 @@
+{% macro nav_item(label, href, item_class, link_class) -%}
+<li class="{{ item_class }}"><a class="{{ link_class }}" href="{{ href }}">{{ label }}</a></li>
+{%- endmacro %}

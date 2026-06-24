@@ -5,6 +5,9 @@
     <meta name="robots" content="{{ meta_robots|default('index, follow', true) }}" />
     <meta name="author" content="{{ site_owner_name }}">
     <meta name="description" content="{{ headDescription|default(site_default_description, true) }}">
+    <meta name="theme-color" content="#212428">
+    <meta name="color-scheme" content="dark light">
+    <meta name="format-detection" content="telephone=no">
     <link rel="canonical" href="{{ request.base_url }}">
 
     {% set og_image = site_og_image_url if site_og_image_url else url_for('static', filename=site_logo_path, _external=True) %}
@@ -18,7 +21,7 @@
     <meta property="og:image" content="{{ og_image }}">
     <meta property="og:image:alt" content="{{ site_owner_name }} logo">
 
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     {% if site_twitter_handle %}
     <meta name="twitter:site" content="{{ site_twitter_handle }}">
     {% endif %}
@@ -50,6 +53,21 @@
                 "name": site_name,
                 "url": request.url_root
             },
+            {
+                "@type": "WebPage",
+                "name": headTitle|default(site_default_title, true),
+                "description": headDescription|default(site_default_description, true),
+                "url": request.base_url,
+                "inLanguage": "en-US",
+                "image": og_image,
+                "author": person_schema,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": site_name,
+                    "url": request.url_root
+                },
+                "about": person_schema
+            },
             person_schema
         ]
     }|tojson }}</script>
@@ -74,4 +92,84 @@
        Style css
        **************************** -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- ****************************
+       Portfolio Schema: CreativeWork collection with metadata
+       **************************** -->
+    <script type="application/ld+json">{{ {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Project Portfolio Archive",
+        "url": request.base_url,
+        "description": "Comprehensive archive of web development and software projects from 2006 to present.",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "CreativeWork",
+                        "name": "Space Portfolio",
+                        "description": "Full-stack Flask web application with space-themed design, Jinja2 templating, Bootstrap layout, and contact system demonstrating production-ready development practices.",
+                        "url": request.url_root,
+                        "dateCreated": "2026-01-01",
+                        "creator": person_schema,
+                        "keywords": "Flask, Python, Full-Stack, Web Application"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@type": "CreativeWork",
+                        "name": "Hacker News Aggregator",
+                        "description": "Automated technical news aggregation and curation platform. Reduce research time with centralized, curated content from Hacker News.",
+                        "url": "https://hackernews.fcjamison.com/",
+                        "dateCreated": "2026-01-01",
+                        "creator": person_schema,
+                        "keywords": "News Aggregator, Python, Automation, Tech"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@type": "CreativeWork",
+                        "name": "Password Exposure Checker",
+                        "description": "Privacy-first breach detection using k-anonymity hashing. Check if passwords appear in data breaches without exposing credentials.",
+                        "url": "https://passwordcheck.fcjamison.com/",
+                        "dateCreated": "2025-01-01",
+                        "creator": person_schema,
+                        "keywords": "Security, Privacy, Password, Tool"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@type": "CreativeWork",
+                        "name": "Character Vault",
+                        "description": "Full-stack application for creating, storing, and managing tabletop RPG character sheets. Interactive character database with web interface.",
+                        "url": "https://charactervault.fcjamison.com/",
+                        "dateCreated": "2020-01-01",
+                        "creator": person_schema,
+                        "keywords": "RPG, Database, JavaScript, Web App"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "item": {
+                        "@type": "CreativeWork",
+                        "name": "Questkeeper",
+                        "description": "Campaign management tool for Dungeons & Dragons game masters. Character sheets, quest tracking, and session organization.",
+                        "url": "https://questkeeper.fcjamison.com/",
+                        "dateCreated": "2018-01-01",
+                        "creator": person_schema,
+                        "keywords": "D&D, RPG, Campaign, Game Master"
+                    }
+                }
+            ]
+        }
+    }|tojson }}</script>
 </head>

@@ -1,0 +1,24 @@
+{% macro featured_project_card(image_base, alt_text, title, stack, problem, built, impact, site_url, code_url, site_label, code_label, loading='lazy', fetchpriority=None) -%}
+<div class="col-lg-4 col-md-6 col-12 margin-bottom-40">
+    <div class="featured-project-card">
+        <div class="project-image">
+            <picture>
+                <img loading="{{ loading }}" decoding="async" {% if fetchpriority %} fetchpriority="{{ fetchpriority }}" {% endif %} src="{{ url_for('static', filename='images/portfolio/' ~ image_base ~ '.webp') }}" alt="{{ alt_text }}">
+            </picture>
+        </div>
+        <div class="project-content">
+            <h3 class="project-title">{{ title }}</h3>
+            <p class="project-tech"><strong>Stack:</strong> {{ stack }}</p>
+            <ul class="project-case-list">
+                <li><strong>Problem:</strong> {{ problem }}</li>
+                <li><strong>Built:</strong> {{ built }}</li>
+                <li><strong>Impact:</strong> {{ impact }}</li>
+            </ul>
+            <div class="project-buttons">
+                <a href="{{ site_url }}" class="rn-btn" target="_blank" rel="noopener noreferrer" data-track-event="featured_project_click" data-track-label="{{ site_label }}"><span>VIEW SITE</span></a>
+                <a href="{{ code_url }}" class="rn-btn" target="_blank" rel="noopener noreferrer" data-track-event="featured_project_click" data-track-label="{{ code_label }}"><span>VIEW CODE</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro %}

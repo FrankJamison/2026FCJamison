@@ -1,0 +1,16 @@
+{% macro education_card(title, institution, dates, gpa, description) -%}
+<div class="resume-single-list" role="listitem">
+    <div class="inner">
+        <div class="heading">
+            <div class="title">
+                <h4>{{ title }}</h4>
+                <span>{{ institution }} ({{ dates }})</span>
+            </div>
+            <div class="date-of-time">
+                <span>GPA: {{ gpa }}</span>
+            </div>
+        </div>
+        <p class="description">{{ description }}</p>
+    </div>
+</div>
+{%- endmacro %}

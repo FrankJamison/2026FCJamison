@@ -1,0 +1,17 @@
+{% macro analytics_kpi(label, value) -%}
+<article class="analytics-kpi">
+    <p class="analytics-kpi-label">{{ label }}</p>
+    <p class="analytics-kpi-value">{{ value }}</p>
+</article>
+{%- endmacro %}
+
+{% macro analytics_breakdown_card(title, empty_message, has_data, classes='') -%}
+<article class="analytics-breakdown-card{{ ' ' ~ classes if classes }}">
+    <h4>{{ title }}</h4>
+    {% if has_data %}
+    {{ caller() }}
+    {% else %}
+    <p class="analytics-breakdown-empty">{{ empty_message }}</p>
+    {% endif %}
+</article>
+{%- endmacro %}

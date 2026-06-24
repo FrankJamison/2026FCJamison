@@ -4,13 +4,14 @@
         {
             "label": "Flask: Run (dev server)",
             "type": "shell",
-            "command": "powershell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
             "args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-Command",
-                "$env:FLASK_DEBUG='1'; $env:HOST='127.0.0.1'; $env:PORT='5000'; & .\\.venv\\Scripts\\python.exe .\\app.py"
+                "bash",
+                "-lc",
+                "cd /home/frank/Websites/046-2026-FCJamison.com && FLASK_DEBUG=1 HOST=127.0.0.1 PORT=5000 ./.venv/bin/python ./app.py"
             ],
             "isBackground": true,
             "problemMatcher": {
@@ -40,7 +41,55 @@
             "command": "start",
             "args": [
                 "chrome",
-                "http://fcjamison.comv2026.localhost:5000/"
+                "http://127.0.0.1:5000/"
+            ],
+            "presentation": {
+                "reveal": "never",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask: Run (dev server :5001)",
+            "type": "shell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
+            "args": [
+                "bash",
+                "-lc",
+                "cd /home/frank/Websites/046-2026-FCJamison.com && FLASK_DEBUG=1 HOST=127.0.0.1 PORT=5001 ./.venv/bin/python ./app.py"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "flask",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*\\* Serving Flask app.*",
+                    "endsPattern": ".*\\* Running on http://.*:5001.*"
+                }
+            }
+        },
+        {
+            "label": "Open in Browser (:5001)",
+            "type": "shell",
+            "command": "start",
+            "args": [
+                "chrome",
+                "http://127.0.0.1:5001/"
             ],
             "presentation": {
                 "reveal": "never",
@@ -51,17 +100,37 @@
         {
             "label": "Dev: Flask + Open Browser",
             "type": "shell",
-            "command": "powershell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
             "args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-Command",
-                "Write-Host 'Starting Flask + opening browser...'"
+                "bash",
+                "-lc",
+                "echo 'Starting Flask + opening browser...'"
             ],
             "dependsOn": [
                 "Flask: Run (dev server)",
                 "Open in Browser"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "Dev: Flask(5001) + Open Browser",
+            "type": "shell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
+            "args": [
+                "bash",
+                "-lc",
+                "echo 'Starting Flask on 5001 + opening browser...'"
+            ],
+            "dependsOn": [
+                "Flask: Run (dev server :5001)",
+                "Open in Browser (:5001)"
             ],
             "dependsOrder": "sequence",
             "problemMatcher": []
@@ -83,6 +152,60 @@
                 "reveal": "always",
                 "panel": "dedicated",
                 "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Tools: Convert Portfolio Images to WebP",
+            "type": "shell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
+            "args": [
+                "bash",
+                "-lc",
+                "cd /home/frank/Websites/046-2026-FCJamison.com && ./.venv/bin/python -m pip install Pillow && ./.venv/bin/python tools/convert_portfolio_images_to_webp.py"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Tools: Rollout WebP Picture Tags",
+            "type": "shell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
+            "args": [
+                "bash",
+                "-lc",
+                "cd /home/frank/Websites/046-2026-FCJamison.com && ./.venv/bin/python tools/rollout_webp_picture_tags.py"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Tools: Fix WebP Suffixes",
+            "type": "shell",
+            "command": "wsl",
+            "options": {
+                "cwd": "C:\\"
+            },
+            "args": [
+                "bash",
+                "-lc",
+                "cd /home/frank/Websites/046-2026-FCJamison.com && ./.venv/bin/python tools/fix_webp_suffixes.py"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
             },
             "problemMatcher": []
         }

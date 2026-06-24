@@ -1,0 +1,8 @@
+{% macro progress_item(label, percent) -%}
+<div class="progress-charts">
+    <h4 class="heading heading-h6">{{ label }}</h4>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ percent }}%" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">{{ percent }}%</span></div>
+    </div>
+</div>
+{%- endmacro %}
